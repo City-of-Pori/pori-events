@@ -5,7 +5,7 @@ import { SearchkitManager,SearchkitProvider,
   NoHits, ResetFilters, ViewSwitcherHits,
   GroupedSelectedFilters, Layout, LayoutBody,
   LayoutResults, ActionBar, ActionBarRow, SideBar,
-  QueryString, SearchkitComponent, Panel } from 'searchkit'
+  QueryString, SearchkitComponent, Panel, HierarchicalRefinementFilter } from 'searchkit'
 import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter"
 import Moment from 'moment';
 
@@ -62,7 +62,7 @@ const HitsListItem = (props)=> {
         <h2 className="event__title">
           <a href={url} dangerouslySetInnerHTML={{__html:title}}></a>
         </h2>
-        <div className="event__area">{source.area}</div>
+        <div className="event__area">{source.area.value}</div>
         <div className="event__short_description">{leading}</div>
       </div>
     </div>
@@ -107,13 +107,11 @@ class App extends SearchkitComponent {
                 collapsable={true}
                 defaultCollapsed={true}
                 title={Drupal.t("Where")}>
-
-                <RefinementListFilter
-                  id="area"
-                  field="area"
-                  operator="OR"
-                  size={100}
-                />
+                  <HierarchicalRefinementFilter
+                    field="area"
+                    id="area"
+                    title={''}
+                  />
 
               </Panel>
 

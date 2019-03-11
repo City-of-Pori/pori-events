@@ -48,7 +48,21 @@ class NodeNormalizer extends ContentEntityNormalizer {
       // area term
       if ($object->field_area->target_id) {
         $term_name = Term::load($object->field_area->target_id)->get('name')->value;
-        $data['area'] = $term_name;
+        $parents = \Drupal::service('entity_type.manager')->getStorage("taxonomy_term")->loadAllParents($object->field_area->target_id);
+        $level = count($parents);
+        $ancestors = [];
+        if ($level > 1) {
+          array_shift($parents);
+          foreach ($parents as $parent) {
+            $ancestors[] = $parent->get('name')->value;
+          }
+        }
+        $data['area'] = [
+          'level' => $level,
+          'ancestors' => $ancestors,
+          'value' => $term_name,
+          'order' => 1
+        ];
       }
 
       // audience term

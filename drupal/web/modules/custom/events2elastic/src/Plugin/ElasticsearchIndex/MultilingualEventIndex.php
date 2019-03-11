@@ -179,9 +179,24 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
                 ],
               ],
               'area' => [
-                'type' => 'keyword',
-                'index' => 'analyzed',
-              ],        
+                'type'=> 'nested',
+                'properties' => [
+                  'level' => [
+                    'type' => 'integer',
+                  ],
+                  'ancestors' => [
+                    'type' => 'string',
+                    'index' => 'not_analyzed',
+                  ],
+                  'value' => [
+                    'type' => 'string',
+                    'index' => 'not_analyzed',
+                  ],
+                  'order' => [
+                    'type' => 'integer'
+                  ]
+                ]
+              ],
               'audience' => [
                 'type' => 'keyword',
                 'index' => 'analyzed',
@@ -196,7 +211,7 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               ],
               'free_enterance' => [
                 'type' => 'boolean',
-              ],              
+              ],
               'description' => [
                 'type' => 'text',
                 'analyzer' => $analyzer,
@@ -215,7 +230,7 @@ class MultilingualEventIndex extends ElasticsearchIndexBase {
               ],
               'start_date_millis' => [
                 'type' => 'date',
-              ],              
+              ],
               'end_date' => [
                 'type' => 'date',
                 'format' => 'epoch_second',

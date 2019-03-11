@@ -16,7 +16,7 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  urls: 'https://satakuntaevents.fi/api/v2/place/?show_all_places=1&page_size=999'
+  urls: 'https://www.dropbox.com/s/0mo4qlge5zb54ui/events.json?dl=1'
   item_selector: data
   ids:
     area_id:
@@ -32,11 +32,23 @@ source:
       name: area_name
       label: 'Name of the area'
       selector: name/fi
+    -
+      name: parent
+      label: 'Parent area'
+      selector: parent
 process:
   vid:
     plugin: default_value
     default_value: area
   name: area_name
+  parent:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: migrate_source_event_area
   path:
     -
       plugin: concat
