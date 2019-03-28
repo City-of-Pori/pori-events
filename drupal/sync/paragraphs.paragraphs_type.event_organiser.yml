@@ -1,0 +1,9 @@
+uuid: d30b960d-1076-44c6-81ce-f31bd723a96f
+langcode: fi
+status: true
+dependencies: {  }
+id: event_organiser
+label: 'Event Organiser'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

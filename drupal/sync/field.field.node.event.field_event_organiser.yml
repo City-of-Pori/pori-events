@@ -1,0 +1,37 @@
+uuid: d7159c85-9039-48b0-8e01-b9822deb9b2a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_organiser
+    - node.type.event
+    - paragraphs.paragraphs_type.event_organiser
+  module:
+    - entity_reference_revisions
+id: node.event.field_event_organiser
+field_name: field_event_organiser
+entity_type: node
+bundle: event
+label: 'Event Organiser'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      event_organiser: event_organiser
+    target_bundles_drag_drop:
+      event_organiser:
+        enabled: true
+        weight: 4
+      location:
+        weight: 5
+        enabled: false
+      week_days:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

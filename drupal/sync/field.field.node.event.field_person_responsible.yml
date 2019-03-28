@@ -1,0 +1,40 @@
+uuid: 5aa2539c-b734-4c27-8933-cfa449441e2c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_responsible
+    - node.type.event
+    - paragraphs.paragraphs_type.person_responsible
+  module:
+    - entity_reference_revisions
+id: node.event.field_person_responsible
+field_name: field_person_responsible
+entity_type: node
+bundle: event
+label: 'Person Responsible'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      person_responsible: person_responsible
+    target_bundles_drag_drop:
+      event_organiser:
+        weight: 4
+        enabled: false
+      person_responsible:
+        enabled: true
+        weight: 5
+      location:
+        weight: 5
+        enabled: false
+      week_days:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

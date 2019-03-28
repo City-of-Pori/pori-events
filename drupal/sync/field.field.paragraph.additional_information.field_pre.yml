@@ -1,0 +1,23 @@
+uuid: f48f890e-82b2-42d7-a7a4-077584e855d2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pre
+    - paragraphs.paragraphs_type.additional_information
+id: paragraph.additional_information.field_pre
+field_name: field_pre
+entity_type: paragraph
+bundle: additional_information
+label: Pre-registration
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'No'
+  off_label: 'Yes'
+field_type: boolean

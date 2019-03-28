@@ -1,0 +1,43 @@
+uuid: 73b773fb-97e2-488f-b294-ba382f5c3089
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_information
+    - node.type.event
+    - paragraphs.paragraphs_type.additional_information
+  module:
+    - entity_reference_revisions
+id: node.event.field_additional_information
+field_name: field_additional_information
+entity_type: node
+bundle: event
+label: 'Additional information'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      additional_information: additional_information
+    target_bundles_drag_drop:
+      additional_information:
+        enabled: true
+        weight: 6
+      event_organiser:
+        weight: 7
+        enabled: false
+      location:
+        weight: 8
+        enabled: false
+      person_responsible:
+        weight: 9
+        enabled: false
+      week_days:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

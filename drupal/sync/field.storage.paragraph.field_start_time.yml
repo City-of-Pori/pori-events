@@ -1,0 +1,20 @@
+uuid: 26e7a508-66a8-4174-bd9c-56a5d720c9e9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_start_time
+field_name: field_start_time
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

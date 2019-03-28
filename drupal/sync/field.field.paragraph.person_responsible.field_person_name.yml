@@ -1,0 +1,19 @@
+uuid: d0c22d4d-6b43-4820-bc67-a6c7e9089ee1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_person_name
+    - paragraphs.paragraphs_type.person_responsible
+id: paragraph.person_responsible.field_person_name
+field_name: field_person_name
+entity_type: paragraph
+bundle: person_responsible
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

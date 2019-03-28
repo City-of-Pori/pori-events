@@ -1,0 +1,19 @@
+uuid: cca300ef-a5ca-4b11-aa8f-858d2c93fc62
+langcode: fi
+status: true
+dependencies:
+  module:
+    - address
+    - paragraphs
+id: paragraph.field_address
+field_name: field_address
+entity_type: paragraph
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,9 @@
+uuid: f5b46e58-e652-4df0-b7d7-a5306f3b2b92
+langcode: fi
+status: true
+dependencies: {  }
+id: additional_information
+label: 'Additional information'
+icon_uuid: null
+description: 'Pre-registration, accessibility, Child care... '
+behavior_plugins: {  }

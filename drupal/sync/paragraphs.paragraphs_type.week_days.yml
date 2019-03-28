@@ -1,0 +1,9 @@
+uuid: ce8e8426-6595-4986-84cb-6381b24882e3
+langcode: fi
+status: true
+dependencies: {  }
+id: week_days
+label: 'Week days'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

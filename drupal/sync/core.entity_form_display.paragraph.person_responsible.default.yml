@@ -1,0 +1,41 @@
+uuid: 1951685f-40f5-4a8b-82eb-6d433b619d68
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.person_responsible.field_e_mail
+    - field.field.paragraph.person_responsible.field_person_name
+    - field.field.paragraph.person_responsible.field_phone_no_
+    - paragraphs.paragraphs_type.person_responsible
+id: paragraph.person_responsible.default
+targetEntityType: paragraph
+bundle: person_responsible
+mode: default
+content:
+  field_e_mail:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_person_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone_no_:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

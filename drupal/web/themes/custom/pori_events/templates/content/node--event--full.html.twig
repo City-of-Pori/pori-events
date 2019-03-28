@@ -85,6 +85,7 @@
 {% set description = content.field_description[0]['#text'] %}
 {% set location_extra_info = content.field_location_extra_info[0]['#context']['value'] %}
 {% set area = content.field_area[0]['#title'] %}
+{% set free = content.field_free_enterance[0]['response'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
 {% set provider_www = content.field_provider_www[0]['content'] %}
 {% set provider_phone = content.field_provider_phone[0]['#context']['value'] %}
@@ -118,7 +119,7 @@
 
       {% if description %}
         <div class="event__content__description">
-          {{ description|nl2br }}
+          {{ description| striptags| raw }}
         </div>
       {% endif %}
 
@@ -130,10 +131,10 @@
         {{ "Event information:"|t }}
       </h3>
 
-      <div class="event__content--sidebar__item event__time">
+      {# <div class="event__content--sidebar__item event__time">
         <i class="fas fa-clock"></i>
         {% trans with {'context': 'Event sidebar'} %}At{% endtrans %} {{ start_time|date('U', "Europe/Helsinki")|format_date('short') }} - {{ end_time|date('U', "Europe/Helsinki")|format_date('short') }}
-      </div>
+      </div> #}
 
       {% if location_extra_info or area %}
       <div class="event__content--sidebar__item">
@@ -146,6 +147,21 @@
         {% endif %}
       </div>
       {% endif %}
+
+     {% if 'Yes' in content.field_free_enterance[0] %}
+<div class="event__content--sidebar__item">
+<i class="fas fa-euro-sign"></i>
+     Free Event
+</div>
+{% endif %}
+{# {% if 'Yes' in content.field.paragraph.additional_information.field_chi[0] %}
+<div class="event__content--sidebar__item">
+<i class="fas fa-euro-sign"></i>
+     Child friendly
+</div>
+{% endif %} #}
+
+      {# {% if free.reponse %}yes{% else %}no{% endif%} #}
 
       {% if price %}
       <div class="event__content--sidebar__item">

@@ -3,38 +3,33 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_accessible
+    - field.field.node.event.field_additional_information
     - field.field.node.event.field_address
     - field.field.node.event.field_area
-    - field.field.node.event.field_category
-    - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
-    - field.field.node.event.field_email
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_organiser
     - field.field.node.event.field_event_type
     - field.field.node.event.field_free_enterance
-    - field.field.node.event.field_hobby_map
     - field.field.node.event.field_hobby_not_hobby
-    - field.field.node.event.field_hobby_person_responsible
-    - field.field.node.event.field_hobby_phone_number
     - field.field.node.event.field_image
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
-    - field.field.node.event.field_means_of_payment
-    - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_person_responsible
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
-    - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
+    - field.field.node.event.field_weekdays
     - node.type.event
   module:
     - address
-    - datetime
+    - entity_reference_revisions
     - image
     - imagecache_external
     - pori_events_link_formatter
@@ -45,41 +40,32 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  field_accessible:
-    weight: 122
+  field_additional_information:
+    type: entity_reference_revisions_entity_view
+    weight: 20
     label: above
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: boolean
     region: content
   field_address:
-    weight: 107
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_area:
-    weight: 108
+    weight: 6
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_category:
-    weight: 123
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_child_care:
-    weight: 124
+  field_culture_and_or_activity_no:
+    weight: 21
     label: above
     settings:
       format: default
@@ -89,31 +75,23 @@ content:
     type: boolean
     region: content
   field_description:
-    weight: 104
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_email:
-    weight: 126
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_end_time:
-    weight: 103
+  field_event_organiser:
+    type: entity_reference_revisions_entity_view
+    weight: 18
     label: above
     settings:
-      format_type: medium
-      timezone_override: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: datetime_default
     region: content
   field_event_type:
-    weight: 113
+    weight: 9
     label: above
     settings:
       link: true
@@ -121,7 +99,7 @@ content:
     type: entity_reference_label
     region: content
   field_free_enterance:
-    weight: 112
+    weight: 8
     label: above
     settings:
       format: default
@@ -129,43 +107,19 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-    region: content
-  field_hobby_map:
-    weight: 127
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
   field_hobby_not_hobby:
-    weight: 121
+    weight: 17
     label: hidden
     settings:
-      format: default
-      format_custom_false: ''
+      format: yes-no
       format_custom_true: ''
+      format_custom_false: ''
     third_party_settings: {  }
     type: boolean
     region: content
-  field_hobby_person_responsible:
-    weight: 128
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_hobby_phone_number:
-    weight: 129
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_image:
-    weight: 106
+    weight: 4
     label: above
     settings:
       image_style: ''
@@ -174,7 +128,7 @@ content:
     type: image
     region: content
   field_image_ext_url:
-    weight: 114
+    weight: 10
     label: above
     settings:
       imagecache_external_style: large
@@ -183,35 +137,24 @@ content:
     type: imagecache_external_image
     region: content
   field_location_extra_info:
-    weight: 116
+    weight: 12
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_means_of_payment:
-    weight: 125
+  field_person_responsible:
+    type: entity_reference_revisions_entity_view
+    weight: 19
     label: above
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: boolean
-    region: content
-  field_pre_registration:
-    weight: 130
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
     region: content
   field_price:
-    weight: 115
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -219,7 +162,7 @@ content:
     type: string
     region: content
   field_provider_email:
-    weight: 119
+    weight: 15
     label: above
     settings:
       link_to_entity: false
@@ -227,7 +170,7 @@ content:
     type: string
     region: content
   field_provider_phone:
-    weight: 118
+    weight: 14
     label: above
     settings:
       link_to_entity: false
@@ -235,37 +178,21 @@ content:
     type: string
     region: content
   field_provider_www:
-    weight: 117
+    weight: 13
     label: above
     settings: {  }
     third_party_settings: {  }
     type: link_field_formatter
     region: content
   field_short_description:
-    weight: 105
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
-  field_start_time:
-    weight: 102
-    label: above
-    settings:
-      format_type: medium
-      timezone_override: ''
-    third_party_settings: {  }
-    type: datetime_default
-    region: content
-  field_summary:
-    weight: 131
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_target_audience:
-    weight: 109
+    weight: 7
     label: above
     settings:
       link: true
@@ -273,16 +200,27 @@ content:
     type: entity_reference_label
     region: content
   field_ticket_vendor:
-    weight: 120
+    weight: 16
     label: above
     settings: {  }
     third_party_settings: {  }
     type: link_field_formatter
     region: content
+  field_weekdays:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_end_time: true
+  field_start_time: true
   langcode: true

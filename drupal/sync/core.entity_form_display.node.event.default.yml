@@ -3,40 +3,35 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_accessible
+    - field.field.node.event.field_additional_information
     - field.field.node.event.field_address
     - field.field.node.event.field_area
-    - field.field.node.event.field_category
-    - field.field.node.event.field_child_care
+    - field.field.node.event.field_culture_and_or_activity_no
     - field.field.node.event.field_description
-    - field.field.node.event.field_email
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_organiser
     - field.field.node.event.field_event_type
     - field.field.node.event.field_free_enterance
-    - field.field.node.event.field_hobby_map
     - field.field.node.event.field_hobby_not_hobby
-    - field.field.node.event.field_hobby_person_responsible
-    - field.field.node.event.field_hobby_phone_number
     - field.field.node.event.field_image
     - field.field.node.event.field_image_ext_url
     - field.field.node.event.field_location_extra_info
-    - field.field.node.event.field_means_of_payment
-    - field.field.node.event.field_pre_registration
+    - field.field.node.event.field_person_responsible
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
     - field.field.node.event.field_provider_phone
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
-    - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
+    - field.field.node.event.field_weekdays
     - image.style.thumbnail
     - node.type.event
   module:
     - address
-    - datetime
     - image
+    - paragraphs
     - path
     - text
 id: node.event.default
@@ -46,16 +41,21 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_accessible:
-    weight: 34
+  field_additional_information:
+    type: entity_reference_paragraphs
+    weight: 26
     settings:
-      display_label: true
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
-    type: boolean_checkbox
     region: content
   field_address:
     weight: 12
@@ -64,30 +64,11 @@ content:
     third_party_settings: {  }
     type: address_default
     region: content
-  field_area:
-    weight: 14
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+  field_culture_and_or_activity_no:
+    weight: 27
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
-    region: content
-  field_category:
-    weight: 35
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_child_care:
-    weight: 36
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
+    type: options_buttons
     region: content
   field_description:
     weight: 11
@@ -97,22 +78,20 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_email:
-    weight: 38
+  field_event_organiser:
+    type: entity_reference_paragraphs
+    weight: 18
     settings:
-      size: 60
-      placeholder: ''
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_end_time:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
     region: content
   field_event_type:
-    weight: 16
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -121,42 +100,16 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_free_enterance:
-    weight: 18
-    settings:
-      display_label: true
+    weight: 16
+    settings: {  }
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_hobby_map:
-    weight: 39
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: options_buttons
     region: content
   field_hobby_not_hobby:
-    weight: 33
-    settings:
-      display_label: true
+    weight: 1
+    settings: {  }
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_hobby_person_responsible:
-    weight: 40
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_hobby_phone_number:
-    weight: 41
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: options_buttons
     region: content
   field_image:
     weight: 13
@@ -167,61 +120,27 @@ content:
     type: image_image
     region: content
   field_image_ext_url:
-    weight: 26
+    weight: 20
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_location_extra_info:
-    weight: 28
+  field_person_responsible:
+    type: entity_reference_paragraphs
+    weight: 19
     settings:
-      size: 60
-      placeholder: ''
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_means_of_payment:
-    weight: 37
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
-  field_pre_registration:
-    weight: 42
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
     region: content
   field_price:
-    weight: 27
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_provider_email:
-    weight: 31
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_provider_phone:
-    weight: 30
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_provider_www:
-    weight: 29
+    weight: 17
     settings:
       size: 60
       placeholder: ''
@@ -236,22 +155,8 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
-  field_start_time:
-    weight: 8
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
-    region: content
-  field_summary:
-    weight: 43
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_target_audience:
-    weight: 15
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -260,23 +165,35 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_ticket_vendor:
-    weight: 32
+    weight: 21
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_weekdays:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
-    weight: 2
+    weight: 4
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -284,21 +201,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 6
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 9
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 7
     region: content
     third_party_settings: {  }
   title:
@@ -311,11 +228,18 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_area: true
+  field_end_time: true
+  field_location_extra_info: true
+  field_provider_email: true
+  field_provider_phone: true
+  field_provider_www: true
+  field_start_time: true

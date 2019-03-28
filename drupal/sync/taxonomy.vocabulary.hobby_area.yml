@@ -1,9 +1,0 @@
-uuid: 4c245d22-d62d-45d4-b82a-a850da1a5f32
-langcode: fi
-status: true
-dependencies: {  }
-name: 'Hobby area'
-vid: hobby_area
-description: ''
-hierarchy: 0
-weight: 0

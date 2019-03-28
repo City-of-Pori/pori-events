@@ -1,0 +1,19 @@
+uuid: 1967e791-de29-49c9-980f-640124af5621
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_www_address
+    - paragraphs.paragraphs_type.event_organiser
+id: paragraph.event_organiser.field_www_address
+field_name: field_www_address
+entity_type: paragraph
+bundle: event_organiser
+label: www-address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

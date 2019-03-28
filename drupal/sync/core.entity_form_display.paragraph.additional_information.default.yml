@@ -1,0 +1,35 @@
+uuid: 0e5a1908-dd97-4328-a55d-23332603af2d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.additional_information.field_accessible
+    - field.field.paragraph.additional_information.field_chi
+    - field.field.paragraph.additional_information.field_pre
+    - paragraphs.paragraphs_type.additional_information
+id: paragraph.additional_information.default
+targetEntityType: paragraph
+bundle: additional_information
+mode: default
+content:
+  field_accessible:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_chi:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_pre:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,24 @@
+uuid: 68d3398c-f097-4bf1-b5ba-28dbf529bbe3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_end_time
+    - paragraphs.paragraphs_type.week_days
+  module:
+    - datetime
+id: paragraph.week_days.field_end_time
+field_name: field_end_time
+entity_type: paragraph
+bundle: week_days
+label: 'End time'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

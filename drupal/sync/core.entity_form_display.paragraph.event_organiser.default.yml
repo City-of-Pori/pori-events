@@ -1,0 +1,50 @@
+uuid: 6f745701-b5b5-4b47-8e83-db67a1646483
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_organiser.field_email
+    - field.field.paragraph.event_organiser.field_name
+    - field.field.paragraph.event_organiser.field_phone_number
+    - field.field.paragraph.event_organiser.field_www_address
+    - paragraphs.paragraphs_type.event_organiser
+id: paragraph.event_organiser.default
+targetEntityType: paragraph
+bundle: event_organiser
+mode: default
+content:
+  field_email:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_phone_number:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_www_address:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

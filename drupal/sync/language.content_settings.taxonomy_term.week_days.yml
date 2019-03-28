@@ -1,0 +1,16 @@
+uuid: 944d1b02-eef4-474f-9da8-46446baff8a5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.week_days
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.week_days
+target_entity_type_id: taxonomy_term
+target_bundle: week_days
+default_langcode: site_default
+language_alterable: false

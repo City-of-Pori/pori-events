@@ -1,15 +1,15 @@
-uuid: f56c222f-a35a-4108-978f-a1e49ef46f5c
+uuid: d42bc075-f6f8-4a66-b99d-5111a5d9fb2c
 langcode: fi
 status: true
 dependencies:
   config:
-    - field.storage.node.field_free_enterance
+    - field.storage.node.field_culture_and_or_activity_no
     - node.type.event
-id: node.event.field_free_enterance
-field_name: field_free_enterance
+id: node.event.field_culture_and_or_activity_no
+field_name: field_culture_and_or_activity_no
 entity_type: node
 bundle: event
-label: 'Free enterance'
+label: 'Culture and/or activity note etc can be used for payment'
 description: ''
 required: true
 translatable: false

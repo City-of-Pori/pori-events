@@ -1,0 +1,19 @@
+uuid: be573741-6d47-41e6-8d23-dd0c204df506
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phone_no_
+    - paragraphs.paragraphs_type.person_responsible
+id: paragraph.person_responsible.field_phone_no_
+field_name: field_phone_no_
+entity_type: paragraph
+bundle: person_responsible
+label: 'Phone No.'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

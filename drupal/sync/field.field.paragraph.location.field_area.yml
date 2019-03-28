@@ -1,15 +1,15 @@
-uuid: 50fd44d3-2c1b-454e-8b7b-0880ac57fa7a
+uuid: 6b76b084-816b-4688-9aa3-970d86d22687
 langcode: fi
 status: true
 dependencies:
   config:
-    - field.storage.node.field_area
-    - node.type.event
+    - field.storage.paragraph.field_area
+    - paragraphs.paragraphs_type.location
     - taxonomy.vocabulary.area
-id: node.event.field_area
+id: paragraph.location.field_area
 field_name: field_area
-entity_type: node
-bundle: event
+entity_type: paragraph
+bundle: location
 label: Area
 description: ''
 required: false
@@ -24,6 +24,6 @@ settings:
     sort:
       field: name
       direction: asc
-    auto_create: true
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

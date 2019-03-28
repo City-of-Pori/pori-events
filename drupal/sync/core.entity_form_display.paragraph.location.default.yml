@@ -1,0 +1,52 @@
+uuid: 1c450a90-26b4-49c7-94f9-facf1fc7578d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.location.field_address
+    - field.field.paragraph.location.field_area
+    - field.field.paragraph.location.field_map
+    - field.field.paragraph.location.field_place_name
+    - paragraphs.paragraphs_type.location
+  module:
+    - address
+id: paragraph.location.default
+targetEntityType: paragraph
+bundle: location
+mode: default
+content:
+  field_address:
+    weight: 1
+    settings:
+      default_country: null
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_area:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_map:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_place_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

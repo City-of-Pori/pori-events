@@ -1,0 +1,9 @@
+uuid: fda5a5fb-5f86-4c7c-813b-7a8793d5f06b
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Week days'
+vid: week_days
+description: 'Monday - Sunday'
+hierarchy: 0
+weight: 0

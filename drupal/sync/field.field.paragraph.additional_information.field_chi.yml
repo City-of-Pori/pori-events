@@ -1,0 +1,23 @@
+uuid: af9d001f-33ce-4591-af19-f2c11164fbef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_chi
+    - paragraphs.paragraphs_type.additional_information
+id: paragraph.additional_information.field_chi
+field_name: field_chi
+entity_type: paragraph
+bundle: additional_information
+label: 'Child Care'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'No'
+  off_label: 'Yes'
+field_type: boolean

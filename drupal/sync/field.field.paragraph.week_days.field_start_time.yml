@@ -1,0 +1,24 @@
+uuid: 77b21ec8-d61d-41cc-a978-cd3cb9292c6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_start_time
+    - paragraphs.paragraphs_type.week_days
+  module:
+    - datetime
+id: paragraph.week_days.field_start_time
+field_name: field_start_time
+entity_type: paragraph
+bundle: week_days
+label: 'Start time'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

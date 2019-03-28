@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_target_audience
     - node.type.event
-    - taxonomy.vocabulary.hobby_target_audience
     - taxonomy.vocabulary.target_audience
 id: node.event.field_target_audience
 field_name: field_target_audience
@@ -21,11 +20,10 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      hobby_target_audience: hobby_target_audience
       target_audience: target_audience
     sort:
       field: name
       direction: asc
     auto_create: true
-    auto_create_bundle: hobby_target_audience
+    auto_create_bundle: ''
 field_type: entity_reference

@@ -10,15 +10,14 @@ module:
   coffee: 0
   color: 0
   comment: 0
-  conditional_fields: 0
   config: 0
   contact: 0
   contextual: 0
   datetime: 0
-  datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
   entityqueue: 0
   events2elastic: 0
   field: 0
@@ -51,7 +50,6 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
-  simple_gmap: 0
   simplei: 0
   slick: 0
   slick_ui: 0
@@ -71,6 +69,7 @@ module:
   content_translation: 10
   elasticsearch_helper: 10
   views: 10
+  paragraphs: 11
   standard: 1000
 theme:
   stable: 0

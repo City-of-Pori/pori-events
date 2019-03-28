@@ -1,12 +1,12 @@
-uuid: 6eb363f3-6cb0-41e8-a007-8f638c682af1
+uuid: 2eaea88b-4818-4762-9590-11dc7160d8ba
 langcode: fi
 status: true
 dependencies:
   module:
-    - node
-id: node.field_hobby_not_hobby
-field_name: field_hobby_not_hobby
-entity_type: node
+    - paragraphs
+id: paragraph.field_accessible
+field_name: field_accessible
+entity_type: paragraph
 type: boolean
 settings: {  }
 module: core

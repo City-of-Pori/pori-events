@@ -1,0 +1,9 @@
+uuid: 86a1d386-81ef-4e2a-bd77-add2705566c0
+langcode: fi
+status: true
+dependencies: {  }
+id: person_responsible
+label: 'Person Responsible'
+icon_uuid: null
+description: 'This is visible to admin only'
+behavior_plugins: {  }

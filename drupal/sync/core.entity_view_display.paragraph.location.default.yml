@@ -1,0 +1,49 @@
+uuid: 2d4d7baa-3526-4c70-8f12-493994ddc3f0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.location.field_address
+    - field.field.paragraph.location.field_area
+    - field.field.paragraph.location.field_map
+    - field.field.paragraph.location.field_place_name
+    - paragraphs.paragraphs_type.location
+  module:
+    - address
+id: paragraph.location.default
+targetEntityType: paragraph
+bundle: location
+mode: default
+content:
+  field_address:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_area:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_map:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_place_name:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

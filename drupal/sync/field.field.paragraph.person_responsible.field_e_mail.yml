@@ -1,0 +1,19 @@
+uuid: e54f1d3e-844a-4ea4-8051-efb36589655c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_e_mail
+    - paragraphs.paragraphs_type.person_responsible
+id: paragraph.person_responsible.field_e_mail
+field_name: field_e_mail
+entity_type: paragraph
+bundle: person_responsible
+label: E-mail
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

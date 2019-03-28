@@ -1,0 +1,9 @@
+uuid: e3e38105-2632-45e7-96f0-f5b0a7457c0f
+langcode: fi
+status: true
+dependencies: {  }
+id: location
+label: Location
+icon_uuid: null
+description: 'Place name and address'
+behavior_plugins: {  }

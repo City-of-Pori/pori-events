@@ -1,0 +1,19 @@
+uuid: a80b8334-416e-4e5f-b0ee-481478ca73cc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map
+    - paragraphs.paragraphs_type.location
+id: paragraph.location.field_map
+field_name: field_map
+entity_type: paragraph
+bundle: location
+label: Map
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

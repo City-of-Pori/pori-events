@@ -1,0 +1,29 @@
+uuid: bc94c03a-63f4-4cda-8efb-8a30bfa2f2ec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_week_day
+    - paragraphs.paragraphs_type.week_days
+    - taxonomy.vocabulary.week_days
+id: paragraph.week_days.field_week_day
+field_name: field_week_day
+entity_type: paragraph
+bundle: week_days
+label: 'Week day'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      week_days: week_days
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: area
+field_type: entity_reference

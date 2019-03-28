@@ -1,0 +1,40 @@
+uuid: 6236ec2b-191d-4827-acfa-41c83440ebbb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.week_days.field_end_time
+    - field.field.paragraph.week_days.field_start_time
+    - field.field.paragraph.week_days.field_week_day
+    - paragraphs.paragraphs_type.week_days
+  module:
+    - datetime
+id: paragraph.week_days.default
+targetEntityType: paragraph
+bundle: week_days
+mode: default
+content:
+  field_end_time:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_start_time:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_week_day:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
