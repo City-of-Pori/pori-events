@@ -76,7 +76,7 @@ class LinkFieldFormatter extends FormatterBase {
 
     $url_contents = parse_url($url);
 
-    if (!$url_contents['scheme']) {
+    if (isset($url_contents['scheme'])) {
       $url = '//' . $item->getValue()['value'];
     }
 

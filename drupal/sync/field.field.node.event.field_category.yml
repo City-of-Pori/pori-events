@@ -1,31 +1,29 @@
-uuid: 50fd44d3-2c1b-454e-8b7b-0880ac57fa7a
+uuid: d7906d12-5fa4-442e-a523-caaeb790c37f
 langcode: fi
 status: true
 dependencies:
   config:
-    - field.storage.node.field_area
+    - field.storage.node.field_category
     - node.type.event
-    - taxonomy.vocabulary.area
-    - taxonomy.vocabulary.hobby_area
-id: node.event.field_area
-field_name: field_area
+    - taxonomy.vocabulary.categories
+id: node.event.field_category
+field_name: field_category
 entity_type: node
 bundle: event
-label: Area
+label: Category
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      area: area
-      hobby_area: hobby_area
+      categories: categories
     sort:
       field: name
       direction: asc
     auto_create: true
-    auto_create_bundle: area
+    auto_create_bundle: ''
 field_type: entity_reference

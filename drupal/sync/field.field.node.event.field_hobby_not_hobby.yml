@@ -1,0 +1,23 @@
+uuid: 885338fe-e63f-4f2c-9f70-9e2a6dadf7dd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hobby_not_hobby
+    - node.type.event
+id: node.event.field_hobby_not_hobby
+field_name: field_hobby_not_hobby
+entity_type: node
+bundle: event
+label: 'Hobby/not hobby'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Hobby
+  off_label: Event
+field_type: boolean
