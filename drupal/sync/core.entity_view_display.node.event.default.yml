@@ -30,7 +30,6 @@ dependencies:
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
-    - field.field.node.event.field_summary
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
     - field.field.node.event.field_timeframe_of_day
@@ -291,13 +290,6 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
-    region: content
-  field_summary:
-    weight: 131
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
     region: content
   field_target_audience:
     weight: 109

@@ -21,6 +21,8 @@ source:
   ids:
     event_id:
       type: string
+  constants:
+    slash: /
   fields:
     -
       name: event_id
@@ -144,6 +146,17 @@ process:
   field_hobby_is_hobby:
     plugin: default_value
     default_value: 0
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: book_alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - book_alias
   field_image_ext_url:
     source: event_image
     plugin: extract

@@ -16,11 +16,13 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/?include=location,keywords,audience&page_size=999999'
+  urls: 'https://test.satakuntaevents.fi/activity/api/v1/event/?page_size=999999'
   item_selector: '$.data[*]'
   ids:
     event_id:
       type: string
+  constants:
+    slash: /
   fields:
     -
       name: event_id
@@ -133,7 +135,7 @@ source:
     -
       name: hobby_area
       label: 'Hobby area'
-      selector: $.location.parent
+      selector: '$.location[''@id'']'
 process:
   type:
     plugin: default_value

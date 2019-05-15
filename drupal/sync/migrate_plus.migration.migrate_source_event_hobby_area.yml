@@ -21,11 +21,13 @@ source:
   ids:
     area_id:
       type: string
+  constants:
+    slash: /
   fields:
     -
       name: area_id
       label: 'ID of the area'
-      selector: $.id
+      selector: '$[''@id'']'
     -
       name: area_name
       label: 'Name of the area'

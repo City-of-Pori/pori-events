@@ -1,9 +1,9 @@
-uuid: e3f5bfc6-fd2c-4e3f-ab25-4ab9e1f04491
+uuid: a3dcbe34-33fd-48fb-ac3a-048094e2077a
 langcode: fi
 status: true
 dependencies:
   content:
-    - 'block_content:basic:ae822b7b-9500-44d1-8817-7ac49af6d812'
+    - 'block_content:basic:948290ec-32b7-41ff-b412-a5b658d0de6d'
   module:
     - block_content
     - system
@@ -12,11 +12,11 @@ dependencies:
 id: harrastuksetbranding
 theme: pori_events
 region: header
-weight: -1
+weight: 0
 provider: null
-plugin: 'block_content:ae822b7b-9500-44d1-8817-7ac49af6d812'
+plugin: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
 settings:
-  id: 'block_content:ae822b7b-9500-44d1-8817-7ac49af6d812'
+  id: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
   label: 'Harrastukset branding'
   provider: block_content
   label_display: '0'

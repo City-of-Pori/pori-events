@@ -21,6 +21,8 @@ source:
   ids:
     audience_id:
       type: string
+  constants:
+    slash: /
   fields:
     -
       name: audience_id
@@ -35,6 +37,13 @@ process:
     plugin: default_value
     default_value: hobby_audience
   name: audience_name
+  path:
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - author_alias
 destination:
   plugin: 'entity:taxonomy_term'
 migration_dependencies: {  }

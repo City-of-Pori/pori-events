@@ -1,6 +1,6 @@
 .branding__container {
   display: flex;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 
   @media screen and (min-width: $tablet-portrait-narrow) {
     padding: 1.5rem 0;
@@ -9,10 +9,10 @@
 
 .site-slogan {
   font-family: $heading-font-family;
-  font-size: .85rem;
+  font-size: 0.85rem;
   letter-spacing: -0.5px;
   margin: 0 2rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   text-transform: uppercase;
 
   @media screen and (max-width: $desktop-narrow) {
@@ -31,45 +31,49 @@
 //Making custom branding acording to hobby or event
 
 .hobby-class-1 {
-  .dialog-off-canvas-main-canvas{
-    .layout-container{
-      .page-header{
-        .region-header{
-          #block-sitebranding{
-           .site-logo{
-            box-sizing: border-box;
-            background: url(/themes/custom/pori_events/dist/images/harrastukset.png) no-repeat;
-            background-size: contain;
-            max-height: 150px;
-            width: 750px;
-            @media screen and (max-width: $desktop-narrow) {
-              display: none;
-            
+  .dialog-off-canvas-main-canvas {
+    .layout-container {
+      .page-header {
+        .region-header {
+          #block-sitebranding {
+            .site-logo {
+              box-sizing: border-box;
+              background: url(/themes/custom/pori_events/dist/images/harrastukset.png)
+                no-repeat;
+              background-size: contain;
+              max-height: 150px;
+              width: 450px;
+              @media screen and (max-width: $desktop-narrow) {
+                display: none;
+              }
+              img {
+                display: none;
+              }
             }
-            img {
-              display: none;
-            }
-
-           }
           }
-          
         }
-        
       }
     }
   }
 }
-.hobby-header-container  {
+.hobby-header-container {
   display: flex;
   flex-direction: row;
   padding: 1.5rem;
 }
 .hobby-header-container {
-  a{
+  a {
     img {
       max-height: 150px;
       width: 450px;
     }
-    
-}  
+  }
+}
+.harrastukset-logo {
+  box-sizing: border-box;
+  background: url(/themes/custom/pori_events/dist/images/harrastukset.png)
+    no-repeat;
+  background-size: contain;
+  max-height: 150px;
+  width: 450px;
 }
