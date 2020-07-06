@@ -70,9 +70,10 @@ switch ($env) {
 /**
  * Location of the site configuration files.
  */
-$config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '../sync',
-);
+$config_directories = [];
+
+// Location of the site configuration files.
+$settings['config_sync_directory'] = '../sync';
 
 // Set default trusted hosts.
 $settings['trusted_host_patterns'] = array(
@@ -94,8 +95,6 @@ $settings['update_free_access'] = FALSE;
  * Load services definition file.
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-
-$settings['install_profile'] = 'config_installer';
 
 // Warden settings.
 // Shared secret between the site and Warden server.
