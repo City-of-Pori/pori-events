@@ -73,7 +73,7 @@
         "drupal/migrate_source_jsonpath": "1.x-dev",
         "drupal/context": "^4.0@beta",
         "drupal/empty_page": "^3",
-        "drupal/simple_gmap": "^1.4",
+        "drupal/simple_gmap": "^3",
         "drupal/pathauto": "^1.6",
         "symfony/finder": "^3.4",
         "symfony/filesystem": "^3.4",
@@ -129,5 +129,8 @@
             "web/": ["type:web-dropin"]
         },
         "patches": { }
+    },
+    "config": {
+        "process-timeout": 9000
     }
 }
