@@ -2,7 +2,7 @@
     "name": "wunderio/pori_events",
     "description": "Drupal 8 based Pori Events Composer Project",
     "type": "project",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "",
@@ -70,7 +70,7 @@
         "kenwheeler/slick": "^1.6",
         "dinbror/blazy": "^1.8",
         "drupal/conditional_fields": "^1.0@alpha",
-        "drupal/migrate_source_jsonpath": "1.x-dev",
+        "drupal/migrate_source_jsonpath": "^1",
         "drupal/context": "^4.0@beta",
         "drupal/empty_page": "^3",
         "drupal/simple_gmap": "^3",
