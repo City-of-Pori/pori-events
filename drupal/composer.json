@@ -24,7 +24,6 @@
     "require": {
         "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.2",
         "drush/drush": "^10.3",
         "webflo/drupal-finder": "^1.0.0",
@@ -59,7 +58,8 @@
         "drupal/pathauto": "^1.6",
         "symfony/finder": "^3.4",
         "symfony/filesystem": "^3.4",
-        "drupal/core-recommended": "^8.9"
+        "drupal/core-recommended": "^8.9",
+        "drupal/core-composer-scaffold": "^8.9"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
@@ -84,6 +84,7 @@
     },
     "extra": {
         "config": {"sort-packages": true},
+        "drupal-scaffold": {"locations": {"web-root": "./web"}},
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
