@@ -33,11 +33,14 @@ test.satakuntaevents API or even satakuntaevents API. Both are open.
 Making changes to dev files in install folder doesn't work straight away. You need
 to run `drush config-import --partial --source=modules/custom/migrate_source_example/modules/migrate_source_example_json/config/install/ -y && drush cr` to import changes to db.
 
-After every change works as intended drush cex -y` will pull out sync yml for Migrations
+After every change works as intended `drush cex -y` will pull out sync yml for Migrations
 which is needed to release to other environments.
 
 Cron does rollback (prod,stage,dev) to remove events that have been removed from JSON that API returns.
 `drush mr migrate_source_event_event`
+
+To reindex imported events/hobbies use. May help if something is wrong.
+`drush eshd -y && drush eshs event_index && drush eshr event_index && drush queue-run elasticsearch_helper_indexing && drush cron && drush cr`
 
 !IMPORTANT keep development yml files the same as sync/ yml files so partial import
 doesn't do unwanted changes later.
