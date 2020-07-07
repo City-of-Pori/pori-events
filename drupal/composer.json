@@ -3,39 +3,21 @@
     "description": "Drupal 8 based Pori Events Composer Project",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "",
-            "role": ""
-        }
-    ],
+    "authors": [{"name": "", "role": ""}],
     "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
+        {"type": "composer", "url": "https://packages.drupal.org/8"},
         {
             "type": "package",
             "package": {
-                "name": "kenwheeler/slick",
-                "version": "1.6.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
-                    "type": "zip"
-                }
+                "name": "kenwheeler/slick", "version": "1.6.0", "type": "drupal-library",
+                "dist": {"url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip", "type": "zip"}
             }
         },
         {
             "type": "package",
             "package": {
-                "name": "dinbror/blazy",
-                "version": "1.8.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip",
-                    "type": "zip"
-                }
+                "name": "dinbror/blazy", "version": "1.8.2", "type": "drupal-library",
+                "dist": {"url": "https://github.com/dinbror/blazy/archive/1.8.2.zip", "type": "zip"}
             }
         }
     ],
@@ -86,37 +68,22 @@
         "drupal/stage_file_proxy": "^1.0@RC",
         "drupal/devel": "^2.0",
         "drupal/twig_xdebug": "^1.0",
-        "guncha25/drupal-codeception": "^8.0"
+        "guncha25/drupal-codeception": "^8.0",
+        "zaporylie/composer-drupal-optimizations": "^1.1"
     },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
+    "conflict": {"drupal/drupal": "*"},
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ]
-    },
+    "autoload": {"classmap": ["scripts/composer/ScriptHandler.php"]},
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
+        "pre-install-cmd": ["DrupalProject\\composer\\ScriptHandler::checkComposerVersion"],
+        "pre-update-cmd": ["DrupalProject\\composer\\ScriptHandler::checkComposerVersion"],
+        "post-install-cmd": ["DrupalProject\\composer\\ScriptHandler::createRequiredFiles"],
+        "post-update-cmd": ["DrupalProject\\composer\\ScriptHandler::createRequiredFiles"]
     },
     "extra": {
-        "config": {
-            "sort-packages": true
-        },
+        "config": {"sort-packages": true},
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
@@ -125,10 +92,8 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
-        "dropin-paths": {
-            "web/": ["type:web-dropin"]
-        },
-        "patches": { }
+        "dropin-paths": {"web/": ["type:web-dropin"]},
+        "patches": {}
     },
     "config": {
         "process-timeout": 9000
