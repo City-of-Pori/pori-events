@@ -1,0 +1,4 @@
+.event-type, .image-ext-url, .event-provider {
+  overflow-wrap: anywhere;
+  min-width: 100px;
+}

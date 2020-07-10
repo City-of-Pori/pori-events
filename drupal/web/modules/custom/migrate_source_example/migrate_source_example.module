@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\views\ViewExecutable;
+
 /**
  * Implements hook_migrate_process_info_alter().
  *
@@ -15,3 +17,16 @@ function migrate_source_example_migrate_process_info_alter(&$definitions) {
     }
   }
 }
+
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ */
+function migrate_source_example_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'event_dashboard')) {
+    $view->element['#attached']['library'][] = 'migrate_source_example/events-dashboard';
+  }
+}
+
