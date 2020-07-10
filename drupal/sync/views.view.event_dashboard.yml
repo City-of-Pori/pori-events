@@ -7,6 +7,7 @@ dependencies:
     - field.storage.node.field_area
     - field.storage.node.field_child_care
     - field.storage.node.field_culture_and_or_activity_no
+    - field.storage.node.field_end_time
     - field.storage.node.field_event_type
     - field.storage.node.field_exceptional_opening_hours
     - field.storage.node.field_external
@@ -28,6 +29,8 @@ dependencies:
     - field.storage.node.field_provider_name
     - field.storage.node.field_provider_phone
     - field.storage.node.field_provider_www
+    - field.storage.node.field_short_description
+    - field.storage.node.field_start_time
     - field.storage.node.field_target_audience
     - field.storage.node.field_ticket_vendor
     - field.storage.node.field_timeframe_of_day
@@ -112,25 +115,30 @@ display:
           columns:
             node_bulk_form: node_bulk_form
             title: title
+            edit_node: title
+            delete_node: title
             status: status
             changed: status
             langcode: status
-            operations: operations
+            field_event_type: field_event_type
+            field_start_time: field_event_type
+            field_end_time: field_event_type
             field_area: field_area
             field_target_audience: field_area
-            field_event_type: field_event_type
             field_image_ext_url: field_image_ext_url
+            field_external: field_image_ext_url
             field_free_enterance: field_free_enterance
             field_accessible: field_free_enterance
             field_child_care: field_free_enterance
             field_culture_and_or_activity_no: field_free_enterance
-            field_price: field_price
+            field_ticket_vendor: field_ticket_vendor
+            field_price: field_ticket_vendor
             field_location_extra_info: field_location_extra_info
+            field_location_extra_info_info: field_location_extra_info
             field_provider_www: field_provider_www
             field_provider_phone: field_provider_www
             field_provider_email: field_provider_www
             field_provider_name: field_provider_www
-            field_ticket_vendor: field_ticket_vendor
             field_hobby_is_hobby: field_hobby_is_hobby
             field_hobby_category: field_hobby_is_hobby
             field_hobby_area: field_hobby_is_hobby
@@ -149,8 +157,7 @@ display:
             field_weekday_sunday: field_weekday_monday
             field_timeframe_of_day: field_timeframe_of_day
             field_exceptional_opening_hours: field_exceptional_opening_hours
-            field_location_extra_info_info: field_location_extra_info_info
-            field_external: field_external
+            field_short_description: field_short_description
           info:
             node_bulk_form:
               align: ''
@@ -158,14 +165,28 @@ display:
               empty_column: false
               responsive: ''
             title:
-              sortable: true
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: '<hr>'
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            delete_node:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
             status:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -185,7 +206,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            operations:
+            field_event_type:
+              align: ''
+              separator: '<br>'
+              empty_column: false
+              responsive: ''
+            field_start_time:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_end_time:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
@@ -202,14 +237,14 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_event_type:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_image_ext_url:
               sortable: false
               default_sort_order: asc
+              align: ''
+              separator: '<hr>'
+              empty_column: false
+              responsive: ''
+            field_external:
               align: ''
               separator: ''
               empty_column: false
@@ -242,6 +277,13 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_ticket_vendor:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: '| '
+              empty_column: false
+              responsive: ''
             field_price:
               sortable: false
               default_sort_order: asc
@@ -253,6 +295,13 @@ display:
               sortable: false
               default_sort_order: asc
               align: ''
+              separator: '<hr>'
+              empty_column: false
+              responsive: ''
+            field_location_extra_info_info:
+              sortable: false
+              default_sort_order: asc
+              align: ''
               separator: ''
               empty_column: false
               responsive: ''
@@ -260,7 +309,7 @@ display:
               sortable: false
               default_sort_order: asc
               align: ''
-              separator: ' '
+              separator: '<hr>'
               empty_column: false
               responsive: ''
             field_provider_phone:
@@ -278,13 +327,6 @@ display:
               empty_column: false
               responsive: ''
             field_provider_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_ticket_vendor:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -391,14 +433,9 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_location_extra_info_info:
+            field_short_description:
               sortable: false
               default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_external:
               align: ''
               separator: ''
               empty_column: false
@@ -431,7 +468,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Title
+          label: 'Title | Actions'
           exclude: false
           alter:
             alter_text: false
@@ -489,6 +526,112 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Link to edit Content'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: edit
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
+        delete_node:
+          id: delete_node
+          table: node
+          field: delete_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Link to delete Content'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: delete
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_delete
         status:
           id: status
           table: node_field_data
@@ -689,14 +832,141 @@ display:
           entity_type: node
           entity_field: langcode
           plugin_id: field
-        operations:
-          id: operations
-          table: node
-          field: operations
+        field_event_type:
+          id: field_event_type
+          table: node__field_event_type
+          field: field_event_type
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: 'Event type | Start & End time'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: event-type
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_start_time:
+          id: field_start_time
+          table: node__field_start_time
+          field: field_start_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Start time'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: event-field-small
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_end_time:
+          id: field_end_time
+          table: node__field_end_time
+          field: field_end_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'End time'
           exclude: false
           alter:
             alter_text: false
@@ -737,8 +1007,22 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          destination: true
-          plugin_id: entity_operations
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_area:
           id: field_area
           table: node__field_area
@@ -865,69 +1149,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_event_type:
-          id: field_event_type
-          table: node__field_event_type
-          field: field_event_type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Event type'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: event-type
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         field_image_ext_url:
           id: field_image_ext_url
           table: node__field_image_ext_url
@@ -935,7 +1156,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Image ext url'
+          label: 'External url (Image | Links)'
           exclude: false
           alter:
             alter_text: true
@@ -965,7 +1186,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: image-ext-url
+          element_class: 'image-ext-url event-field-small'
           element_label_type: ''
           element_label_class: ''
           element_label_colon: true
@@ -981,6 +1202,73 @@ display:
           settings:
             link_to_entity: false
           group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_external:
+          id: field_external
+          table: node__field_external
+          field: field_external
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'External Links'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: nofollow
+            target: _blank
+          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1251,6 +1539,69 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_ticket_vendor:
+          id: field_ticket_vendor
+          table: node__field_ticket_vendor
+          field: field_ticket_vendor
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Ticket vendor | Price'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_price:
           id: field_price
           table: node__field_price
@@ -1321,7 +1672,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Location extra info'
+          label: 'Location extra info | -//- info'
           exclude: false
           alter:
             alter_text: false
@@ -1377,6 +1728,68 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_location_extra_info_info:
+          id: field_location_extra_info_info
+          table: node__field_location_extra_info_info
+          field: field_location_extra_info_info
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Location extra info info'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_provider_www:
           id: field_provider_www
           table: node__field_provider_www
@@ -1384,7 +1797,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Provider
+          label: 'Provider www | phone | email | name'
           exclude: false
           alter:
             alter_text: false
@@ -1574,69 +1987,6 @@ display:
           group_type: group
           admin_label: ''
           label: 'Provider name'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_ticket_vendor:
-          id: field_ticket_vendor
-          table: node__field_ticket_vendor
-          field: field_ticket_vendor
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Ticket vendor'
           exclude: false
           alter:
             alter_text: false
@@ -2016,7 +2366,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Pre registration'
+          label: 'Pre registration? | link | start | end'
           exclude: false
           alter:
             alter_text: false
@@ -2837,14 +3187,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_location_extra_info_info:
-          id: field_location_extra_info_info
-          table: node__field_location_extra_info_info
-          field: field_location_extra_info_info
+        field_short_description:
+          id: field_short_description
+          table: node__field_short_description
+          field: field_short_description
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Location extra info info'
+          label: 'Short description'
           exclude: false
           alter:
             alter_text: false
@@ -2874,7 +3224,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: ''
+          element_class: event-field-small
           element_label_type: ''
           element_label_class: ''
           element_label_colon: true
@@ -2889,73 +3239,6 @@ display:
           type: basic_string
           settings: {  }
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_external:
-          id: field_external
-          table: node__field_external
-          field: field_external
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'External Links'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: 80
-            url_only: false
-            url_plain: false
-            rel: nofollow
-            target: _blank
-          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -3112,7 +3395,7 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       sorts: {  }
-      title: 'Event dashboard'
+      title: 'Events dashboard'
       empty:
         area_text_custom:
           id: area_text_custom
@@ -3152,6 +3435,7 @@ display:
         - 'config:field.storage.node.field_area'
         - 'config:field.storage.node.field_child_care'
         - 'config:field.storage.node.field_culture_and_or_activity_no'
+        - 'config:field.storage.node.field_end_time'
         - 'config:field.storage.node.field_event_type'
         - 'config:field.storage.node.field_exceptional_opening_hours'
         - 'config:field.storage.node.field_external'
@@ -3173,6 +3457,8 @@ display:
         - 'config:field.storage.node.field_provider_name'
         - 'config:field.storage.node.field_provider_phone'
         - 'config:field.storage.node.field_provider_www'
+        - 'config:field.storage.node.field_short_description'
+        - 'config:field.storage.node.field_start_time'
         - 'config:field.storage.node.field_target_audience'
         - 'config:field.storage.node.field_ticket_vendor'
         - 'config:field.storage.node.field_timeframe_of_day'
@@ -3222,6 +3508,7 @@ display:
         - 'config:field.storage.node.field_area'
         - 'config:field.storage.node.field_child_care'
         - 'config:field.storage.node.field_culture_and_or_activity_no'
+        - 'config:field.storage.node.field_end_time'
         - 'config:field.storage.node.field_event_type'
         - 'config:field.storage.node.field_exceptional_opening_hours'
         - 'config:field.storage.node.field_external'
@@ -3243,6 +3530,8 @@ display:
         - 'config:field.storage.node.field_provider_name'
         - 'config:field.storage.node.field_provider_phone'
         - 'config:field.storage.node.field_provider_www'
+        - 'config:field.storage.node.field_short_description'
+        - 'config:field.storage.node.field_start_time'
         - 'config:field.storage.node.field_target_audience'
         - 'config:field.storage.node.field_ticket_vendor'
         - 'config:field.storage.node.field_timeframe_of_day'
