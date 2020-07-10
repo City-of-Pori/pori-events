@@ -119,8 +119,11 @@ display:
             field_area: field_area
             field_target_audience: field_area
             field_event_type: field_event_type
-            field_free_enterance: field_free_enterance
             field_image_ext_url: field_image_ext_url
+            field_free_enterance: field_free_enterance
+            field_accessible: field_free_enterance
+            field_child_care: field_free_enterance
+            field_culture_and_or_activity_no: field_free_enterance
             field_price: field_price
             field_location_extra_info: field_location_extra_info
             field_provider_www: field_provider_www
@@ -128,12 +131,11 @@ display:
             field_provider_email: field_provider_www
             field_provider_name: field_provider_www
             field_ticket_vendor: field_ticket_vendor
-            field_accessible: field_accessible
             field_hobby_is_hobby: field_hobby_is_hobby
-            field_hobby_category: field_hobby_category
-            field_child_care: field_child_care
-            field_culture_and_or_activity_no: field_culture_and_or_activity_no
-            field_hobby_map: field_hobby_map
+            field_hobby_category: field_hobby_is_hobby
+            field_hobby_area: field_hobby_is_hobby
+            field_hobby_audience: field_hobby_is_hobby
+            field_hobby_map: field_hobby_is_hobby
             field_pre_registration: field_pre_registration
             field_pre_registration_link: field_pre_registration
             field_pre_registration_start_tim: field_pre_registration
@@ -147,8 +149,6 @@ display:
             field_weekday_sunday: field_weekday_monday
             field_timeframe_of_day: field_timeframe_of_day
             field_exceptional_opening_hours: field_exceptional_opening_hours
-            field_hobby_area: field_hobby_area
-            field_hobby_audience: field_hobby_area
             field_location_extra_info_info: field_location_extra_info_info
             field_external: field_external
           info:
@@ -194,7 +194,7 @@ display:
               sortable: false
               default_sort_order: asc
               align: ''
-              separator: ' | <br>'
+              separator: ' | '
               empty_column: false
               responsive: ''
             field_target_audience:
@@ -207,6 +207,13 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_image_ext_url:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             field_free_enterance:
               sortable: false
               default_sort_order: asc
@@ -214,7 +221,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_image_ext_url:
+            field_accessible:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_child_care:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_culture_and_or_activity_no:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -270,18 +291,11 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_accessible:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_hobby_is_hobby:
               sortable: false
               default_sort_order: asc
               align: ''
-              separator: ''
+              separator: '<br>'
               empty_column: false
               responsive: ''
             field_hobby_category:
@@ -289,16 +303,12 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_child_care:
-              sortable: false
-              default_sort_order: asc
+            field_hobby_area:
               align: ''
-              separator: ''
+              separator: ' | <br>'
               empty_column: false
               responsive: ''
-            field_culture_and_or_activity_no:
-              sortable: false
-              default_sort_order: asc
+            field_hobby_audience:
               align: ''
               separator: ''
               empty_column: false
@@ -377,16 +387,6 @@ display:
               empty_column: false
               responsive: ''
             field_exceptional_opening_hours:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_hobby_area:
-              align: ''
-              separator: ' | <br>'
-              empty_column: false
-              responsive: ''
-            field_hobby_audience:
               align: ''
               separator: ''
               empty_column: false
@@ -783,7 +783,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: ' −'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -846,7 +846,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: ''
+          empty: ' −'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -928,71 +928,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_free_enterance:
-          id: field_free_enterance
-          table: node__field_free_enterance
-          field: field_free_enterance
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Free enterance'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
-          settings:
-            format: unicode-yes-no
-            format_custom_true: ''
-            format_custom_false: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         field_image_ext_url:
           id: field_image_ext_url
           table: node__field_image_ext_url
@@ -1003,8 +938,8 @@ display:
           label: 'Image ext url'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: ' <a href = ''{{ field_image_ext_url }}'' target = ''_blank''>{{ field_image_ext_url }}</a>'
             make_link: false
             path: ''
             absolute: false
@@ -1044,7 +979,267 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_free_enterance:
+          id: field_free_enterance
+          table: node__field_free_enterance
+          field: field_free_enterance
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Free entrance | A11Y | Child-care | Culture'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: −
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: unicode-yes-no
+            format_custom_true: ''
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_accessible:
+          id: field_accessible
+          table: node__field_accessible
+          field: field_accessible
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Accessible
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: −
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: unicode-yes-no
+            format_custom_true: ''
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_child_care:
+          id: field_child_care
+          table: node__field_child_care
+          field: field_child_care
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Child care'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: −
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: unicode-yes-no
+            format_custom_true: ''
+            format_custom_false: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_culture_and_or_activity_no:
+          id: field_culture_and_or_activity_no
+          table: node__field_culture_and_or_activity_no
+          field: field_culture_and_or_activity_no
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Culture, etc activity'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: −
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: unicode-yes-no
+            format_custom_true: ''
+            format_custom_false: ''
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1497,71 +1692,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_accessible:
-          id: field_accessible
-          table: node__field_accessible
-          field: field_accessible
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Accessible
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
-          settings:
-            format: unicode-yes-no
-            format_custom_true: ''
-            format_custom_false: ''
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         field_hobby_is_hobby:
           id: field_hobby_is_hobby
           table: node__field_hobby_is_hobby
@@ -1569,7 +1699,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Hobby is hobby'
+          label: 'Hobby? | Category | Area | Audience | Map'
           exclude: false
           alter:
             alter_text: false
@@ -1690,14 +1820,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_child_care:
-          id: field_child_care
-          table: node__field_child_care
-          field: field_child_care
+        field_hobby_area:
+          id: field_hobby_area
+          table: node__field_hobby_area
+          field: field_hobby_area
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Child care'
+          label: 'Hobby area | Audience'
           exclude: false
           alter:
             alter_text: false
@@ -1738,13 +1868,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
+          click_sort_column: target_id
+          type: entity_reference_label
           settings:
-            format: unicode-yes-no
-            format_custom_true: ''
-            format_custom_false: ''
-          group_column: value
+            link: true
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1755,14 +1883,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_culture_and_or_activity_no:
-          id: field_culture_and_or_activity_no
-          table: node__field_culture_and_or_activity_no
-          field: field_culture_and_or_activity_no
+        field_hobby_audience:
+          id: field_hobby_audience
+          table: node__field_hobby_audience
+          field: field_hobby_audience
           relationship: none
           group_type: group
           admin_label: ''
-          label: Culture...
+          label: 'Hobby audience'
           exclude: false
           alter:
             alter_text: false
@@ -1803,13 +1931,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
+          click_sort_column: target_id
+          type: entity_reference_label
           settings:
-            format: unicode-yes-no
-            format_custom_true: ''
-            format_custom_false: ''
-          group_column: value
+            link: true
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -2701,132 +2827,6 @@ display:
             format_type: medium
             separator: '-'
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_hobby_area:
-          id: field_hobby_area
-          table: node__field_hobby_area
-          field: field_hobby_area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Hobby area | Audience'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_hobby_audience:
-          id: field_hobby_audience
-          table: node__field_hobby_audience
-          field: field_hobby_audience
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Hobby audience'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
