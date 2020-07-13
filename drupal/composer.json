@@ -41,7 +41,7 @@
         "drupal/migrate_tools": "^4.0",
         "drupal/taxonomy_multidelete_terms": "^1.1",
         "drupal/structured_data": "^1.0",
-        "drupal/imagecache_external": "~1.1.0",
+        "drupal/imagecache_external": "^1.2",
         "drupal/entityqueue": "^1.0",
         "drupal/slick": "^1.0",
         "drupal/slick_views": "^1.0",
