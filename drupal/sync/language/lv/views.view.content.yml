@@ -18,15 +18,8 @@ display:
       fields:
         title:
           label: Virsraksts
-        type:
-          label: Sisältötyyppi
-        name:
-          label: Tekijä
         status:
           label: Statuss
-          settings:
-            format_custom_true: Julkaistu
-            format_custom_false: Julkaisematon
         changed:
           label: Päivitetty
         operations:
@@ -35,26 +28,13 @@ display:
         title:
           expose:
             label: Virsraksts
-        type:
-          expose:
-            label: Sisältötyyppi
         status:
           expose:
             label: Statuss
-          group_info:
-            label: Julkaisutila
-            group_items:
-              1:
-                title: Julkaistu
-              2:
-                title: Julkaisematon
         langcode:
           expose:
             label: Valoda
       title: Saturs
-      empty:
-        area_text_custom:
-          content: 'Ei sisältöä.'
     display_title: Isäntä
   page_1:
     display_options:
@@ -62,4 +42,3 @@ display:
         title: Saturs
       tab_options:
         title: Saturs
-    display_title: Sivu

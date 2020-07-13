@@ -16,14 +16,7 @@ display:
       fields:
         title:
           label: Virsraksts
-        name:
-          label: Tekijä
-        changed:
-          label: 'Viimeksi päivitetty'
-  attachment_1:
-    display_title: Liite
   page_1:
-    display_title: Sivu
     display_options:
       menu:
         title: Sanasto

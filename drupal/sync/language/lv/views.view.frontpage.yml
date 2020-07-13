@@ -1,5 +1,3 @@
-label: Etusivu
-description: 'Kaikki etusivulle nostettu sisältö.'
 display:
   default:
     display_options:
@@ -24,7 +22,3 @@ display:
             first: '« Ensimmäinen'
             last: 'Viimeinen »'
     display_title: Isäntä
-  feed_1:
-    display_title: Syöte
-  page_1:
-    display_title: Sivu

@@ -21,12 +21,6 @@ display:
           label: Vakavuus
         type:
           label: Veids
-        timestamp:
-          label: Päivämäärä
-        message:
-          label: Viesti
-        name:
-          label: Käyttäjä
         link:
           label: Toimenpiteet
       filters:
@@ -37,5 +31,3 @@ display:
           expose:
             label: Vakavuus
       title: 'Viimeisimmät lokimerkinnät'
-  page:
-    display_title: Sivu

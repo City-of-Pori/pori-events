@@ -29,12 +29,6 @@ display:
           settings:
             format_custom_true: Voimassa
             format_custom_false: Suljettu
-        roles_target_id:
-          label: Käyttäjäroolit
-        created:
-          label: 'Käyttäjä jo'
-        access:
-          label: 'Viimeksi paikalla'
         operations:
           label: Toimenpiteet
       filters:
@@ -46,23 +40,11 @@ display:
                 title: Voimassa
               2:
                 title: Suljettu
-        roles_target_id:
-          expose:
-            label: Rooli
-        permission:
-          expose:
-            label: Käyttöoikeus
       title: Käyttäjät
-      empty:
-        area_text_custom:
-          content: 'Ei saatavilla olevia ihmisiä.'
-      use_more_text: lisää
   page_1:
-    display_title: Sivu
     display_options:
       menu:
         title: Saraksts
         description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
       tab_options:
         title: Käyttäjät
-        description: 'Ylläpidä käyttäjiä, rooleja ja käyttöoikeuksia.'

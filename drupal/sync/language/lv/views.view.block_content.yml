@@ -17,27 +17,12 @@ display:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
       fields:
-        info:
-          label: 'Lohkon kuvaus'
-        type:
-          label: 'Lohkon tyyppi'
         changed:
           label: Päivitetty
         operations:
           label: Toimenpiteet
-      filters:
-        info:
-          expose:
-            label: 'Lohkon kuvaus'
-        type:
-          expose:
-            label: 'Lohkon tyyppi'
       title: 'Kustomoitujen lohkojen kirjasto'
-      empty:
-        area_text_custom:
-          content: 'There are no custom blocks available. '
   page_1:
-    display_title: Sivu
     display_options:
       menu:
         title: 'Kustomoitujen lohkojen kirjasto'
