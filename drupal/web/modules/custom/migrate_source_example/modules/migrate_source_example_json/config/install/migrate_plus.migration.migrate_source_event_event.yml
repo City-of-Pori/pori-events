@@ -67,9 +67,17 @@ source:
       label: 'Keywords'
       selector: $.keywords.*.id
     -
-      name: event_offers
-      label: 'Offers'
-      selector: $.offers
+      name: event_offers_is_free
+      label: 'Offers is free'
+      selector: $.offers[0].is_free
+    -
+      name: event_offers_price
+      label: 'Offers price'
+      selector: $.offers[0].price.fi
+    -
+      name: event_offers_vedor
+      label: 'Offers vendo'
+      selector: $.offers[0].info_url.fi
     -
       name: event_provider_www
       label: 'Provider'
@@ -106,29 +114,9 @@ process:
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_address
   field_location_extra_info_info: event_location_extra_info
-  field_ticket_vendor:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - info_url
-      - fi
-  field_price:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - price
-      - fi
-  field_free_enterance:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - is_free
+  field_ticket_vendor: event_offers_vedor
+  field_price: event_offers_price
+  field_free_enterance: event_offers_is_free
   field_start_time:
     -
       plugin: skip_on_empty
