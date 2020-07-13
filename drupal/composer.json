@@ -94,7 +94,11 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "dropin-paths": {"web/": ["type:web-dropin"]},
-        "patches": {}
+        "patches": {
+            "drupal/core": {
+                "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
+            }
+        }
     },
     "config": {
         "process-timeout": 9000
