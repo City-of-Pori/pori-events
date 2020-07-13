@@ -1,3 +1,4 @@
+label: 'Uusin sisältö'
 display:
   default:
     display_title: Isäntä
@@ -7,3 +8,10 @@ display:
           submit_button: Käytä
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
+      title: 'Uusin sisältö'
+      empty:
+        area_text_custom:
+          content: 'Ei sisältöä.'
+      use_more_text: Lisää
+  block_1:
+    display_title: Lohko

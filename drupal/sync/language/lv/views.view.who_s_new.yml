@@ -12,4 +12,6 @@ display:
   block_1:
     display_title: 'Uudet käyttäjät'
     display_options:
+      display_description: 'Lista uusista käyttäjistä'
       block_description: 'Uudet käyttäjät'
+      block_category: Käyttäjä

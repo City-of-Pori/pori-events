@@ -23,6 +23,8 @@ display:
           action_title: Toiminto
         subject:
           label: Aihe
+        name:
+          label: Tekijä
         entity_id:
           label: Kirjoitus
         changed:
@@ -43,16 +45,24 @@ display:
       empty:
         area_text_custom:
           content: 'Kommentteja ei ole saatavilla.'
+      use_more_text: lisää
   page_published:
+    display_title: 'Julkaistut kommentit'
     display_options:
       menu:
         title: Kommentit
   page_unapproved:
+    display_title: 'Hyväksyntää odottavat kommentit'
     display_options:
+      menu:
+        title: 'Hyväksyntää odottavat kommentit'
       filters:
         subject:
           expose:
             label: Aihe
+        combine:
+          expose:
+            label: 'Tekijän nimi'
         langcode:
           expose:
             label: Valoda
@@ -61,6 +71,8 @@ display:
           action_title: Toiminto
         subject:
           label: Aihe
+        name:
+          label: Tekijä
         entity_id:
           label: Kirjoitus
         changed:
