@@ -15,9 +15,9 @@ label: keyword_hobby
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: 'https://test.satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
-  item_selector: data
+  data_parser_plugin: jsonpath
+  urls: 'https://satakuntaevents.fi/activity/api/v1/keyword_set/?include=keywords&usage=keyword'
+  item_selector: '$.data.*'
   ids:
     keyword_id:
       type: string
@@ -25,11 +25,11 @@ source:
     -
       name: keyword_id
       label: 'ID of the keyword'
-      selector: id
+      selector: $.id
     -
       name: keyword_name
       label: 'Name of the keyword'
-      selector: name/fi
+      selector: $.name.fi
 process:
   vid:
     plugin: default_value

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0237875320ab4e2b56944c0d91a7ecc",
+    "content-hash": "fb340bd81770bb7c9dff3348f858cb09",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2870,6 +2870,9 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
+                },
+                "patches_applied": {
+                    "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
                 }
             },
             "autoload": {
@@ -3436,17 +3439,17 @@
         },
         {
             "name": "drupal/imagecache_external",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/imagecache_external.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/imagecache_external-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "092a390745262f19d122269cf98e27270e7f82f4"
+                "url": "https://ftp.drupal.org/files/projects/imagecache_external-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "dd4f041441d2096f0b9b6979a1f11a58c7c18958"
             },
             "require": {
                 "drupal/core": "^8"
@@ -3454,7 +3457,7 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.1",
+                    "version": "8.x-1.2",
                     "datestamp": "1579607283",
                     "security-coverage": {
                         "status": "covered",

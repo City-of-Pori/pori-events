@@ -11,9 +11,9 @@ label: Audience
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
-  data_parser_plugin: json
-  urls: 'https://test.satakuntaevents.fi/api/v2/keyword_set/pori:audiences/?include=keywords&page_size=999'
-  item_selector: keywords
+  data_parser_plugin: jsonpath
+  urls: 'https://satakuntaevents.fi/api/v2/keyword_set/pori:audiences/?include=keywords&page_size=999'
+  item_selector: $.keywords.*
   ids:
     audience_id:
       type: string
@@ -21,11 +21,11 @@ source:
     -
       name: audience_id
       label: 'ID of the audience'
-      selector: 'id'
+      selector: $.id
     -
       name: audience_name
       label: 'Name of the audience'
-      selector: 'name/fi'
+      selector: $.name.fi
 process:
   vid:
     plugin: default_value

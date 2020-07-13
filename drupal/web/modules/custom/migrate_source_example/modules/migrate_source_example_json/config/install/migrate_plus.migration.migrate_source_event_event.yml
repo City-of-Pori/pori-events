@@ -11,9 +11,9 @@ label: Events
 source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  data_parser_plugin: jsonpath
   urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today'
-  item_selector: data
+  item_selector: $.data.*
   ids:
     event_id:
       type: string
@@ -21,79 +21,87 @@ source:
     -
       name: event_id
       label: 'ID of the event'
-      selector: id
+      selector: $.id
     -
       name: event_title
       label: 'Title of the event'
-      selector: name/fi
+      selector: $.name.fi
     -
       name: event_image
       label: 'Image of the event'
-      selector: images
+      selector: $.images[0].url
     -
       name: event_description
       label: 'Long description of the event'
-      selector: description/fi
+      selector: $.description.fi
     -
       name: event_short_description
       label: 'Short description of the event'
-      selector: short_description/fi
+      selector: $.short_description.fi
     -
       name: event_address
       label: 'Address of the event'
-      selector: location_extra_info/fi
+      selector: $.location_extra_info.fi
     -
       name: event_start_time
       label: 'Event start time'
-      selector: start_time
+      selector: $.start_time
     -
       name: event_end_time
       label: 'Event end time'
-      selector: end_time
+      selector: $.end_time
     -
       name: event_created
       label: 'Time created'
-      selector: created_time
+      selector: $.created_time
     -
       name: event_location
       label: 'Location'
-      selector: area/@id
+      selector: $.area['@id']
     -
       name: event_audience
       label: 'Audience'
-      selector: audience
+      selector: $.audience.*.id
     -
       name: event_keywords
       label: 'Keywords'
-      selector: 'keywords'
+      selector: $.keywords.*.id
     -
-      name: event_offers
-      label: 'Offers'
-      selector: offers
+      name: event_offers_is_free
+      label: 'Offers is free'
+      selector: $.offers[0].is_free
+    -
+      name: event_offers_price
+      label: 'Offers price'
+      selector: $.offers[0].price.fi
+    -
+      name: event_offers_vedor
+      label: 'Offers vendo'
+      selector: $.offers[0].info_url.fi
     -
       name: event_provider_www
       label: 'Provider'
-      selector: provider_link
+      selector: $.provider_link
     -
       name: event_provider_phone
       label: 'Provider'
-      selector: provider_phone
+      selector: $.provider_phone
     -
       name: event_provider_email
       label: 'Provider'
-      selector: provider_email
+      selector: $.provider_email
     -
       name: event_location_address
       label: 'Location address'
-      selector: location/name/fi
+      selector: $.location.name.fi
     -
       name: event_location_extra_info
       label: 'Location extra info'
-      selector: location_extra_info/fi
+      selector: $.location_extra_info.fi
     -
       name: event_external_links
       label: 'External Link'
-      selector: external_links
+      selector: $.external_links
 process:
   type:
     plugin: default_value
@@ -106,29 +114,9 @@ process:
   field_provider_phone: event_provider_phone
   field_location_extra_info: event_location_address
   field_location_extra_info_info: event_location_extra_info
-  field_ticket_vendor:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - info_url
-      - fi
-  field_price:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - price
-      - fi
-  field_free_enterance:
-    source: event_offers
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - is_free
+  field_ticket_vendor: event_offers_vedor
+  field_price: event_offers_price
+  field_free_enterance: event_offers_is_free
   field_start_time:
     -
       plugin: skip_on_empty
@@ -161,25 +149,13 @@ process:
   field_hobby_is_hobby:
     plugin: default_value
     default_value: 0
-  field_image_ext_url:
-    source: event_image
-    plugin: extract
-    default: ''
-    index:
-      - 0
-      - url
+  field_image_ext_url: event_image
   field_event_type:
     -
-      source: event_keywords
-      plugin: sub_process
-      process:
-        -
-          target_id:
-            plugin: format_keywords
-            source: id
-    -
       plugin: migration_lookup
+      source: event_keywords
       migration: migrate_source_event_keywords
+      no_stub: true
   field_area:
     plugin: migration_lookup
     migration:
@@ -188,16 +164,10 @@ process:
     source: event_location
   field_target_audience:
     -
-      source: event_audience
-      plugin: sub_process
-      process:
-        -
-          target_id:
-            plugin: format_keywords
-            source: id
-    -
       plugin: migration_lookup
+      source: event_audience
       migration: migrate_source_event_audience
+      no_stub: true
   field_external:
       plugin: link_extractor
       source: event_external_links
