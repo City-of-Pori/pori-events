@@ -115,11 +115,10 @@ display:
           columns:
             node_bulk_form: node_bulk_form
             title: title
-            edit_node: title
-            delete_node: title
             status: status
             changed: status
-            langcode: status
+            edit_node: status
+            delete_node: status
             field_event_type: field_event_type
             field_start_time: field_event_type
             field_end_time: field_event_type
@@ -168,20 +167,6 @@ display:
               sortable: false
               default_sort_order: asc
               align: ''
-              separator: '<hr>'
-              empty_column: false
-              responsive: ''
-            edit_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            delete_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
               separator: ''
               empty_column: false
               responsive: ''
@@ -189,7 +174,7 @@ display:
               sortable: false
               default_sort_order: asc
               align: ''
-              separator: ''
+              separator: '<br>'
               empty_column: false
               responsive: ''
             changed:
@@ -199,7 +184,14 @@ display:
               separator: ''
               empty_column: false
               responsive: priority-low
-            langcode:
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            delete_node:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -468,7 +460,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Title | Actions'
+          label: Title
           exclude: false
           alter:
             alter_text: false
@@ -526,112 +518,6 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-        edit_node:
-          id: edit_node
-          table: node
-          field: edit_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Link to edit Content'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: edit
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link_edit
-        delete_node:
-          id: delete_node
-          table: node
-          field: delete_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Link to delete Content'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: delete
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link_delete
         status:
           id: status
           table: node_field_data
@@ -639,7 +525,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Published | Edited | Language'
+          label: 'Published | Edited | Actions'
           exclude: false
           alter:
             alter_text: false
@@ -766,14 +652,14 @@ display:
           plugin_id: field
           entity_type: node
           entity_field: changed
-        langcode:
-          id: langcode
-          table: node_field_data
-          field: langcode
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Translation language'
+          label: 'Link to edit Content'
           exclude: false
           alter:
             alter_text: false
@@ -814,24 +700,64 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: language
-          settings:
-            link_to_entity: false
-            native_language: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          text: edit
+          output_url_as_text: false
+          absolute: false
           entity_type: node
-          entity_field: langcode
-          plugin_id: field
+          plugin_id: entity_link_edit
+        delete_node:
+          id: delete_node
+          table: node
+          field: delete_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Link to delete Content'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: delete
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_delete
         field_event_type:
           id: field_event_type
           table: node__field_event_type
