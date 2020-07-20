@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\views\ViewExecutable;
+use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Implements hook_migrate_process_info_alter().
@@ -26,7 +27,19 @@ function migrate_source_example_migrate_process_info_alter(&$definitions) {
  */
 function migrate_source_example_views_pre_render(ViewExecutable $view) {
   if (isset($view) && ($view->storage->id() == 'event_dashboard')) {
+
+    // Validate pre-registration url. Set to null if invalid url
+    $result = $view->result;
+    foreach ($result as $key => $item) {
+      // field_pre_registration_link is Drupal\Core\Field\FieldItemList class
+      $preRegLink = $item->_entity->field_pre_registration_link->getString();
+      if ($preRegLink != '') {
+        if (!UrlHelper::isValid($preRegLink)) {
+          $view->result[$key]->_entity->field_pre_registration_link->setValue(NULL);
+        }
+      }
+    }
+
     $view->element['#attached']['library'][] = 'migrate_source_example/events-dashboard';
   }
 }
-
