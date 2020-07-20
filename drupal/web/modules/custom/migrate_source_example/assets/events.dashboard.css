@@ -1,0 +1,13 @@
+.event-type, .image-ext-url, .event-provider {
+  overflow-wrap: anywhere;
+  min-width: 100px;
+}
+
+th {
+  font-size: 80%;
+  padding: 5px 12px !important;
+}
+
+.event-field-small {
+  font-size: 70%;
+}

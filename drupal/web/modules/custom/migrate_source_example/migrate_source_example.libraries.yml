@@ -1,0 +1,4 @@
+events-dashboard:
+  css:
+    theme:
+      assets/events.dashboard.css: {}
