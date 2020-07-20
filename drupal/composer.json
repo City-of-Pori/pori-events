@@ -41,7 +41,7 @@
         "drupal/migrate_tools": "^4.0",
         "drupal/taxonomy_multidelete_terms": "^1.1",
         "drupal/structured_data": "^1.0",
-        "drupal/imagecache_external": "~1.1.0",
+        "drupal/imagecache_external": "^1.2",
         "drupal/entityqueue": "^1.0",
         "drupal/slick": "^1.0",
         "drupal/slick_views": "^1.0",
@@ -94,7 +94,11 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "dropin-paths": {"web/": ["type:web-dropin"]},
-        "patches": {}
+        "patches": {
+            "drupal/core": {
+                "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
+            }
+        }
     },
     "config": {
         "process-timeout": 9000
