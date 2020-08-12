@@ -1,16 +1,19 @@
 <?php
+
 /**
  * Implements hook_preprocess_HOOK().
  */
 function pori_harrastukset_preprocess_node(&$variables) {
-  if($variables['node']->bundle() == 'event' && $variables['view_mode'] == 'full') {
+  if ($variables['node']->bundle() == 'event' && $variables['view_mode'] == 'full') {
     $variables['content']['show_registration_link'] = FALSE;
-    if (isset($variables['node']->get('field_pre_registration_end_time')->getValue()[0]['value'])) {
-      $end_time = $variables['node']->get('field_pre_registration_end_time')->getValue()[0]['value'];
+    if (isset($variables['node']->get('field_pre_registration_end_time')
+        ->getValue()[0]['value'])) {
+      $end_time = $variables['node']->get('field_pre_registration_end_time')
+        ->getValue()[0]['value'];
       $end_date_object = new DateTime($end_time);
       $current_time_object = new DateTime;
       // If registration end date is to come then show the link from twig.
-      if($current_time_object < $end_date_object) {
+      if ($current_time_object < $end_date_object) {
         $variables['content']['show_registration_link'] = TRUE;
       }
     }
@@ -23,35 +26,54 @@ function pori_harrastukset_preprocess_node(&$variables) {
 
 function pori_events_preprocess_html(&$variables) {
   //changing the tab title and meta tag descriptions
-  
-     $tag = [
-      '#tag' => 'meta',
-      '#attributes' => [
-          'name' => 'description',
-          'content' => FALSE,
-      ],
-    ];
-  
-  switch(\Drupal::service('path.current')->getPath()) {
-      case '/node':
-          $tag['#attributes']['content'] = 'Porin tapahtumakalenterista löydät kaikki lähialueen tapahtumat ja harrastukset. Ilmoita helposti myös oma tapahtumasi tai harrastuksesi mukaan!';
-          $variables['head_title'] = 'Tapahtumat | Porin tapahtumakalenteri';
-          break;
-      case '/harrastukset':
-          $tag['#attributes']['content'] = 'Porin harrastuskalenterista löydät kaikki lähialueen harrastukset ja tapahtumat. Ilmoita helposti myös oma harrastuksesi tai tapahtumasi mukaan!';
-          $variables['head_title'] = 'Harrastukset | Porin harrastuskalenteri';
-          break;
+
+  $tag = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'description',
+      'content' => FALSE,
+    ],
+  ];
+
+  switch (\Drupal::service('path.current')->getPath()) {
+    case '/node':
+      $tag['#attributes']['content'] = 'Porin tapahtumakalenterista löydät kaikki lähialueen tapahtumat ja harrastukset. Ilmoita helposti myös oma tapahtumasi tai harrastuksesi mukaan!';
+      $variables['head_title'] = 'Tapahtumat | Porin tapahtumakalenteri';
+      break;
+    case '/harrastukset':
+      $tag['#attributes']['content'] = 'Porin harrastuskalenterista löydät kaikki lähialueen harrastukset ja tapahtumat. Ilmoita helposti myös oma harrastuksesi tai tapahtumasi mukaan!';
+      $variables['head_title'] = 'Harrastukset | Porin harrastuskalenteri';
+      break;
   }
-  
-  if($tag['#attributes']['content']) {
-      $variables['page']['#attached']['html_head'][] = [$tag, 'pori_events_meta_description'];
+
+  if ($tag['#attributes']['content']) {
+    $variables['page']['#attached']['html_head'][] = [
+      $tag,
+      'pori_events_meta_description',
+    ];
   }
   //adding a class if field hobby_is_hobby is checked
-   /* @var $node \Drupal\node\Entity\Node */
-   $node = \Drupal::request()->attributes->get('node');
-   if (!empty($node) && $node->hasField('field_hobby_is_hobby')) {
-     if ($hobby_value = $node->field_hobby_is_hobby->value) {
-       $variables['attributes']['class'][] = 'hobby-class-' . $hobby_value;
-     }
-   }
-}  
+  /* @var $node \Drupal\node\Entity\Node */
+  $node = \Drupal::request()->attributes->get('node');
+  if (!empty($node) && $node->hasField('field_hobby_is_hobby')) {
+    if ($hobby_value = $node->field_hobby_is_hobby->value) {
+      $variables['attributes']['class'][] = 'hobby-class-' . $hobby_value;
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function pori_harrastukset_preprocess_block(&$variables) {
+  if ($variables['base_plugin_id'] == 'system_branding_block') {
+    if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') {
+
+      /** @var \Drupal\node\Entity\Node $node */
+      $node = \Drupal::routeMatch()->getParameter('node');
+
+      $variables['is_hobby'] = $node->get('field_hobby_is_hobby')->getString();
+    }
+  }
+}
