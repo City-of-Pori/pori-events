@@ -15,25 +15,19 @@
 #}
 
 {# Provide default slogan if none is set in site settings. #}
-{%
-  set slogan = '<a href="https://www.pori.fi">Porin kaupungin</a> kalenterista löydät kaikki lähialueen tapahtumat ja harrasteet.
-                <a href="https://www.visitpori.fi">Visit pori</a> auttaa tapahtumajärjestämiseen liittyvissä asioissa.'
-%}
-{%
-  set containerClasses = [
-    'branding__container',
-  ]
-%}
-{%
-  set containerClasses = [
-    'branding__container',
-  ]
-%}
+{% set slogan = '<a href="https://www.pori.fi">Porin kaupungin</a> kalenterista löydät kaikki lähialueen tapahtumat ja harrasteet.
+                <a href="https://www.visitpori.fi">Visit pori</a> auttaa tapahtumajärjestämiseen liittyvissä asioissa.' %}
+
+{% set containerClasses = [
+  'branding__container',
+] %}
 {% block content %}
+  {% set hobby_url = (is_hobby) ? 'harrastukset' : '' %}
+
   <div {{ attributes.addClass(containerClasses) }}>
     {% if site_logo %}
-      <a href="/" title="{{ 'Home'|t }}" rel="home" class="site-logo">
-        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      <a href="/{{- hobby_url -}}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
+        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}"/>
       </a>
     {% endif %}
     {% if site_slogan %}
