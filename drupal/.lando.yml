@@ -8,6 +8,7 @@ config:
   via: nginx
   xdebug: false
   vhosts: ./.lando/drupal8.conf
+  composer_version: 1.10.17
 
 tooling:
   # build.sh:
