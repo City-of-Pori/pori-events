@@ -1917,9 +1917,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.8",
                     "datestamp": "1583988119",
@@ -2218,10 +2215,6 @@
                     "homepage": "https://www.adyax.com/"
                 },
                 {
-                    "name": "OlgaRabodzei",
-                    "homepage": "https://www.drupal.org/user/3389198"
-                },
-                {
                     "name": "colan",
                     "homepage": "https://www.drupal.org/user/58704"
                 },
@@ -2271,9 +2264,6 @@
             },
             "type": "drupal-profile",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.8",
                     "datestamp": "1524572284",
@@ -2574,9 +2564,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.0-beta2",
                     "datestamp": "1505378944",
@@ -2596,6 +2583,10 @@
                     "homepage": "http://www.oddhill.se/",
                     "email": "christoffer.palm@oddhill.se",
                     "role": "Developer"
+                },
+                {
+                    "name": "NormySan",
+                    "homepage": "https://www.drupal.org/user/112352"
                 },
                 {
                     "name": "Steven Jones",
@@ -2634,16 +2625,20 @@
                     "homepage": "https://www.drupal.org/user/426416"
                 },
                 {
-                    "name": "hyrcan",
-                    "homepage": "https://www.drupal.org/user/26618"
-                },
-                {
                     "name": "jmiccolis",
                     "homepage": "https://www.drupal.org/user/31731"
                 },
                 {
                     "name": "nedjo",
                     "homepage": "https://www.drupal.org/user/4481"
+                },
+                {
+                    "name": "patricksettle",
+                    "homepage": "https://www.drupal.org/user/26618"
+                },
+                {
+                    "name": "paulocs",
+                    "homepage": "https://www.drupal.org/user/3640109"
                 },
                 {
                     "name": "tekante",
@@ -2671,16 +2666,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.9.6",
+            "version": "8.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "caf4e756d31dfb0c2e52cd0748e900efe4b57766"
+                "reference": "724ada1a6c497a663797c40e4ee3d0c7c618371d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/caf4e756d31dfb0c2e52cd0748e900efe4b57766",
-                "reference": "caf4e756d31dfb0c2e52cd0748e900efe4b57766",
+                "url": "https://api.github.com/repos/drupal/core/zipball/724ada1a6c497a663797c40e4ee3d0c7c618371d",
+                "reference": "724ada1a6c497a663797c40e4ee3d0c7c618371d",
                 "shasum": ""
             },
             "require": {
@@ -2901,7 +2896,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-09-16T11:22:21+00:00"
+            "time": "2020-11-17T22:05:46+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -2952,16 +2947,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "8.9.6",
+            "version": "8.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "6c5c4739afc5549e6089ef34b59c712c8872f154"
+                "reference": "875f16a071119e0b26cb8a2b6f44314107110f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/6c5c4739afc5549e6089ef34b59c712c8872f154",
-                "reference": "6c5c4739afc5549e6089ef34b59c712c8872f154",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/875f16a071119e0b26cb8a2b6f44314107110f28",
+                "reference": "875f16a071119e0b26cb8a2b6f44314107110f28",
                 "shasum": ""
             },
             "require": {
@@ -2973,7 +2968,7 @@
                 "doctrine/common": "v2.7.3",
                 "doctrine/inflector": "v1.2.0",
                 "doctrine/lexer": "1.0.2",
-                "drupal/core": "8.9.6",
+                "drupal/core": "8.9.9",
                 "easyrdf/easyrdf": "0.9.1",
                 "egulias/email-validator": "2.1.17",
                 "guzzlehttp/guzzle": "6.5.4",
@@ -3030,7 +3025,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
-            "time": "2020-09-16T11:22:21+00:00"
+            "time": "2020-11-17T22:05:46+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -3517,9 +3512,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.2",
                     "datestamp": "1555683487",
@@ -3572,7 +3564,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1548206580",
+                    "datestamp": "1591699996",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -3625,9 +3617,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.5",
                     "datestamp": "1574693285",
@@ -3648,16 +3637,12 @@
             ],
             "authors": [
                 {
-                    "name": "heddn",
-                    "homepage": "https://www.drupal.org/user/1463982"
+                    "name": "drupalspoons",
+                    "homepage": "https://www.drupal.org/user/3647684"
                 },
                 {
                     "name": "mikeryan",
                     "homepage": "https://www.drupal.org/user/4420"
-                },
-                {
-                    "name": "moshe weitzman",
-                    "homepage": "https://www.drupal.org/user/23"
                 }
             ],
             "description": "Tools to assist in developing and running migrations.",
@@ -3806,9 +3791,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.2",
                     "datestamp": "1581970320",
@@ -3861,9 +3843,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.2",
                     "datestamp": "1577872687",
@@ -3918,14 +3897,11 @@
                 "shasum": "fdb8c73f26da5e8f06f478d76b1fa7b5d153428d"
             },
             "require": {
-                "drupal/core": "*",
+                "drupal/core": "^8",
                 "drupal/slick": "*"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0",
                     "datestamp": "1546870081",
@@ -3972,7 +3948,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.2",
-                    "datestamp": "1586474319",
+                    "datestamp": "1586474398",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4204,9 +4180,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.2",
                     "datestamp": "1574284690",
@@ -9200,7 +9173,7 @@
                 "shasum": "4ebcf4fb2a2842232b9bf9b0855e3728df918fc7"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "type": "drupal-module",
             "extra": {
@@ -9273,9 +9246,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.1",
                     "datestamp": "1556799496",
@@ -9320,18 +9290,6 @@
                 {
                     "name": "See contributors",
                     "homepage": "https://www.drupal.org/node/3236/committers"
-                },
-                {
-                    "name": "pcambra",
-                    "homepage": "https://www.drupal.org/user/122101"
-                },
-                {
-                    "name": "salvis",
-                    "homepage": "https://www.drupal.org/user/82964"
-                },
-                {
-                    "name": "willzyx",
-                    "homepage": "https://www.drupal.org/user/1043862"
                 }
             ],
             "description": "Various blocks, pages, and functions for developers.",
@@ -9361,9 +9319,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0",
                     "datestamp": "1580492032",
