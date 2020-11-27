@@ -116,6 +116,10 @@
 
     create_docroot: True
 
+    php_env_vars:
+      - key: "WARDEN_TOKEN"
+        value: "{{ warden_token }}"
+
     # This server also acts as a load balancer
     varnish:
       port: 8081
