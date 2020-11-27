@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b5b93c899756c5b85f6ec8cd8380b2c",
+    "content-hash": "3d0e06d344a09e7665690803b2f658e3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4162,17 +4162,17 @@
         },
         {
             "name": "drupal/warden",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/warden.git",
-                "reference": "8.x-1.2"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/warden-8.x-1.2.zip",
-                "reference": "8.x-1.2",
-                "shasum": "0f65ade4bda02884b3559edf68bec63ed77e4b37"
+                "url": "https://ftp.drupal.org/files/projects/warden-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "44cadb3c47057f8e92fc6cd97c5fc360afaedeb3"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -4181,8 +4181,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.2",
-                    "datestamp": "1574284690",
+                    "version": "8.x-2.0",
+                    "datestamp": "1574285885",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
