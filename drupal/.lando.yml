@@ -8,7 +8,7 @@ config:
   via: nginx
   xdebug: false
   vhosts: ./.lando/drupal8.conf
-  composer_version: 1.10.17
+  composer_version: 1-latest
 
 tooling:
   # build.sh:
@@ -75,6 +75,7 @@ services:
     overrides:
       environment:
         WKV_SITE_ENV: lando
+        DRUSH_OPTIONS_URI: http://tapahtumat.lndo.site
   database:
     type: mariadb:10.1
   mailhog:
@@ -100,4 +101,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.0.19
+version: v3.0.26
