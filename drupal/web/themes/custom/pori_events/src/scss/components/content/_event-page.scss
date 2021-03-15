@@ -18,18 +18,28 @@
   }
 }
 
-.event__image--container {
+.event__image--container-top, .event__image--container {
   margin-bottom: 1.2rem;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio = 9 / 16 = 0.5625 */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+.event__image--container-top {
   @media screen and (min-width: $desktop-narrow) {
-    margin-bottom: 2rem;
+    display: none;
   }
 }
 
 .event__image--container {
-  height: 400px;
-  background-size: cover;
-  background-position: center center;
+  @media screen and (min-width: $desktop-narrow) {
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: $desktop-narrow) {
+    display: none;
+  }
 }
 
 .event__text-content {
