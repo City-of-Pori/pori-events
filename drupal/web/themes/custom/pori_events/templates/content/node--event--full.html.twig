@@ -127,13 +127,16 @@
   {{ title_suffix }}
 
   {% if content.field_image_ext_url[0]['#uri'] %}
-    <div class="event__image--container"
-         style="background-image: url('{{ bg_img }}' );">
-    </div>
+    <div class="event__image--container-top" style="background-image: url('{{ bg_img }}' );"></div>
   {% endif %}
 
   <div class="event__content--container">
     <div {{ content_attributes.addClass('text-area node__content event__text-content') }}>
+
+      {% if content.field_image_ext_url[0]['#uri'] %}
+        <div class="event__image--container" style="background-image: url('{{ bg_img }}' );"></div>
+      {% endif %}
+
       {% if short_description %}
         <div class="event__content__short-description">
           {{ short_description }}
