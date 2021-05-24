@@ -62,7 +62,8 @@
         "twig/twig": "^2.12.3",
         "drupal/devel": "^4.1.1",
         "drupal/elasticsearch_helper": "7.x-dev",
-        "drupal/blazy": "^2.2"
+        "drupal/blazy": "^2.2",
+        "elasticsearch/elasticsearch": "~7.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
