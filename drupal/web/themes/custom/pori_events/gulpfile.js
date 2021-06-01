@@ -92,9 +92,7 @@ gulp.task('sass', gulp.series(function(minify) {
       gutil.log(gutil.colors.black.bgRed(" ERROR:", gutil.colors.white.bgBlack(" " + err.formatted.split("\n")[0])));
       return this.emit("end");
     })
-    .pipe(autoprefix({
-      browsers: ['last 2 versions']
-    }))
+    .pipe(autoprefix())
     .pipe(path.env.prod === true ? cleanCss() : gutil.noop())
     .pipe(gulpif(path.sourcemaps.prod, sourcemaps.write()))
     .pipe(gulp.dest(path.styles.dist));
