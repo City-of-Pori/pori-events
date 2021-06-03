@@ -31,10 +31,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
 // Enable local development services.
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
-// elasticsearch_helper settings.
-//$config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = "elasticsearch";
-
-// Set ElasticSearch Helper hostname for local.
+// Set ElasticSearch Helper settings (hostname & port for local).
 $config['elasticsearch_helper.settings']['hosts'][0]['host'] = 'elasticsearch-tapahtumat.lndo.site';
 $config['elasticsearch_helper.settings']['hosts'][0]['port'] = "9400";
 

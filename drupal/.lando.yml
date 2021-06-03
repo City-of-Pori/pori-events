@@ -57,10 +57,10 @@ services:
   appserver:
     type: php:7.2
     webroot: web
-#    build:
-#      - composer install
-#    run:
-#      - /app/.lando/migrate.sh
+    build:
+      - composer install
+    run:
+      - /app/.lando/migrate.sh
     overrides:
       environment:
         WKV_SITE_ENV: lando
@@ -74,8 +74,8 @@ services:
   node:
     type: node
     globals:
-#      gulp-cli: latest
-#      bower: latest
+      gulp-cli: latest
+      bower: latest
     # build:
     #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 
@@ -120,8 +120,8 @@ proxy:
 
 eevents:
   post-db-import:
-#    - appserver: /app/.lando/update.sh
-#    - appserver: /app/.lando/index.sh
+    - appserver: /app/.lando/update.sh
+    - appserver: /app/.lando/index.sh
 
 # Lando version.
 version: v3.0.26
