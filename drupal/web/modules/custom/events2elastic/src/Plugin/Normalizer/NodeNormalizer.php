@@ -11,18 +11,15 @@ use Drupal\Core\Field\FieldItemList;
  * Normalizes / denormalizes Drupal nodes into an array structure good for ES.
  */
 class NodeNormalizer extends ContentEntityNormalizer {
+
   /**
-   * The interface or class that this Normalizer supports.
-   *
-   * @var array
+   * {@inheritdoc}
    */
   protected $supportedInterfaceOrClass = ['Drupal\node\Entity\Node'];
   /**
-   * Supported formats.
-   *
-   * @var array
+   * {@inheritdoc}
    */
-  // protected $format = ['elasticsearch_helper'];
+  protected $format = 'content_node';
 
   /**
    * {@inheritdoc}
