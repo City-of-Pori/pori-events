@@ -96,20 +96,108 @@ class EventIndex extends ElasticsearchIndexBase {
   /**
    * {@inheritdoc}
    */
+  public function setup() {
+    try {
+      // Create one index per language, so that we can have different analyzers.
+      foreach ($this->languageManager->getLanguages() as $langcode => $language) {
+        // Get index name.
+        $index_name = $this->getIndexName(['langcode' => $langcode]);
+
+        // Check if index exists.
+        if (!$this->client->indices()->exists(['index' => $index_name])) {
+          // Get index definition.
+          $index_definition = $this->getIndexDefinition(['langcode' => $langcode]);
+
+          //          // Get analyzer for the language.
+          //          $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
+          //
+          //          // Put analyzer parameter to all "text" fields in the mapping.
+          //          foreach ($index_definition->getMappingDefinition()
+          //                     ->getProperties() as $property) {
+          //            if ($property->getDataType()->getType() == 'text') {
+          //              $property->addOption('analyzer', $analyzer);
+          //            }
+          //          }
+
+          $this->createIndex($index_name, $index_definition);
+        }
+      }
+    } catch (\Throwable $e) {
+      $this->dispatchOperationErrorEvent($e, ElasticsearchOperations::INDEX_CREATE);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getMappingDefinition(array $context = []) {
-    $date = FieldDefinition::create('date')
+    // Get analyzer for the language.
+    $analyzer = ElasticsearchLanguageAnalyzer::get($context['langcode']);
+
+    // Set field definitions.
+    $date = FieldDefinition::create('date');
+    $date_formatted = FieldDefinition::create('date')
       ->addOption('format', 'epoch_second');
 
+    $text = FieldDefinition::create('text');
+    $text_analyzed = FieldDefinition::create('text')
+      ->addOption('analyzer', $analyzer);
+
+    $keyword = FieldDefinition::create('keyword');
+    $boolean = FieldDefinition::create('boolean');
+
     return MappingDefinition::create()
+      ->addProperty('langcode', $keyword)
       ->addProperty('id', FieldDefinition::create('integer'))
-      ->addProperty('uuid', FieldDefinition::create('keyword'))
-      ->addProperty('langcode', FieldDefinition::create('keyword'))
-      ->addProperty('title', FieldDefinition::create('text'))
-      ->addProperty('created', $date)
-      ->addProperty('updated', $date)
-      ->addProperty('status', FieldDefinition::create('boolean'))
-      ->addProperty('area_sub_area', FieldDefinition::create('keyword'))
-      ->addProperty('body', FieldDefinition::create('text'));
+      ->addProperty('uuid', $keyword)
+      ->addProperty('service_id', $keyword)
+      ->addProperty('bundle', $keyword)
+      ->addProperty('type', $keyword)
+      ->addProperty('created', $date_formatted)
+      ->addProperty('updated', $date_formatted)
+      ->addProperty('status', $boolean)
+      ->addProperty('title', $text_analyzed
+        ->addMultiField('autocomplete', $text
+          ->addOption('analyzer', 'autocomplete')
+          ->addOption('search_analyzer', 'simple'))
+        ->addMultiField('stemmed', $text)
+        ->addOption('analyzer', $analyzer))
+      ->addProperty('area', $keyword)
+      ->addProperty('area_sub_area', $keyword)
+      ->addProperty('target_audience', $keyword)
+      ->addProperty('event_type', $keyword)
+      ->addProperty('tickets', $text_analyzed)
+      ->addProperty('free_enterance', $boolean)
+      ->addProperty('description', $text_analyzed)
+      ->addProperty('short_description', $text_analyzed)
+      ->addProperty('image', $text
+        ->addOption('index', FALSE))
+      ->addProperty('start_time', $date)
+      ->addProperty('start_date', $date_formatted)
+      ->addProperty('start_date_millis', $date)
+      ->addProperty('end_date', $date_formatted)
+      ->addProperty('end_date_millis', $date)
+      ->addProperty('date_lenght', $text)
+      ->addProperty('date_pretty', $text)
+      ->addProperty('single_day', $boolean)
+      ->addProperty('is_hobby', $boolean)
+      ->addProperty('accessible', $boolean)
+      ->addProperty('child_care', $boolean)
+      ->addProperty('culture_and_or_activity_no', $boolean)
+      ->addProperty('hobby_category', $keyword)
+      ->addProperty('hobby_sub_category', $keyword)
+      ->addProperty('hobby_audience', $keyword)
+      ->addProperty('hobby_location_area', $keyword)
+      ->addProperty('hobby_location_sub_area', $keyword)
+      ->addProperty('registration', $boolean)
+      ->addProperty('timeframe', $keyword)
+      ->addProperty('monday', $boolean)
+      ->addProperty('tuesday', $boolean)
+      ->addProperty('wednesday', $boolean)
+      ->addProperty('thursday', $boolean)
+      ->addProperty('friday', $boolean)
+      ->addProperty('saturday', $boolean)
+      ->addProperty('sunday', $boolean);
   }
 
   /**
@@ -122,12 +210,54 @@ class EventIndex extends ElasticsearchIndexBase {
     // Get analyzer for the language.
     $analyzer = ElasticsearchLanguageAnalyzer::get($context['langcode']);
 
-    // Add custom settings.
+
+    // Add custom settings for index.
     $index_definition->getSettingsDefinition()->addOptions([
+      'max_ngram_diff' => 16,
+      // Use a single shard to improve relevance on a small dataset.
+      'number_of_shards' => 1,
+      // No need for replicas, we only have one ES node.
+      'number_of_replicas' => 0,
       'analysis' => [
+        'filter' => [
+          'autocomplete_filter' => [
+            'type' => 'ngram',
+            'min_gram' => 4,
+            'max_gram' => 20,
+            'token_chars' => [
+              'letter',
+            ],
+          ],
+        ],
         'analyzer' => [
           $analyzer => [
             'tokenizer' => 'standard',
+          ],
+          'comma_separated' => [
+            'type' => 'custom',
+            'tokenizer' => 'custom_comma_tokenizer',
+          ],
+          'autocomplete' => [
+            'type' => 'custom',
+            'tokenizer' => 'standard',
+            'filter' => [
+              'lowercase',
+              'autocomplete_filter',
+            ],
+          ],
+          'keyword_autocomplete' => [
+            'type' => 'custom',
+            'tokenizer' => 'keyword',
+            'filter' => [
+              'lowercase',
+              'autocomplete_filter',
+            ],
+          ],
+        ],
+        'tokenizer' => [
+          'custom_comma_tokenizer' => [
+            'type' => 'pattern',
+            'pattern' => ',',
           ],
         ],
       ],
