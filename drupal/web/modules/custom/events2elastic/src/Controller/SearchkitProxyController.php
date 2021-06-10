@@ -83,6 +83,9 @@ class SearchkitProxyController extends ControllerBase {
         'body' => $content,
       ];
       $hits = $this->client->search($params);
+
+      // Fix for Pagination (kada-elastic-events React app)
+      $hits['hits']['total'] = $hits['hits']['total']['value'] ?? 0;
       return new JsonResponse($hits);
     }
     catch (\Exception $e) {

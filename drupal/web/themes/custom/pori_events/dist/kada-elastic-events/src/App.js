@@ -23,7 +23,7 @@ import {
   CheckboxFilter,
   HierarchicalMenuFilter
 } from "searchkit";
-import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
+import {DateRangeFilter, DateRangeCalendar} from "searchkit-datefilter";
 import Moment from "moment";
 import "moment/locale/fi";
 
@@ -56,9 +56,10 @@ const queryOptions = {
 };
 
 const HitsListItem = props => {
-  const { bemBlocks, result } = props;
+  const {bemBlocks, result} = props;
   const source = extend({}, result._source, result.highlight);
-  // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
+  // If there's an url in the index, use it. Otherwise, fall back to Drupal
+  // node-id.
   const url = source.url ? source.url : "/node/" + result._id;
   const image_source = source.image_ext
     ? "/" + source.image_ext
@@ -77,13 +78,27 @@ const HitsListItem = props => {
 
 
   let weekDays = [];
-  if (source.monday === true) weekDays.push("MA");
-  if (source.tuesday === true) weekDays.push("TI");
-  if (source.wednesday === true) weekDays.push("KE");
-  if (source.thursday === true) weekDays.push("TO");
-  if (source.friday === true) weekDays.push("PE");
-  if (source.saturday === true) weekDays.push("LA");
-  if (source.sunday === true) weekDays.push("SU");
+  if (source.monday === true) {
+    weekDays.push("MA");
+  }
+  if (source.tuesday === true) {
+    weekDays.push("TI");
+  }
+  if (source.wednesday === true) {
+    weekDays.push("KE");
+  }
+  if (source.thursday === true) {
+    weekDays.push("TO");
+  }
+  if (source.friday === true) {
+    weekDays.push("PE");
+  }
+  if (source.saturday === true) {
+    weekDays.push("LA");
+  }
+  if (source.sunday === true) {
+    weekDays.push("SU");
+  }
   const addDay = weekDays.join(" | ");
 
   return (
@@ -93,20 +108,20 @@ const HitsListItem = props => {
     >
       <div className={bemBlocks.item("title")}>
         <div className="event__image__wrapper">
-          <img src={image_source} />
+          <img src={image_source}/>
         </div>
         <div className="event__time">
           {date_start} {date_end}
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
-          <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
+          <a href={url} dangerouslySetInnerHTML={{__html: title}}/>
         </h2>
         <tag className="event__area">
-            {source.area_sub_area.length !== 0 && (
-              <tag> {source.area_sub_area},</tag>
-            )} {source.area}
-          </tag>
+          {source.area_sub_area.length !== 0 && (
+            <tag> {source.area_sub_area},</tag>
+          )} {source.area}
+        </tag>
         <div className="hobby__area">
           {source.hobby_location_sub_area.length !== 0 && (
             <tag> {source.hobby_location_sub_area},</tag>
@@ -118,18 +133,20 @@ const HitsListItem = props => {
     </div>
   );
 };
+
 class App extends SearchkitComponent {
   componentDidMount() {
     let is_hobby = this.props.eventType === "hobbies" ? true : false;
     searchkit.addDefaultQuery(query => {
       return query.addQuery(TermQuery("is_hobby", is_hobby)).setSort([
         {
-          single_day: { order: "desc", unmapped_type: "long" },
-          start_time: { order: "asc", unmapped_type: "long" }
+          single_day: "desc",
+          start_time: "asc"
         }
       ]);
     });
   }
+
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -350,7 +367,7 @@ class App extends SearchkitComponent {
             <LayoutResults className={this.props.eventType}>
               <ActionBar>
                 <ActionBarRow>
-                  <GroupedSelectedFilters />
+                  <GroupedSelectedFilters/>
                   <ResetFilters
                     translations={{
                       "reset.clear_all": Drupal.t("Reset all filters")
@@ -362,12 +379,12 @@ class App extends SearchkitComponent {
                 hitsPerPage={12}
                 highlightFields={["title"]}
                 hitComponents={[
-                  { key: "list", title: "List", itemComponent: HitsListItem }
+                  {key: "list", title: "List", itemComponent: HitsListItem}
                 ]}
                 scrollTo="body"
               />
-              <NoHits suggestionsField={"title"} />
-              <Pagination showNumbers={true} />
+              <NoHits suggestionsField={"title"}/>
+              <Pagination showNumbers={true}/>
             </LayoutResults>
           </LayoutBody>
         </Layout>
