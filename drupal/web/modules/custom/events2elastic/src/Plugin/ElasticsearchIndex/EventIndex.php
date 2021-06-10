@@ -108,17 +108,6 @@ class EventIndex extends ElasticsearchIndexBase {
           // Get index definition.
           $index_definition = $this->getIndexDefinition(['langcode' => $langcode]);
 
-          //          // Get analyzer for the language.
-          //          $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
-          //
-          //          // Put analyzer parameter to all "text" fields in the mapping.
-          //          foreach ($index_definition->getMappingDefinition()
-          //                     ->getProperties() as $property) {
-          //            if ($property->getDataType()->getType() == 'text') {
-          //              $property->addOption('analyzer', $analyzer);
-          //            }
-          //          }
-
           $this->createIndex($index_name, $index_definition);
         }
       }
@@ -135,16 +124,15 @@ class EventIndex extends ElasticsearchIndexBase {
     $analyzer = ElasticsearchLanguageAnalyzer::get($context['langcode']);
 
     // Set field definitions.
-    $date = FieldDefinition::create('date');
-    $date_formatted = FieldDefinition::create('date')
-      ->addOption('format', 'epoch_second');
-
-    $text = FieldDefinition::create('text');
-    $text_analyzed = FieldDefinition::create('text')
-      ->addOption('analyzer', $analyzer);
-
     $keyword = FieldDefinition::create('keyword');
     $boolean = FieldDefinition::create('boolean');
+    $text = FieldDefinition::create('text');
+    $date = FieldDefinition::create('date');
+
+    $date_formatted = FieldDefinition::create('date')
+      ->addOption('format', 'epoch_second');
+    $text_analyzed = FieldDefinition::create('text')
+      ->addOption('analyzer', $analyzer);
 
     return MappingDefinition::create()
       ->addProperty('langcode', $keyword)
@@ -221,18 +209,14 @@ class EventIndex extends ElasticsearchIndexBase {
       'analysis' => [
         'filter' => [
           'autocomplete_filter' => [
-            'type' => 'ngram',
+            'type' => 'edge_ngram',
             'min_gram' => 4,
             'max_gram' => 20,
-            'token_chars' => [
-              'letter',
-            ],
+            'token_chars' => ['letter'],
           ],
         ],
         'analyzer' => [
-          $analyzer => [
-            'tokenizer' => 'standard',
-          ],
+          $analyzer => ['tokenizer' => 'standard'],
           'comma_separated' => [
             'type' => 'custom',
             'tokenizer' => 'custom_comma_tokenizer',
@@ -240,29 +224,20 @@ class EventIndex extends ElasticsearchIndexBase {
           'autocomplete' => [
             'type' => 'custom',
             'tokenizer' => 'standard',
-            'filter' => [
-              'lowercase',
-              'autocomplete_filter',
-            ],
+            'filter' => ['lowercase', 'autocomplete_filter'],
           ],
           'keyword_autocomplete' => [
             'type' => 'custom',
             'tokenizer' => 'keyword',
-            'filter' => [
-              'lowercase',
-              'autocomplete_filter',
-            ],
+            'filter' => ['lowercase', 'autocomplete_filter'],
           ],
         ],
         'tokenizer' => [
-          'custom_comma_tokenizer' => [
-            'type' => 'pattern',
-            'pattern' => ',',
-          ],
+          'custom_comma_tokenizer' => ['type' => 'pattern', 'pattern' => ','],
         ],
       ],
     ]);
-
+    $index_definition->setType('node');
     return $index_definition;
   }
 
