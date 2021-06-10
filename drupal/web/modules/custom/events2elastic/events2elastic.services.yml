@@ -1,5 +1,5 @@
 services:
-  events2elastic.normalizer.node_normalizer:
+  events2elastic.normalizer.content_node_normalizer:
     class: Drupal\events2elastic\Plugin\Normalizer\NodeNormalizer
     tags:
       - { name: normalizer, priority: 50 }

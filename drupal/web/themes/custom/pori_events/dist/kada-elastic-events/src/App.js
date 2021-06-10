@@ -23,7 +23,7 @@ import {
   CheckboxFilter,
   HierarchicalMenuFilter
 } from "searchkit";
-import { DateRangeFilter, DateRangeCalendar } from "searchkit-datefilter";
+import {DateRangeFilter, DateRangeCalendar} from "searchkit-datefilter";
 import Moment from "moment";
 import "moment/locale/fi";
 
@@ -56,9 +56,10 @@ const queryOptions = {
 };
 
 const HitsListItem = props => {
-  const { bemBlocks, result } = props;
+  const {bemBlocks, result} = props;
   const source = extend({}, result._source, result.highlight);
-  // If there's an url in the index, use it. Otherwise, fall back to Drupal node-id.
+  // If there's an url in the index, use it. Otherwise, fall back to Drupal
+  // node-id.
   const url = source.url ? source.url : "/node/" + result._id;
   const image_source = source.image_ext
     ? "/" + source.image_ext
@@ -77,13 +78,27 @@ const HitsListItem = props => {
 
 
   let weekDays = [];
-  if (source.monday === "1") weekDays.push("MA");
-  if (source.tuesday === "1") weekDays.push("TI");
-  if (source.wednesday === "1") weekDays.push("KE");
-  if (source.thursday === "1") weekDays.push("TO");
-  if (source.friday === "1") weekDays.push("PE");
-  if (source.saturday === "1") weekDays.push("LA");
-  if (source.sunday === "1") weekDays.push("SU");
+  if (source.monday === true) {
+    weekDays.push("MA");
+  }
+  if (source.tuesday === true) {
+    weekDays.push("TI");
+  }
+  if (source.wednesday === true) {
+    weekDays.push("KE");
+  }
+  if (source.thursday === true) {
+    weekDays.push("TO");
+  }
+  if (source.friday === true) {
+    weekDays.push("PE");
+  }
+  if (source.saturday === true) {
+    weekDays.push("LA");
+  }
+  if (source.sunday === true) {
+    weekDays.push("SU");
+  }
   const addDay = weekDays.join(" | ");
 
   return (
@@ -93,20 +108,20 @@ const HitsListItem = props => {
     >
       <div className={bemBlocks.item("title")}>
         <div className="event__image__wrapper">
-          <img src={image_source} />
+          <img src={image_source}/>
         </div>
         <div className="event__time">
           {date_start} {date_end}
         </div>
         <div className="event__weekdays">{addDay}</div>
         <h2 className="event__title">
-          <a href={url} dangerouslySetInnerHTML={{ __html: title }} />
+          <a href={url} dangerouslySetInnerHTML={{__html: title}}/>
         </h2>
         <tag className="event__area">
-            {source.area_sub_area.length !== 0 && (
-              <tag> {source.area_sub_area},</tag>
-            )} {source.area}
-          </tag>
+          {source.area_sub_area.length !== 0 && (
+            <tag> {source.area_sub_area},</tag>
+          )} {source.area}
+        </tag>
         <div className="hobby__area">
           {source.hobby_location_sub_area.length !== 0 && (
             <tag> {source.hobby_location_sub_area},</tag>
@@ -118,6 +133,7 @@ const HitsListItem = props => {
     </div>
   );
 };
+
 class App extends SearchkitComponent {
   componentDidMount() {
     let is_hobby = this.props.eventType === "hobbies" ? true : false;
@@ -130,6 +146,7 @@ class App extends SearchkitComponent {
       ]);
     });
   }
+
   render() {
     return (
       <SearchkitProvider searchkit={searchkit}>
@@ -232,43 +249,43 @@ class App extends SearchkitComponent {
                     id="monday"
                     field="monday"
                     label="MA"
-                    filter={TermQuery("monday", "1")}
+                    filter={TermQuery("monday", true)}
                   />
                   <CheckboxFilter
                     id="tuesday"
                     field="tuesday"
                     label="TI"
-                    filter={TermQuery("tuesday", "1")}
+                    filter={TermQuery("tuesday", true)}
                   />
                   <CheckboxFilter
                     id="wednesday"
                     field="wednesday"
                     label="KE"
-                    filter={TermQuery("wednesday", "1")}
+                    filter={TermQuery("wednesday", true)}
                   />
                   <CheckboxFilter
                     id="thursday"
                     field="thursday"
                     label="TO"
-                    filter={TermQuery("thursday", "1")}
+                    filter={TermQuery("thursday", true)}
                   />
                   <CheckboxFilter
                     id="friday"
                     field="friday"
                     label="PE"
-                    filter={TermQuery("friday", "1")}
+                    filter={TermQuery("friday", true)}
                   />
                   <CheckboxFilter
                     id="saturday"
                     field="saturday"
                     label="LA"
-                    filter={TermQuery("saturday", "1")}
+                    filter={TermQuery("saturday", true)}
                   />
                   <CheckboxFilter
                     id="sunday"
                     field="sunday"
                     label="SU"
-                    filter={TermQuery("sunday", "1")}
+                    filter={TermQuery("sunday", true)}
                   />
                 </div>
                 <RefinementListFilter
@@ -315,34 +332,34 @@ class App extends SearchkitComponent {
                   id="registration"
                   field="registration"
                   label={Drupal.t("Registration required")}
-                  filter={TermQuery("registration", "1")}
+                  filter={TermQuery("registration", true)}
                 />
                 <CheckboxFilter
                   id="accessible"
                   field="accessible"
                   label={Drupal.t("Accessible")}
-                  filter={TermQuery("accessible", "1")}
+                  filter={TermQuery("accessible", true)}
                 />
 
                 <CheckboxFilter
                   id="child_care"
                   field="child_care"
                   label={Drupal.t("Child Care")}
-                  filter={TermQuery("child_care", "1")}
+                  filter={TermQuery("child_care", true)}
                 />
 
                 <CheckboxFilter
                   id="free"
                   field="free_enterance"
                   label={Drupal.t("Free Entrance")}
-                  filter={TermQuery("free_enterance", "1")}
+                  filter={TermQuery("free_enterance", true)}
                 />
 
                 <CheckboxFilter
                   id="culture_and_or_activity_no"
                   field="culture_and_or_activity_no"
                   label={Drupal.t("Culture and Activity card")}
-                  filter={TermQuery("culture_and_or_activity_no", "1")}
+                  filter={TermQuery("culture_and_or_activity_no", true)}
                 />
               </Panel>
             </SideBar>
@@ -350,7 +367,7 @@ class App extends SearchkitComponent {
             <LayoutResults className={this.props.eventType}>
               <ActionBar>
                 <ActionBarRow>
-                  <GroupedSelectedFilters />
+                  <GroupedSelectedFilters/>
                   <ResetFilters
                     translations={{
                       "reset.clear_all": Drupal.t("Reset all filters")
@@ -362,12 +379,12 @@ class App extends SearchkitComponent {
                 hitsPerPage={12}
                 highlightFields={["title"]}
                 hitComponents={[
-                  { key: "list", title: "List", itemComponent: HitsListItem }
+                  {key: "list", title: "List", itemComponent: HitsListItem}
                 ]}
                 scrollTo="body"
               />
-              <NoHits suggestionsField={"title"} />
-              <Pagination showNumbers={true} />
+              <NoHits suggestionsField={"title"}/>
+              <Pagination showNumbers={true}/>
             </LayoutResults>
           </LayoutBody>
         </Layout>

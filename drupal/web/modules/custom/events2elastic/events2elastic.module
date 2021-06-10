@@ -1,4 +1,1 @@
 <?php
-
-use Elasticsearch\Common\Exceptions\Missing404Exception;
-use Drupal\Core\Entity\EntityInterface;

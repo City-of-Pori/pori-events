@@ -57,7 +57,7 @@ class SearchkitProxyController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): SearchkitProxyController {
     return new static(
       $container->get('request_stack'),
       $container->get('logger.factory'),
@@ -69,10 +69,10 @@ class SearchkitProxyController extends ControllerBase {
   /**
    * Proxy.
    *
-   * @return string
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
    *   Return elasticsearch response.
    */
-  public function proxy($index) {
+  public function proxy($index): JsonResponse {
     try {
       $langcode = $this->languageManager->getCurrentLanguage()->getId();
       // We don't use Drupal\Component\Serialization\Json because it can't tell
@@ -83,6 +83,9 @@ class SearchkitProxyController extends ControllerBase {
         'body' => $content,
       ];
       $hits = $this->client->search($params);
+
+      // Fix for Pagination (kada-elastic-events React app)
+      $hits['hits']['total'] = $hits['hits']['total']['value'] ?? 0;
       return new JsonResponse($hits);
     }
     catch (\Exception $e) {
