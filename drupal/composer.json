@@ -60,7 +60,8 @@
         "symfony/filesystem": "^3.4",
         "drupal/core-recommended": "^8.9",
         "drupal/core-composer-scaffold": "^8.9",
-        "drupal/blazy": "^2.2"
+        "drupal/blazy": "^2.2",
+        "drupal/ctools": "^3.7"
     },
     "require-dev": {
         "codeception/codeception": "^2.2",
