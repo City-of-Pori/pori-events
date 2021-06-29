@@ -52,7 +52,7 @@ const queryFields = [
   "description^2"
 ];
 const queryOptions = {
-  phrase_slop: 2
+  // phrase_slop: 2
 };
 
 const HitsListItem = props => {
@@ -140,8 +140,8 @@ class App extends SearchkitComponent {
     searchkit.addDefaultQuery(query => {
       return query.addQuery(TermQuery("is_hobby", is_hobby)).setSort([
         {
-          single_day: "desc",
-          start_time: "asc"
+          single_day: { order: "desc", unmapped_type: "long" },
+          start_time: { order: "asc", unmapped_type: "long" }
         }
       ]);
     });

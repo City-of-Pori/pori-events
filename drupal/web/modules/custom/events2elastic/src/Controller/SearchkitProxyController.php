@@ -77,18 +77,26 @@ class SearchkitProxyController extends ControllerBase {
       $langcode = $this->languageManager->getCurrentLanguage()->getId();
       // We don't use Drupal\Component\Serialization\Json because it can't tell
       // the difference between an empty object and an empty array.
-      $content = json_decode($this->request->getContent(), FALSE);
+      $content = json_decode($this->request->getContent(), TRUE);
+
+      // Todo: finish following.
+      if (isset($content['query']['bool']['must'][0]['bool']['should'][1]['multi_match'])) {
+        unset($content['query']['bool']['must'][0]['bool']['should'][1]['multi_match']);
+      }
+
+      // Todo: add "type": "phrase_prefix",
+      // TOdo: Make area searchable (problem - can not be aggregated now)
       $params = [
         'index' => $index . '-' . $langcode,
-        'body' => $content,
+        'body' => (object) $content,
       ];
+
       $hits = $this->client->search($params);
 
       // Fix for Pagination (kada-elastic-events React app)
       $hits['hits']['total'] = $hits['hits']['total']['value'] ?? 0;
       return new JsonResponse($hits);
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
       $this->logger->info($e->getMessage());
       throw new BadRequestHttpException();
     }

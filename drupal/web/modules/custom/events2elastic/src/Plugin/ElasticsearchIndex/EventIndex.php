@@ -126,12 +126,13 @@ class EventIndex extends ElasticsearchIndexBase {
     // Set field definitions.
     $keyword = FieldDefinition::create('keyword');
     $boolean = FieldDefinition::create('boolean');
-    $text = FieldDefinition::create('text');
+    $text = FieldDefinition::create('text')->addOption('store', TRUE);
     $date = FieldDefinition::create('date');
 
     $date_formatted = FieldDefinition::create('date')
       ->addOption('format', 'epoch_second');
     $text_analyzed = FieldDefinition::create('text')
+      ->addOption('store', TRUE)
       ->addOption('analyzer', $analyzer);
 
     return MappingDefinition::create()
@@ -145,11 +146,13 @@ class EventIndex extends ElasticsearchIndexBase {
       ->addProperty('updated', $date_formatted)
       ->addProperty('status', $boolean)
       ->addProperty('title', $text_analyzed
-        ->addMultiField('autocomplete', $text
+        ->addMultiField('autocomplete', FieldDefinition::create('text')
           ->addOption('analyzer', 'autocomplete')
-          ->addOption('search_analyzer', 'simple'))
-        ->addMultiField('stemmed', $text)
-        ->addOption('analyzer', $analyzer))
+          ->addOption('search_analyzer', 'simple')
+          ->addOption('store', TRUE))
+        ->addMultiField('stemmed', FieldDefinition::create('text'))
+        ->addOption('analyzer', $analyzer)
+        ->addOption('store', TRUE))
       ->addProperty('area', $keyword)
       ->addProperty('area_sub_area', $keyword)
       ->addProperty('target_audience', $keyword)
