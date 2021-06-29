@@ -23,7 +23,7 @@
     ],
     "require": {
         "composer/installers": "^1.7",
-        "cweagans/composer-patches": "^1.6",
+        "cweagans/composer-patches": "^1.7",
         "drush/drush": "^10.3",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",

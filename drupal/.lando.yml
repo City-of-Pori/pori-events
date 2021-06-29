@@ -5,7 +5,6 @@ config:
   via: nginx
   xdebug: false
   vhosts: ./.lando/drupal8.conf
-  composer_version: 1-latest
 
 tooling:
   bower:
@@ -57,10 +56,10 @@ services:
   appserver:
     type: php:7.4
     webroot: web
-#    build:
-#      - composer install
-#    run:
-#      - /app/.lando/migrate.sh
+    build:
+      - composer install
+    run:
+      - /app/.lando/migrate.sh
     overrides:
       environment:
         WKV_SITE_ENV: lando
@@ -74,8 +73,8 @@ services:
   node:
     type: node
     globals:
-#      gulp-cli: latest
-#      bower: latest
+      gulp-cli: latest
+      bower: latest
     # build:
     #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 
