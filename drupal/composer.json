@@ -24,11 +24,9 @@
     "require": {
         "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6",
-        "drupal/console": "^1.0.2",
         "drush/drush": "^10.3",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "drupal/config_installer": "~1.0",
         "drupal/warden": "^2.0",
         "drupal/simplei": "^1.1",
         "wunderio/drupal-ping": "^1.0",
@@ -64,14 +62,10 @@
         "elasticsearch/elasticsearch": "^7.11"
     },
     "require-dev": {
-        "codeception/codeception": "^2.2",
-        "codeception/visualception": "^0.9.0",
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.0@RC",
         "drupal/devel": "^2.0",
-        "drupal/twig_xdebug": "^1.0",
-        "guncha25/drupal-codeception": "^8.0",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "drupal/twig_xdebug": "^1.0"
     },
     "conflict": {"drupal/drupal": "*"},
     "minimum-stability": "dev",
@@ -101,8 +95,5 @@
                 "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
             }
         }
-    },
-    "config": {
-        "process-timeout": 9000
     }
 }

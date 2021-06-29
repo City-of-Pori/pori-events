@@ -11,7 +11,7 @@ function adminer_object() {
   class AutoLogin extends Adminer {
     function credentials() {
       // server, username and password
-      return array('database', 'drupal8', 'drupal8');
+      return array('database', 'drupal9', 'drupal9');
     }
     function login($login, $password) {
       return true;

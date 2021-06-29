@@ -1,5 +1,5 @@
 name: tapahtumat
-recipe: drupal8
+recipe: drupal9
 
 config:
   via: nginx
@@ -55,18 +55,18 @@ services:
       - /app/.lando/adminer.sh
     portforward: true
   appserver:
-    type: php:7.2
+    type: php:7.4
     webroot: web
-    build:
-      - composer install
-    run:
-      - /app/.lando/migrate.sh
+#    build:
+#      - composer install
+#    run:
+#      - /app/.lando/migrate.sh
     overrides:
       environment:
         WKV_SITE_ENV: lando
         DRUSH_OPTIONS_URI: http://tapahtumat.lndo.site
   database:
-    type: mariadb:10.1
+    type: mariadb:10.3
   mailhog:
     type: mailhog
     hogfrom:
@@ -74,8 +74,8 @@ services:
   node:
     type: node
     globals:
-      gulp-cli: latest
-      bower: latest
+#      gulp-cli: latest
+#      bower: latest
     # build:
     #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
 
@@ -124,4 +124,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.0.26
+version: v3.1.4
