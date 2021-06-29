@@ -50,16 +50,17 @@
     {{ page.secondary_menu }}
   </header>
 
- </div>
- 
-  {% if is_front %}
-    <div id="content_header">
-      <a href="http://www.satakuntaevents.fi/" class="add-event event-text-blue"><span class="link-text">Lisää oma tapahtumasi</span><i class="fas fa-plus"></i></a>
-      {{ page.content_header }}
-    </div>
-  {% endif %}
+</div>
 
-  <div class="layout-container">
+{% if is_front %}
+  <div id="content_header">
+    <a href="http://www.satakuntaevents.fi/" class="add-event event-text-blue"><span class="link-text">Lisää oma tapahtumasi</span><i
+        class="fas fa-plus"></i></a>
+    {{ page.content_header }}
+  </div>
+{% endif %}
+
+<div class="layout-container">
 
   <main class="page-content" role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -89,7 +90,8 @@
   <footer class="page-footer" role="contentinfo">
     <div class="page-footer__top">
       <a href="{{ front_page }}" class="footer-logo">Etusivu</a>
-      <a href="http://www.satakuntaevents.fi/" class="add-event event-text-blue"><span class="link-text">Lisää oma tapahtumasi</span><i class="fas fa-plus"></i></a>
+      <a href="http://www.satakuntaevents.fi/" class="add-event event-text-blue"><span class="link-text">Lisää oma tapahtumasi</span><i
+          class="fas fa-plus"></i></a>
     </div>
     <div class="page-footer__bottom">
       {% if page.footer %}

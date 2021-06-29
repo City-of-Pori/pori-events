@@ -11,11 +11,11 @@ theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: 'block_content:c6590f54-a292-4e97-b235-4d63502eaaa8'
+plugin: eventswitcher
 settings:
-  id: 'block_content:c6590f54-a292-4e97-b235-4d63502eaaa8'
+  id: eventswitcher
   label: 'Event switcher'
-  provider: block_content
+  provider: core
   label_display: '0'
   status: true
   info: ''

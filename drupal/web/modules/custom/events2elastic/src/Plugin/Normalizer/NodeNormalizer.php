@@ -6,7 +6,6 @@ use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 use Drupal\Core\Field\FieldItemList;
-use PHPUnit\ExampleExtension\Comparator;
 
 /**
  * Normalizes / denormalizes Drupal nodes into an array structure good for ES.
@@ -28,8 +27,6 @@ class NodeNormalizer extends ContentEntityNormalizer {
    */
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
-
-
     $bundle = $object->bundle();
     // Get the object language.
     $langcode = $object->language()->getId();
@@ -42,7 +39,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
       'status' => $object->isPublished(),
       'bundle' => $bundle,
       'created' => $object->getCreatedTime(),
-      'url' => $object->url(),
+      'url' => $object->toUrl()->toString(),
     ];
 
     if ($bundle == 'event') {

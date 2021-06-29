@@ -3,7 +3,7 @@
 namespace Drupal\pori_event_search_defaults\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Drupal\Core\Cache\CacheableRedirectResponse;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Drupal\Core\Url;
@@ -16,10 +16,10 @@ class EventsDefaultRedirectSubscriber implements EventSubscriberInterface {
   /**
    * Add daterange query parameters for default calendar view requests.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   ResponseEvent.
    */
-  public function dateRangeRedirect(GetResponseEvent $event) {
+  public function dateRangeRedirect(RequestEvent $event) {
 
     $url = Url::fromRoute('<current>')->getInternalPath();
 

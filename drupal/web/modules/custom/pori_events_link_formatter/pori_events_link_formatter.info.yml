@@ -1,5 +1,5 @@
-name: 'Pori Events link formatter'
+name: Pori Events link formatter
 type: module
-description: 'Provides a custom Link  formatter.'
-core: 8.x
-package: 'Pori Events'
+description: Provides a custom Link  formatter
+core_version_requirement: ^8 || ^9
+package: Pori Events

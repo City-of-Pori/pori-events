@@ -1,5 +1,5 @@
-name: 'Pori event search defaults'
+name: Pori event search defaults
 type: module
-description: 'Sets default parameters for search pages'
-core: 8.x
-package: 'Custom'
+description: Sets default parameters for search pages
+core_version_requirement: ^8 || ^9
+package: Custom
