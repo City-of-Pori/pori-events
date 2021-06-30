@@ -8,7 +8,7 @@ use Drupal\Core\Block\BlockBase;
  * Provides a 'Hobby Switcher' Block.
  *
  * @Block(
- *   id = "hobbyswitcher",
+ *   id = "hobby_switcher",
  *   admin_label = @Translation("Hobby Switcher"),
  *   category = @Translation("Pori Events"),
  * )

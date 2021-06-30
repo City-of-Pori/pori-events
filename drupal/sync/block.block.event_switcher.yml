@@ -7,14 +7,14 @@ dependencies:
     - system
   theme:
     - pori_events
-id: eventswitcher
+id: event_switcher
 theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: eventswitcher
+plugin: event_switcher
 settings:
-  id: eventswitcher
+  id: event_switcher
   label: 'Event Switcher'
   provider: pori_events_link_formatter
   label_display: '0'

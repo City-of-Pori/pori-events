@@ -8,7 +8,7 @@ use Drupal\Core\Block\BlockBase;
  * Provides a 'Event Switcher' Block.
  *
  * @Block(
- *   id = "eventswitcher",
+ *   id = "event_switcher",
  *   admin_label = @Translation("Event Switcher"),
  *   category = @Translation("Pori Events"),
  * )

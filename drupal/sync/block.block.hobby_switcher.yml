@@ -7,14 +7,14 @@ dependencies:
     - system
   theme:
     - pori_events
-id: hobbyswitcher
+id: hobby_switcher
 theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: hobbyswitcher
+plugin: hobby_switcher
 settings:
-  id: hobbyswitcher
+  id: hobby_switcher
   label: 'Hobby Switcher'
   provider: pori_events_link_formatter
   label_display: '0'
