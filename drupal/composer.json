@@ -43,7 +43,7 @@
         "drupal/entityqueue": "^1.0",
         "drupal/slick": "^2.3",
         "drupal/slick_views": "^2.4",
-        "drupal/fontawesome": "^2.2",
+        "drupal/fontawesome": "^2.19",
         "drupal/twig_tweak": "^3.1",
         "drupal/google_analytics": "^3.1",
         "kenwheeler/slick": "^1.8",
@@ -52,14 +52,15 @@
         "drupal/migrate_source_jsonpath": "^1",
         "drupal/context": "^4.0@beta",
         "drupal/empty_page": "^3",
-        "drupal/simple_gmap": "^3",
+        "drupal/simple_gmap": "^3.0",
         "drupal/pathauto": "^1.6",
         "symfony/finder": "^3.4",
         "symfony/filesystem": "^3.4",
         "drupal/core-recommended": "^9.2",
         "drupal/core-composer-scaffold": "^9.2",
-        "drupal/blazy": "^2.2",
-        "elasticsearch/elasticsearch": "^7.11"
+        "drupal/blazy": "^2.4",
+        "elasticsearch/elasticsearch": "^7.11",
+        "drupal/ctools": "^3.7"
     },
     "require-dev": {
         "drupal/config_devel": "^1.2",
