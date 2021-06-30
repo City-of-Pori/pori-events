@@ -1,0 +1,25 @@
+uuid: e5e05be3-9456-428e-94ee-44e726affb8b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e88c8c54-6f07-4577-bc3c-38ed94e5c535'
+  module:
+    - block_content
+  theme:
+    - pori_events
+id: event_type_switcher
+theme: pori_events
+region: content_header
+weight: 0
+provider: null
+plugin: 'block_content:e88c8c54-6f07-4577-bc3c-38ed94e5c535'
+settings:
+  id: 'block_content:e88c8c54-6f07-4577-bc3c-38ed94e5c535'
+  label: 'Event type switcher'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
