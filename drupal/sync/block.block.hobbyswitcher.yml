@@ -1,11 +1,8 @@
 uuid: 665487d8-7af7-4b83-a46e-1e9cda8b9f7e
 langcode: en
-status: false
+status: true
 dependencies:
-  content:
-    - 'block_content:basic:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
   module:
-    - block_content
     - system
   theme:
     - pori_events
@@ -18,7 +15,7 @@ plugin: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
 settings:
   id: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
   label: 'Hobby switcher'
-  provider: block_content
+  provider: core
   label_display: '0'
   status: true
   info: ''
