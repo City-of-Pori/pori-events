@@ -1,7 +1,7 @@
 name: Migrate source example setup
 type: module
 description: Provides default configuration for migration example modules.
-core: 8.x
+core_version_requirement: ^8 || ^9
 package: Migration
 dependencies:
   - language

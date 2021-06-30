@@ -32,7 +32,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
 // Set ElasticSearch Helper settings (hostname & port for local).
-$config['elasticsearch_helper.settings']['hosts'][0]['host'] = 'elasticsearch-tapahtumat.lndo.site';
+$config['elasticsearch_helper.settings']['hosts'][0]['host'] = 'elasticsearch.tapahtumat.internal';
 $config['elasticsearch_helper.settings']['hosts'][0]['port'] = "9400";
 
 // simple_environment_indicator settings.

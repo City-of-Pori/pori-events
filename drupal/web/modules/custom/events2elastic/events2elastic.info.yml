@@ -1,7 +1,7 @@
 name: Events 2 Elastic
 type: module
 description: Index events with Elasticsearch.
-core: 8.x
+core_version_requirement: ^8 || ^9
 package: Custom
 dependencies:
 - elasticsearch_helper

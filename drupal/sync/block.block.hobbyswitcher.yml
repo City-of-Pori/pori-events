@@ -1,8 +1,11 @@
-uuid: 8d1490e3-2ef1-4166-b627-4e7902a2bba7
-langcode: fi
+uuid: 665487d8-7af7-4b83-a46e-1e9cda8b9f7e
+langcode: en
 status: true
 dependencies:
+  content:
+    - 'block_content:basic:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
   module:
+    - block_content
     - system
   theme:
     - pori_events
@@ -11,12 +14,12 @@ theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: 'block_content:bec0822c-f305-44dc-aec8-d27cc42745f2'
+plugin: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
 settings:
-  id: 'block_content:bec0822c-f305-44dc-aec8-d27cc42745f2'
+  id: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
   label: 'Hobby switcher'
   provider: block_content
-  label_display: visible
+  label_display: '0'
   status: true
   info: ''
   view_mode: full
@@ -25,4 +28,3 @@ visibility:
     id: request_path
     pages: '<front>'
     negate: true
-    context_mapping: {  }
