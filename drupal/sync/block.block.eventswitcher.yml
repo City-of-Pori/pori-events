@@ -1,11 +1,8 @@
 uuid: 863df998-0e2f-43da-a0cd-3e49dcef2d2a
 langcode: en
-status: false
+status: true
 dependencies:
-  content:
-    - 'block_content:basic:88e4da98-a1c6-40c9-ad9c-1296a0390995'
   module:
-    - block_content
     - system
   theme:
     - pori_events
@@ -18,7 +15,7 @@ plugin: 'block_content:88e4da98-a1c6-40c9-ad9c-1296a0390995'
 settings:
   id: 'block_content:88e4da98-a1c6-40c9-ad9c-1296a0390995'
   label: 'Event Switcher'
-  provider: block_content
+  provider: core
   label_display: '0'
   status: true
   info: ''
