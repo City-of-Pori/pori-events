@@ -1,8 +1,9 @@
-uuid: 863df998-0e2f-43da-a0cd-3e49dcef2d2a
+uuid: b5cf753c-9d53-4129-a82d-2473fd951fbf
 langcode: en
 status: true
 dependencies:
   module:
+    - pori_events_link_formatter
     - system
   theme:
     - pori_events
@@ -11,15 +12,12 @@ theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: 'block_content:88e4da98-a1c6-40c9-ad9c-1296a0390995'
+plugin: eventswitcher
 settings:
-  id: 'block_content:88e4da98-a1c6-40c9-ad9c-1296a0390995'
+  id: eventswitcher
   label: 'Event Switcher'
-  provider: core
+  provider: pori_events_link_formatter
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
 visibility:
   request_path:
     id: request_path

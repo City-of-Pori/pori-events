@@ -1,8 +1,9 @@
-uuid: 665487d8-7af7-4b83-a46e-1e9cda8b9f7e
+uuid: 675eec92-11df-41a3-a3c0-c1c9f7a80029
 langcode: en
 status: true
 dependencies:
   module:
+    - pori_events_link_formatter
     - system
   theme:
     - pori_events
@@ -11,15 +12,12 @@ theme: pori_events
 region: content_header
 weight: 0
 provider: null
-plugin: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
+plugin: hobbyswitcher
 settings:
-  id: 'block_content:2e6b7563-9230-41b8-9b6a-7c9b3eec1fe2'
-  label: 'Hobby switcher'
-  provider: core
+  id: hobbyswitcher
+  label: 'Hobby Switcher'
+  provider: pori_events_link_formatter
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
 visibility:
   request_path:
     id: request_path
