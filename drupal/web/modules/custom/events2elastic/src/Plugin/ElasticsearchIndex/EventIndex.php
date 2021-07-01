@@ -201,7 +201,6 @@ class EventIndex extends ElasticsearchIndexBase {
     // Get analyzer for the language.
     $analyzer = ElasticsearchLanguageAnalyzer::get($context['langcode']);
 
-
     // Add custom settings for index.
     $index_definition->getSettingsDefinition()->addOptions([
       'max_ngram_diff' => 16,
@@ -217,6 +216,11 @@ class EventIndex extends ElasticsearchIndexBase {
             'max_gram' => 20,
             'token_chars' => ['letter'],
           ],
+          'pori_nGram' => [
+            'type' => 'nGram',
+            'min_gram' => 3,
+            'max_gram' => 15,
+          ],
         ],
         'analyzer' => [
           $analyzer => ['tokenizer' => 'standard'],
@@ -227,16 +231,20 @@ class EventIndex extends ElasticsearchIndexBase {
           'autocomplete' => [
             'type' => 'custom',
             'tokenizer' => 'standard',
-            'filter' => ['lowercase', 'autocomplete_filter'],
+            'filter' => ['lowercase', 'autocomplete_filter', 'pori_nGram'],
           ],
           'keyword_autocomplete' => [
             'type' => 'custom',
             'tokenizer' => 'keyword',
-            'filter' => ['lowercase', 'autocomplete_filter'],
+            'filter' => ['lowercase', 'autocomplete_filter', 'pori_nGram'],
           ],
         ],
         'tokenizer' => [
-          'custom_comma_tokenizer' => ['type' => 'pattern', 'pattern' => ','],
+          'custom_comma_tokenizer' => [
+            'type' => 'pattern',
+            'pattern' => ',',
+            'filter' => ['lowercase', 'autocomplete_filter', 'pori_nGram'],
+          ],
         ],
       ],
     ]);
