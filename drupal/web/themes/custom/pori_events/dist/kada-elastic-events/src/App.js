@@ -21,7 +21,8 @@ import {
   Panel,
   TermQuery,
   CheckboxFilter,
-  HierarchicalMenuFilter
+  HierarchicalMenuFilter,
+  InitialLoader
 } from "searchkit";
 import {DateRangeFilter, DateRangeCalendar} from "searchkit-datefilter";
 import Moment from "moment";
@@ -133,6 +134,12 @@ const HitsListItem = props => {
     </div>
   );
 };
+
+const InitialLoaderComponent = (props) => (
+  <div>
+    Loading, please wait...
+  </div>
+)
 
 class App extends SearchkitComponent {
   componentDidMount() {
@@ -383,7 +390,12 @@ class App extends SearchkitComponent {
                 ]}
                 scrollTo="body"
               />
-              <NoHits suggestionsField={"title"}/>
+              <NoHits translations={{
+                "NoHits.NoResultsFound": "No results found for {query}.",
+                "NoHits.NoResultsFoundDidYouMean": "No results found for {query}. Did you mean {suggestion}?",
+                "NoHits.DidYouMean": "Search for {suggestion} instead"
+              }} suggestionsField={"title"}/>
+              <InitialLoader component={InitialLoaderComponent}/>
               <Pagination showNumbers={true}/>
             </LayoutResults>
           </LayoutBody>
