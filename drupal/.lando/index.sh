@@ -6,6 +6,7 @@ set -exu
 # Index elasticsearch.
 local=@tapahtumat.local
 
+drush "$local" cr
 drush "$local" eshd -y
 drush "$local" eshs event_index
 drush "$local" eshr event_index

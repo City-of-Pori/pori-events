@@ -50,26 +50,27 @@
     {{ page.secondary_menu }}
   </header>
 
- </div>
- 
-  
-    <div id="content_header">
-      <a href="http://www.satakuntaevents.fi/" class="add-event hobby-text-red"><span class="link-text">Lisää oma harrastuksesi</span><i class="fas fa-plus"></i></a>
-      {{ page.content_header }}
-    </div>
- 
+</div>
 
-  <div class="layout-container">
+
+<div id="content_header">
+  <a href="http://www.satakuntaevents.fi/" class="add-event hobby-text-red"><span class="link-text">Lisää oma harrastuksesi</span><i
+      class="fas fa-plus"></i></a>
+  {{ page.content_header }}
+</div>
+
+
+<div class="layout-container">
 
   <main class="page-content" role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
-     
-        <div id="kada-event-search" data-event-type="hobbies"  class="kada-event-search hobby-search"></div>
-   
-        {{ page.content }}
-      
+
+      <div id="kada-event-search" data-event-type="hobbies" class="kada-event-search hobby-search"></div>
+
+      {{ page.content }}
+
     </div>{# /.layout-content #}
 
     {% if page.sidebar_first %}
@@ -89,7 +90,8 @@
   <footer class="page-footer page-footer-hobby" role="contentinfo">
     <div class="page-footer__top">
       <a href="{{ front_page }}" class="footer-logo footer-logo-hobby">Etusivu</a>
-      <a href="http://www.satakuntaevents.fi/" class="add-event hobby-text-red"><span class="link-text">Lisää oma harrastuksesi</span><i class="fas fa-plus"></i></a>
+      <a href="http://www.satakuntaevents.fi/" class="add-event hobby-text-red"><span class="link-text">Lisää oma harrastuksesi</span><i
+          class="fas fa-plus"></i></a>
     </div>
     <div class="page-footer__bottom">
       {% if page.footer %}

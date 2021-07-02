@@ -1,5 +1,5 @@
 name: Migrate Linked Events
 type: module
 description: Migrate from Linked Events API
-core: 8.x
+core_version_requirement: ^8 || ^9
 package: Migration

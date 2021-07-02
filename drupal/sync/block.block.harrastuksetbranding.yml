@@ -11,12 +11,15 @@ theme: pori_events
 region: header
 weight: 0
 provider: null
-plugin: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
+plugin: system_branding_block
 settings:
-  id: 'block_content:948290ec-32b7-41ff-b412-a5b658d0de6d'
+  id: system_branding_block
   label: 'Harrastukset branding'
-  provider: block_content
+  provider: system
   label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
   status: true
   info: ''
   view_mode: full

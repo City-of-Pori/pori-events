@@ -72,7 +72,6 @@ function pori_harrastukset_preprocess_block(&$variables) {
 
       /** @var \Drupal\node\Entity\Node $node */
       $node = \Drupal::routeMatch()->getParameter('node');
-
       $variables['is_hobby'] = $node->get('field_hobby_is_hobby')->getString();
     }
   }

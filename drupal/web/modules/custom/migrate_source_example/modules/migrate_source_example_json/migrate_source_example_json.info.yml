@@ -1,7 +1,7 @@
 name: JSON migration Linked Events
 type: module
 description: JSON migration Linked Events
-core: 8.x
+core_version_requirement: ^8 || ^9
 package: Migration
 dependencies:
   - migrate_source_example

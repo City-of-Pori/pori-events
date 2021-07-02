@@ -1,5 +1,5 @@
-name: 'pori_harrastukset'
+name: pori_harrastukset
 type: module
-description: 'Custom features for Pori Hobbies'
-core: 8.x
-package: 'Custom'
+description: Custom features for Pori Hobbies
+core_version_requirement: ^8 || ^9
+package: Custom
