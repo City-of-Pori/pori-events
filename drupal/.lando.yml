@@ -1,21 +1,12 @@
 name: tapahtumat
-recipe: drupal8
-
-compose:
-  - compose.yml
+recipe: drupal9
 
 config:
   via: nginx
   xdebug: false
   vhosts: ./.lando/drupal8.conf
-  composer_version: 1-latest
 
 tooling:
-  # build.sh:
-  #   service: appserver
-  #   description: Execute build.sh
-  #   cmd:
-  #     - ./build.sh
   bower:
     service: node
   gulp:
@@ -63,13 +54,10 @@ services:
       - /app/.lando/adminer.sh
     portforward: true
   appserver:
-    type: php:7.2
+    type: php:7.4
     webroot: web
     build:
       - composer install
-    # build_as_root:
-    #   - "apt-get update -y"
-    #   - "apt-get install python-yaml -y"
     run:
       - /app/.lando/migrate.sh
     overrides:
@@ -77,7 +65,7 @@ services:
         WKV_SITE_ENV: lando
         DRUSH_OPTIONS_URI: http://tapahtumat.lndo.site
   database:
-    type: mariadb:10.1
+    type: mariadb:10.3
   mailhog:
     type: mailhog
     hogfrom:
@@ -89,11 +77,45 @@ services:
       bower: latest
     # build:
     #   - 'cd /app/web/themes/custom/pori_events/dist/kada-elastic-events && npm install'
+
+  elasticsearch:
+    type: compose
+    meUser: elasticsearch
+    ssl: true
+    sslExpose: false
+    services:
+      image: blacktop/elasticsearch:7
+      command: /elastic-entrypoint.sh elasticsearch
+      ports:
+        - "9400:9400"
+        - "9500:9500"
+      volumes:
+        - ./.lando/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    overrides:
+      environment:
+        JAVA_HOME: /usr/lib/jvm/default-jvm
+        ES_JAVA_OPTS: -Xms512m -Xmx512m
+  kibana:
+    type: compose
+    meUser: kibana
+    services:
+      image: blacktop/kibana:7
+      command: /docker-entrypoint.sh kibana
+      ports:
+        - "5701:5701"
+      volumes:
+        - ./.lando/kibana.yml:/usr/share/kibana/config/kibana.yml
+      depends_on:
+        - elasticsearch
 proxy:
   adminer:
     - adminer-tapahtumat.lndo.site
   mailhog:
     - mail-tapahtumat.lndo.site
+  elasticsearch:
+    - elasticsearch-tapahtumat.lndo.site:9400
+  kibana:
+    - kibana-tapahtumat.lndo.site:5701
 
 eevents:
   post-db-import:
@@ -101,4 +123,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.0.26
+version: v3.1.4

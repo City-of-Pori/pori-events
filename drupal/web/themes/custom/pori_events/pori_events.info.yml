@@ -1,8 +1,8 @@
 name: pori_events
 type: theme
-description: 'Pori events theme.'
+description: Pori events theme
 package: Custom
-core: 8.x
+core_version_requirement: ^8 || ^9
 base theme: classy
 
 libraries:
@@ -22,9 +22,9 @@ libraries-override:
 
 regions:
   header: Header
-  primary_menu: 'Primary menu'
+  primary_menu: Primary menu
   messages: Messages
-  content_header: 'Content Header'
+  content_header: Content Header
   content: Content
-  sidebar_first: 'Sidebar first'
-  footer: 'Footer'
+  sidebar_first: Sidebar first
+  footer: Footer

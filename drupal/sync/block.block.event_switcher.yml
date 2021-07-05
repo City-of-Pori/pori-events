@@ -1,0 +1,25 @@
+uuid: b5cf753c-9d53-4129-a82d-2473fd951fbf
+langcode: en
+status: true
+dependencies:
+  module:
+    - pori_events_link_formatter
+    - system
+  theme:
+    - pori_events
+id: event_switcher
+theme: pori_events
+region: content_header
+weight: 0
+provider: null
+plugin: event_switcher
+settings:
+  id: event_switcher
+  label: 'Event Switcher'
+  provider: pori_events_link_formatter
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false

@@ -1,7 +1,7 @@
-name: 'Pori pathauto'
+name: Pori pathauto
 type: module
-description: 'Pori events site pathauto alterations'
-core: 8.x
-package: 'Pori Events'
+description: Pori events site pathauto alterations
+core_version_requirement: ^8 || ^9
+package: Pori Events
 dependencies:
   - drupal:pathauto
