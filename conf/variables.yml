@@ -25,7 +25,7 @@ partition_var_log: False
 partition_var_lib_mysql: False
 
 # PHP version to be used. Available options: php56u, php70u
-php_package: "php72u"
+php_package: "php74remi"
 
 drush: {
   version: "8.*",
@@ -130,7 +130,7 @@ firewall_ssh_allowed:
 
   # Current VPN and Office IP-address listings can be found from
   # https://intra.wunder.io/info/office-and-vpn-ip-addresses
-  
+
   # VyprVPN endpoints
   - comment: VyprVPN - Frankfurt (DE)
     ip: 94.237.27.124
@@ -150,7 +150,7 @@ firewall_ssh_allowed:
     ip: 87.94.15.10
   - comment: Wunder Office - Helsinki (FI)
     ip: 84.20.132.177
-  
+
   # This is list of deploybot IP-addresses
   # source: http://support.deploybot.com/article/854-ips-and-ports-for-firewall-setup
   - comment: Deploybot Server
@@ -179,7 +179,7 @@ firewall_ssh_allowed:
     ip: 52.37.215.92
   - comment: Deploybot Server
     ip: 52.38.202.217
-  
+
   # This is list of Travis CI container based addresses
   # source: https://docs.travis-ci.com/user/ip-addresses/
   - comment: Travis CI Containers - travis-ci.com
@@ -200,7 +200,7 @@ firewall_ssh_allowed:
     ip: 54.82.137.204
 
 # DEPRECATED - THIS WILL BE DELETED SOON
-# This contains trusted servers allowed in Upcloud Firewall 
+# This contains trusted servers allowed in Upcloud Firewall
 vpn_ip_list:
   - name: Wunder Offices
     addresses:
@@ -216,7 +216,7 @@ vpn_ip_list:
       - 83.136.248.231
 
 # DEPRECATED - THIS WILL BE DELETED SOON
-# This contains trusted servers allowed in Upcloud Firewall 
+# This contains trusted servers allowed in Upcloud Firewall
 # This is list of deploybot IP-addresses
 # source: http://support.deploybot.com/article/854-ips-and-ports-for-firewall-setup
 deployment_server_ip_list:
