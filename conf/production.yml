@@ -168,6 +168,7 @@
         forwarded_domains: "{{ domain_name }} {{ domain2_name }}"
         http_port: 80
 
+    mariadb_version: "10.3"
     databases:
       - name: drupal
         host: localhost

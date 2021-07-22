@@ -152,6 +152,7 @@
         forwarded_domains: "{{ domain_name }}"
         http_port: 80
 
+    mariadb_version: "10.3"
     databases:
       - name: drupal
         host: localhost
@@ -201,4 +202,5 @@
 
     newrelic_enabled: True
     newrelic_infra_enabled: True
-    elasticsearch_heap_size: 1g
+    elasticsearch_heap_size: 500m
+    elasticsearch_http_max_content_length: 500mb
