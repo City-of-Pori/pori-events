@@ -50,7 +50,7 @@
         "dinbror/blazy": "^1.8",
         "drupal/conditional_fields": "^4.0@alpha",
         "drupal/migrate_source_jsonpath": "^1",
-        "drupal/context": "^4.0@beta",
+        "drupal/context": "^4.1",
         "drupal/empty_page": "^3",
         "drupal/simple_gmap": "^3.0",
         "drupal/pathauto": "^1.6",

@@ -152,15 +152,27 @@ class EventIndex extends ElasticsearchIndexBase {
           ->addOption('store', TRUE))
         ->addMultiField('stemmed', FieldDefinition::create('text'))
         ->addOption('analyzer', $analyzer)
-        ->addOption('store', TRUE))
+        ->addOption('store', TRUE)
+        ->addMultiField('raw', FieldDefinition::create('keyword')
+          // Use case-insensitivity.
+          ->addOption('normalizer', 'case_insensitive')
+        ))
       ->addProperty('area', $keyword)
       ->addProperty('area_sub_area', $keyword)
       ->addProperty('target_audience', $keyword)
       ->addProperty('event_type', $keyword)
       ->addProperty('tickets', $text_analyzed)
       ->addProperty('free_enterance', $boolean)
-      ->addProperty('description', $text_analyzed)
-      ->addProperty('short_description', $text_analyzed)
+      ->addProperty('description', $text_analyzed
+        ->addMultiField('raw', FieldDefinition::create('keyword')
+          // Use case-insensitivity.
+          ->addOption('normalizer', 'case_insensitive')
+        ))
+      ->addProperty('short_description', $text_analyzed
+        ->addMultiField('raw', FieldDefinition::create('keyword')
+          // Use case-insensitivity.
+          ->addOption('normalizer', 'case_insensitive')
+        ))
       ->addProperty('image', $text
         ->addOption('index', FALSE))
       ->addProperty('start_time', $date)
@@ -209,11 +221,14 @@ class EventIndex extends ElasticsearchIndexBase {
       // No need for replicas, we only have one ES node.
       'number_of_replicas' => 0,
       'analysis' => [
+        // Set up case-insensitivity.
+        'normalizer' => ['case_insensitive' => ['filter' => ['lowercase']]],
         'filter' => [
           'autocomplete_filter' => [
             'type' => 'edge_ngram',
             'min_gram' => 4,
             'max_gram' => 20,
+            "char_filter" => ["html_strip"],
             'token_chars' => ['letter'],
           ],
           'pori_nGram' => [
