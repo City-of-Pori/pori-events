@@ -1,3 +1,4 @@
+@use "sass:math";
 // Use REMs with a pixel fallback for font sizing.
 @mixin font-size($font-size){
   font-size: $font-size;
@@ -25,6 +26,6 @@
   font-size: $size;
 
   @media screen and (max-width: 599px) {
-    font-size: ($size / 1.2857142857);
+    font-size: math.div($size, 1.2857142857000001);
   }
 }
