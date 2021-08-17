@@ -10,7 +10,7 @@ var rename = require('gulp-rename');
 var gulpif = require('gulp-if');
 
 // Sass plugins
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sassGlob = require('gulp-sass-glob');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefix = require('gulp-autoprefixer');
