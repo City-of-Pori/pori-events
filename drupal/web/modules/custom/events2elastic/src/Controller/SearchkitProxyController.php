@@ -84,6 +84,12 @@ class SearchkitProxyController extends ControllerBase {
       if ($valid_query) {
         // Get rid of multi_match in query
         unset($content->query->bool->must[0]->bool->should[1]);
+
+        $q_str = $content->query->bool->must[0]->bool->should[0]->query_string->query;
+
+        // Use Fuzziness & Wildcard (to search in the part of the keyword).
+        $new_q_str = '*' . $q_str . '* OR ' . $q_str . ' ~1 OR *' . ucwords($q_str) . '* OR ' . ucwords($q_str) . ' ~1';
+        $content->query->bool->must[0]->bool->should[0]->query_string->query =$new_q_str;
       }
 
       $hits = $this->client->search([
