@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: composer
+    directory: "/drupal"
+    schedule:
+      interval: daily
+      time: "03:00"
+    open-pull-requests-limit: 7
+  - package-ecosystem: npm
+    directory: "/drupal/web/themes/custom/pori_events"
+    schedule:
+      interval: daily
+      time: "03:00"
+    open-pull-requests-limit: 7
+  - package-ecosystem: npm
+    directory: "/drupal/web/themes/custom/pori_events/dist/kada-elastic-events"
+    schedule:
+      interval: daily
+      time: "03:00"
+    open-pull-requests-limit: 7
