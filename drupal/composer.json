@@ -41,7 +41,7 @@
         "drupal/structured_data": "^1.0",
         "drupal/imagecache_external": "^3.0",
         "drupal/entityqueue": "^1.0",
-        "drupal/slick": "^2.3",
+        "drupal/slick": "^2.4",
         "drupal/slick_views": "^2.4",
         "drupal/fontawesome": "^2.19",
         "drupal/twig_tweak": "^3.1",
@@ -58,7 +58,7 @@
         "symfony/filesystem": "^3.4",
         "drupal/core-recommended": "^9.2",
         "drupal/core-composer-scaffold": "^9.2",
-        "drupal/blazy": "^2.4",
+        "drupal/blazy": "^2.5",
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^3.7"
     },
