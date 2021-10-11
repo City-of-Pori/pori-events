@@ -4,6 +4,7 @@ recipe: drupal9
 config:
   via: nginx
   xdebug: false
+  composer_version: 2
   vhosts: ./.lando/drupal8.conf
 
 tooling:
@@ -123,4 +124,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.1.4
+version: v3.4.2
