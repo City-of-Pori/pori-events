@@ -45,7 +45,7 @@
         "drupal/slick_views": "^2.4",
         "drupal/fontawesome": "^2.19",
         "drupal/twig_tweak": "^3.1",
-        "drupal/google_analytics": "^3.1",
+        "drupal/google_analytics": "^4.0",
         "kenwheeler/slick": "^1.8",
         "dinbror/blazy": "^1.8",
         "drupal/conditional_fields": "^4.0@alpha",
