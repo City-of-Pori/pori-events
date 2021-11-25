@@ -91,8 +91,14 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['is_hobby'] = $object->field_hobby_is_hobby->value == TRUE;
       $data['accessible'] = $object->field_accessible->value == TRUE;
       $data['child_care'] = $object->field_child_care->value == TRUE;
+      $data['super_event'] = $object->field_super_event->value == TRUE;
       $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value == TRUE;
       $data['registration'] = $object->field_pre_registration->value == TRUE;
+
+      // This should make status unpublished.
+      if (!empty($object->field_super_event->value) && $object->field_super_event->value == TRUE) {
+        $data['status'] = 0;
+      }
 
 
       // Date fields

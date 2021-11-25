@@ -32,6 +32,7 @@ dependencies:
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_super_event
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
     - field.field.node.event.field_timeframe_of_day
@@ -58,7 +59,7 @@ bundle: event
 mode: default
 content:
   field_accessible:
-    weight: 122
+    weight: 16
     label: above
     settings:
       format: default
@@ -68,7 +69,7 @@ content:
     type: boolean
     region: content
   field_area:
-    weight: 108
+    weight: 5
     label: above
     settings:
       link: true
@@ -76,7 +77,7 @@ content:
     type: entity_reference_label
     region: content
   field_child_care:
-    weight: 134
+    weight: 19
     label: above
     settings:
       format: default
@@ -86,7 +87,7 @@ content:
     type: boolean
     region: content
   field_culture_and_or_activity_no:
-    weight: 135
+    weight: 20
     label: above
     settings:
       format: default
@@ -96,14 +97,14 @@ content:
     type: boolean
     region: content
   field_description:
-    weight: 104
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_end_time:
-    weight: 103
+    weight: 2
     label: above
     settings:
       format_type: medium
@@ -112,7 +113,7 @@ content:
     type: datetime_default
     region: content
   field_event_type:
-    weight: 113
+    weight: 8
     label: above
     settings:
       link: true
@@ -120,7 +121,7 @@ content:
     type: entity_reference_label
     region: content
   field_exceptional_opening_hours:
-    weight: 154
+    weight: 34
     label: above
     settings:
       separator: '-'
@@ -130,7 +131,7 @@ content:
     type: daterange_default
     region: content
   field_external:
-    weight: 159
+    weight: 39
     label: above
     settings:
       trim_length: 80
@@ -142,7 +143,7 @@ content:
     type: link
     region: content
   field_free_enterance:
-    weight: 112
+    weight: 7
     label: above
     settings:
       format: default
@@ -152,7 +153,7 @@ content:
     type: boolean
     region: content
   field_hobby_area:
-    weight: 156
+    weight: 36
     label: above
     settings:
       link: true
@@ -160,7 +161,7 @@ content:
     type: entity_reference_label
     region: content
   field_hobby_audience:
-    weight: 155
+    weight: 35
     label: above
     settings:
       link: true
@@ -168,7 +169,7 @@ content:
     type: entity_reference_label
     region: content
   field_hobby_category:
-    weight: 133
+    weight: 18
     label: above
     settings:
       link: true
@@ -176,7 +177,7 @@ content:
     type: entity_reference_label
     region: content
   field_hobby_is_hobby:
-    weight: 132
+    weight: 17
     label: above
     settings:
       format: default
@@ -186,7 +187,7 @@ content:
     type: boolean
     region: content
   field_hobby_map:
-    weight: 137
+    weight: 21
     label: above
     settings:
       link_to_entity: false
@@ -194,7 +195,7 @@ content:
     type: string
     region: content
   field_image_ext_url:
-    weight: 114
+    weight: 9
     label: above
     settings:
       imagecache_external_style: large
@@ -203,7 +204,7 @@ content:
     type: imagecache_external_image
     region: content
   field_location_extra_info:
-    weight: 116
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -211,14 +212,14 @@ content:
     type: string
     region: content
   field_location_extra_info_info:
-    weight: 157
+    weight: 37
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_pre_registration:
-    weight: 140
+    weight: 22
     label: above
     settings:
       format: default
@@ -228,7 +229,7 @@ content:
     type: boolean
     region: content
   field_pre_registration_end_time:
-    weight: 145
+    weight: 25
     label: above
     settings:
       format_type: medium
@@ -237,7 +238,7 @@ content:
     type: datetime_default
     region: content
   field_pre_registration_link:
-    weight: 142
+    weight: 23
     label: above
     settings:
       trim_length: 80
@@ -249,7 +250,7 @@ content:
     type: link
     region: content
   field_pre_registration_start_tim:
-    weight: 144
+    weight: 24
     label: above
     settings:
       format_type: medium
@@ -258,7 +259,7 @@ content:
     type: datetime_default
     region: content
   field_price:
-    weight: 115
+    weight: 10
     label: above
     settings:
       link_to_entity: false
@@ -266,7 +267,7 @@ content:
     type: string
     region: content
   field_provider_email:
-    weight: 119
+    weight: 14
     label: above
     settings:
       link_to_entity: false
@@ -274,7 +275,7 @@ content:
     type: string
     region: content
   field_provider_name:
-    weight: 158
+    weight: 38
     label: above
     settings:
       link_to_entity: false
@@ -282,7 +283,7 @@ content:
     type: string
     region: content
   field_provider_phone:
-    weight: 118
+    weight: 13
     label: above
     settings:
       link_to_entity: false
@@ -290,21 +291,21 @@ content:
     type: string
     region: content
   field_provider_www:
-    weight: 117
+    weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
     type: link_field_formatter
     region: content
   field_short_description:
-    weight: 105
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_start_time:
-    weight: 102
+    weight: 1
     label: above
     settings:
       format_type: medium
@@ -313,7 +314,7 @@ content:
     type: datetime_default
     region: content
   field_target_audience:
-    weight: 109
+    weight: 6
     label: above
     settings:
       link: true
@@ -321,21 +322,21 @@ content:
     type: entity_reference_label
     region: content
   field_ticket_vendor:
-    weight: 120
+    weight: 15
     label: above
     settings: {  }
     third_party_settings: {  }
     type: link_field_formatter
     region: content
   field_timeframe_of_day:
-    weight: 148
+    weight: 28
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_weekday_friday:
-    weight: 151
+    weight: 31
     label: above
     settings:
       link_to_entity: false
@@ -343,7 +344,7 @@ content:
     type: string
     region: content
   field_weekday_monday:
-    weight: 146
+    weight: 26
     label: above
     settings:
       link_to_entity: false
@@ -351,7 +352,7 @@ content:
     type: string
     region: content
   field_weekday_saturday:
-    weight: 152
+    weight: 32
     label: above
     settings:
       link_to_entity: false
@@ -359,7 +360,7 @@ content:
     type: string
     region: content
   field_weekday_sunday:
-    weight: 153
+    weight: 33
     label: above
     settings:
       link_to_entity: false
@@ -367,7 +368,7 @@ content:
     type: string
     region: content
   field_weekday_thursday:
-    weight: 150
+    weight: 30
     label: above
     settings:
       link_to_entity: false
@@ -375,7 +376,7 @@ content:
     type: string
     region: content
   field_weekday_tuesday:
-    weight: 147
+    weight: 27
     label: above
     settings:
       link_to_entity: false
@@ -383,7 +384,7 @@ content:
     type: string
     region: content
   field_weekday_wednesday:
-    weight: 149
+    weight: 29
     label: above
     settings:
       link_to_entity: false
@@ -391,9 +392,10 @@ content:
     type: string
     region: content
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_super_event: true
   langcode: true
