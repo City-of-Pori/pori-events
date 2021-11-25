@@ -67,6 +67,10 @@ source:
       label: 'Offers is free'
       selector: $.offers[0].is_free
     -
+      name: event_super_event
+      label: 'Super event'
+      selector: $.super_event_type
+    -
       name: event_offers_price
       label: 'Offers price'
       selector: $.offers[0].price.fi
@@ -196,6 +200,9 @@ process:
     source: extra_options
     plugin: extra_offers_parse
   field_culture_and_or_activity_no:
+    source: extra_options
+    plugin: extra_offers_parse
+  field_super_event:
     source: extra_options
     plugin: extra_offers_parse
   field_pre_registration_link/uri: pre_registration_url
