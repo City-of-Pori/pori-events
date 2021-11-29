@@ -42,7 +42,7 @@
         "drupal/imagecache_external": "^3.0",
         "drupal/entityqueue": "^1.0",
         "drupal/slick": "^2.4",
-        "drupal/slick_views": "^2.4",
+        "drupal/slick_views": "^2.5",
         "drupal/fontawesome": "^2.19",
         "drupal/twig_tweak": "^3.1",
         "drupal/google_analytics": "^3.1",
