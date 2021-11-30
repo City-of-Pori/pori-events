@@ -54,7 +54,7 @@
         "drupal/empty_page": "^3",
         "drupal/simple_gmap": "^3.0",
         "drupal/pathauto": "^1.6",
-        "symfony/finder": "^3.4",
+        "symfony/finder": "^5.4",
         "symfony/filesystem": "^3.4",
         "drupal/core-recommended": "^9.2",
         "drupal/core-composer-scaffold": "^9.2",
