@@ -5,11 +5,11 @@ dependencies: {  }
 name: event_page_pic_1360px_
 label: 'Event page pic (1360px)'
 effects:
-  516234a7-6a0d-4639-8839-8e2654ec0144:
-    uuid: 516234a7-6a0d-4639-8839-8e2654ec0144
-    id: image_scale
-    weight: 1
+  68c21937-55d9-4ecd-90d4-ac345423a789:
+    uuid: 68c21937-55d9-4ecd-90d4-ac345423a789
+    id: image_scale_and_crop
+    weight: 2
     data:
       width: 1360
-      height: null
-      upscale: false
+      height: 765
+      anchor: center-center
