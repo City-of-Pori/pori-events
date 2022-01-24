@@ -96,5 +96,13 @@
                 "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
             }
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "koodimonni/composer-dropin-installer": true,
+            "drupal/core-composer-scaffold": true
+        }
     }
 }
