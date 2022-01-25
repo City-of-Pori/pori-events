@@ -4,7 +4,10 @@
   "description": "Gulp configuration for Drupal 8 theme",
   "author": "(Lisette Mazure for) Druid",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/City-of-Pori/pori-events/tree/master/drupal/web/themes/custom/pori_events"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "find node_modules/ -name \"*.info\" -type f -delete"
@@ -13,24 +16,24 @@
     "last 2 versions"
   ],
   "devDependencies": {
-    "browser-sync": "^2.26.14",
-    "chalk": "^4.1.1",
-    "glob-parent": "^6.0.1",
+    "browser-sync": "^2.27.7",
+    "chalk": "^4.1.2",
+    "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sass-glob": "^1.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "lodash.template": "^4.5.0",
-    "postcss": "^8.3.0",
-    "sass": "^1.38.0",
+    "postcss": "^8.4.5",
+    "sass": "^1.49.0",
     "trim-newlines": "^4.0.2",
-    "yargs-parser": "^20.2.7"
+    "yargs-parser": "^21.0.0"
   }
 }

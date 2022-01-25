@@ -16,10 +16,10 @@ plugin: event_switcher
 settings:
   id: event_switcher
   label: 'Event Switcher'
-  provider: pori_events_link_formatter
   label_display: '0'
+  provider: pori_events_link_formatter
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
     negate: false
+    pages: '<front>'

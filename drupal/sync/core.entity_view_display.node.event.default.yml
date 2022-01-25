@@ -58,79 +58,79 @@ bundle: event
 mode: default
 content:
   field_accessible:
-    weight: 122
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 122
     region: content
   field_area:
-    weight: 108
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 108
     region: content
   field_child_care:
-    weight: 134
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 134
     region: content
   field_culture_and_or_activity_no:
-    weight: 135
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 135
     region: content
   field_description:
-    weight: 104
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 104
     region: content
   field_end_time:
-    weight: 103
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 103
     region: content
   field_event_type:
-    weight: 113
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 113
     region: content
   field_exceptional_opening_hours:
-    weight: 154
+    type: daterange_default
     label: above
     settings:
-      separator: '-'
-      format_type: medium
       timezone_override: ''
+      format_type: medium
+      separator: '-'
     third_party_settings: {  }
-    type: daterange_default
+    weight: 154
     region: content
   field_external:
-    weight: 159
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -139,105 +139,105 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 159
     region: content
   field_free_enterance:
-    weight: 112
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 112
     region: content
   field_hobby_area:
-    weight: 156
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 156
     region: content
   field_hobby_audience:
-    weight: 155
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 155
     region: content
   field_hobby_category:
-    weight: 133
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 133
     region: content
   field_hobby_is_hobby:
-    weight: 132
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 132
     region: content
   field_hobby_map:
-    weight: 137
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 137
     region: content
   field_image_ext_url:
-    weight: 114
+    type: imagecache_external_image
     label: above
     settings:
       imagecache_external_style: large
       imagecache_external_link: ''
     third_party_settings: {  }
-    type: imagecache_external_image
+    weight: 114
     region: content
   field_location_extra_info:
-    weight: 116
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 116
     region: content
   field_location_extra_info_info:
-    weight: 157
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 157
     region: content
   field_pre_registration:
-    weight: 140
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 140
     region: content
   field_pre_registration_end_time:
-    weight: 145
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 145
     region: content
   field_pre_registration_link:
-    weight: 142
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -246,154 +246,154 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 142
     region: content
   field_pre_registration_start_tim:
-    weight: 144
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 144
     region: content
   field_price:
-    weight: 115
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 115
     region: content
   field_provider_email:
-    weight: 119
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 119
     region: content
   field_provider_name:
-    weight: 158
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 158
     region: content
   field_provider_phone:
-    weight: 118
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 118
     region: content
   field_provider_www:
-    weight: 117
+    type: link_field_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: link_field_formatter
+    weight: 117
     region: content
   field_short_description:
-    weight: 105
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 105
     region: content
   field_start_time:
-    weight: 102
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 102
     region: content
   field_target_audience:
-    weight: 109
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 109
     region: content
   field_ticket_vendor:
-    weight: 120
+    type: link_field_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: link_field_formatter
+    weight: 120
     region: content
   field_timeframe_of_day:
-    weight: 148
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 148
     region: content
   field_weekday_friday:
-    weight: 151
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 151
     region: content
   field_weekday_monday:
-    weight: 146
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 146
     region: content
   field_weekday_saturday:
-    weight: 152
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 152
     region: content
   field_weekday_sunday:
-    weight: 153
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 153
     region: content
   field_weekday_thursday:
-    weight: 150
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 150
     region: content
   field_weekday_tuesday:
-    weight: 147
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 147
     region: content
   field_weekday_wednesday:
-    weight: 149
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 149
     region: content
   links:
-    weight: 100
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 100
+    region: content
 hidden:
   langcode: true

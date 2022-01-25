@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: pf41tN-PPhgH1h2NxglpZuVbsh8xKOnO2r5cqM3aeYs
+langcode: fi
 imagecache_directory: externals
 imagecache_default_extension: .jpg
 imagecache_external_hosts: ''
@@ -15,6 +18,3 @@ imagecache_external_allowed_mimetypes:
   - image/gif;charset=utf-8
   - application/octet-stream
   - application/octet-stream;charset=utf-8
-_core:
-  default_config_hash: pf41tN-PPhgH1h2NxglpZuVbsh8xKOnO2r5cqM3aeYs
-langcode: fi
