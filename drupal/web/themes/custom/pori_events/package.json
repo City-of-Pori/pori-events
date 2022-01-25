@@ -4,7 +4,10 @@
   "description": "Gulp configuration for Drupal 8 theme",
   "author": "(Lisette Mazure for) Druid",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/City-of-Pori/pori-events/tree/master/drupal/web/themes/custom/pori_events"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "find node_modules/ -name \"*.info\" -type f -delete"
@@ -14,7 +17,7 @@
   ],
   "devDependencies": {
     "browser-sync": "^2.27.7",
-    "chalk": "^4.1.1",
+    "chalk": "^4.1.2",
     "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -31,6 +34,6 @@
     "postcss": "^8.4.5",
     "sass": "^1.49.0",
     "trim-newlines": "^4.0.2",
-    "yargs-parser": "^20.2.9"
+    "yargs-parser": "^21.0.0"
   }
 }
