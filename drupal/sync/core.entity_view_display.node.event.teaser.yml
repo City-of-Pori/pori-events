@@ -52,18 +52,18 @@ mode: teaser
 content:
   field_image_ext_url:
     type: imagecache_external_image
-    weight: 1
-    region: content
     label: above
     settings:
       imagecache_external_style: thumbnail
       imagecache_external_link: ''
     third_party_settings: {  }
-  links:
-    weight: 0
+    weight: 1
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_accessible: true
   field_area: true

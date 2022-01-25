@@ -16,10 +16,10 @@ plugin: hobby_switcher
 settings:
   id: hobby_switcher
   label: 'Hobby Switcher'
-  provider: pori_events_link_formatter
   label_display: '0'
+  provider: pori_events_link_formatter
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
     negate: true
+    pages: '<front>'

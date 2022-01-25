@@ -1,5 +1,5 @@
-admin: seven
-default: pori_events
 _core:
   default_config_hash: fOjer9hADYYnbCJVZMFZIIM1azTFWyg84ZkFDHfAbUg
 langcode: fi
+admin: seven
+default: pori_events
