@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+langcode: fi
 uuid: e34eb0e7-a327-44d0-8abe-9a00b5f7a9ad
 name: 'Porin tapahtumakalenteri'
 mail: matti.hernesniemi@wunder.io
@@ -8,7 +11,4 @@ page:
   front: /node
 admin_compact_mode: false
 weight_select_max: 100
-langcode: fi
 default_langcode: fi
-_core:
-  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
