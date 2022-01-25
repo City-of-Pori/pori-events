@@ -15,17 +15,17 @@ plugin: system_branding_block
 settings:
   id: system_branding_block
   label: 'Harrastukset branding'
-  provider: system
   label_display: '0'
-  use_site_logo: true
-  use_site_name: true
-  use_site_slogan: true
+  provider: system
   status: true
   info: ''
   view_mode: full
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
 visibility:
   request_path:
     id: request_path
-    pages: /harrastukset
     negate: false
     context_mapping: {  }
+    pages: /harrastukset

@@ -4,8 +4,8 @@ status: true
 dependencies: {  }
 id: hobbies
 name: hobbies
-label: Hobbies
 weight: 0
+label: Hobbies
 group: ''
 skin: ''
 breakpoints: 0
@@ -18,9 +18,9 @@ options:
     accessibility: true
     adaptiveHeight: false
     autoplay: true
-    autoplaySpeed: 3000
     pauseOnHover: true
     pauseOnDotsHover: false
+    autoplaySpeed: 3000
     arrows: false
     prevArrow: Previous
     nextArrow: Next

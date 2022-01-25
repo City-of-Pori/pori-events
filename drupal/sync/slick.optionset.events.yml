@@ -9,8 +9,8 @@ _core:
   default_config_hash: k7CsIh1fcue1aRGoNiJjnlNH9KHBttIn-kH6Di03wL0
 id: events
 name: events
-label: Events
 weight: -10
+label: Events
 group: ''
 skin: default
 breakpoints: 0
@@ -23,9 +23,9 @@ options:
     accessibility: true
     adaptiveHeight: false
     autoplay: true
-    autoplaySpeed: 10000
     pauseOnHover: true
     pauseOnDotsHover: false
+    autoplaySpeed: 10000
     arrows: false
     prevArrow: Previous
     nextArrow: Next
