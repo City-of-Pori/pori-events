@@ -58,7 +58,8 @@
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/blazy": "^2.5",
         "elasticsearch/elasticsearch": "^7.11",
-        "drupal/ctools": "^3.7"
+        "drupal/ctools": "^3.7",
+        "drupal/google_tag": "^1.4"
     },
     "require-dev": {
         "drupal/config_devel": "^1.2",
