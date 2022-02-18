@@ -20,6 +20,7 @@ module:
   context: 0
   contextual: 0
   ctools: 0
+  datalayer: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
@@ -33,7 +34,7 @@ module:
   file: 0
   filter: 0
   fontawesome: 0
-  google_analytics: 0
+  google_tag: 0
   help: 0
   history: 0
   image: 0

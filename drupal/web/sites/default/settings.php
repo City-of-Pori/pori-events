@@ -51,6 +51,8 @@ $env = getenv('WKV_SITE_ENV');
 switch ($env) {
   case 'production':
     $conf['simple_environment_indicator'] = '#560004 Production';
+    $config['google_tag.container.tapahtumat.pori.fi']['environment_id'] = 'env-1';
+    $config['google_tag.container.tapahtumat.pori.fi']['environment_token'] = 'gW_rBBg5Mg2OmD-o7G464g';
     break;
 
   case 'dev':
