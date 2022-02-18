@@ -59,7 +59,8 @@
         "drupal/blazy": "^2.5",
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^3.7",
-        "drupal/google_tag": "^1.4"
+        "drupal/google_tag": "^1.4",
+        "drupal/datalayer": "^1.0@beta"
     },
     "require-dev": {
         "drupal/config_devel": "^1.2",
@@ -93,6 +94,9 @@
         "patches": {
             "drupal/core": {
                 "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
+            },
+            "drupal/datalayer": {
+                "Drupal 9 compatibility: Exception page because of incorrect path.alias_manager service name": "https://www.drupal.org/files/issues/2020-09-18/3171896-path_alias-manager.patch"
             }
         }
     },
