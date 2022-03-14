@@ -16,7 +16,7 @@
     "last 2 versions"
   ],
   "devDependencies": {
-    "browser-sync": "^2.27.7",
+    "browser-sync": "^2.27.8",
     "chalk": "^4.1.2",
     "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
