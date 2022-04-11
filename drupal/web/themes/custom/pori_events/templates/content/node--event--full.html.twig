@@ -232,6 +232,7 @@
         </h3>
         {% if start_time|date('U', "Europe/Helsinki")|format_date('short') !=  end_time|date('U', "Europe/Helsinki")|format_date('short') %}
           <div class="event__content--sidebar__item event__time">
+          <span class="visually-hidden">{{ content.field_start_time['#title'] }}</span>
             <i class="fas fa-clock"></i>
             <div class="event__content-weekday-wrapper">
               {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
@@ -264,6 +265,7 @@
         {% else %}
             {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
               <div class="event__content--sidebar__item event__time">
+                <span class="visually-hidden">{{ content.field_start_time['#title'] }}</span>
                 <i class="fas fa-clock"></i>
                 <div class="event__content-weekday-wrapper">
                 {% if monday %}
@@ -293,7 +295,9 @@
         {% endif %}
       {% endif %}
       {% if location_address %}
+      {{ content.field_location_extra_info.label }}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_location_extra_info['#title'] }}</span>
           <i class="fas fa-map-marker-alt"></i>
           {% if location_address %}
             {{ location_address }}
@@ -304,6 +308,7 @@
 
       {% if price %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_price['#title'] }}</span>
           <i class="fas fa-euro-sign"></i>
           {{ price }}
         </div>
@@ -318,12 +323,14 @@
 
       {% if event_type %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_event_type['#title'] }}</span>
           <i class="fas fa-euro-sign"></i>
           {{ event_type }}
         </div>
       {% endif %}
 
       {% if target_audience %}
+        <span class="visually-hidden">{{ content.field_target_audience['#title'] }}</span>
         <div class="event__content--sidebar__item">
           <i class="fas fa-users"></i>
           {{ target_audience }}
@@ -332,6 +339,7 @@
 
       {% if provider_www %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_provider_name['#title'] }}</span>
           <i class="fas fa-home"></i>
           <div>
             {{ provider_name }}
@@ -344,6 +352,7 @@
 
       {% if provider_phone %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_provider_phone['#title'] }}</span>
           <i class="fas fa-phone"></i>
           {{ provider_phone }}
         </div>
@@ -351,6 +360,7 @@
 
       {% if provider_email %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_provider_email['#title'] }}</span>
           <i class="fas fa-at"></i>
           {{ provider_email }}
         </div>
@@ -358,6 +368,7 @@
 
       {% if ticket_vendor %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_ticket_vendor['#title'] }}</span>
           <i class="fas fa-ticket-alt"></i>
           <a href={{ ticket_vendor['url'] }}>
             {{ ticket_vendor['label'] }}
@@ -368,6 +379,7 @@
       {% if pre_registration_url %}
         {% if show_registration_link %}
           <div class="event__content--sidebar__item">
+            <span class="visually-hidden">{{ content.field_pre_registration_link['#title'] }}</span>
             <i class="fa fa-user-plus"></i>
             <a href={{ pre_registration_url }}>
               {{ 'Register here'|t }}
@@ -385,6 +397,7 @@
 
       {% if external_links[0] %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_external['#title'] }}</span>
           <i class="fas fa-link"></i>
           <div class="external-links-list">
             {% for external_link in external_links['#items'] %}
@@ -402,6 +415,7 @@
 
       {% if 'Yes' in accessible %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_accessible['#title'] }}</span>
           <i class="fab fa-accessible-icon"></i>
           {{ 'Accessible'|t }}
         </div>
@@ -409,6 +423,7 @@
 
       {% if 'On' in childcare %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.childcare['#title'] }}</span>
           <i class="fas fa-child"></i>
           {{ 'Child friendly'|t }}
         </div>
@@ -416,6 +431,7 @@
 
       {% if 'On' in culture_card %}
         <div class="event__content--sidebar__item">
+          <span class="visually-hidden">{{ content.field_culture_and_or_activity_no['#title'] }}</span>
           <i class="fas fa-money-bill"></i>
           {{ 'Payment with culture or activity card available'|t }}
         </div>
