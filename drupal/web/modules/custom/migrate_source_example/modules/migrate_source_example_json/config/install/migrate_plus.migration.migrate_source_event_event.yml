@@ -71,6 +71,10 @@ source:
       label: 'Offers is free'
       selector: $.offers[0].is_free
     -
+      name: event_super_event
+      label: 'Super event'
+      selector: $.super_event_type
+    -
       name: event_offers_price
       label: 'Offers price'
       selector: $.offers[0].price.fi
@@ -117,6 +121,9 @@ process:
   field_ticket_vendor: event_offers_vedor
   field_price: event_offers_price
   field_free_enterance: event_offers_is_free
+  field_super_event:
+    source: extra_options
+    plugin: extra_offers_parse
   field_start_time:
     -
       plugin: skip_on_empty

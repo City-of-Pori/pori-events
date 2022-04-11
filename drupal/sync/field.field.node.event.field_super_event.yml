@@ -1,0 +1,23 @@
+uuid: 9e08e527-ebe0-4791-96d4-5151528cd764
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_super_event
+    - node.type.event
+id: node.event.field_super_event
+field_name: field_super_event
+entity_type: node
+bundle: event
+label: 'Super event'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean
