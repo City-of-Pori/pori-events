@@ -60,13 +60,15 @@
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^3.7",
         "drupal/google_tag": "^1.4",
-        "drupal/datalayer": "^1.0@beta"
+        "drupal/datalayer": "^1.0@beta",
+        "drupal/easy_breadcrumb": "^2.0"
     },
     "require-dev": {
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.2",
         "drupal/twig_xdebug": "^1.0",
-        "drupal/devel": "^4.1"
+        "drupal/devel": "^4.1",
+        "kint-php/kint": "^4.1"
     },
     "conflict": {"drupal/drupal": "*"},
     "minimum-stability": "dev",
