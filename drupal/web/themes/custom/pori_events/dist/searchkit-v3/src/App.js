@@ -35,10 +35,9 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
 } from '@elastic/eui';
-
+import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
+// import { ListFacetAccordion } from "./components/ListFacetAccordion";
 import '@elastic/eui/dist/eui_theme_light.css';
-
-const loc = window.location.origin;
 
 let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
 
@@ -56,20 +55,16 @@ const config = {
       'title',
       'description',
       'short_description',
-      // 'writers',
-      // 'actors',
-      // 'countries',
-      // 'plot',
     ],
   }),
-  // facets: [
-  //   new RefinementSelectFacet({
-  //     field: 'type',
-  //     identifier: 'type',
-  //     label: 'Type',
-  //     multipleSelect: true,
-  //   }),
-  // ],
+  facets: [
+    new RefinementSelectFacet({
+      field: 'event_type',
+      identifier: 'event_type',
+      label: 'What',
+      multipleSelect: true,
+    }),
+  ],
 };
 
 const HitsList = ({ data }) => (
@@ -97,16 +92,29 @@ const HitsList = ({ data }) => (
 
 
 function App() {
+  const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
   // return <div>results {results?.summary?.total}</div>;
-console.log('results', results)
+  // console.log('facets', Facets)
+console.log('results111', results)
+
+  const getListFacet = () => {
+    if (typeof(results?.facets[0]) !== 'undefined' ) {
+        return (
+        <div key={results.facets[0].identifier}>
+          <ListFacet facet={results.facets[0]} loading={loading} />
+        </div>)
+    }
+  }
+
   return (
     <EuiPage>
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
+        { getListFacet() }
       </EuiPageSideBar>
       <EuiPageBody component="div">
         <EuiPageHeader>
