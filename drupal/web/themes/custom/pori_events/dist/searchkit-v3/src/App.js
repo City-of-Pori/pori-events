@@ -6,6 +6,7 @@ import {
   MultiMatchQuery,
   RangeFacet,
   RefinementSelectFacet,
+  HierarchicalMenuFacet,
 } from '@searchkit/sdk';
 import { useSearchkitVariables } from "@searchkit/client";
 import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
@@ -48,20 +49,48 @@ const config = {
   },
   index: 'event-node-fi',
   hits: {
-    fields: ['title', 'description', 'short_description'],
+    fields: ['title', 'description', 'short_description', 'hobby_category', 'hobby_sub_category'],
   },
   query: new MultiMatchQuery({
     fields: [
       'title',
       'description',
       'short_description',
+      'hobby_category',
+      'hobby_sub_category',
+      'area',
+      'area_sub_area',
+      'timeframe',
+      'hobby_audience'
     ],
   }),
   facets: [
+    new HierarchicalMenuFacet({
+      fields: ["hobby_category", "hobby_sub_category"],
+      identifier: 'hobby_category',
+      label: 'What',
+    }),
     new RefinementSelectFacet({
       field: 'event_type',
       identifier: 'event_type',
       label: 'What',
+      multipleSelect: true,
+    }),
+    new HierarchicalMenuFacet({
+      fields: ["area", "area_sub_area"],
+      identifier: 'area',
+      label: 'Where',
+    }),
+    new RefinementSelectFacet({
+      field: 'timeframe',
+      identifier: 'timeframe_of_day',
+      label: 'Day',
+      multipleSelect: true,
+    }),
+    new RefinementSelectFacet({
+      field: 'hobby_audience',
+      identifier: 'hobby_audience',
+      label: 'Whom',
       multipleSelect: true,
     }),
   ],
@@ -113,8 +142,8 @@ console.log('results111', results)
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
-        {/* <Facets data={results} loading={loading} /> */}
-        { getListFacet() }
+        <Facets data={results} loading={loading} />
+        {/* { getListFacet() } */}
       </EuiPageSideBar>
       <EuiPageBody component="div">
         <EuiPageHeader>
