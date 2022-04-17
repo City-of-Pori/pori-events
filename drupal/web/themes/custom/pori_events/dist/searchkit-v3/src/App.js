@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState } from "react";
 import {
   DateRangeFacet,
   MultiMatchQuery,
   RangeFacet,
   RefinementSelectFacet,
   HierarchicalMenuFacet,
+  TermFilter,
 } from '@searchkit/sdk';
 import { useSearchkitVariables } from "@searchkit/client";
 import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
@@ -36,6 +37,7 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiImage,
+  EuiButtonGroup,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
 import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
@@ -53,6 +55,13 @@ const config = {
   hits: {
     fields: ['title', 'description', 'short_description', 'hobby_category', 'hobby_sub_category', 'image_ext', 'id', 'url', 'start_time', 'end_time'],
   },
+  filters: [
+    new TermFilter({
+      identifier: 'is_hobby',
+      field: 'is_hobby',
+      label: 'is_hobby',
+    }),
+  ],
   query: new MultiMatchQuery({
     fields: [
       'title',
@@ -156,17 +165,25 @@ function App() {
   const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
-  // return <div>results {results?.summary?.total}</div>;
-  // console.log('facets', Facets)
+  console.log('variables', variables)
 console.log('results111', results)
 
-  const getListFacet = () => {
-    if (typeof(results?.facets[0]) !== 'undefined' ) {
-        return (
-        <div key={results.facets[0].identifier}>
-          <ListFacet facet={results.facets[0]} loading={loading} />
-        </div>)
-    }
+  const [eventType, setEventType] = useState('event')
+
+  const eventTypes = [
+    {
+      id: `event`,
+      label: 'Event',
+    },
+    {
+      id: `hobby`,
+      label: 'Hobby',
+    },
+  ]
+
+  const eventTypeOnChange = (id) => {
+    console.log('id', id)
+    setEventType(id)
   }
 
   return (
@@ -180,6 +197,12 @@ console.log('results111', results)
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>
+          <EuiButtonGroup
+            legend="This is a basic group"
+            options={eventTypes}
+            idSelected={eventType}
+            onChange={(id) => eventTypeOnChange(id)}
+          />
             <EuiTitle size="l">
               <SelectedFilters data={results} loading={loading} />
             </EuiTitle>
