@@ -9,7 +9,7 @@ import {
   HierarchicalMenuFacet,
   TermFilter,
 } from '@searchkit/sdk';
-import { useSearchkitVariables } from "@searchkit/client";
+import { useSearchkitVariables, useSearchkit, FilterLink } from "@searchkit/client";
 import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
 
 import {
@@ -38,10 +38,13 @@ import {
   EuiFlexItem,
   EuiImage,
   EuiButtonGroup,
+  EuiFacetButton,
+  EuiFacetGroup,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
-import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
-// import { ListFacetAccordion } from "./components/ListFacetAccordion";
+// import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
+import { ListFacetAccordion } from "./components/ListFacetAccordion";
+import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
 import '@elastic/eui/dist/eui_theme_light.css';
 
 let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
@@ -160,6 +163,44 @@ const HitsList = ({ data }) => {
   </EuiFlexGrid>
 )}
 
+// const ListFacet = ({ facet, loading }) => {
+//   const api = useSearchkit();
+
+//   if (!facet) {
+//     return null;
+//   }
+
+//   const entries = facet.entries.map((entry) => {
+//     return (
+//       <EuiFacetButton
+//         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
+//         key={entry.label}
+//         quantity={entry.count}
+//         isSelected={api.isFilterSelected({
+//           identifier: facet.identifier,
+//           value: entry.label
+//         })}
+//         isLoading={loading}
+//       >
+//         <FilterLink
+//           filter={{ identifier: facet.identifier, value: entry.label }}
+//         >
+//           {entry.label}
+//         </FilterLink>
+//       </EuiFacetButton>
+//     );
+//   });
+
+//   return (
+//     <>
+//       <EuiTitle size="xxs">
+//         <h3>{facet.label}</h3>
+//       </EuiTitle>
+//       <EuiFacetGroup>{entries}</EuiFacetGroup>
+//     </>
+//   );
+// };
+
 
 function App() {
   const Facets = FacetsList([]);
@@ -191,8 +232,12 @@ console.log('results111', results)
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
-        <Facets data={results} loading={loading} />
-        {/* { getListFacet() } */}
+        {/* <Facets data={results} loading={loading} /> */}
+        <HierarchicalMenuFacetAccordion facet={results?.facets[0]} loading={loading} />
+        {/* <ListFacet facet={results?.facets[1]} loading={loading} />
+        <ListFacet facet={results?.facets[2]} loading={loading} />
+        <ListFacet facet={results?.facets[3]} loading={loading} />
+        <ListFacet facet={results?.facets[4]} loading={loading} /> */}
       </EuiPageSideBar>
       <EuiPageBody component="div">
         <EuiPageHeader>
