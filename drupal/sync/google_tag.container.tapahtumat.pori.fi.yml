@@ -38,26 +38,6 @@ conditions:
     id: context_all
     negate: null
     values: ''
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-    bundles: {  }
-  'entity_bundle:taxonomy_term':
-    id: 'entity_bundle:taxonomy_term'
-    negate: false
-    context_mapping:
-      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
-    bundles: {  }
-  http_status_code:
-    id: http_status_code
-    negate: false
-    status_codes: {  }
-  request_domain:
-    id: request_domain
-    negate: false
-    domains: ''
   user_status:
     id: user_status
     negate: false
