@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce520ab52605eb473fe24f104f368079",
+    "content-hash": "d9d0fdc58b4c6239a6cfc6a888d69792",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -159,27 +159,28 @@
         },
         {
             "name": "commerceguys/addressing",
-            "version": "v1.2.1",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/addressing.git",
-                "reference": "311040bd78ea2ea82105dd1f17205c449ac8de47"
+                "reference": "566febd56ca71e31dd383b014c4e1bec680507bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/311040bd78ea2ea82105dd1f17205c449ac8de47",
-                "reference": "311040bd78ea2ea82105dd1f17205c449ac8de47",
+                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/566febd56ca71e31dd383b014c4e1bec680507bf",
+                "reference": "566febd56ca71e31dd383b014c4e1bec680507bf",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "~1.0",
-                "php": ">=7.1.3"
+                "php": ">=7.3"
             },
             "require-dev": {
+                "ext-json": "*",
                 "mikey179/vfsstream": "1.*",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^9.5",
                 "squizlabs/php_codesniffer": "3.*",
-                "symfony/validator": "^4.4"
+                "symfony/validator": "^4.4 || ^5.4"
             },
             "suggest": {
                 "symfony/validator": "to validate addresses"
@@ -214,7 +215,11 @@
                 "localization",
                 "postal"
             ],
-            "time": "2021-05-17T08:05:21+00:00"
+            "support": {
+                "issues": "https://github.com/commerceguys/addressing/issues",
+                "source": "https://github.com/commerceguys/addressing/tree/v1.3.0"
+            },
+            "time": "2022-04-08T13:06:51+00:00"
         },
         {
             "name": "composer/installers",
@@ -1624,21 +1629,22 @@
         },
         {
             "name": "drupal/address",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/address.git",
-                "reference": "8.x-1.9"
+                "reference": "8.x-1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/address-8.x-1.9.zip",
-                "reference": "8.x-1.9",
-                "shasum": "c7e6406d88c6d6be9e8fe0091040d67012bdbf05"
+                "url": "https://ftp.drupal.org/files/projects/address-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "bbe61eb51da9d9b2a7ab247f90426836eb9b6f25"
             },
             "require": {
-                "commerceguys/addressing": "^1.0.7",
-                "drupal/core": "^8.8 || ^9"
+                "commerceguys/addressing": "^1.2.0",
+                "drupal/core": "^9.2 || ^10",
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "drupal/token": "^1.0"
@@ -1646,8 +1652,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.9",
-                    "datestamp": "1604422821",
+                    "version": "8.x-1.10",
+                    "datestamp": "1643715226",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1659,6 +1665,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "Centarro",
+                    "homepage": "https://www.drupal.org/user/3661446"
+                },
                 {
                     "name": "bojanz",
                     "homepage": "https://www.drupal.org/user/86106"
@@ -1692,20 +1702,20 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "3.0.3",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-                "reference": "3.0.3"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-3.0.3.zip",
-                "reference": "3.0.3",
-                "shasum": "ce735c931c0bd6da79bd8e45ca459d61015bbe44"
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "7b596d7de04faca747ba3e5216c2e819aae71f40"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0"
+                "drupal/core": "^8.8.0 || ^9.0 || ^10.0"
             },
             "require-dev": {
                 "drupal/admin_toolbar_tools": "*"
@@ -1713,8 +1723,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.3",
-                    "datestamp": "1632322497",
+                    "version": "3.1.0",
+                    "datestamp": "1643742891",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1773,20 +1783,20 @@
         },
         {
             "name": "drupal/blazy",
-            "version": "2.5.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/blazy.git",
-                "reference": "8.x-2.5"
+                "reference": "8.x-2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/blazy-8.x-2.5.zip",
-                "reference": "8.x-2.5",
-                "shasum": "3680004a49099dcef1440d327e5f316f8309a7e6"
+                "url": "https://ftp.drupal.org/files/projects/blazy-8.x-2.10.zip",
+                "reference": "8.x-2.10",
+                "shasum": "5872004f1ff1eb097a1cee842adb84f2e2d0bac1"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^8.8 || ^9 || ^10"
             },
             "conflict": {
                 "drupal/csp": "<1.12"
@@ -1794,8 +1804,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.5",
-                    "datestamp": "1633496312",
+                    "version": "8.x-2.10",
+                    "datestamp": "1650563727",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2839,17 +2849,17 @@
         },
         {
             "name": "drupal/fontawesome",
-            "version": "2.19.0",
+            "version": "2.23.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/fontawesome.git",
-                "reference": "8.x-2.19"
+                "reference": "8.x-2.23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/fontawesome-8.x-2.19.zip",
-                "reference": "8.x-2.19",
-                "shasum": "7b921a80f0811d8dcfb0c390157506cd5724a037"
+                "url": "https://ftp.drupal.org/files/projects/fontawesome-8.x-2.23.zip",
+                "reference": "8.x-2.23",
+                "shasum": "3e9292cd4b0d167d5b57376d5a23c402570e3d5e"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
@@ -2857,8 +2867,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.19",
-                    "datestamp": "1623794225",
+                    "version": "8.x-2.23",
+                    "datestamp": "1650642403",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2866,7 +2876,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9"
+                        "drush.services.yml": "^9 || ^10 || ^11"
                     }
                 }
             },
@@ -2972,17 +2982,17 @@
         },
         {
             "name": "drupal/google_tag",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/google_tag.git",
-                "reference": "8.x-1.4"
+                "reference": "8.x-1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/google_tag-8.x-1.4.zip",
-                "reference": "8.x-1.4",
-                "shasum": "1bdc6f93d1c79c27738320597f2185f5de37432f"
+                "url": "https://ftp.drupal.org/files/projects/google_tag-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "b2929a517cc86bb3e54dded127556f18236a8628"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -2990,8 +3000,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.4",
-                    "datestamp": "1593179846",
+                    "version": "8.x-1.5",
+                    "datestamp": "1648569365",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3064,25 +3074,24 @@
         },
         {
             "name": "drupal/migrate_plus",
-            "version": "5.2.0",
+            "version": "5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_plus.git",
-                "reference": "8.x-5.2"
+                "reference": "8.x-5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-5.2.zip",
-                "reference": "8.x-5.2",
-                "shasum": "03ae34c362ccfacc4ae95b58469b25522e0ffb68"
+                "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-5.3.zip",
+                "reference": "8.x-5.3",
+                "shasum": "3cf6dde235d7604ee49be2986812c0ee5e2982f6"
             },
             "require": {
                 "drupal/core": "^9.1"
             },
             "require-dev": {
                 "drupal/migrate_example_advanced_setup": "*",
-                "drupal/migrate_example_setup": "*",
-                "drush/drush": "^10"
+                "drupal/migrate_example_setup": "*"
             },
             "suggest": {
                 "ext-soap": "*",
@@ -3091,16 +3100,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.2",
-                    "datestamp": "1641478565",
+                    "version": "8.x-5.3",
+                    "datestamp": "1650658156",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
@@ -3118,6 +3122,10 @@
                     "name": "Lucas Hedding",
                     "homepage": "https://www.drupal.org/u/heddn",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "mikeryan",
+                    "homepage": "https://www.drupal.org/user/4420"
                 }
             ],
             "description": "Enhancements to core migration support.",
@@ -3241,17 +3249,17 @@
         },
         {
             "name": "drupal/pathauto",
-            "version": "1.8.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/pathauto.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "ede3216abb9c4f77709338d9147334c595046329"
+                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "f49d5fbcd7a2c1b4de1da07194fe01d9012237ec"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -3264,8 +3272,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1588103046",
+                    "version": "8.x-1.10",
+                    "datestamp": "1650806739",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3408,27 +3416,27 @@
         },
         {
             "name": "drupal/slick",
-            "version": "2.4.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/slick.git",
-                "reference": "8.x-2.4"
+                "reference": "8.x-2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/slick-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "8e36a1c5d4ebb2930501a885e99d217df4de759b"
+                "url": "https://ftp.drupal.org/files/projects/slick-8.x-2.6.zip",
+                "reference": "8.x-2.6",
+                "shasum": "2e4fa5612899c3aabb86f76ccab76bd6a50b21f2"
             },
             "require": {
                 "drupal/blazy": "~2.0",
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^8.8 || ^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1633496333",
+                    "version": "8.x-2.6",
+                    "datestamp": "1645369537",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
