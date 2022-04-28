@@ -10,7 +10,7 @@ type: 'canonical_entities:node'
 pattern: '[node:title]-[node:field_start_time:date:custom:Y-m-d]'
 selection_criteria:
   29c7acac-363e-444a-b637-00e7fb8294f6:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 29c7acac-363e-444a-b637-00e7fb8294f6
     context_mapping:
