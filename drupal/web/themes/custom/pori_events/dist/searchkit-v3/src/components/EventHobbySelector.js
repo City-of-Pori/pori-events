@@ -24,10 +24,14 @@ export const EventHobbySelector = () => {
         if(id === 'hobby') {
             api.removeFiltersByIdentifier('is_hobby');
             api.addFilter({identifier: 'is_hobby', value: true});
+            // api.toggleFilter({identifier: 'is_hobby', value: true});
+            api.search();
         }
         if(id === 'event') {
             api.removeFiltersByIdentifier('is_hobby');
             api.addFilter({identifier: 'is_hobby', value: false});
+            // api.toggleFilter({identifier: 'is_hobby', value: false});
+            api.search();
         }
         api.search();
         setEventType(id);
