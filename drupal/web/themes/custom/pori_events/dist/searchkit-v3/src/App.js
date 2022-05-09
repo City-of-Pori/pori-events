@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
+  Searchkit,
   DateRangeFacet,
   MultiMatchQuery,
   RangeFacet,
@@ -40,11 +41,16 @@ import {
   EuiButtonGroup,
   EuiFacetButton,
   EuiFacetGroup,
+  EuiPanel,
+  EuiCard,
+  EuiIcon,
+  EuiBadge,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
 // import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
 import { ListFacetAccordion } from "./components/ListFacetAccordion";
 import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
+import { EventHobbySelector } from "./components/EventHobbySelector";
 import '@elastic/eui/dist/eui_theme_light.css';
 
 let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
@@ -56,7 +62,29 @@ const config = {
   },
   index: 'event-node-fi',
   hits: {
-    fields: ['title', 'description', 'short_description', 'hobby_category', 'hobby_sub_category', 'image_ext', 'id', 'url', 'start_time', 'end_time'],
+    fields: [
+      'title',
+      'description',
+      'short_description',
+      'hobby_category',
+      'hobby_sub_category',
+      'area_sub_area',
+      'hobby_location_sub_area',
+      'hobby_location_area',
+      'is_hobby',
+      'image_ext',
+      'id',
+      'url',
+      'start_time',
+      'end_time',
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'saturday',
+      'sunday',
+    ],
   },
   filters: [
     new TermFilter({
@@ -79,10 +107,26 @@ const config = {
     ],
   }),
   facets: [
+    new RefinementSelectFacet({
+      field: 'is_hobby',
+      identifier: 'is_hobby',
+      label: 'is_hobby',
+      multipleSelect: false,
+    }),
     new HierarchicalMenuFacet({
       fields: ["hobby_category", "hobby_sub_category"],
       identifier: 'hobby_category',
       label: 'What',
+    }),
+    new HierarchicalMenuFacet({
+      fields: ["hobby_location_area", "hobby_location_sub_area"],
+      identifier: 'hobby_category',
+      label: 'What',
+    }),
+    new DateRangeFacet({
+      identifier: 'event_date',
+      field: 'start_time',
+      label: 'Event date'
     }),
     new RefinementSelectFacet({
       field: 'event_type',
@@ -110,6 +154,22 @@ const config = {
   ],
 };
 
+
+// Description of result item
+const Description = (props) => {
+  const { text, date, days, hobbySubArea, hobby_location_area } = props;
+  console.log('hobbySubArea', props)
+  return <>
+  <EuiIcon type="calendar" />
+  <span> {date}</span>
+  <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
+  <EuiIcon type="mapMarker" />
+  <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span>
+  <p>{text}</p>
+  </>
+}
+
+// Result item
 const HitListItem = (hit) => {
   // image
   // const source = extend({}, result._source, result.highlight);
@@ -117,97 +177,110 @@ const HitListItem = (hit) => {
   // If there's an url in the index, use it. Otherwise, fall back to Drupal
   // node-id.
   const url = source.url ? source.url : "/node/" + hit.fields.id;
-  const image_source = hit.fields.image_ext
-    ? "/" + hit.fields.image_ext
+  let image_source = hit.fields.image_ext
+    ? hit.fields.image_ext
     : "/themes/custom/pori_events/dist/images/event-default.jpg";
-
+    image_source = image_source.replace('at.lndo.site', 'https://tapahtumat.pori.fi')
     const date_format = "dd-LL-yyyy";
   
     const start_time_string = DateTime.fromISO(hit.fields.start_time).setLocale('fi')
     .toFormat(date_format);
-    const end_time_string = DateTime.fromISO(hit.fields.start_time).setLocale('fi')
+    const end_time_string = DateTime.fromISO(hit.fields.end_time).setLocale('fi')
     .toFormat(date_format);
-    
 
-    return <EuiFlexGroup gutterSize="xl">
-    <EuiFlexItem>
-      <EuiFlexGroup>
-        <EuiFlexItem grow={4}>
-        <EuiImage
-          alt={hit.fields.title}
-          src={image_source}
-        />
-        <span>{start_time_string} - {end_time_string}</span>
-          <EuiTitle size="xs">
-            <h6>{hit.fields.title}</h6>
-          </EuiTitle>
-          <EuiText grow={false}>
-            <p>{hit.fields.short_description}</p>
-          </EuiText>
-        </EuiFlexItem>
-      </EuiFlexGroup>
+    let weekDays = [];
+    if (hit.fields.monday === true) {
+      weekDays.push("MA");
+    }
+    if (hit.fields.tuesday === true) {
+      weekDays.push("TI");
+    }
+    if (hit.fields.wednesday === true) {
+      weekDays.push("KE");
+    }
+    if (hit.fields.thursday === true) {
+      weekDays.push("TO");
+    }
+    if (hit.fields.friday === true) {
+      weekDays.push("PE");
+    }
+    if (hit.fields.saturday === true) {
+      weekDays.push("LA");
+    }
+    if (hit.fields.sunday === true) {
+      weekDays.push("SU");
+    }
+
+    return <EuiFlexItem key={hit.id} style={{'maxWidth': '28%'}}>
+             <EuiCard
+        textAlign="left"
+        image={
+          <div>
+            <img
+              src={image_source}
+              alt={hit.fields.title}
+            />
+          </div>
+        }
+        title={hit.fields.title}
+        description={<Description text={hit.fields.short_description} date={` ${start_time_string} - ${end_time_string}`} days={weekDays} hobbySubArea={hit.fields.hobby_location_sub_area} hobbyLocationArea={hit.fields.hobby_location_area} />}
+      />
     </EuiFlexItem>
-  </EuiFlexGroup>
-
 }
 
+// Results
 const HitsList = ({ data }) => {
 
   return (
-  <EuiFlexGrid>
+  <EuiFlexGrid gutterSize="l">
     {data?.hits.items.map((hit) => (
-      <EuiFlexItem key={hit.id}>
-        {HitListItem(hit)}
-      </EuiFlexItem>
+        HitListItem(hit)
     ))}
   </EuiFlexGrid>
 )}
 
-// const ListFacet = ({ facet, loading }) => {
-//   const api = useSearchkit();
+const ListFacet = ({ facet, loading }) => {
+  const api = useSearchkit();
 
-//   if (!facet) {
-//     return null;
-//   }
+  if (!facet) {
+    return null;
+  }
 
-//   const entries = facet.entries.map((entry) => {
-//     return (
-//       <EuiFacetButton
-//         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
-//         key={entry.label}
-//         quantity={entry.count}
-//         isSelected={api.isFilterSelected({
-//           identifier: facet.identifier,
-//           value: entry.label
-//         })}
-//         isLoading={loading}
-//       >
-//         <FilterLink
-//           filter={{ identifier: facet.identifier, value: entry.label }}
-//         >
-//           {entry.label}
-//         </FilterLink>
-//       </EuiFacetButton>
-//     );
-//   });
+  const entries = facet.entries.map((entry) => {
+    return (
+      <EuiFacetButton
+        style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
+        key={entry.label}
+        quantity={entry.count}
+        isSelected={api.isFilterSelected({
+          identifier: facet.identifier,
+          value: entry.label
+        })}
+        isLoading={loading}
+      >
+        <FilterLink
+          filter={{ identifier: facet.identifier, value: entry.label }}
+        >
+          {entry.label}
+        </FilterLink>
+      </EuiFacetButton>
+    );
+  });
 
-//   return (
-//     <>
-//       <EuiTitle size="xxs">
-//         <h3>{facet.label}</h3>
-//       </EuiTitle>
-//       <EuiFacetGroup>{entries}</EuiFacetGroup>
-//     </>
-//   );
-// };
-
+  return (
+    <>
+      <EuiTitle size="xxs">
+        <h3>{facet.label}</h3>
+      </EuiTitle>
+      <EuiFacetGroup>{entries}</EuiFacetGroup>
+    </>
+  );
+};
 
 function App() {
   const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
-  console.log('variables', variables)
-console.log('results111', results)
 
   const [eventType, setEventType] = useState('event')
 
@@ -232,8 +305,8 @@ console.log('results111', results)
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
-        {/* <Facets data={results} loading={loading} /> */}
-        <HierarchicalMenuFacetAccordion facet={results?.facets[0]} loading={loading} />
+        <Facets data={results} loading={loading} />
+        {/* <ListFacet facet={results?.facets[0]} loading={loading} /> */}
         {/* <ListFacet facet={results?.facets[1]} loading={loading} />
         <ListFacet facet={results?.facets[2]} loading={loading} />
         <ListFacet facet={results?.facets[3]} loading={loading} />
@@ -242,12 +315,13 @@ console.log('results111', results)
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>
-          <EuiButtonGroup
+          {/* <EuiButtonGroup
             legend="This is a basic group"
             options={eventTypes}
             idSelected={eventType}
             onChange={(id) => eventTypeOnChange(id)}
-          />
+          /> */}
+          <EventHobbySelector />
             <EuiTitle size="l">
               <SelectedFilters data={results} loading={loading} />
             </EuiTitle>

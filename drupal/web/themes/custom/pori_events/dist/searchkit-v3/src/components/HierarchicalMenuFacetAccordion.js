@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { EuiFacetGroup, EuiTitle, EuiFacetButton } from '@elastic/eui'
+import { EuiFacetGroup, EuiTitle, EuiFacetButton, EuiAccordion } from '@elastic/eui'
 import { useSearchkit, FilterLink } from '@searchkit/client'
 
 const EntriesList = ({ entries, loading, facet }) => {
@@ -13,6 +13,7 @@ const EntriesList = ({ entries, loading, facet }) => {
     return (
       <Fragment key={entry.label}>
         <EuiFacetButton
+          key={entry.label}
           style={{ height: '28px', marginTop: 0, marginBottom: 0 }}
           quantity={entry.count}
           isSelected={api.isFilterSelected({
@@ -42,12 +43,15 @@ export const HierarchicalMenuFacetAccordion = ({ facet, loading }) => {
         return null;
       }
     return (
-  <>
-    <EuiTitle size="xxs">
+        <EuiAccordion
+        id={facet.label}
+        buttonContent={facet.label}
+        >
+    {/* <EuiTitle size="xxs">
       <h3>{facet.label}</h3>
-    </EuiTitle>
+    </EuiTitle> */}
     <EntriesList entries={facet.entries} facet={facet} loading={loading} />
-  </>
+    </EuiAccordion>
 )}
 
 export default HierarchicalMenuFacetAccordion;
