@@ -273,7 +273,7 @@ const HitsList = ({ data }) => {
 // };
 
 function App() {
-  // const Facets = FacetsList([]);
+  const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
 
@@ -300,7 +300,7 @@ function App() {
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
-        {/* <Facets data={results} loading={loading} /> */}
+        <Facets data={results} loading={loading} />
         {/* <ListFacet facet={results?.facets[0]} loading={loading} /> */}
         {/* <ListFacet facet={results?.facets[1]} loading={loading} />
         <ListFacet facet={results?.facets[2]} loading={loading} />
