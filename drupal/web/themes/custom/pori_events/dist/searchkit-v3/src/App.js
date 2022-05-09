@@ -98,12 +98,6 @@ const config = {
       'title',
       'description',
       'short_description',
-      'hobby_category',
-      'hobby_sub_category',
-      'area',
-      'area_sub_area',
-      'timeframe',
-      'hobby_audience'
     ],
   }),
   facets: [
@@ -163,8 +157,9 @@ const Description = (props) => {
   <EuiIcon type="calendar" />
   <span> {date}</span>
   <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
-  <EuiIcon type="mapMarker" />
-  <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span>
+  { hobbySubArea.length > 0 && <><EuiIcon type="mapMarker" />
+  <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span></>
+  }
   <p>{text}</p>
   </>
 }
@@ -239,73 +234,73 @@ const HitsList = ({ data }) => {
   </EuiFlexGrid>
 )}
 
-const ListFacet = ({ facet, loading }) => {
-  const api = useSearchkit();
+// const ListFacet = ({ facet, loading }) => {
+//   const api = useSearchkit();
 
-  if (!facet) {
-    return null;
-  }
+//   if (!facet) {
+//     return null;
+//   }
 
-  const entries = facet.entries.map((entry) => {
-    return (
-      <EuiFacetButton
-        style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
-        key={entry.label}
-        quantity={entry.count}
-        isSelected={api.isFilterSelected({
-          identifier: facet.identifier,
-          value: entry.label
-        })}
-        isLoading={loading}
-      >
-        <FilterLink
-          filter={{ identifier: facet.identifier, value: entry.label }}
-        >
-          {entry.label}
-        </FilterLink>
-      </EuiFacetButton>
-    );
-  });
+//   const entries = facet.entries.map((entry) => {
+//     return (
+//       <EuiFacetButton
+//         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
+//         key={entry.label}
+//         quantity={entry.count}
+//         isSelected={api.isFilterSelected({
+//           identifier: facet.identifier,
+//           value: entry.label
+//         })}
+//         isLoading={loading}
+//       >
+//         <FilterLink
+//           filter={{ identifier: facet.identifier, value: entry.label }}
+//         >
+//           {entry.label}
+//         </FilterLink>
+//       </EuiFacetButton>
+//     );
+//   });
 
-  return (
-    <>
-      <EuiTitle size="xxs">
-        <h3>{facet.label}</h3>
-      </EuiTitle>
-      <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <EuiTitle size="xxs">
+//         <h3>{facet.label}</h3>
+//       </EuiTitle>
+//       <EuiFacetGroup>{entries}</EuiFacetGroup>
+//     </>
+//   );
+// };
 
 function App() {
-  const Facets = FacetsList([]);
+  // const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
 
-  const [eventType, setEventType] = useState('event')
+  // const [eventType, setEventType] = useState('event')
 
-  const eventTypes = [
-    {
-      id: `event`,
-      label: 'Event',
-    },
-    {
-      id: `hobby`,
-      label: 'Hobby',
-    },
-  ]
+  // const eventTypes = [
+  //   {
+  //     id: `event`,
+  //     label: 'Event',
+  //   },
+  //   {
+  //     id: `hobby`,
+  //     label: 'Hobby',
+  //   },
+  // ]
 
-  const eventTypeOnChange = (id) => {
-    console.log('id', id)
-    setEventType(id)
-  }
+  // const eventTypeOnChange = (id) => {
+  //   console.log('id', id)
+  //   setEventType(id)
+  // }
 
   return (
     <EuiPage>
       <EuiPageSideBar>
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
-        <Facets data={results} loading={loading} />
+        {/* <Facets data={results} loading={loading} /> */}
         {/* <ListFacet facet={results?.facets[0]} loading={loading} /> */}
         {/* <ListFacet facet={results?.facets[1]} loading={loading} />
         <ListFacet facet={results?.facets[2]} loading={loading} />
