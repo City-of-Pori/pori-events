@@ -42,16 +42,14 @@ export const HierarchicalMenuFacetAccordion = ({ facet, loading }) => {
     if (!facet) {
         return null;
       }
-    return (
-        <EuiAccordion
-        id={facet.label}
-        buttonContent={facet.label}
-        >
-    {/* <EuiTitle size="xxs">
-      <h3>{facet.label}</h3>
-    </EuiTitle> */}
-    <EntriesList entries={facet.entries} facet={facet} loading={loading} />
-    </EuiAccordion>
-)}
+      return (
+        <>
+          <EuiTitle size="xxs">
+            <h3>{facet.label}</h3>
+          </EuiTitle>
+          <EntriesList entries={facet.entries} facet={facet} loading={loading} />
+        </>
+      )
+}
 
 export default HierarchicalMenuFacetAccordion;

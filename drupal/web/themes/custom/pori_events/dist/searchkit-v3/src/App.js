@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Searchkit,
   DateRangeFacet,
@@ -10,7 +10,7 @@ import {
   HierarchicalMenuFacet,
   TermFilter,
 } from '@searchkit/sdk';
-import { useSearchkitVariables, useSearchkit, FilterLink } from "@searchkit/client";
+import { useSearchkitVariables, useSearchkit, FilterLink, FilterLinkClickRef } from "@searchkit/client";
 import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
 
 import {
@@ -125,7 +125,7 @@ const config = {
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_location_area", "hobby_location_sub_area"],
-      identifier: 'hobby_category',
+      identifier: 'hobby_area',
       label: 'What',
     }),
     new DateRangeFacet({
@@ -152,13 +152,13 @@ const config = {
       multipleSelect: true,
     }),
   ],
-};
+}
 
 
 // Description of result item
 const Description = (props) => {
   const { text, date, days, hobbySubArea, hobby_location_area } = props;
-  console.log('hobbySubArea', props)
+  // console.log('hobbySubArea', props)
   return <>
   <EuiIcon type="calendar" />
   <span> {date}</span>
@@ -242,12 +242,13 @@ const HitsList = ({ data }) => {
 
 const ListFacet = ({ facet, loading }) => {
   const api = useSearchkit();
-
   if (!facet) {
     return null;
   }
-
+  
   const entries = facet.entries.map((entry) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // const ref = useRef(FilterLinkClickRef);
     return (
       <EuiFacetButton
         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
@@ -258,8 +259,12 @@ const ListFacet = ({ facet, loading }) => {
           value: entry.label
         })}
         isLoading={loading}
+        // onClick={(e) => {
+        //   ref.current.onClick(e)
+        // }}
       >
         <FilterLink
+          // ref={ref}
           filter={{ identifier: facet.identifier, value: entry.label }}
         >
           {entry.label}
@@ -283,7 +288,7 @@ function App() {
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
 
-  // const [eventType, setEventType] = useState('event')
+  const [eventType, setEventType] = useState('event')
 
   // const eventTypes = [
   //   {
@@ -296,10 +301,10 @@ function App() {
   //   },
   // ]
 
-  // const eventTypeOnChange = (id) => {
-  //   console.log('id', id)
-  //   setEventType(id)
-  // }
+  const handleTypeChange = (type) => {
+    console.log('type123', type)
+    setEventType(type)
+  }
 
   return (
     <EuiPage>
@@ -308,10 +313,12 @@ function App() {
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
         {/* <ListFacet facet={results?.facets[0]} loading={loading} /> */}
-        <ListFacet facet={results?.facets[1]} loading={loading} />
-        <ListFacet facet={results?.facets[2]} loading={loading} />
-        <ListFacet facet={results?.facets[3]} loading={loading} />
-        <ListFacet facet={results?.facets[4]} loading={loading} /> 
+        { (eventType === 'event') && <ListFacet facet={results?.facets[1]} loading={loading} />}
+        { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
+        { (eventType === 'event') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
+        { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
+        { (eventType === 'hobby') && <ListFacet facet={results?.facets[7]} loading={loading} />} 
+        { (eventType === 'event') && <ListFacet facet={results?.facets[8]} loading={loading} />} 
       </EuiPageSideBar>
       <EuiPageBody component="div">
         <EuiPageHeader>
@@ -322,7 +329,7 @@ function App() {
             idSelected={eventType}
             onChange={(id) => eventTypeOnChange(id)}
           /> */}
-          <EventHobbySelector customFilterComponents={true} />
+          <EventHobbySelector handleTypeChange={handleTypeChange} />
             <EuiTitle size="l">
               <SelectedFilters data={results} loading={loading} />
             </EuiTitle>
@@ -334,6 +341,7 @@ function App() {
         <EuiPageContent>
           <EuiPageContentHeader>
             <EuiPageContentHeaderSection>
+                <h2>{ eventType }</h2>
               <EuiTitle size="s">
                 <h2>{results?.summary.total} Results</h2>
               </EuiTitle>

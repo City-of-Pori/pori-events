@@ -3,8 +3,9 @@ import { useSearchkitVariables, useSearchkit, FilterLink } from "@searchkit/clie
 import { EuiButtonGroup } from '@elastic/eui';
 
 // Component for Event / Hobby switching
-export const EventHobbySelector = () => {
+export const EventHobbySelector = (props) => {
     const api = useSearchkit();
+    const { handleTypeChange } = props;
   
     const [eventType, setEventType] = useState('event')
 
@@ -26,12 +27,14 @@ export const EventHobbySelector = () => {
             api.addFilter({identifier: 'is_hobby', value: true});
             // api.toggleFilter({identifier: 'is_hobby', value: true});
             api.search();
+            handleTypeChange('hobby')
         }
         if(id === 'event') {
             api.removeFiltersByIdentifier('is_hobby');
             api.addFilter({identifier: 'is_hobby', value: false});
             // api.toggleFilter({identifier: 'is_hobby', value: false});
             api.search();
+            handleTypeChange('event')
         }
         api.search();
         setEventType(id);
