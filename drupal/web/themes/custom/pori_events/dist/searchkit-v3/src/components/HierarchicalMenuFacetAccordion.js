@@ -39,16 +39,17 @@ const EntriesList = ({ entries, loading, facet }) => {
 }
 
 export const HierarchicalMenuFacetAccordion = ({ facet, loading }) => {
+
     if (!facet) {
-        return null;
-      }
+      return null;
+    }
       return (
-        <>
-          <EuiTitle size="xxs">
-            <h3>{facet.label}</h3>
-          </EuiTitle>
+        <EuiAccordion
+          id={facet.identifier}
+          buttonContent={facet.label}
+        >
           <EntriesList entries={facet.entries} facet={facet} loading={loading} />
-        </>
+        </EuiAccordion>
       )
 }
 

@@ -45,6 +45,7 @@ import {
   EuiCard,
   EuiIcon,
   EuiBadge,
+  EuiAccordion,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
 // import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
@@ -110,23 +111,23 @@ const config = {
     new RefinementSelectFacet({
       field: 'event_type',
       identifier: 'event_type',
-      label: 'What',
+      label: 'Event type',
       multipleSelect: true,
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_category", "hobby_sub_category"],
       identifier: 'hobby_category',
-      label: 'What',
+      label: 'Hobby category',
     }),
     new HierarchicalMenuFacet({
       fields: ["area", "area_sub_area"],
       identifier: 'area',
-      label: 'Where',
+      label: 'Event location',
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_location_area", "hobby_location_sub_area"],
       identifier: 'hobby_area',
-      label: 'What',
+      label: 'Hobby location',
     }),
     new DateRangeFacet({
       identifier: 'event_date',
@@ -142,13 +143,13 @@ const config = {
     new RefinementSelectFacet({
       field: 'hobby_audience',
       identifier: 'hobby_audience',
-      label: 'Whom',
+      label: 'Hobby audience',
       multipleSelect: true,
     }),
     new RefinementSelectFacet({
       field: 'target_audience',
       identifier: 'target_audience',
-      label: 'Whom',
+      label: 'Event audience',
       multipleSelect: true,
     }),
   ],
@@ -274,12 +275,12 @@ const ListFacet = ({ facet, loading }) => {
   });
 
   return (
-    <>
-      <EuiTitle size="xxs">
-        <h3>{facet.label}</h3>
-      </EuiTitle>
+    <EuiAccordion
+      id={facet.identifier}
+      buttonContent={facet.label}
+    >
       <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </>
+    </EuiAccordion>
   );
 };
 
