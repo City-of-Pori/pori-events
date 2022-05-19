@@ -103,6 +103,7 @@
         }
     },
     "config": {
+	"discard-changes": true,
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
