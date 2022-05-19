@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41afeb0bc7d8c67fd5e885eb25c6a640",
+    "content-hash": "739191c17ec9b9c7a1b50e65df2bc72c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -103,6 +103,10 @@
                 "log",
                 "logging"
             ],
+            "support": {
+                "issues": "https://github.com/ccampbell/chromephp/issues",
+                "source": "https://github.com/ccampbell/chromephp/tree/4.1.0"
+            },
             "time": "2013-06-26T03:44:33+00:00"
         },
         {
@@ -2762,14 +2766,6 @@
                     "homepage": "https://www.drupal.org/user/1160788"
                 },
                 {
-                    "name": "RobLoach",
-                    "homepage": "https://www.drupal.org/user/61114"
-                },
-                {
-                    "name": "inders",
-                    "homepage": "https://www.drupal.org/user/127640"
-                },
-                {
                     "name": "truls1502",
                     "homepage": "https://www.drupal.org/user/325866"
                 }
@@ -3087,7 +3083,7 @@
             "extra": {
                 "drupal": {
                     "version": "6.0.0",
-                    "datestamp": "1650662320",
+                    "datestamp": "1651240616",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3231,10 +3227,6 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
-                {
-                    "name": "jhodgdon",
-                    "homepage": "https://www.drupal.org/user/155601"
-                },
                 {
                     "name": "martin107",
                     "homepage": "https://www.drupal.org/user/2659379"
@@ -3982,6 +3974,10 @@
                 "elasticsearch",
                 "search"
             ],
+            "support": {
+                "issues": "https://github.com/elastic/elasticsearch-php/issues",
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.11.0"
+            },
             "time": "2021-02-11T11:04:51+00:00"
         },
         {
@@ -4098,6 +4094,9 @@
                 "Guzzle",
                 "stream"
             ],
+            "support": {
+                "source": "https://github.com/ezimuel/guzzlestreams/tree/3.0.1"
+            },
             "time": "2020-02-14T23:11:50+00:00"
         },
         {
@@ -4149,6 +4148,9 @@
                 }
             ],
             "description": "Fork of guzzle/RingPHP (abandoned) to be used with elasticsearch-php",
+            "support": {
+                "source": "https://github.com/ezimuel/ringphp/tree/1.1.2"
+            },
             "time": "2020-02-14T23:51:21+00:00"
         },
         {
@@ -8890,6 +8892,10 @@
                 "breakpoint",
                 "twig"
             ],
+            "support": {
+                "issues": "https://github.com/ajgarlag/AjglBreakpointTwigExtension/issues",
+                "source": "https://github.com/ajgarlag/AjglBreakpointTwigExtension/tree/0.3.5"
+            },
             "time": "2021-02-08T10:48:05+00:00"
         },
         {
