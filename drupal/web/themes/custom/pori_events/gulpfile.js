@@ -2,32 +2,28 @@
  * Created by lisette on 28/07/16. (Updated on 5.11.2019 for Gulp 4)
  */
 // General plugins
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var gutil = require('gulp-util');
-var rename = require('gulp-rename');
-var gulpif = require('gulp-if');
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const gutil = require('gulp-util');
+const rename = require('gulp-rename');
+const gulpif = require('gulp-if');
 
 // Sass plugins
-var sass = require('gulp-sass')(require('sass'));
-var sassGlob = require('gulp-sass-glob');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefix = require('gulp-autoprefixer');
-var cleanCss = require('gulp-clean-css');
+const sass = require('gulp-sass')(require('sass'));
+const sassGlob = require('gulp-sass-glob');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefix = require('gulp-autoprefixer');
 
 // Javascript plugins
-var uglify = require('gulp-uglify');
-
-// Image plugins
-var imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
 
 // Config
-var basePath = {
+const basePath = {
   src: './src/',
   dist: './dist/',
   templates: './templates/'
 };
-var path = {
+const path = {
   styles: {
     src: basePath.src + 'scss/',
     dist: basePath.dist + 'css/'
@@ -36,14 +32,10 @@ var path = {
     src: basePath.src + 'js/',
     dist: basePath.dist + 'js/'
   },
-  images: {
-    src: basePath.dist + 'image/',
-    dist: basePath.dist + 'image/'
-  },
   templates: {
     dist: basePath.templates
   },
-  env : {
+  env: {
     dev: !!gutil.env.development,
     prod: !!gutil.env.production
   },
@@ -55,16 +47,17 @@ var path = {
   fontAwesome: 'font-awesome/scss/'
 }
 
-var changeEvent = function(evt) {
+const changeEvent = function (evt) {
   gutil.log('File', gutil.colors.cyan(evt.path.replace(new RegExp('/.*(?=/' + basePath.src + ')/'), '')), 'was', gutil.colors.magenta(evt.type));
 };
 
 console.log(gutil.env.production);
 
 // BrowserSync task
-gulp.task('browserSync', gulp.series(function() {
+gulp.task('browserSync', gulp.series(function () {
   browserSync.init({
-    //files: path.styles.dist + '*.css', // Does not work when stylesheets have @import
+    //files: path.styles.dist + '*.css', // Does not work when stylesheets have
+    // @import
     files: path.styles.src + '**/*.scss',
     // proxy: 'localhost:8080/pori-web/',
     // browser: '<browser>'
@@ -72,7 +65,7 @@ gulp.task('browserSync', gulp.series(function() {
 }));
 
 // Sass task
-gulp.task('sass', gulp.series(function(minify) {
+gulp.task('sass', gulp.series(function (minify) {
   return gulp.src(path.styles.src + '**/*.scss')
     .pipe(gulpif(path.sourcemaps.prod, sourcemaps.init()))
     .pipe(sassGlob())
@@ -98,14 +91,14 @@ gulp.task('sass', gulp.series(function(minify) {
 }));
 
 // Watch task
-gulp.task('watch', gulp.series(['sass', 'browserSync'], function() {
+gulp.task('watch', gulp.series(['sass', 'browserSync'], function () {
   gulp.watch(path.styles.src + '**/*.scss', ['sass']);
   gulp.watch(path.templates.dist + '**/*.html.twig', browserSync.reload);
   gulp.watch(path.scripts.src + '*.js', ['scripts']).on('change', browserSync.reload);
 }));
 
 // Uglify task
-gulp.task('scripts', gulp.series(function() {
+gulp.task('scripts', gulp.series(function () {
   gulp.src(path.scripts.src + '/*.js')
     .pipe(path.env.prod === true ? uglify() : gutil.noop())
     .pipe(rename({
@@ -114,18 +107,11 @@ gulp.task('scripts', gulp.series(function() {
     .pipe(gulp.dest(path.scripts.dist));
 }));
 
-// Image task
-gulp.task('imagemin', gulp.series(function() {
-  gulp.src(path.images.src + '*')
-    .pipe(path.env.prod === true ? imagemin() : gutil.noop())
-    .pipe(gulp.dest(path.images.dist));
-}));
-
 // Default tasks
-gulp.task('default', gulp.series(['sass', 'watch', 'scripts'], function() {
+gulp.task('default', gulp.series(['sass', 'watch', 'scripts'], function () {
   console.log('Running default tasks');
 }));
 
-gulp.task('build', gulp.series(['sass', 'scripts', 'imagemin'], function() {
+gulp.task('build', gulp.series(['sass', 'scripts'], function () {
   console.log('Running build tasks');
 }));
