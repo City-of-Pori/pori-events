@@ -93,7 +93,7 @@ gulp.task('sass', gulp.series(function(minify) {
       return this.emit("end");
     })
     .pipe(autoprefix())
-    .pipe(path.env.prod === true ? cleanCss() : gutil.noop())
+    // .pipe(path.env.prod === true ? cleanCss() : gutil.noop())
     .pipe(gulpif(path.sourcemaps.prod, sourcemaps.write()))
     .pipe(gulp.dest(path.styles.dist));
 }));
