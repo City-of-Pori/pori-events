@@ -4,7 +4,6 @@
 // General plugins
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var chalk = require('chalk');
 var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 var gulpif = require('gulp-if');
