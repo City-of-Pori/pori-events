@@ -1,6 +1,6 @@
 @use "sass:math";
 // Use REMs with a pixel fallback for font sizing.
-@mixin font-size($font-size){
+@mixin font-size($font-size) {
   font-size: $font-size;
   font-size: ($font-size / $base-font-size)*1rem;
 }
@@ -10,7 +10,7 @@
 // This file includes all mixins related to the typography
 //
 
-@mixin fontsmoothing ($smooting: antialiased, $uses-text-shadow: false) {
+@mixin fontsmoothing($smooting: antialiased, $uses-text-shadow: false) {
   -webkit-font-smoothing: $smooting;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-smoothing: $smooting;

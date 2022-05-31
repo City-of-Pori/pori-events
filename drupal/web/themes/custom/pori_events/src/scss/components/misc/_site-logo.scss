@@ -23,35 +23,39 @@
     width: 22.5rem;
   }
 }
+
 .footer-logo-hobby {
   box-sizing: border-box;
-  background: url(/themes/custom/pori_events/dist/images/harrastukset1.png)
-    no-repeat;
+  background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
   background-size: contain;
   max-height: 150px;
   max-width: 550px;
 }
+
 .hobby-class-1 {
   .dialog-off-canvas-main-canvas {
     .layout-container {
       .page-footer {
-        border-bottom: 0.6rem solid #EC1C24 !important; 
+        border-bottom: 0.6rem solid #EC1C24 !important;
+
         .page-footer__top {
           .footer-logo {
-            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png)
-              no-repeat;
+            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
             background-size: contain;
           }
-          .add-event{
+
+          .add-event {
             font-size: 0px;
             background: #EC1C24;
+
             &:hover {
               color: white;
               background: darken(#EC1C24, 5%);
-  }
+            }
           }
+
           .add-event:after {
-            
+
             content: 'LISÄÄ OMA HARRASTUKSESI +';
             font-size: 20px;
           }
