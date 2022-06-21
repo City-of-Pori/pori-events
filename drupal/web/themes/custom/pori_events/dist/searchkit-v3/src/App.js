@@ -51,6 +51,7 @@ import { DateTime } from "luxon";
 // import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
 import { ListFacetAccordion } from "./components/ListFacetAccordion";
 import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
+import { DateRangeFacetCustom } from "./components/DateRangeFacetCustom";
 import { EventHobbySelector } from "./components/EventHobbySelector";
 import '@elastic/eui/dist/eui_theme_light.css';
 
@@ -288,7 +289,7 @@ function App() {
   const Facets = FacetsList([]);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
-
+  console.log(results)
   const [eventType, setEventType] = useState('event')
 
   // const eventTypes = [
@@ -318,6 +319,7 @@ function App() {
         { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
         { (eventType === 'event') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
+        <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
         { (eventType === 'hobby') && <ListFacet facet={results?.facets[7]} loading={loading} />} 
         { (eventType === 'event') && <ListFacet facet={results?.facets[8]} loading={loading} />} 
       </EuiPageSideBar>
