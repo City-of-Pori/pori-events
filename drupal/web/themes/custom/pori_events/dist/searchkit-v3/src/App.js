@@ -155,9 +155,29 @@ const config = {
       multipleSelect: true,
     }),
     new RefinementSelectFacet({
+      field: 'registration',
+      identifier: 'registration',
+      // label: 'registration',
+    }),
+    new RefinementSelectFacet({
       field: 'accessible',
       identifier: 'accessible',
       // label: 'accessible',
+    }),
+    new RefinementSelectFacet({
+      field: 'child_care',
+      identifier: 'child_care',
+      // label: 'child_care',
+    }),
+    new RefinementSelectFacet({
+      field: 'free_enterance',
+      identifier: 'free_enterance',
+      // label: 'free_enterance',
+    }),
+    new RefinementSelectFacet({
+      field: 'culture_and_or_activity_no',
+      identifier: 'culture_and_or_activity_no',
+      // label: 'culture_and_or_activity_no',
     }),
   ],
 }
@@ -330,7 +350,11 @@ function App() {
         { (eventType === 'event') && <ListFacet facet={results?.facets[8]} loading={loading} />} 
         { (eventType === 'hobby') && <>
           <h3 class="euiTitle euiTitle--xxsmall">TARKENNA HAKUA</h3>
-          <BoolFacet facet={results?.facets[9]} loading={loading} name="Accecssible!" />
+          <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
+          <BoolFacet facet={results?.facets[10]} loading={loading} name="Accecssible" />
+          <BoolFacet facet={results?.facets[11]} loading={loading} name="Child Care" />
+          <BoolFacet facet={results?.facets[12]} loading={loading} name="Free Entrance" />
+          <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
         </>
         } 
       </EuiPageSideBar>

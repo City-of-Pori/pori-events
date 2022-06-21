@@ -16,6 +16,7 @@ export const BoolFacet = ({ facet, loading, name }) => {
     console.log
   
     const entries = facet.entries.map((entry) => {
+        console.log('entry111', facet)
       if(entry.label === 0) return
       return (
         <EuiFacetButton
@@ -28,7 +29,7 @@ export const BoolFacet = ({ facet, loading, name }) => {
           })}
           isLoading={loading}
           onClick={() => {
-            api.toggleFilter({identifier: 'accessible', value: true});
+            api.toggleFilter({identifier: facet.identifier, value: true});
             api.search();
           }}
         >
