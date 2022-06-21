@@ -248,8 +248,8 @@ const ListFacet = ({ facet, loading }) => {
   }
   
   const entries = facet.entries.map((entry) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     // const ref = useRef(FilterLinkClickRef);
+    
     return (
       <EuiFacetButton
         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
