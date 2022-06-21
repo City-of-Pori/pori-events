@@ -52,6 +52,7 @@ import { DateTime } from "luxon";
 import { ListFacetAccordion } from "./components/ListFacetAccordion";
 import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
 import { DateRangeFacetCustom } from "./components/DateRangeFacetCustom";
+import { BoolFacet } from "./components/BoolFacet";
 import { EventHobbySelector } from "./components/EventHobbySelector";
 import '@elastic/eui/dist/eui_theme_light.css';
 
@@ -152,6 +153,11 @@ const config = {
       identifier: 'target_audience',
       label: 'Event audience',
       multipleSelect: true,
+    }),
+    new RefinementSelectFacet({
+      field: 'accessible',
+      identifier: 'accessible',
+      // label: 'accessible',
     }),
   ],
 }
@@ -322,6 +328,11 @@ function App() {
         <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
         { (eventType === 'hobby') && <ListFacet facet={results?.facets[7]} loading={loading} />} 
         { (eventType === 'event') && <ListFacet facet={results?.facets[8]} loading={loading} />} 
+        { (eventType === 'hobby') && <>
+          <h3 class="euiTitle euiTitle--xxsmall">TARKENNA HAKUA</h3>
+          <BoolFacet facet={results?.facets[9]} loading={loading} name="Accecssible!" />
+        </>
+        } 
       </EuiPageSideBar>
       <EuiPageBody component="div">
         <EuiPageHeader>
