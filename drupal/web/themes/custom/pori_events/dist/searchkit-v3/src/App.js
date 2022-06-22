@@ -179,6 +179,45 @@ const config = {
       identifier: 'culture_and_or_activity_no',
       // label: 'culture_and_or_activity_no',
     }),
+
+    // Days for hobbies
+
+    new RefinementSelectFacet({
+      field: 'monday',
+      identifier: 'monday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'tuesday',
+      identifier: 'tuesday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'wednesday',
+      identifier: 'wednesday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'thursday',
+      identifier: 'thursday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'friday',
+      identifier: 'friday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'saturday',
+      identifier: 'saturday',
+      // label: 'culture_and_or_activity_no',
+    }),
+    new RefinementSelectFacet({
+      field: 'sunday',
+      identifier: 'sunday',
+      // label: 'culture_and_or_activity_no',
+    }),
+
   ],
 }
 
@@ -355,6 +394,16 @@ function App() {
           <BoolFacet facet={results?.facets[11]} loading={loading} name="Child Care" />
           <BoolFacet facet={results?.facets[12]} loading={loading} name="Free Entrance" />
           <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
+
+          <EuiFacetGroup layout="horizontal" gutterSize="s">
+            <BoolFacet facet={results?.facets[14]} loading={loading} name="MO" style="day" />
+            <BoolFacet facet={results?.facets[15]} loading={loading} name="TU" style="day" />
+            <BoolFacet facet={results?.facets[16]} loading={loading} name="WE" style="day" />
+            <BoolFacet facet={results?.facets[17]} loading={loading} name="TH" style="day" />
+            <BoolFacet facet={results?.facets[18]} loading={loading} name="FR" style="day" />
+            <BoolFacet facet={results?.facets[19]} loading={loading} name="SA" style="day" />
+            <BoolFacet facet={results?.facets[20]} loading={loading} name="SU" style="day" />
+          </EuiFacetGroup>
         </>
         } 
       </EuiPageSideBar>
