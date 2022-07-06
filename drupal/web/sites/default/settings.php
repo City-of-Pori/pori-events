@@ -125,6 +125,12 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
 }
 
 /**
+ * Access ping debug data.
+ */
+$settings['ping_token'] = '0b8dc61f29798188e66a64d6109f1155';
+
+
+/**
  * Lando configuration overrides.
  */
 if (getenv('LANDO_INFO') && file_exists($app_root . '/' . $site_path . '/settings.lando.php')) {
