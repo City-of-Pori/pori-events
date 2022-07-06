@@ -3,32 +3,50 @@
     "description": "Drupal 9 based Pori Events Composer Project",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "authors": [{"name": "", "role": ""}],
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
     "repositories": [
-        {"type": "composer", "url": "https://packages.drupal.org/8"},
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
         {
             "type": "package",
             "package": {
-                "name": "kenwheeler/slick", "version": "1.8.1", "type": "drupal-library",
-                "dist": {"url": "https://github.com/kenwheeler/slick/archive/refs/tags/v1.8.1.zip", "type": "zip"}
+                "name": "kenwheeler/slick",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/refs/tags/v1.8.1.zip",
+                    "type": "zip"
+                }
             }
         },
         {
             "type": "package",
             "package": {
-                "name": "dinbror/blazy", "version": "1.8.2", "type": "drupal-library",
-                "dist": {"url": "https://github.com/dinbror/blazy/archive/1.8.2.zip", "type": "zip"}
+                "name": "dinbror/blazy",
+                "version": "1.8.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dinbror/blazy/archive/1.8.2.zip",
+                    "type": "zip"
+                }
             }
         }
     ],
     "require": {
         "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "10.5",
+        "drush/drush": "^11.0",
         "webflo/drupal-finder": "^1.0.0",
         "drupal/warden": "^3.0@RC",
         "drupal/simplei": "^1.1",
-        "wunderio/drupal-ping": "^2.2.2",
+        "wunderio/drupal-ping": "^2.3",
         "drupal/address": "^1.10",
         "drupal/elasticsearch_helper": "7.x-dev",
         "drupal/admin_toolbar": "^3.1",
@@ -55,7 +73,7 @@
         "drupal/pathauto": "^1.10",
         "drupal/core-recommended": "^9.2",
         "drupal/core-composer-scaffold": "^9.2",
-        "drupal/blazy": "^2.10",
+        "drupal/blazy": "^2.13",
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^3.7",
         "drupal/google_tag": "^1.5",
@@ -67,29 +85,66 @@
         "drupal/twig_xdebug": "^1.0",
         "drupal/devel": "^4.1"
     },
-    "conflict": {"drupal/drupal": "*"},
+    "conflict": {
+        "drupal/drupal": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "autoload": {"classmap": ["scripts/composer/ScriptHandler.php"]},
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": ["DrupalProject\\composer\\ScriptHandler::checkComposerVersion"],
-        "pre-update-cmd": ["DrupalProject\\composer\\ScriptHandler::checkComposerVersion"],
-        "post-install-cmd": ["DrupalProject\\composer\\ScriptHandler::createRequiredFiles"],
-        "post-update-cmd": ["DrupalProject\\composer\\ScriptHandler::createRequiredFiles"]
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
     },
     "extra": {
-        "config": {"sort-packages": true},
-        "drupal-scaffold": {"locations": {"web-root": "./web"}},
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+        "config": {
+            "sort-packages": true
         },
-        "dropin-paths": {"web/": ["type:web-dropin"]},
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./web"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "dropin-paths": {
+            "web/": [
+                "type:web-dropin",
+                "package:wunderio/drupal-ping:_ping.php"
+            ]
+        },
         "patches": {
             "drupal/core": {
                 "SubProcess migrate process plugin does not play nicely with XML-based source data - #3048464": "https://www.drupal.org/files/issues/2019-04-30/3048464-8.patch"
@@ -103,7 +158,7 @@
         }
     },
     "config": {
-	"discard-changes": true,
+        "discard-changes": true,
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,

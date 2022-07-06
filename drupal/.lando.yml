@@ -72,7 +72,7 @@ services:
     hogfrom:
       - appserver
   node:
-    type: node
+    type: node:16
     globals:
       gulp-cli: latest
       bower: latest
@@ -124,4 +124,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.4.2
+version: v3.6.4
