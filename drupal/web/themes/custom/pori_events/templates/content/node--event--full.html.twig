@@ -76,13 +76,15 @@
 ] %}
 
 <!-- fields -->
-{% set bg_img = content.field_image_ext_url[0]['#uri'] | image_style('event_page_pic_1360px_') %}
+{% if content.field_image_ext_url[0]['#uri'] %}
+  {% set bg_img = content.field_image_ext_url[0]['#uri'] | image_style('event_page_pic_1360px_') %}
+{% endif %}
 {% set start_time = content.field_start_time[0]['#attributes']['datetime'] %}
 {% set end_time = content.field_end_time[0]['#attributes']['datetime'] %}
 {% set short_description = content.field_short_description[0]['#context']['value'] %}
 {% set description = content.field_description[0]['#text'] %}
 {% set location_address = content.field_location_extra_info[0]['#context']['value'] %}
-{#{% set area = content.field_area[0]['#title'] %}#}
+{# {% set area = content.field_area[0]['#title'] %} #}
 {% set free = content.field_free_enterance[0]['response'] %}
 {% set price = content.field_price[0]['#context']['value'] %}
 {% set provider_www = content.field_provider_www[0]['content'] %}
@@ -100,7 +102,7 @@
 {% set free_entrance = content.field_free_entrance[0]['content'] %}
 {% set hobby_category = content.field_hobby_category[0]['content'] %}
 {% set hobby_map = content.field_hobby_map[0]['content'] %}
-{#{% set field_hobby_area = content.field_hobby_area[0]['#title'] %}#}
+{# {% set field_hobby_area = content.field_hobby_area[0]['#title'] %} #}
 {% set target_audience = content.field_target_audience[0]['#title'] %}
 {% set monday = content.field_weekday_monday[0] %}
 {% set tuesday = content.field_weekday_tuesday[0] %}
@@ -200,27 +202,27 @@
             <div class="event__content--sidebar__item event__time">
               <i class="fas fa-clock"></i>
               <div class="event__content-weekday-wrapper">
-              {% if monday %}
-                <p>{{ "Monday: "|t }} {{ monday }}</p>
-              {% endif %}
-              {% if tuesday %}
-                <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
-              {% endif %}
-              {% if wednesday %}
-                <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
-              {% endif %}
-              {% if thursday %}
-                <p>{{ "Thursday: "|t }} {{ thursday }}</p>
-              {% endif %}
-              {% if friday %}
-                <p>{{ "Friday: "|t }} {{ friday }}</p>
-              {% endif %}
-              {% if saturday %}
-                <p>{{ "Saturday: "|t }} {{ saturday }}</p>
-              {% endif %}
-              {% if sunday %}
-                <p>{{ "Sunday: "|t }} {{ sunday }}</p>
-              {% endif %}
+                {% if monday %}
+                  <p>{{ "Monday: "|t }} {{ monday }}</p>
+                {% endif %}
+                {% if tuesday %}
+                  <p>{{ "Tuesday: "|t }} {{ tuesday }}</p>
+                {% endif %}
+                {% if wednesday %}
+                  <p>{{ "Wednesday: "|t }} {{ wednesday }}</p>
+                {% endif %}
+                {% if thursday %}
+                  <p>{{ "Thursday: "|t }} {{ thursday }}</p>
+                {% endif %}
+                {% if friday %}
+                  <p>{{ "Friday: "|t }} {{ friday }}</p>
+                {% endif %}
+                {% if saturday %}
+                  <p>{{ "Saturday: "|t }} {{ saturday }}</p>
+                {% endif %}
+                {% if sunday %}
+                  <p>{{ "Sunday: "|t }} {{ sunday }}</p>
+                {% endif %}
               </div>
             </div>
           {% endif %}
@@ -262,10 +264,10 @@
             </div>
           </div>
         {% else %}
-            {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
-              <div class="event__content--sidebar__item event__time">
-                <i class="fas fa-clock"></i>
-                <div class="event__content-weekday-wrapper">
+          {% if monday or tuesday or wednesday or thursday or friday or saturday or sunday %}
+            <div class="event__content--sidebar__item event__time">
+              <i class="fas fa-clock"></i>
+              <div class="event__content-weekday-wrapper">
                 {% if monday %}
                   <p>{{ "Monday: "|t }} {{ monday }}</p>
                 {% endif %}
@@ -287,9 +289,9 @@
                 {% if sunday %}
                   <p>{{ "Sunday: "|t }} {{ sunday }}</p>
                 {% endif %}
-                </div>
               </div>
-            {% endif %}
+            </div>
+          {% endif %}
         {% endif %}
       {% endif %}
       {% if location_address %}
@@ -390,9 +392,9 @@
             {% for external_link in external_links['#items'] %}
               {% if external_links[loop.index0] %}
 
-                  <a href={{ external_links[loop.index0]['#url'] }} target="_blank" class="external-links-list__item" >
-                      {{ external_links[loop.index0]['#title'] }}
-                  </a>
+                <a href={{ external_links[loop.index0]['#url'] }} target="_blank" class="external-links-list__item">
+                  {{ external_links[loop.index0]['#title'] }}
+                </a>
 
               {% endif %}
             {% endfor %}
