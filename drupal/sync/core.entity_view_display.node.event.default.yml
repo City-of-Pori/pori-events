@@ -195,6 +195,7 @@ content:
     weight: 21
     region: content
   field_image_ext_url:
+    type: imagecache_external_image
     label: above
     settings:
       imagecache_external_style: large
@@ -391,6 +392,8 @@ content:
     weight: 29
     region: content
   links:
+    settings: {  }
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
