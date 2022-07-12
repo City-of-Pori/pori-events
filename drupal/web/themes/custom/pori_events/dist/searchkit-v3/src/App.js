@@ -71,6 +71,7 @@ const config = {
       'short_description',
       'hobby_category',
       'hobby_sub_category',
+      'area',
       'area_sub_area',
       'hobby_location_sub_area',
       'hobby_location_area',
@@ -224,16 +225,18 @@ const config = {
 
 // Description of result item
 const Description = (props) => {
-  const { text, date, days, hobbySubArea, hobby_location_area } = props;
-  // console.log('hobbySubArea', props)
+  const { text, date, days, hobbySubArea, hobby_location_area, eventArea, eventSubArea } = props;
   return <>
-  <EuiIcon type="calendar" />
-  <span> {date}</span>
-  <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
-  { hobbySubArea.length > 0 && <><EuiIcon type="mapMarker" />
-  <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span></>
-  }
-  <p>{text}</p>
+    <EuiIcon type="calendar" />
+    <span> {date}</span>
+    <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
+    { hobbySubArea.length > 0 && <><EuiIcon type="mapMarker" />
+    <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span></>
+    }
+    { eventArea.length > 0 && <><EuiIcon type="mapMarker" />
+    <span> {eventArea?.map((area) => <span>{area}</span>)} {eventSubArea}</span></>
+    }
+    <p>{text}</p>
   </>
 }
 
@@ -290,8 +293,17 @@ const HitListItem = (hit) => {
             />
           </div>
         }
-        title={hit.fields.title}
-        description={<Description text={hit.fields.short_description} date={` ${start_time_string} - ${end_time_string}`} days={weekDays} hobbySubArea={hit.fields.hobby_location_sub_area} hobbyLocationArea={hit.fields.hobby_location_area} />}
+        title={<>{hit.fields.title} {hit.fields.id}</>}
+        description={
+          <Description
+          text={hit.fields.short_description}
+          date={` ${start_time_string} - ${end_time_string}`}
+          days={weekDays}
+          hobbySubArea={hit.fields.hobby_location_sub_area}
+          hobbyLocationArea={hit.fields.hobby_location_area}
+          eventArea={hit.fields.area}
+          eventSubArea={hit.fields.area_sub_area}
+          />}
       />
     </EuiFlexItem>
 }
