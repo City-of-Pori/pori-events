@@ -13,6 +13,8 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
 
+  // console.log('startDate', startDate.format('YYYY-MM-DD'))
+
   useEffect(() => {
     if (startDate && endDate) {
       if (selectedOption) {
@@ -21,8 +23,8 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
 
       api.addFilter({
         identifier: facet.identifier,
-        dateMin: startDate.toISOString(),
-        dateMax: endDate.toISOString()
+        dateMin: startDate.format('YYYY-MM-DD'),
+        dateMax: endDate.format('YYYY-MM-DD'),
       })
       api.search()
     }
