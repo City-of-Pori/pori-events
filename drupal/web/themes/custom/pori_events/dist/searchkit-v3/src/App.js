@@ -81,6 +81,7 @@ const config = {
       'url',
       'start_time',
       'end_time',
+      'single_day',
       'monday',
       'tuesday',
       'wednesday',
@@ -218,7 +219,20 @@ const config = {
       identifier: 'sunday',
       // label: 'culture_and_or_activity_no',
     }),
-
+  ],
+  sortOptions: [
+    {
+      id: 'start_time',
+      label: 'Start time',
+      field: {start_time: 'asc'},
+      defaultOption: true,
+    },
+    {
+      id: 'single_day',
+      label: 'Single day',
+      field: {single_day: 'desc'},
+      defaultOption: true,
+    },
   ],
 }
 
@@ -251,6 +265,8 @@ const HitListItem = (hit) => {
   let image_source = hit.fields.image_ext
     ? hit.fields.image_ext
     : "/themes/custom/pori_events/dist/images/event-default.jpg";
+    console.log('image_source', image_source)
+    image_source = image_source.replace('mat.lndo.site', 'https://tapahtumat.pori.fi')
     image_source = image_source.replace('at.lndo.site', 'https://tapahtumat.pori.fi')
     const date_format = "dd-LL-yyyy";
   
@@ -297,7 +313,7 @@ const HitListItem = (hit) => {
         description={
           <Description
           text={hit.fields.short_description}
-          date={` ${start_time_string} - ${end_time_string}`}
+          date={`${start_time_string} - ${end_time_string}`}
           days={weekDays}
           hobbySubArea={hit.fields.hobby_location_sub_area}
           hobbyLocationArea={hit.fields.hobby_location_area}

@@ -20,7 +20,6 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
       if (selectedOption) {
         api.removeFilter(selectedOption)
       }
-
       api.addFilter({
         identifier: facet.identifier,
         dateMin: startDate.format('YYYY-MM-DD'),
