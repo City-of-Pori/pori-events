@@ -340,10 +340,10 @@ const ListFacet = ({ facet, loading }) => {
   if (!facet) {
     return null;
   }
-  
+
   const entries = facet.entries.map((entry) => {
-    // const ref = useRef(FilterLinkClickRef);
-    
+    const ref = useRef(null);
+
     return (
       <EuiFacetButton
         style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
@@ -354,12 +354,13 @@ const ListFacet = ({ facet, loading }) => {
           value: entry.label
         })}
         isLoading={loading}
-        // onClick={(e) => {
-        //   ref.current.onClick(e)
-        // }}
+        onClick={(e) => {
+          // console.log("onClick", e);
+          ref.current.onClick(e);
+        }}
       >
         <FilterLink
-          // ref={ref}
+          ref={ref}
           filter={{ identifier: facet.identifier, value: entry.label }}
         >
           {entry.label}
@@ -369,14 +370,15 @@ const ListFacet = ({ facet, loading }) => {
   });
 
   return (
-    <EuiAccordion
-      id={facet.identifier}
-      buttonContent={facet.label}
-    >
+    <>
+      <EuiTitle size="xxs">
+        <h3>{facet.label}</h3>
+      </EuiTitle>
       <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </EuiAccordion>
+    </>
   );
 };
+
 
 function App() {
   const Facets = FacetsList([]);
