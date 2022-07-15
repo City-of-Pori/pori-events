@@ -1,6 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Searchkit,
   DateRangeFacet,
@@ -265,7 +263,6 @@ const HitListItem = (hit) => {
   let image_source = hit.fields.image_ext
     ? hit.fields.image_ext
     : "/themes/custom/pori_events/dist/images/event-default.jpg";
-    console.log('image_source', image_source)
     image_source = image_source.replace('mat.lndo.site', 'https://tapahtumat.pori.fi')
     image_source = image_source.replace('at.lndo.site', 'https://tapahtumat.pori.fi')
     const date_format = "dd-LL-yyyy";
@@ -312,6 +309,7 @@ const HitListItem = (hit) => {
         title={<>{hit.fields.title} {hit.fields.id}</>}
         description={
           <Description
+          key={hit.fields.id}
           text={hit.fields.short_description}
           date={`${start_time_string} - ${end_time_string}`}
           days={weekDays}
@@ -337,17 +335,18 @@ const HitsList = ({ data }) => {
 
 const ListFacet = ({ facet, loading }) => {
   const api = useSearchkit();
-  if (!facet) {
-    return null;
-  }
+  const ref = useRef([]);
 
-  const entries = facet.entries.map((entry) => {
-    const ref = useRef(null);
+  useEffect(() => {
+    ref.current = ref.current.slice(0, facet?.entries.length);
+ }, [facet?.entries]);
 
+
+  const entries = facet?.entries?.map((entry, i) => {
     return (
       <EuiFacetButton
-        style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
         key={entry.label}
+        style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
         quantity={entry.count}
         isSelected={api.isFilterSelected({
           identifier: facet.identifier,
@@ -355,12 +354,11 @@ const ListFacet = ({ facet, loading }) => {
         })}
         isLoading={loading}
         onClick={(e) => {
-          // console.log("onClick", e);
-          ref.current.onClick(e);
+          ref.current[i].onClick(e)
         }}
       >
         <FilterLink
-          ref={ref}
+          ref={el => ref.current[i] = el} 
           filter={{ identifier: facet.identifier, value: entry.label }}
         >
           {entry.label}
@@ -368,6 +366,10 @@ const ListFacet = ({ facet, loading }) => {
       </EuiFacetButton>
     );
   });
+
+  if (!facet) {
+    return null;
+  }
 
   return (
     <>
@@ -381,22 +383,15 @@ const ListFacet = ({ facet, loading }) => {
 
 
 function App() {
-  const Facets = FacetsList([]);
+  // const Facets = FacetsList([]);
+  const [eventType, setEventType] = useState('event')
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
   console.log(results)
-  const [eventType, setEventType] = useState('event')
 
-  // const eventTypes = [
-  //   {
-  //     id: `event`,
-  //     label: 'Event',
-  //   },
-  //   {
-  //     id: `hobby`,
-  //     label: 'Hobby',
-  //   },
-  // ]
+  useEffect(() => {
+    setEventType('event')
+  }, [])
 
   const handleTypeChange = (type) => {
     console.log('type123', type)
@@ -409,14 +404,13 @@ function App() {
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
-        {/* <ListFacet facet={results?.facets[0]} loading={loading} /> */}
-        { (eventType === 'event') && <ListFacet facet={results?.facets[1]} loading={loading} />}
+        { (eventType === 'event') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} />}
         { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
         { (eventType === 'event') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
-        { (eventType === 'hobby') && <ListFacet facet={results?.facets[7]} loading={loading} />} 
-        { (eventType === 'event') && <ListFacet facet={results?.facets[8]} loading={loading} />} 
+        { (eventType === 'hobby') && <ListFacet key={"2"} facet={results?.facets[7]} loading={loading} />} 
+        { (eventType === 'event') && <ListFacet key={"3"} facet={results?.facets[8]} loading={loading} />} 
         { (eventType === 'hobby') && <>
           <h3 class="euiTitle euiTitle--xxsmall">TARKENNA HAKUA</h3>
           <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
@@ -440,12 +434,6 @@ function App() {
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>
-          {/* <EuiButtonGroup
-            legend="This is a basic group"
-            options={eventTypes}
-            idSelected={eventType}
-            onChange={(id) => eventTypeOnChange(id)}
-          /> */}
           <EventHobbySelector handleTypeChange={handleTypeChange} />
             <EuiTitle size="l">
               <SelectedFilters data={results} loading={loading} />
