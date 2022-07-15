@@ -341,7 +341,6 @@ const ListFacet = ({ facet, loading }) => {
     ref.current = ref.current.slice(0, facet?.entries.length);
  }, [facet?.entries]);
 
-
   const entries = facet?.entries?.map((entry, i) => {
     return (
       <EuiFacetButton
@@ -372,12 +371,12 @@ const ListFacet = ({ facet, loading }) => {
   }
 
   return (
-    <>
-      <EuiTitle size="xxs">
-        <h3>{facet.label}</h3>
-      </EuiTitle>
+    <EuiAccordion
+      id={facet.identifier}
+      buttonContent={facet.label}
+    >
       <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </>
+    </EuiAccordion>
   );
 };
 
