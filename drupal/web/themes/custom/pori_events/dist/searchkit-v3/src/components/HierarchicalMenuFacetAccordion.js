@@ -1,15 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef, useEffect } from 'react'
 import { EuiFacetGroup, EuiTitle, EuiFacetButton, EuiAccordion } from '@elastic/eui'
 import { useSearchkit, FilterLink } from '@searchkit/client'
 
 const EntriesList = ({ entries, loading, facet }) => {
   const api = useSearchkit()
+  const ref = useRef([]);
+
+  useEffect(() => {
+    ref.current = ref.current.slice(0, facet?.entries.length);
+ }, [facet?.entries]);
 
   if (!facet) {
     return null;
   }
 
-  const entriesElements = entries.map((entry) => {
+  const entriesElements = entries.map((entry, i) => {
+    console.log('entries', entries)
     return (
       <Fragment key={entry.label}>
         <EuiFacetButton
@@ -22,8 +28,12 @@ const EntriesList = ({ entries, loading, facet }) => {
             level: entry.level
           })}
           isLoading={loading}
+          onClick={(e) => {
+            ref.current[i].onClick(e)
+          }}
         >
           <FilterLink
+            ref={el => ref.current[i] = el} 
             filter={{ identifier: facet.identifier, value: entry.label, level: entry.level }}
           >
             {entry.label}
