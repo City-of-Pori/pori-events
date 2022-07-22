@@ -4,16 +4,7 @@ display:
   default:
     display_title: Isäntä
     display_options:
-      exposed_form:
-        options:
-          submit_button: Suodatin
-          reset_button_label: Palauta
-          exposed_sorts_label: Lajittele
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Merkintöjä sivua kohti'
-            items_per_page_options_all_label: '- Kaikki -'
+      title: 'Viimeisimmät lokimerkinnät'
       fields:
         nothing:
           admin_label: Ikoni
@@ -21,8 +12,24 @@ display:
           label: Vakavuus
         type:
           label: Veids
+        timestamp:
+          label: Päivämäärä
+        message:
+          label: Viesti
+        name:
+          label: Käyttäjä
         link:
           label: Toimenpiteet
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+      exposed_form:
+        options:
+          submit_button: Suodatin
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
       filters:
         type:
           expose:
@@ -30,4 +37,5 @@ display:
         severity:
           expose:
             label: Vakavuus
-      title: 'Viimeisimmät lokimerkinnät'
+  page:
+    display_title: Sivu

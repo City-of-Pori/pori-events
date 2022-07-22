@@ -3,26 +3,41 @@ display:
   default:
     display_title: Isäntä
     display_options:
+      title: 'Kustomoitujen lohkojen kirjasto'
+      fields:
+        info:
+          label: 'Lohkon kuvaus'
+        type:
+          label: 'Lohkon tyyppi'
+        changed:
+          label: Päivitetty
+        operations:
+          label: Toimenpiteet
+      pager:
+        options:
+          tags:
+            next: 'Seuraava ›'
+            previous: '‹ Edellinen'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
       exposed_form:
         options:
           submit_button: Käytä
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
-      pager:
-        options:
-          tags:
-            previous: '‹ Edellinen'
-            next: 'Seuraava ›'
+      empty:
+        area_text_custom:
+          content: 'There are no custom blocks available. '
+      filters:
+        info:
           expose:
-            items_per_page_label: 'Merkintöjä sivua kohti'
-            items_per_page_options_all_label: '- Kaikki -'
-      fields:
-        changed:
-          label: Päivitetty
-        operations:
-          label: Toimenpiteet
-      title: 'Kustomoitujen lohkojen kirjasto'
+            label: 'Lohkon kuvaus'
+        type:
+          expose:
+            label: 'Lohkon tyyppi'
   page_1:
+    display_title: Sivu
     display_options:
       menu:
         title: 'Kustomoitujen lohkojen kirjasto'
