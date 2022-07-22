@@ -4,21 +4,7 @@ display:
   default:
     display_title: Isäntä
     display_options:
-      exposed_form:
-        options:
-          submit_button: Suodatin
-          reset_button_label: Palauta
-          exposed_sorts_label: Lajittele
-      pager:
-        options:
-          tags:
-            previous: '‹ Edellinen'
-            next: 'Seuraava ›'
-            first: '« Ensimmäinen'
-            last: 'Viimeinen »'
-          expose:
-            items_per_page_label: 'Merkintöjä sivua kohti'
-            items_per_page_options_all_label: '- Kaikki -'
+      title: Käyttäjät
       fields:
         user_bulk_form:
           label: Massapäivitys
@@ -27,10 +13,34 @@ display:
         status:
           label: Statuss
           settings:
-            format_custom_true: Voimassa
             format_custom_false: Suljettu
+            format_custom_true: Voimassa
+        roles_target_id:
+          label: Käyttäjäroolit
+        created:
+          label: 'Käyttäjä jo'
+        access:
+          label: 'Viimeksi paikalla'
         operations:
           label: Toimenpiteet
+      pager:
+        options:
+          tags:
+            next: 'Seuraava ›'
+            previous: '‹ Edellinen'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+      exposed_form:
+        options:
+          submit_button: Suodatin
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+      empty:
+        area_text_custom:
+          content: 'Ei saatavilla olevia ihmisiä.'
       filters:
         status:
           group_info:
@@ -40,11 +50,19 @@ display:
                 title: Voimassa
               2:
                 title: Suljettu
-      title: Käyttäjät
+        roles_target_id:
+          expose:
+            label: Rooli
+        permission:
+          expose:
+            label: Käyttöoikeus
+      use_more_text: lisää
   page_1:
+    display_title: Sivu
     display_options:
       menu:
         title: Saraksts
         description: 'Etsi ja hallinnoi sivustoasi käyttäviä ihmisiä.'
       tab_options:
         title: Käyttäjät
+        description: 'Ylläpidä käyttäjiä, rooleja ja käyttöoikeuksia.'

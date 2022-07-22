@@ -2,41 +2,62 @@ label: Saturs
 description: 'Etsi ja ylläpidä sisältöä.'
 display:
   default:
+    display_title: Isäntä
     display_options:
+      title: Saturs
+      fields:
+        title:
+          label: Virsraksts
+        type:
+          label: Sisältötyyppi
+        name:
+          label: Author
+        status:
+          label: Statuss
+          settings:
+            format_custom_false: Unpublished
+            format_custom_true: Published
+        changed:
+          label: Päivitetty
+        operations:
+          label: Toimenpiteet
+      pager:
+        options:
+          tags:
+            next: 'Seuraava ›'
+            previous: '‹ Edellinen'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
       exposed_form:
         options:
           submit_button: Suodatin
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
-      pager:
-        options:
-          tags:
-            previous: '‹ Edellinen'
-            next: 'Seuraava ›'
-            first: '« Ensimmäinen'
-            last: 'Viimeinen »'
-      fields:
-        title:
-          label: Virsraksts
-        status:
-          label: Statuss
-        changed:
-          label: Päivitetty
-        operations:
-          label: Toimenpiteet
+      empty:
+        area_text_custom:
+          content: 'Ei sisältöä.'
       filters:
         title:
           expose:
             label: Virsraksts
+        type:
+          expose:
+            label: Sisältötyyppi
         status:
           expose:
             label: Statuss
+          group_info:
+            label: 'Published status'
+            group_items:
+              1:
+                title: Published
+              2:
+                title: Unpublished
         langcode:
           expose:
             label: Valoda
-      title: Saturs
-    display_title: Isäntä
   page_1:
+    display_title: Sivu
     display_options:
       menu:
         title: Saturs
