@@ -75,7 +75,7 @@
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/blazy": "^2.13",
         "elasticsearch/elasticsearch": "^7.11",
-        "drupal/ctools": "^3.8",
+        "drupal/ctools": "^4.0",
         "drupal/google_tag": "^1.5",
         "drupal/datalayer": "^1.0@beta"
     },
