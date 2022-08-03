@@ -30,7 +30,7 @@
     "gulp-util": "^3.0.8",
     "lodash.template": "^4.5.0",
     "postcss": "^8.4.14",
-    "sass": "^1.52.1",
+    "sass": "^1.54.1",
     "trim-newlines": "^4.0.2",
     "yargs-parser": "^21.0.1"
   }
