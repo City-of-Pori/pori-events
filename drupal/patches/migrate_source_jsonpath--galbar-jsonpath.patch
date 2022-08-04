@@ -1,0 +1,12 @@
+diff --git a/composer.json b/composer.json
+index 5559e77..73b484f 100644
+--- a/composer.json
++++ b/composer.json
+@@ -11,6 +11,6 @@
+     "source": "http://cgit.drupalcode.org/migrate_source_jsonpath"
+   },
+   "require": {
+-    "galbar/jsonpath": "dev-master"
++    "galbar/jsonpath": "^1.0"
+   }
+ }

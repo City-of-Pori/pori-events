@@ -19,6 +19,18 @@
                 "name": "dinbror/blazy", "version": "1.8.2", "type": "drupal-library",
                 "dist": {"url": "https://github.com/dinbror/blazy/archive/1.8.2.zip", "type": "zip"}
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "davisare/migrate_source_jsonpath",
+                "version": "1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/DavisAre/migrate_source_jsonpath/archive/refs/heads/main.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
@@ -49,19 +61,20 @@
         "kenwheeler/slick": "^1.8",
         "dinbror/blazy": "^1.8",
         "drupal/conditional_fields": "^4.0@alpha",
-        "drupal/migrate_source_jsonpath": "^1",
+        "davisare/migrate_source_jsonpath": "^1",
         "drupal/context": "^4.1",
         "drupal/empty_page": "^3",
         "drupal/simple_gmap": "^3.0",
         "drupal/pathauto": "^1.6",
-        "drupal/core-recommended": "^9.2",
-        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-recommended": "^9.4",
+        "drupal/core-composer-scaffold": "^9.4",
         "drupal/blazy": "^2.5",
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^3.7",
         "drupal/google_tag": "^1.4",
         "drupal/datalayer": "^1.0@beta",
-        "drupal/easy_breadcrumb": "^2.0"
+        "drupal/easy_breadcrumb": "^2.0",
+        "drupal/next": "^1.2"
     },
     "require-dev": {
         "drupal/config_devel": "^1.2",
@@ -99,6 +112,15 @@
             },
             "drupal/datalayer": {
                 "Drupal 9 compatibility: Exception page because of incorrect path.alias_manager service name": "https://www.drupal.org/files/issues/2020-09-18/3171896-path_alias-manager.patch"
+            },
+            "drupal/migrate_source_jsonpath": {
+                "Bump galbar/jsonpath version so drupal/next could be installed": "patches/migrate_source_jsonpath--galbar-jsonpath.patch"
+            },
+            "drupal/subrequests": {
+                "Get same results on different request": "https://www.drupal.org/files/issues/2019-07-18/change_request_type-63049395-09.patch"
+            },
+            "drupal/decoupled_router": {
+                "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2021-05-05/3111456-34.patch"
             }
         }
     },
