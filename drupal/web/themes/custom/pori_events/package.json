@@ -32,6 +32,6 @@
     "postcss": "^8.4.14",
     "sass": "^1.52.1",
     "trim-newlines": "^4.0.2",
-    "yargs-parser": "^21.0.1"
+    "yargs-parser": "^21.1.0"
   }
 }
