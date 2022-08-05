@@ -8,13 +8,15 @@ import {SearchkitClient, SearchkitProvider} from '@searchkit/client';
 
 const skClient = new SearchkitClient();
 
+const drupalElem = document.getElementById('kada-event-search');
+
 ReactDOM.render(
   <React.StrictMode>
     <SearchkitProvider client={skClient}>
       <App />
     </SearchkitProvider>
   </React.StrictMode>,
-  document.getElementById('root'),
+  drupalElem,
 );
 
 // If you want to start measuring performance in your app, pass a function

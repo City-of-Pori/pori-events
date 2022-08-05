@@ -1,9 +1,11 @@
 kada-elastic-events:
   css:
     theme:
-      dist/kada-elastic-events/dist/styles.css: {}
+      # dist/kada-elastic-events/dist/styles.css: {}
+      dist/searchkit-v3/build/static/css/main.18bba869.css: {}
   js:
-    dist/kada-elastic-events/dist/app.bundle.js: {}
+    # dist/kada-elastic-events/dist/app.bundle.js: {}
+    dist/searchkit-v3/build/static/js/bundle.min.js: {}
 
 global-styling:
   version: 1.0
