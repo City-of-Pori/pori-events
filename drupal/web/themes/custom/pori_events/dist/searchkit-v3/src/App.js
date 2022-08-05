@@ -93,7 +93,7 @@ const config = {
     new TermFilter({
       identifier: 'is_hobby',
       field: 'is_hobby',
-      label: 'is_hobby',
+      label: 'Is hobby',
     }),
   ],
   query: new MultiMatchQuery({
@@ -107,7 +107,7 @@ const config = {
     new RefinementSelectFacet({
       field: 'is_hobby',
       identifier: 'is_hobby',
-      label: 'is_hobby',
+      label: 'Event / hobby',
       multipleSelect: false,
     }),
     new RefinementSelectFacet({
@@ -157,27 +157,27 @@ const config = {
     new RefinementSelectFacet({
       field: 'registration',
       identifier: 'registration',
-      // label: 'registration',
+      label: 'registration',
     }),
     new RefinementSelectFacet({
       field: 'accessible',
       identifier: 'accessible',
-      // label: 'accessible',
+      label: 'accessible',
     }),
     new RefinementSelectFacet({
       field: 'child_care',
       identifier: 'child_care',
-      // label: 'child_care',
+      label: 'Child care',
     }),
     new RefinementSelectFacet({
       field: 'free_enterance',
       identifier: 'free_enterance',
-      // label: 'free_enterance',
+      label: 'free entrance',
     }),
     new RefinementSelectFacet({
       field: 'culture_and_or_activity_no',
       identifier: 'culture_and_or_activity_no',
-      // label: 'culture_and_or_activity_no',
+      label: 'Culture and acitivity card',
     }),
 
     // Days for hobbies
@@ -185,37 +185,37 @@ const config = {
     new RefinementSelectFacet({
       field: 'monday',
       identifier: 'monday',
-      // label: 'culture_and_or_activity_no',
+      label: 'monday',
     }),
     new RefinementSelectFacet({
       field: 'tuesday',
       identifier: 'tuesday',
-      // label: 'culture_and_or_activity_no',
+      label: 'tuesday',
     }),
     new RefinementSelectFacet({
       field: 'wednesday',
       identifier: 'wednesday',
-      // label: 'culture_and_or_activity_no',
+      label: 'wednesday',
     }),
     new RefinementSelectFacet({
       field: 'thursday',
       identifier: 'thursday',
-      // label: 'culture_and_or_activity_no',
+      label: 'thursday',
     }),
     new RefinementSelectFacet({
       field: 'friday',
       identifier: 'friday',
-      // label: 'culture_and_or_activity_no',
+      label: 'friday',
     }),
     new RefinementSelectFacet({
       field: 'saturday',
       identifier: 'saturday',
-      // label: 'culture_and_or_activity_no',
+      label: 'saturday',
     }),
     new RefinementSelectFacet({
       field: 'sunday',
       identifier: 'sunday',
-      // label: 'culture_and_or_activity_no',
+      label: 'sunday',
     }),
   ],
   sortOptions: [
@@ -430,6 +430,7 @@ function App() {
         </>
         } 
       </EuiPageSideBar>
+              { console.log('results-selectedFilters', results) }
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>

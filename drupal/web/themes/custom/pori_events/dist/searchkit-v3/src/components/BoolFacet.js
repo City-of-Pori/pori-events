@@ -78,6 +78,7 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
             api.search();
           }}
         >
+                    { console.log('facet23', facet.identifier) }
           {/* <FilterLink
             filter={{ identifier: facet.identifier, value: entry.label }}
           > */}

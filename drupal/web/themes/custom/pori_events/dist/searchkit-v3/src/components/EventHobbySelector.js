@@ -23,14 +23,16 @@ export const EventHobbySelector = (props) => {
     const eventTypeOnChange = (id) => {
         console.log('id', id)
         if(id === 'hobby') {
-            api.removeFiltersByIdentifier('is_hobby');
+            // api.removeFiltersByIdentifier('is_hobby');
+            api.resetFilters();
             api.addFilter({identifier: 'is_hobby', value: true});
             // api.toggleFilter({identifier: 'is_hobby', value: true});
             api.search();
             handleTypeChange('hobby')
         }
         if(id === 'event') {
-            api.removeFiltersByIdentifier('is_hobby');
+            // api.removeFiltersByIdentifier('is_hobby');
+            api.resetFilters();
             api.addFilter({identifier: 'is_hobby', value: false});
             // api.toggleFilter({identifier: 'is_hobby', value: false});
             api.search();
