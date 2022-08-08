@@ -113,71 +113,84 @@ const config = {
     new RefinementSelectFacet({
       field: 'event_type',
       identifier: 'event_type',
-      label: 'Event type',
+      // label: 'Event type2',
+      label: Drupal.t('What'),
       multipleSelect: true,
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_category", "hobby_sub_category"],
       identifier: 'hobby_category',
-      label: 'Hobby category',
+      // label: 'Hobby category',
+      label: Drupal.t('What'),
     }),
     new HierarchicalMenuFacet({
       fields: ["area", "area_sub_area"],
       identifier: 'area',
-      label: 'Event location',
+      // label: 'Event location',
+      label: Drupal.t('Where'),
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_location_area", "hobby_location_sub_area"],
       identifier: 'hobby_area',
-      label: 'Hobby location',
+      // label: 'Hobby location',
+      label: Drupal.t('Where'),
     }),
     new DateRangeFacet({
       identifier: 'event_date',
       field: 'start_time',
-      label: 'Event date'
+      // label: 'Event date'
+      label: Drupal.t('When'),
     }),
     new RefinementSelectFacet({
       field: 'timeframe',
       identifier: 'timeframe_of_day',
-      label: 'Day',
+      // label: 'Day',
+      label: Drupal.t('Timeframe of the day'),
       multipleSelect: true,
     }),
     new RefinementSelectFacet({
       field: 'hobby_audience',
       identifier: 'hobby_audience',
-      label: 'Hobby audience',
+      // label: 'Hobby audience',
+      label: Drupal.t('For whom'),
       multipleSelect: true,
     }),
     new RefinementSelectFacet({
       field: 'target_audience',
       identifier: 'target_audience',
-      label: 'Event audience',
+      // label: 'Event audience',
+      label: Drupal.t('For whom'),
       multipleSelect: true,
     }),
     new RefinementSelectFacet({
       field: 'registration',
       identifier: 'registration',
-      label: 'registration',
+      // label: 'registration',
+      label: Drupal.t('Registration required'),
     }),
     new RefinementSelectFacet({
       field: 'accessible',
       identifier: 'accessible',
-      label: 'accessible',
+      // label: 'accessible',
+      label: Drupal.t('Accessible'),
     }),
     new RefinementSelectFacet({
       field: 'child_care',
       identifier: 'child_care',
-      label: 'Child care',
+      // label: 'Child care',
+      label: Drupal.t('Child Care'),
     }),
     new RefinementSelectFacet({
       field: 'free_enterance',
       identifier: 'free_enterance',
-      label: 'free entrance',
+      // label: 'free entrance',
+      label: Drupal.t('Free Entrance'),
     }),
     new RefinementSelectFacet({
       field: 'culture_and_or_activity_no',
       identifier: 'culture_and_or_activity_no',
-      label: 'Culture and acitivity card',
+      // label: 'Culture and acitivity card',
+      label: Drupal.t('Culture and Activity card'),
     }),
 
     // Days for hobbies
@@ -185,43 +198,44 @@ const config = {
     new RefinementSelectFacet({
       field: 'monday',
       identifier: 'monday',
-      label: 'monday',
+      label: 'MA',
     }),
     new RefinementSelectFacet({
       field: 'tuesday',
       identifier: 'tuesday',
-      label: 'tuesday',
+      label: 'TI',
     }),
     new RefinementSelectFacet({
       field: 'wednesday',
       identifier: 'wednesday',
-      label: 'wednesday',
+      label: 'KE',
     }),
     new RefinementSelectFacet({
       field: 'thursday',
       identifier: 'thursday',
-      label: 'thursday',
+      label: 'TO',
     }),
     new RefinementSelectFacet({
       field: 'friday',
       identifier: 'friday',
-      label: 'friday',
+      label: 'PE',
     }),
     new RefinementSelectFacet({
       field: 'saturday',
       identifier: 'saturday',
-      label: 'saturday',
+      label: 'LA',
     }),
     new RefinementSelectFacet({
       field: 'sunday',
       identifier: 'sunday',
-      label: 'sunday',
+      label: 'SU',
     }),
   ],
   sortOptions: [
     {
       id: 'start_time',
-      label: 'Start time',
+      // label: 'Start time',
+      label: Drupal.t('When'),
       field: {start_time: 'asc'},
       defaultOption: true,
     },
@@ -381,20 +395,35 @@ const ListFacet = ({ facet, loading }) => {
 };
 
 
-function App() {
+function App(props) {
   // const Facets = FacetsList([]);
-  const [eventType, setEventType] = useState('event')
+  const api = useSearchkit();
+  const [eventType, setEventType] = useState(props?.eventType);
+  // const {eventTypeOriginal} = props
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
   console.log(results)
 
+  // useEffect(() => {
+  //   setEventType('event')
+  // }, [])
+
   useEffect(() => {
-    setEventType('event')
+    // setEventType('event')
+    if(eventType) {
+      setEventType(eventType.toLowerCase())
+      handleTypeChange(eventType)
+      console.log('run', eventType)
+    }
   }, [])
 
   const handleTypeChange = (type) => {
-    console.log('type123', type)
-    setEventType(type)
+    // console.log('type123', type)
+    // setEventType(type)
+    api.resetFilters();
+    api.addFilter({identifier: 'is_hobby', value: type === 'hobbies' ? true : false});
+    // api.toggleFilter({identifier: 'is_hobby', value: true});
+    api.search();
   }
 
   return (
@@ -403,14 +432,14 @@ function App() {
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
-        { (eventType === 'event') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} />}
-        { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
-        { (eventType === 'event') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
-        { (eventType === 'hobby') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
+        { (eventType === 'events') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} />}
+        { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
+        { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
+        { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
-        { (eventType === 'hobby') && <ListFacet key={"2"} facet={results?.facets[7]} loading={loading} />} 
-        { (eventType === 'event') && <ListFacet key={"3"} facet={results?.facets[8]} loading={loading} />} 
-        { (eventType === 'hobby') && <>
+        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[7]} loading={loading} />} 
+        { (eventType === 'events') && <ListFacet key={"3"} facet={results?.facets[8]} loading={loading} />} 
+        { (eventType === 'hobbies') && <>
           <h3 class="euiTitle euiTitle--xxsmall">TARKENNA HAKUA</h3>
           <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
           <BoolFacet facet={results?.facets[10]} loading={loading} name="Accecssible" />
@@ -419,12 +448,12 @@ function App() {
           <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
 
           <EuiFacetGroup layout="horizontal" gutterSize="s">
-            <BoolFacet facet={results?.facets[14]} loading={loading} name="MO" style="day" />
-            <BoolFacet facet={results?.facets[15]} loading={loading} name="TU" style="day" />
-            <BoolFacet facet={results?.facets[16]} loading={loading} name="WE" style="day" />
-            <BoolFacet facet={results?.facets[17]} loading={loading} name="TH" style="day" />
-            <BoolFacet facet={results?.facets[18]} loading={loading} name="FR" style="day" />
-            <BoolFacet facet={results?.facets[19]} loading={loading} name="SA" style="day" />
+            <BoolFacet facet={results?.facets[14]} loading={loading} name="MA" style="day" />
+            <BoolFacet facet={results?.facets[15]} loading={loading} name="TI" style="day" />
+            <BoolFacet facet={results?.facets[16]} loading={loading} name="KE" style="day" />
+            <BoolFacet facet={results?.facets[17]} loading={loading} name="TO" style="day" />
+            <BoolFacet facet={results?.facets[18]} loading={loading} name="PE" style="day" />
+            <BoolFacet facet={results?.facets[19]} loading={loading} name="LA" style="day" />
             <BoolFacet facet={results?.facets[20]} loading={loading} name="SU" style="day" />
           </EuiFacetGroup>
         </>
@@ -434,7 +463,8 @@ function App() {
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>
-          <EventHobbySelector handleTypeChange={handleTypeChange} />
+            {/* <span>Original:{eventTypeOriginal && eventTypeOriginal }</span> */}
+          {/* <EventHobbySelector handleTypeChange={handleTypeChange} /> */}
             <EuiTitle size="l">
               <SelectedFilters data={results} loading={loading} />
             </EuiTitle>

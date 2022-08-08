@@ -26,9 +26,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "startcraco": "craco start",
     "build": "react-scripts build",
     "buildcraco": "craco build",
     "test": "react-scripts test --env=jsdom",
+    "testcraco": "craco test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": [

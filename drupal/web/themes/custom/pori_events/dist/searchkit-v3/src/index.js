@@ -9,14 +9,24 @@ import {SearchkitClient, SearchkitProvider} from '@searchkit/client';
 const skClient = new SearchkitClient();
 
 const drupalElem = document.getElementById('kada-event-search');
+const eventType = drupalElem?.dataset?.eventType;
+
+let viewportWidth = window.innerWidth;
+let filterOpen = true;
+if (viewportWidth < 800) {
+  filterOpen = true;
+} else {
+  filterOpen = false;
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <SearchkitProvider client={skClient}>
-      <App />
+      <App eventType={eventType} filterOpen={filterOpen} />
     </SearchkitProvider>
   </React.StrictMode>,
   drupalElem,
+  // document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
