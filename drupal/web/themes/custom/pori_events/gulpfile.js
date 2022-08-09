@@ -101,6 +101,7 @@ gulp.task('sass', gulp.series(function(minify) {
 // Watch task
 gulp.task('watch', gulp.series(['sass', 'browserSync'], function() {
   gulp.watch(path.styles.src + '**/*.scss', ['sass']);
+  gulp.watch(path.styles.src + '**/**/*.scss', ['sass']);
   gulp.watch(path.templates.dist + '**/*.html.twig', browserSync.reload);
   gulp.watch(path.scripts.src + '*.js', ['scripts']).on('change', browserSync.reload);
 }));

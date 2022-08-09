@@ -1,6 +1,13 @@
 import React, { Fragment, useRef, useEffect } from 'react'
 import { EuiFacetGroup, EuiTitle, EuiFacetButton, EuiAccordion } from '@elastic/eui'
 import { useSearchkit, FilterLink } from '@searchkit/client'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 
 const EntriesList = ({ entries, loading, facet }) => {
   const api = useSearchkit()
@@ -54,12 +61,26 @@ export const HierarchicalMenuFacetAccordion = ({ facet, loading }) => {
       return null;
     }
       return (
-        <EuiAccordion
-          id={facet.identifier}
-          buttonContent={facet.label}
-        >
-          <EntriesList entries={facet.entries} facet={facet} loading={loading} />
-        </EuiAccordion>
+        // <EuiAccordion
+        //   id={facet.identifier}
+        //   buttonContent={facet.label}
+        // >
+        //   <EntriesList entries={facet.entries} facet={facet} loading={loading} />
+        // </EuiAccordion>
+
+        <Accordion key={facet.identifier} allowMultipleExpanded allowZeroExpanded>
+        <AccordionItem>
+            <AccordionItemHeading>
+                <AccordionItemButton>
+                {facet.label}
+                </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+            <EntriesList entries={facet.entries} facet={facet} loading={loading} />
+            </AccordionItemPanel>
+        </AccordionItem>
+        </Accordion>
+
       )
 }
 

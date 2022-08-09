@@ -53,6 +53,16 @@ import { DateRangeFacetCustom } from "./components/DateRangeFacetCustom";
 import { BoolFacet } from "./components/BoolFacet";
 import { EventHobbySelector } from "./components/EventHobbySelector";
 import '@elastic/eui/dist/eui_theme_light.css';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+
+// // Demo styles, see 'Styles' section below for some notes on use.
+// import 'react-accessible-accordion/dist/fancy-example.css';
 
 let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
 
@@ -385,12 +395,25 @@ const ListFacet = ({ facet, loading }) => {
   }
 
   return (
-    <EuiAccordion
-      id={facet.identifier}
-      buttonContent={facet.label}
-    >
-      <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </EuiAccordion>
+    // <EuiAccordion
+    //   id={facet.identifier}
+    //   buttonContent={facet.label}
+    // >
+    //   <EuiFacetGroup>{entries}</EuiFacetGroup>
+    // </EuiAccordion>
+
+<Accordion key={facet.identifier} allowMultipleExpanded allowZeroExpanded>
+<AccordionItem>
+    <AccordionItemHeading>
+        <AccordionItemButton>
+        {facet.label}
+        </AccordionItemButton>
+    </AccordionItemHeading>
+    <AccordionItemPanel>
+    <EuiFacetGroup>{entries}</EuiFacetGroup>
+    </AccordionItemPanel>
+</AccordionItem>
+</Accordion>
   );
 };
 
@@ -440,12 +463,23 @@ function App(props) {
         { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[7]} loading={loading} />} 
         { (eventType === 'events') && <ListFacet key={"3"} facet={results?.facets[8]} loading={loading} />} 
         { (eventType === 'hobbies') && <>
-          <h3 class="euiTitle euiTitle--xxsmall">TARKENNA HAKUA</h3>
-          <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
-          <BoolFacet facet={results?.facets[10]} loading={loading} name="Accecssible" />
-          <BoolFacet facet={results?.facets[11]} loading={loading} name="Child Care" />
-          <BoolFacet facet={results?.facets[12]} loading={loading} name="Free Entrance" />
-          <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
+
+        <Accordion key={'misc'} allowMultipleExpanded allowZeroExpanded>
+            <AccordionItem>
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                      TARKENNA HAKUA
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
+                  <BoolFacet facet={results?.facets[10]} loading={loading} name="Accecssible" />
+                  <BoolFacet facet={results?.facets[11]} loading={loading} name="Child Care" />
+                  <BoolFacet facet={results?.facets[12]} loading={loading} name="Free Entrance" />
+                  <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
+                </AccordionItemPanel>
+            </AccordionItem>
+        </Accordion>
 
           <EuiFacetGroup layout="horizontal" gutterSize="s">
             <BoolFacet facet={results?.facets[14]} loading={loading} name="MA" style="day" />
