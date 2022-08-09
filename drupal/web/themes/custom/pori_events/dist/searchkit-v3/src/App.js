@@ -384,13 +384,13 @@ const App = (props) => {
         { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         
+{ console.log(results) }
 
-
-        {/* <Accordion key={'time'} allowMultipleExpanded allowZeroExpanded>
-            <AccordionItem>
+        <Accordion key={'When'} preExpanded={['When']} allowMultipleExpanded allowZeroExpanded>
+            <AccordionItem uuid={'When'}>
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      {Drupal.t('Time')}
+                      {Drupal.t('When')}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -403,14 +403,14 @@ const App = (props) => {
                   }
                 </AccordionItemPanel>
             </AccordionItem>
-        </Accordion> */}
+        </Accordion>
 
 
-        <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
+        {/* <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
         {(eventType === 'hobbies') && 
         <WeekdayFacet results={results} loading={loading} />
           }
-        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />} 
+        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />}  */}
 
         { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
         { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />} 

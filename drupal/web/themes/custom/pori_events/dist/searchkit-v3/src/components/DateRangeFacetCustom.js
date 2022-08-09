@@ -32,7 +32,7 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
   return (
     <>
       <EuiTitle size="xxs">
-        <h3>{facet.label}</h3>
+        <h3>{Drupal.t('Date')}</h3>
       </EuiTitle>
       <EuiDatePickerRange
         startDateControl={
