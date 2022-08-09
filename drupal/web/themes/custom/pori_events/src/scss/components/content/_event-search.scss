@@ -6,6 +6,7 @@
 .accordion {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
+    margin: 12px 0;
 }
 
 .accordion__item + .accordion__item {
@@ -93,4 +94,14 @@
 
     .euiFieldSearch {
         box-sizing: border-box !important;
+    }
+
+    .euiPage {
+        padding: 0 !important;
+    }
+
+    .euiPageHeaderSection {
+        .euiButtonEmpty__text {
+            display: none;
+        }
     }

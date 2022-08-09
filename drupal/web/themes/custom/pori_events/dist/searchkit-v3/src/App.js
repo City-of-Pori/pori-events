@@ -357,7 +357,7 @@ const HitsList = ({ data }) => {
   </EuiFlexGrid>
 )}
 
-const ListFacet = ({ facet, loading }) => {
+const ListFacet = ({ facet, loading, isAccordion }) => {
   const api = useSearchkit();
   const ref = useRef([]);
 
@@ -394,14 +394,18 @@ const ListFacet = ({ facet, loading }) => {
     return null;
   }
 
-  return (
-    // <EuiAccordion
-    //   id={facet.identifier}
-    //   buttonContent={facet.label}
-    // >
-    //   <EuiFacetGroup>{entries}</EuiFacetGroup>
-    // </EuiAccordion>
+  if(!isAccordion) {
+    return (
+      <>
+      <EuiTitle size="xxs">
+        <h3>{facet.label}</h3>
+        </EuiTitle>
+      <EuiFacetGroup> {entries}</EuiFacetGroup>
+      </>
+    )
+  }
 
+  return (
 <Accordion key={facet.identifier} allowMultipleExpanded allowZeroExpanded>
 <AccordionItem>
     <AccordionItemHeading>
@@ -455,13 +459,14 @@ function App(props) {
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
-        { (eventType === 'events') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} />}
+        { (eventType === 'events') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} isAccordion />}
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
         { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
-        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[7]} loading={loading} />} 
-        { (eventType === 'events') && <ListFacet key={"3"} facet={results?.facets[8]} loading={loading} />} 
+        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />} 
+        { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
+        { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />} 
         { (eventType === 'hobbies') && <>
 
         <Accordion key={'misc'} allowMultipleExpanded allowZeroExpanded>
@@ -510,7 +515,7 @@ function App(props) {
         <EuiPageContent>
           <EuiPageContentHeader>
             <EuiPageContentHeaderSection>
-                <h2>{ eventType }</h2>
+                {/* <h2>{ eventType }</h2> */}
               <EuiTitle size="s">
                 <h2>{results?.summary.total} Results</h2>
               </EuiTitle>
