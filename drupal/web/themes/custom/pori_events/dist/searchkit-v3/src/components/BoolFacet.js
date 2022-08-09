@@ -17,12 +17,9 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
       return null;
     }
 
-    console.log
-  
     if(!style) {
 
     const entries = facet.entries.map((entry) => {
-        console.log('entry111', facet)
       if(entry.label === 0) return
       return (
         <EuiFacetButton
@@ -61,7 +58,6 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
 
     if(style === 'day') {
       const entries = facet.entries.map((entry) => {
-        console.log('entry111', facet)
       if(entry.label === 0) return
       return (
         <EuiFacetButton
@@ -77,8 +73,11 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
             api.toggleFilter({identifier: facet.identifier, value: true});
             api.search();
           }}
+          // className={api.isFilterSelected({
+          //   identifier: facet.identifier,
+          //   value: true
+          // }) ? 'isSelected' : 'notSelected'}
         >
-                    { console.log('facet23', facet.identifier) }
           {/* <FilterLink
             filter={{ identifier: facet.identifier, value: entry.label }}
           > */}

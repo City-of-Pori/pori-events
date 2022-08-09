@@ -105,3 +105,28 @@
             display: none;
         }
     }
+
+    // weekdays
+
+    .weekdayFacet {
+
+        margin-bottom: 10px;
+        margin-top: 10px;
+
+        .euiFacetButton {
+            &.euiFacetButton--isSelected {
+                // background: lightcoral;
+                background-color: $red;
+                color: white;
+                border-radius: 12%;
+                padding: 10px 5px;
+                span {
+                    font-weight: unset;
+                }
+            }
+        }
+
+        .euiFacetGroup--gutterSmall.euiFacetGroup--horizontal {
+            margin-left: 0;
+        }
+    }

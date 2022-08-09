@@ -46,12 +46,11 @@ import {
   EuiAccordion,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
-// import { ListFacet } from "@searchkit/elastic-ui/lib/esm/Facets/ListFacet"
-import { ListFacetAccordion } from "./components/ListFacetAccordion";
+import { ListFacet } from './components/ListFacet'
+import { WeekdayFacet } from './components/WeekdayFacet'
 import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
 import { DateRangeFacetCustom } from "./components/DateRangeFacetCustom";
 import { BoolFacet } from "./components/BoolFacet";
-import { EventHobbySelector } from "./components/EventHobbySelector";
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
   Accordion,
@@ -60,9 +59,6 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-
-// // Demo styles, see 'Styles' section below for some notes on use.
-// import 'react-accessible-accordion/dist/fancy-example.css';
 
 let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
 
@@ -263,13 +259,13 @@ const config = {
 const Description = (props) => {
   const { text, date, days, hobbySubArea, hobby_location_area, eventArea, eventSubArea } = props;
   return <>
-    <EuiIcon type="calendar" />
+    {/* <EuiIcon type="calendar" /> */}
     <span> {date}</span>
     <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
-    { hobbySubArea.length > 0 && <><EuiIcon type="mapMarker" />
+    { hobbySubArea.length > 0 && <>
     <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span></>
     }
-    { eventArea.length > 0 && <><EuiIcon type="mapMarker" />
+    { eventArea.length > 0 && <>
     <span> {eventArea?.map((area) => <span>{area}</span>)} {eventSubArea}</span></>
     }
     <p>{text}</p>
@@ -319,7 +315,7 @@ const HitListItem = (hit) => {
       weekDays.push("SU");
     }
 
-    return <EuiFlexItem key={hit.id} style={{'maxWidth': '28%'}}>
+    return <EuiFlexItem key={hit.id} style={{'maxWidth': '18%'}}>
              <EuiCard
         textAlign="left"
         image={
@@ -357,99 +353,23 @@ const HitsList = ({ data }) => {
   </EuiFlexGrid>
 )}
 
-const ListFacet = ({ facet, loading, isAccordion }) => {
-  const api = useSearchkit();
-  const ref = useRef([]);
-
-  useEffect(() => {
-    ref.current = ref.current.slice(0, facet?.entries.length);
- }, [facet?.entries]);
-
-  const entries = facet?.entries?.map((entry, i) => {
-    return (
-      <EuiFacetButton
-        key={entry.label}
-        style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
-        quantity={entry.count}
-        isSelected={api.isFilterSelected({
-          identifier: facet.identifier,
-          value: entry.label
-        })}
-        isLoading={loading}
-        onClick={(e) => {
-          ref.current[i].onClick(e)
-        }}
-      >
-        <FilterLink
-          ref={el => ref.current[i] = el} 
-          filter={{ identifier: facet.identifier, value: entry.label }}
-        >
-          {entry.label}
-        </FilterLink>
-      </EuiFacetButton>
-    );
-  });
-
-  if (!facet) {
-    return null;
-  }
-
-  if(!isAccordion) {
-    return (
-      <>
-      <EuiTitle size="xxs">
-        <h3>{facet.label}</h3>
-        </EuiTitle>
-      <EuiFacetGroup> {entries}</EuiFacetGroup>
-      </>
-    )
-  }
-
-  return (
-<Accordion key={facet.identifier} allowMultipleExpanded allowZeroExpanded>
-<AccordionItem>
-    <AccordionItemHeading>
-        <AccordionItemButton>
-        {facet.label}
-        </AccordionItemButton>
-    </AccordionItemHeading>
-    <AccordionItemPanel>
-    <EuiFacetGroup>{entries}</EuiFacetGroup>
-    </AccordionItemPanel>
-</AccordionItem>
-</Accordion>
-  );
-};
-
-
-function App(props) {
+const App = (props) => {
   // const Facets = FacetsList([]);
   const api = useSearchkit();
   const [eventType, setEventType] = useState(props?.eventType);
-  // const {eventTypeOriginal} = props
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
-  console.log(results)
-
-  // useEffect(() => {
-  //   setEventType('event')
-  // }, [])
 
   useEffect(() => {
-    // setEventType('event')
     if(eventType) {
       setEventType(eventType.toLowerCase())
       handleTypeChange(eventType)
-      console.log('run', eventType)
     }
   }, [])
 
   const handleTypeChange = (type) => {
-    // console.log('type123', type)
-    // setEventType(type)
     api.resetFilters();
     api.addFilter({identifier: 'is_hobby', value: type === 'hobbies' ? true : false});
-    // api.toggleFilter({identifier: 'is_hobby', value: true});
     api.search();
   }
 
@@ -463,8 +383,35 @@ function App(props) {
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[2]} loading={loading} />}
         { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
+        
+
+
+        {/* <Accordion key={'time'} allowMultipleExpanded allowZeroExpanded>
+            <AccordionItem>
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                      {Drupal.t('Time')}
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
+                  {(eventType === 'hobbies') && 
+                  <>
+                    <WeekdayFacet results={results} loading={loading} />
+                    <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />
+                  </>
+                  }
+                </AccordionItemPanel>
+            </AccordionItem>
+        </Accordion> */}
+
+
         <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
+        {(eventType === 'hobbies') && 
+        <WeekdayFacet results={results} loading={loading} />
+          }
         { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />} 
+
         { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
         { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />} 
         { (eventType === 'hobbies') && <>
@@ -473,7 +420,7 @@ function App(props) {
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                      TARKENNA HAKUA
+                      {Drupal.t('Refine your search')}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
@@ -485,16 +432,6 @@ function App(props) {
                 </AccordionItemPanel>
             </AccordionItem>
         </Accordion>
-
-          <EuiFacetGroup layout="horizontal" gutterSize="s">
-            <BoolFacet facet={results?.facets[14]} loading={loading} name="MA" style="day" />
-            <BoolFacet facet={results?.facets[15]} loading={loading} name="TI" style="day" />
-            <BoolFacet facet={results?.facets[16]} loading={loading} name="KE" style="day" />
-            <BoolFacet facet={results?.facets[17]} loading={loading} name="TO" style="day" />
-            <BoolFacet facet={results?.facets[18]} loading={loading} name="PE" style="day" />
-            <BoolFacet facet={results?.facets[19]} loading={loading} name="LA" style="day" />
-            <BoolFacet facet={results?.facets[20]} loading={loading} name="SU" style="day" />
-          </EuiFacetGroup>
         </>
         } 
       </EuiPageSideBar>
