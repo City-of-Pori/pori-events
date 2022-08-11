@@ -25,6 +25,7 @@ module:
   datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
+  easy_breadcrumb: 0
   editor: 0
   empty_page: 0
   entityqueue: 0

@@ -10,7 +10,7 @@ dependencies:
 id: hobby_switcher
 theme: pori_events
 region: content_header
-weight: 0
+weight: -4
 provider: null
 plugin: hobby_switcher
 settings:

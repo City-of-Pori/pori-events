@@ -11,7 +11,7 @@ dependencies:
 id: hobbynothobby
 theme: pori_events
 region: content_header
-weight: 0
+weight: -1
 provider: null
 plugin: 'system_menu_block:hobby-not-hobby'
 settings:

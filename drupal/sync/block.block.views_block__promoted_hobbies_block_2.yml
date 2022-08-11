@@ -11,7 +11,7 @@ dependencies:
 id: views_block__promoted_hobbies_block_2
 theme: pori_events
 region: content_header
-weight: -1
+weight: -2
 provider: null
 plugin: 'views_block:promoted_hobbies-block_2'
 settings:
