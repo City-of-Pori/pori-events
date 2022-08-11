@@ -382,6 +382,8 @@ const App = (props) => {
   return (
     <EuiPage>
       <EuiPageSideBar>
+        {(eventType === 'hobbies') && <a href="http://www.satakuntaevents.fi/" className="add-event hobby-text-red" style={{'position': 'initial', 'marginBottom': '12px'}}><span class="link-text">Lisää oma harrastuksesi</span></a>}
+        {(eventType === 'events') && <a href="http://www.satakuntaevents.fi/" className="add-event event-text-blue" style={{'position': 'initial', 'marginBottom': '12px'}}><span class="link-text">Lisää oma tapahtumasi</span></a>}
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
