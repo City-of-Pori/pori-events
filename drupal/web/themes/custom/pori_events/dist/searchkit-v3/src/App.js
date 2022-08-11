@@ -44,6 +44,7 @@ import {
   EuiIcon,
   EuiBadge,
   EuiAccordion,
+  EuiLink,
 } from '@elastic/eui';
 import { DateTime } from "luxon";
 import { ListFacet } from './components/ListFacet'
@@ -263,10 +264,10 @@ const Description = (props) => {
     <span> {date}</span>
     <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
     { hobbySubArea.length > 0 && <>
-    <span> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</span></>
+    <strong> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</strong></>
     }
     { eventArea.length > 0 && <>
-    <span> {eventArea?.map((area) => <span>{area}</span>)} {eventSubArea}</span></>
+    <strong> {eventArea?.map((area) => <span>{area}</span>)} {eventSubArea}</strong></>
     }
     <p>{text}</p>
   </>
@@ -274,6 +275,7 @@ const Description = (props) => {
 
 // Result item
 const HitListItem = (hit) => {
+  console.log('hit', hit)
   // image
   // const source = extend({}, result._source, result.highlight);
   const source = 'https://example.com/'
@@ -315,18 +317,22 @@ const HitListItem = (hit) => {
       weekDays.push("SU");
     }
 
-    return <EuiFlexItem key={hit.id} style={{'maxWidth': '18%'}}>
+    return <EuiFlexItem key={hit.id}>
              <EuiCard
         textAlign="left"
         image={
           <div>
             <img
               src={image_source}
-              alt={hit.fields.title}
+              alt=""
             />
           </div>
         }
-        title={<>{hit.fields.title} {hit.fields.id}</>}
+        title={<>
+        <EuiLink href={hit.fields.url} external style={{ 'color': 'unset', 'textDecoration': 'unset' }}>
+        {hit.fields.title}
+        </EuiLink>
+        </>}
         description={
           <Description
           key={hit.fields.id}
@@ -346,7 +352,7 @@ const HitListItem = (hit) => {
 const HitsList = ({ data }) => {
 
   return (
-  <EuiFlexGrid gutterSize="l">
+  <EuiFlexGrid gutterSize="l" className="event-list-wrapper">
     {data?.hits.items.map((hit) => (
         HitListItem(hit)
     ))}
@@ -450,14 +456,13 @@ const App = (props) => {
           </EuiPageHeaderSection>
         </EuiPageHeader>
         <EuiPageContent>
-          <EuiPageContentHeader>
+          {/* <EuiPageContentHeader>
             <EuiPageContentHeaderSection>
-                {/* <h2>{ eventType }</h2> */}
               <EuiTitle size="s">
                 <h2>{results?.summary.total} Results</h2>
               </EuiTitle>
             </EuiPageContentHeaderSection>
-          </EuiPageContentHeader>
+          </EuiPageContentHeader> */}
           <EuiPageContentBody>
             <HitsList data={results} />
             <EuiFlexGroup justifyContent="spaceAround">

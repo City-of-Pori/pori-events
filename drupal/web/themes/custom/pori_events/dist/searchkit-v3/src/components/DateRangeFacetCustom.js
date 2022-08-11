@@ -7,9 +7,14 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
     return null;
 }
   const api = useSearchkit()
+  const moment = require('moment'); // Faced with some issues using import statement
+
+  // const [startDate, setStartDate] = useState(moment())
+  // const [endDate, setEndDate] = useState(moment().add(6, 'days'))
 
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
+
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
 
@@ -31,6 +36,8 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
 
   return (
     <>
+        {console.log('startDate1', startDate)}
+        {console.log('DateTime', moment())}
       <EuiTitle size="xxs">
         <h3>{Drupal.t('Date')}</h3>
       </EuiTitle>
