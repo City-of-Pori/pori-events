@@ -1506,19 +1506,19 @@ margin-bottom: 10px;
   .link-text {
     margin-right: 20px;
   }
-  .page-footer & {
-    margin: 20px 0;
-    @media screen and (min-width: $desktop-narrow) {
-      margin: 50px 0;
-      position: absolute;
-      right: 0;
-      left: auto;
-    }
-  }
-  @media screen and (min-width: $desktop-narrow) {
-    position: absolute;
-    top: 100px;
-  }
+  // .page-footer & {
+  //   margin: 20px 0;
+  //   @media screen and (min-width: $desktop-narrow) {
+  //     margin: 50px 0;
+  //     position: absolute;
+  //     right: 0;
+  //     left: auto;
+  //   }
+  // }
+  // @media screen and (min-width: $desktop-narrow) {
+  //   position: absolute;
+  //   top: 100px;
+  // }
 }
 
 // plus sign, TODO: use fontawesome

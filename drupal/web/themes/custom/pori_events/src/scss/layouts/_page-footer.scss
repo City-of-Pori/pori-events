@@ -14,6 +14,14 @@
   }
 }
 
+.page-footer__bottom {
+  display: flex;
+  width: 100%;
+  .add-new-wrapper {
+    margin-left: auto;
+  }
+}
+
 .page-footer__bottom .footer-block {
   display: flex;
   flex-direction: column;
