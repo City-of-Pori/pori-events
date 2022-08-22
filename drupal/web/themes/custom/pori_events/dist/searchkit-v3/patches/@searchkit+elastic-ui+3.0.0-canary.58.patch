@@ -1,0 +1,22 @@
+diff --git a/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js b/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
+index 84fb460..1a96c27 100644
+--- a/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
++++ b/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
+@@ -1,14 +1,15 @@
+ import { useSearchkit, useSearchkitQueryValue } from '@searchkit/client';
+ import { EuiFieldSearch } from '@elastic/eui';
+ import React from 'react';
++console.log('index2')
+ export const SearchBar = ({ loading }) => {
+     const [query, setQuery] = useSearchkitQueryValue();
+     const api = useSearchkit();
+-    return (React.createElement(EuiFieldSearch, { placeholder: "Search", value: query, onChange: (e) => {
++    return (React.createElement(EuiFieldSearch, { placeholder: "Etsi", value: query, onChange: (e) => {
+             setQuery(e.target.value);
+         }, isLoading: loading, onSearch: (value) => {
+             setQuery(value);
+             api.setQuery(value);
+             api.search();
+-        }, isClearable: true, "aria-label": "Search" }));
++        }, isClearable: true, "aria-label": "Etsi" }));
+ };

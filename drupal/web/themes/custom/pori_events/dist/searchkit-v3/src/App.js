@@ -275,7 +275,6 @@ const Description = (props) => {
 
 // Result item
 const HitListItem = (hit) => {
-  console.log('hit', hit)
   // image
   // const source = extend({}, result._source, result.highlight);
   const source = 'https://example.com/'
@@ -392,8 +391,6 @@ const App = (props) => {
         { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         
-{ console.log(results) }
-
         <Accordion key={'When'} preExpanded={['When']} allowMultipleExpanded allowZeroExpanded>
             <AccordionItem uuid={'When'}>
                 <AccordionItemHeading>
@@ -443,7 +440,6 @@ const App = (props) => {
         </>
         } 
       </EuiPageSideBar>
-              { console.log('results-selectedFilters', results) }
       <EuiPageBody component="div">
         <EuiPageHeader>
           <EuiPageHeaderSection>
