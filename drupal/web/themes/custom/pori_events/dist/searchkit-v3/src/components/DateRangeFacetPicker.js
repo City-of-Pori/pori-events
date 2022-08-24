@@ -2,18 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { EuiTitle, EuiDatePickerRange, EuiDatePicker } from '@elastic/eui'
 import { useSearchkit } from '@searchkit/client'
 
-export const DateRangeFacetCustom = ({ facet, loading }) => {
+export const DateRangeFacetPicker = ({ facet, loading }) => {
   if (!facet) {
     return null;
 }
   const api = useSearchkit()
   const moment = require('moment'); // Faced with some issues using import statement
 
-  // const [startDate, setStartDate] = useState(moment())
-  // const [endDate, setEndDate] = useState(moment().add(6, 'days'))
-
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+  const [startDate, setStartDate] = useState(moment())
+  const [endDate, setEndDate] = useState(moment().add(6, 'days'))
 
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
@@ -36,8 +33,6 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
 
   return (
     <>
-        {console.log('startDate1', startDate)}
-        {console.log('DateTime', moment())}
       <EuiTitle size="xxs">
         <h3>{Drupal.t('Date')}</h3>
       </EuiTitle>
@@ -77,4 +72,4 @@ export const DateRangeFacetCustom = ({ facet, loading }) => {
 
 // DateRangeFacet.DISPLAY = 'DateRangeFacet'
 
-export default DateRangeFacetCustom;
+export default DateRangeFacetPicker;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Searchkit,
-  DateRangeFacet,
   MultiMatchQuery,
   RangeFacet,
   RefinementSelectFacet,
@@ -50,7 +49,8 @@ import { DateTime } from "luxon";
 import { ListFacet } from './components/ListFacet'
 import { WeekdayFacet } from './components/WeekdayFacet'
 import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFacetAccordion";
-import { DateRangeFacetCustom } from "./components/DateRangeFacetCustom";
+import { DateRangeFacetPicker } from "./components/DateRangeFacetPicker";
+import DateRangeFacet from "./components/DateRangeFacetFilter";
 import { BoolFacet } from "./components/BoolFacet";
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
@@ -240,16 +240,13 @@ const config = {
   ],
   sortOptions: [
     {
-      id: 'start_time',
-      // label: 'Start time',
-      label: Drupal.t('When'),
-      field: {start_time: 'asc'},
-      defaultOption: true,
-    },
-    {
-      id: 'single_day',
-      label: 'Single day',
-      field: {single_day: 'desc'},
+      id: 'multiple_sort',
+      label: 'Multiple sort',
+      field: [
+        {single_day: {order: 'desc'}},
+        {start_time: {order: 'asc'}},
+        // '_score',
+      ],
       defaultOption: true,
     },
   ],
@@ -399,7 +396,7 @@ const App = (props) => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
+                <DateRangeFacetPicker facet={results?.facets[5]} loading={loading} />
                   {(eventType === 'hobbies') && 
                   <>
                     <WeekdayFacet results={results} loading={loading} />
@@ -454,13 +451,13 @@ const App = (props) => {
           </EuiPageHeaderSection>
         </EuiPageHeader>
         <EuiPageContent>
-          {/* <EuiPageContentHeader>
+          <EuiPageContentHeader>
             <EuiPageContentHeaderSection>
               <EuiTitle size="s">
                 <h2>{results?.summary.total} Results</h2>
               </EuiTitle>
             </EuiPageContentHeaderSection>
-          </EuiPageContentHeader> */}
+          </EuiPageContentHeader>
           <EuiPageContentBody>
             <HitsList data={results} />
             <EuiFlexGroup justifyContent="spaceAround">
