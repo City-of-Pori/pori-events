@@ -42,6 +42,11 @@
  * @see html.html.twig
  */
 #}
+
+{% if is_front %}
+  {{ attach_library('pori_events/kada-elastic-events') }}
+{% endif %}
+
 <div class="layout-container">
 
   <header class="page-header" role="banner">

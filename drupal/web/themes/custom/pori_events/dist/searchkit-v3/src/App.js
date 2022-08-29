@@ -255,17 +255,21 @@ const config = {
 
 // Description of result item
 const Description = (props) => {
-  const { text, date, days, hobbySubArea, hobby_location_area, eventArea, eventSubArea } = props;
+  const { text, date, days, hobbySubArea, hobbyLocationArea, eventArea, eventSubArea } = props;
   return <>
     {/* <EuiIcon type="calendar" /> */}
     <span> {date}</span>
     <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
-    { hobbySubArea.length > 0 && <>
-    <strong> {hobbySubArea?.map((area) => <span>{area}</span>)} {hobby_location_area}</strong></>
-    }
-    { eventArea.length > 0 && <>
-    <strong> {eventArea?.map((area) => <span>{area}</span>)} {eventSubArea}</strong></>
-    }
+
+    {hobbySubArea.length !== 0 && (
+      <strong> {hobbySubArea},</strong>
+    )}
+    <strong> {hobbyLocationArea}</strong>
+
+    {eventSubArea.length !== 0 && (
+      <strong> {eventSubArea},</strong>
+    )} <strong>{eventArea}</strong>
+
     <p>{text}</p>
   </>
 }
@@ -283,7 +287,7 @@ const HitListItem = (hit) => {
     : "/themes/custom/pori_events/dist/images/event-default.jpg";
     image_source = image_source.replace('mat.lndo.site', 'https://tapahtumat.pori.fi')
     image_source = image_source.replace('at.lndo.site', 'https://tapahtumat.pori.fi')
-    const date_format = "dd-LL-yyyy";
+    const date_format = "dd.LL.yyyy";
   
     const start_time_string = DateTime.fromISO(hit.fields.start_time).setLocale('fi')
     .toFormat(date_format);
@@ -407,13 +411,6 @@ const App = (props) => {
             </AccordionItem>
         </Accordion>
 
-
-        {/* <DateRangeFacetCustom facet={results?.facets[5]} loading={loading} />
-        {(eventType === 'hobbies') && 
-        <WeekdayFacet results={results} loading={loading} />
-          }
-        { (eventType === 'hobbies') && <ListFacet key={"2"} facet={results?.facets[6]} loading={loading} />}  */}
-
         { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
         { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />} 
         { (eventType === 'hobbies') && <>
@@ -451,13 +448,13 @@ const App = (props) => {
           </EuiPageHeaderSection>
         </EuiPageHeader>
         <EuiPageContent>
-          <EuiPageContentHeader>
+          {/* <EuiPageContentHeader>
             <EuiPageContentHeaderSection>
               <EuiTitle size="s">
                 <h2>{results?.summary.total} Results</h2>
               </EuiTitle>
             </EuiPageContentHeaderSection>
-          </EuiPageContentHeader>
+          </EuiPageContentHeader> */}
           <EuiPageContentBody>
             <HitsList data={results} />
             <EuiFlexGroup justifyContent="spaceAround">

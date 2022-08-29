@@ -54,12 +54,12 @@
     z-index:10;  
   }
   .event-tabs > a:hover {
-    color: #888;
+    color: $black;
     cursor: pointer;
   }
   .event-tabs > a{
     position: relative;
-    color: #888;
+    color: $black;
     background:lightgrey;
     border: 1px solid #bbb;
     border-bottom: 1px solid #fff;
@@ -69,7 +69,7 @@
   .event-tabs > input:checked + a {
     
     background: #fff;
-    color:black;
+    color:$black;
    
     
   }

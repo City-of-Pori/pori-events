@@ -18,11 +18,8 @@ global-styling:
     - core/jquery
     - core/jquery.once
     - pori_events/slick
-    - pori_events/kada-elastic-events
 
 global-scripting:
   version: 1.0
   js:
     dist/js/scripts.min.js: {}
-  dependencies:
-    - pori_events/kada-elastic-events

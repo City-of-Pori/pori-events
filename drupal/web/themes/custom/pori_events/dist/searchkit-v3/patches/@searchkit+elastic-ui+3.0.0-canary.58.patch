@@ -1,12 +1,19 @@
+diff --git a/node_modules/@searchkit/elastic-ui/lib/esm/ResetSearchButton/index.js b/node_modules/@searchkit/elastic-ui/lib/esm/ResetSearchButton/index.js
+index 0e53a27..7948120 100644
+--- a/node_modules/@searchkit/elastic-ui/lib/esm/ResetSearchButton/index.js
++++ b/node_modules/@searchkit/elastic-ui/lib/esm/ResetSearchButton/index.js
+@@ -6,5 +6,5 @@ export const ResetSearchButton = ({ loading }) => {
+     return (React.createElement(EuiButtonEmpty, { disabled: !api.canResetSearch(), isLoading: loading, onClick: () => {
+             api.setQuery('');
+             api.search();
+-        } }, "Reset Search"));
++        } }, "Tyhjennä valinnat"));
+ };
 diff --git a/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js b/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
-index 84fb460..1a96c27 100644
+index 84fb460..ca04460 100644
 --- a/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
 +++ b/node_modules/@searchkit/elastic-ui/lib/esm/SearchBar/index.js
-@@ -1,14 +1,15 @@
- import { useSearchkit, useSearchkitQueryValue } from '@searchkit/client';
- import { EuiFieldSearch } from '@elastic/eui';
- import React from 'react';
-+console.log('index2')
+@@ -4,11 +4,11 @@ import React from 'react';
  export const SearchBar = ({ loading }) => {
      const [query, setQuery] = useSearchkitQueryValue();
      const api = useSearchkit();

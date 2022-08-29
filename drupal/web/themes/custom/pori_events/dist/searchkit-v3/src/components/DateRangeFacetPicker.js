@@ -9,8 +9,12 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
   const api = useSearchkit()
   const moment = require('moment'); // Faced with some issues using import statement
 
-  const [startDate, setStartDate] = useState(moment())
-  const [endDate, setEndDate] = useState(moment().add(6, 'days'))
+  // const [startDate, setStartDate] = useState(moment())
+  // const [endDate, setEndDate] = useState(moment().add(6, 'days'))
+
+
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
 
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
@@ -46,7 +50,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             value={selectedOption && selectedOption.dateMin}
             endDate={endDate}
             adjustDateOnChange={false}
-            placeholder="from"
+            placeholder="alkaa"
             isInvalid={startDate > endDate}
             aria-label="Start date"
           />
@@ -62,7 +66,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             adjustDateOnChange={false}
             isInvalid={startDate > endDate}
             aria-label="End date"
-            placeholder="to"
+            placeholder="loppuu"
           />
         }
       />

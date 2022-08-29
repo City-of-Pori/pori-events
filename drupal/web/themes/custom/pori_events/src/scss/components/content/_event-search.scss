@@ -82,7 +82,8 @@
 ///
 /// 
 /// 
-/// 
+
+#kada-event-search {
 
     *:focus {
         outline: 2px solid black !important;
@@ -97,12 +98,16 @@
     }
 
     .euiPage {
+        background-color: unset !important;
         padding: 0 !important;
     }
 
-    .euiPageHeaderSection {
-        .euiButtonEmpty {
-            display: none;
+
+    // Upper filters
+    .euiButton--primary {
+        background-color: $blue !important;
+        a {
+            color: white !important;
         }
     }
 
@@ -133,10 +138,24 @@
 
     .event-list-wrapper {
         display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        @media screen and (min-width: 599px) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
         gap: 1em;
 
         > div {
             margin: 0 !important;
         }
     }
+
+    &.hobby-search {
+        // Upper filters
+        .euiButton--primary {
+            background-color: $red !important;
+            a {
+                color: white !important;
+            }
+        }
+    }
+}
