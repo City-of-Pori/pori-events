@@ -19,17 +19,16 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
 
-  // console.log('startDate', startDate.format('YYYY-MM-DD'))
-
   useEffect(() => {
     if (startDate && endDate) {
+      // console.log('startDate1', startDate.unix())
       if (selectedOption) {
         api.removeFilter(selectedOption)
       }
       api.addFilter({
         identifier: facet.identifier,
-        dateMin: startDate.format('YYYY-MM-DD'),
-        dateMax: endDate.format('YYYY-MM-DD'),
+        dateMin: startDate.valueOf(),
+        dateMax: endDate.valueOf(),
       })
       api.search()
     }

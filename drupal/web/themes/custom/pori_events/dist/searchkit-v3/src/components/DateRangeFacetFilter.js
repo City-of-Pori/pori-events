@@ -12,23 +12,28 @@ export default class DateRangeFacet {
         return this.config.identifier;
     }
     getFilters(filters) {
+
         const q = {
             "bool": {
-                "must": {
+                "must": [
+                  {
                     "range": {
-                        "start_time": {
-                            "gte": filters[0].dateMin,
-                            "lte": filters[0].dateMax,
-                        }
-                    },
-                    "range": {
-                        "end_time": {
-                            "gte": filters[0].dateMin,
-                            "lte": filters[0].dateMax,
-                        }
+                      "start_time": {
+                        // "lte": 1662238800000
+                        "lte": filters[0].dateMax
+                      }
                     }
-                }
-            }
+                  },
+                  {
+                    "range": {
+                      "end_time": {
+                        // "gte": 1661720400000
+                        "gte": filters[0].dateMin
+                      }
+                    }
+                  }
+                ]
+              }
         }
 
         return q;

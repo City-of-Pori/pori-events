@@ -123,18 +123,21 @@ const config = {
       // label: 'Event type2',
       label: Drupal.t('What'),
       multipleSelect: true,
+      size: 100,
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_category", "hobby_sub_category"],
       identifier: 'hobby_category',
       // label: 'Hobby category',
       label: Drupal.t('What'),
+      size: 100,
     }),
     new HierarchicalMenuFacet({
       fields: ["area", "area_sub_area"],
       identifier: 'area',
       // label: 'Event location',
       label: Drupal.t('Where'),
+      size: 100,
     }),
     new HierarchicalMenuFacet({
       fields: ["hobby_location_area", "hobby_location_sub_area"],
@@ -154,6 +157,7 @@ const config = {
       // label: 'Day',
       label: Drupal.t('Timeframe of the day'),
       multipleSelect: true,
+      size: 50,
     }),
     new RefinementSelectFacet({
       field: 'hobby_audience',
@@ -161,6 +165,7 @@ const config = {
       // label: 'Hobby audience',
       label: Drupal.t('For whom'),
       multipleSelect: true,
+      size: 100,
     }),
     new RefinementSelectFacet({
       field: 'target_audience',
@@ -168,6 +173,7 @@ const config = {
       // label: 'Event audience',
       label: Drupal.t('For whom'),
       multipleSelect: true,
+      size: 100
     }),
     new RefinementSelectFacet({
       field: 'registration',
