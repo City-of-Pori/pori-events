@@ -1647,10 +1647,10 @@ margin-bottom: 10px;
       .sk-layout__filters {
         .sk-panel {
           .sk-panel__header.is-collapsable {
-            background: #ec1c24;
+            background: $red;
             &:hover {
               color: white;
-              background: darken(#EC1C24, 5%);
+              background: darken($red, 5%);
             }
           }
         }
@@ -1665,7 +1665,7 @@ margin-bottom: 10px;
         .sk-filter-group{
           .sk-filter-group-items{
             .sk-filter-group-items__value{
-              background: #ec1c24;
+              background: $red;
             }
           }
         }
@@ -1779,7 +1779,7 @@ margin-bottom: 10px;
     margin-left: 0;
 }
 .sk-hierarchical-menu-option.is-active {
-    border-left: 3px solid #ec1c24;
+    border-left: 3px solid $red;
     background: lightcoral;
     color:white;
 }

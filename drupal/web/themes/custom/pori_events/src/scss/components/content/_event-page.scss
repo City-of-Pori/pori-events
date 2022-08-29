@@ -185,15 +185,15 @@
 }
 
 .hobby {
-  background: #EC1C24 !important;
+  background: $red !important;
 }
 
 .hobby-text-red {
-  background: #EC1C24;
+  background: $red;
 
   &:hover {
     color: white;
-    background: darken(#EC1C24, 5%);
+    background: darken($red, 5%);
   }
 }
 
@@ -207,7 +207,7 @@
 }
 
 .page-footer-hobby {
-  border-bottom: 0.6rem solid #EC1C24 !important;
+  border-bottom: 0.6rem solid $red !important;
 }
 
 .event__content__description {
