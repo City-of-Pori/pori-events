@@ -61,14 +61,17 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
-let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
+// let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
+
+const location = window.location.origin;
+let elasticServer = location + "/api/searchkit";
 
 const config = {
   host: elasticServer,
   connectionOptions: {
     // apiKey: '<api-key>', // optional - depends how you wish to connect to elasticsearch.
   },
-  index: 'event-node-fi',
+  index: '',
   hits: {
     fields: [
       'title',
