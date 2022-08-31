@@ -191,7 +191,8 @@
 .hobby-text-red {
   background: $red;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: white;
     background: darken($red, 5%);
   }
@@ -200,7 +201,8 @@
 .event-text-blue {
   background: $blue;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: white;
     background: darken($blue, 5%);
   }

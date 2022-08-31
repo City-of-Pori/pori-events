@@ -33,12 +33,15 @@
     }
 }
 
-.accordion__button:hover {
-    .kada-event-search & {
-        background-color: darken($blue, 5%);;
-    }
-    .kada-event-search.hobby-search & {
-        background: darken($red, 5%);
+.accordion__button {
+    &:hover,
+    &:focus {
+        .kada-event-search & {
+            background-color: darken($blue, 5%);;
+        }
+        .kada-event-search.hobby-search & {
+            background: darken($red, 5%);
+        }
     }
 }
 
@@ -106,6 +109,7 @@
     // Upper filters
     .euiButton--primary {
         background-color: $blue !important;
+        color: white !important;
         a {
             color: white !important;
         }

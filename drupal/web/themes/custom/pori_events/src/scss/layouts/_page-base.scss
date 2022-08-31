@@ -7,3 +7,7 @@
   margin: 0 auto;
   max-width: $container-width;
 }
+
+*:focus {
+  outline: 2px solid black !important;
+}
