@@ -14,7 +14,7 @@ import {
   FacetsList,
   SearchBar,
   // ResetSearchButton,
-  SelectedFilters,
+  // SelectedFilters,
   Pagination,
 } from '@searchkit/elastic-ui';
 
@@ -53,6 +53,7 @@ import { DateRangeFacetPicker } from "./components/DateRangeFacetPicker";
 import DateRangeFacet from "./components/DateRangeFacetFilter";
 import { BoolFacet } from "./components/BoolFacet";
 import { ResetSearchButton } from "./components/ResetSearchButton";
+import { SelectedFilters } from "./components/SelectedFilters";
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
   Accordion,
