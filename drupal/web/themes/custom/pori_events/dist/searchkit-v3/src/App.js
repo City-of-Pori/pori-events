@@ -73,7 +73,7 @@ const config = {
   connectionOptions: {
     // apiKey: '<api-key>', // optional - depends how you wish to connect to elasticsearch.
   },
-  index: '',
+  // index: '',
   hits: {
     fields: [
       'title',
@@ -254,8 +254,8 @@ const config = {
       id: 'multiple_sort',
       label: 'Multiple sort',
       field: [
-        {single_day: {order: 'desc'}},
-        {start_time: {order: 'asc'}},
+        {single_day: {order: 'desc', unmapped_type: "long"}},
+        {start_time: {order: 'asc', unmapped_type: "long"}},
         // '_score',
       ],
       defaultOption: true,
