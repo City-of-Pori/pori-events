@@ -13,7 +13,7 @@ import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
 import {
   FacetsList,
   SearchBar,
-  ResetSearchButton,
+  // ResetSearchButton,
   SelectedFilters,
   Pagination,
 } from '@searchkit/elastic-ui';
@@ -52,6 +52,7 @@ import { HierarchicalMenuFacetAccordion } from "./components/HierarchicalMenuFac
 import { DateRangeFacetPicker } from "./components/DateRangeFacetPicker";
 import DateRangeFacet from "./components/DateRangeFacetFilter";
 import { BoolFacet } from "./components/BoolFacet";
+import { ResetSearchButton } from "./components/ResetSearchButton";
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
   Accordion,
