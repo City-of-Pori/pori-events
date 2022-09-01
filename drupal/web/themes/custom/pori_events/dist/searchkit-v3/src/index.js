@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import {SearchkitClient, SearchkitProvider} from '@searchkit/client';
+import {SearchkitClient, SearchkitProvider, withSearchkit, withSearchkitRouting } from '@searchkit/client';
+
+const SearchkitApp = withSearchkit(withSearchkitRouting(App));
 
 const skClient = new SearchkitClient();
 
@@ -21,9 +23,9 @@ if (viewportWidth < 800) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <SearchkitProvider client={skClient}>
-      <App eventType={eventType} filterOpen={filterOpen} />
-    </SearchkitProvider>
+    {/* <SearchkitProvider client={skClient}> */}
+      <SearchkitApp eventType={eventType} filterOpen={filterOpen} />
+    {/* </SearchkitProvider> */}
   </React.StrictMode>,
   drupalElem,
   // document.getElementById('root'),
