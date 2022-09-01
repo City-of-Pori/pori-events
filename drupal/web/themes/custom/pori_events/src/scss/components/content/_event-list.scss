@@ -1506,6 +1506,13 @@ margin-bottom: 10px;
   .link-text {
     margin-right: 20px;
   }
+
+  &::after {
+    position: relative;
+    display: inline-block;
+    content: '+';
+  }
+
   // .page-footer & {
   //   margin: 20px 0;
   //   @media screen and (min-width: $desktop-narrow) {

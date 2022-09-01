@@ -45,7 +45,8 @@
           .add-event{
             font-size: 0px;
             background: $red;
-            &:hover {
+            &:hover,
+            &:focus {
               color: white;
               background: darken($red, 5%);
   }
