@@ -153,12 +153,28 @@
         }
     }
 
+        // facet selection color
+        .euiFacetButton--isSelected {
+            .euiNotificationBadge {
+                background-color: $blue;
+                color: white;
+            }
+        }
+
     &.hobby-search {
         // Upper filters
         .euiButton--primary {
             background-color: $red !important;
             a {
                 color: white !important;
+            }
+        }
+
+        // facet selection color
+        .euiFacetButton--isSelected {
+            .euiNotificationBadge {
+                background-color: $red;
+                color: white;
             }
         }
     }
