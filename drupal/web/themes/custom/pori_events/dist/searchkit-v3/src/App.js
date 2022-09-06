@@ -68,202 +68,6 @@ import {
 const location = window.location.origin;
 let elasticServer = location + "/api/searchkit";
 
-const config = {
-  host: elasticServer,
-  connectionOptions: {
-    // apiKey: '<api-key>', // optional - depends how you wish to connect to elasticsearch.
-  },
-  // index: '',
-  hits: {
-    fields: [
-      'title',
-      'description',
-      'short_description',
-      'hobby_category',
-      'hobby_sub_category',
-      'area',
-      'area_sub_area',
-      'hobby_location_sub_area',
-      'hobby_location_area',
-      'is_hobby',
-      'image_ext',
-      'id',
-      'url',
-      'start_time',
-      'end_time',
-      'single_day',
-      'monday',
-      'tuesday',
-      'wednesday',
-      'thursday',
-      'friday',
-      'saturday',
-      'sunday',
-    ],
-  },
-  filters: [
-    new TermFilter({
-      identifier: 'is_hobby',
-      field: 'is_hobby',
-      label: 'Is hobby',
-    }),
-  ],
-  query: new MultiMatchQuery({
-    fields: [
-      'title',
-      'description',
-      'short_description',
-    ],
-  }),
-  facets: [
-    new RefinementSelectFacet({
-      field: 'is_hobby',
-      identifier: 'is_hobby',
-      label: 'Event / hobby',
-      multipleSelect: false,
-    }),
-    new RefinementSelectFacet({
-      field: 'event_type',
-      identifier: 'event_type',
-      // label: 'Event type2',
-      label: Drupal.t('What'),
-      multipleSelect: true,
-      size: 100,
-    }),
-    new HierarchicalMenuFacet({
-      fields: ["hobby_category", "hobby_sub_category"],
-      identifier: 'hobby_category',
-      // label: 'Hobby category',
-      label: Drupal.t('What'),
-      size: 100,
-    }),
-    new HierarchicalMenuFacet({
-      fields: ["area", "area_sub_area"],
-      identifier: 'area',
-      // label: 'Event location',
-      label: Drupal.t('Where'),
-      size: 100,
-    }),
-    new HierarchicalMenuFacet({
-      fields: ["hobby_location_area", "hobby_location_sub_area"],
-      identifier: 'hobby_area',
-      // label: 'Hobby location',
-      label: Drupal.t('Where'),
-    }),
-    new DateRangeFacet({
-      identifier: 'event_date',
-      field: 'start_time',
-      // label: 'Event date'
-      label: Drupal.t('When'),
-    }),
-    new RefinementSelectFacet({
-      field: 'timeframe',
-      identifier: 'timeframe_of_day',
-      // label: 'Day',
-      label: Drupal.t('Timeframe of the day'),
-      multipleSelect: true,
-      size: 50,
-    }),
-    new RefinementSelectFacet({
-      field: 'hobby_audience',
-      identifier: 'hobby_audience',
-      // label: 'Hobby audience',
-      label: Drupal.t('For whom'),
-      multipleSelect: true,
-      size: 100,
-    }),
-    new RefinementSelectFacet({
-      field: 'target_audience',
-      identifier: 'target_audience',
-      // label: 'Event audience',
-      label: Drupal.t('For whom'),
-      multipleSelect: true,
-      size: 100
-    }),
-    new RefinementSelectFacet({
-      field: 'registration',
-      identifier: 'registration',
-      // label: 'registration',
-      label: Drupal.t('Registration required'),
-    }),
-    new RefinementSelectFacet({
-      field: 'accessible',
-      identifier: 'accessible',
-      // label: 'accessible',
-      label: Drupal.t('Accessible'),
-    }),
-    new RefinementSelectFacet({
-      field: 'child_care',
-      identifier: 'child_care',
-      // label: 'Child care',
-      label: Drupal.t('Child Care'),
-    }),
-    new RefinementSelectFacet({
-      field: 'free_enterance',
-      identifier: 'free_enterance',
-      // label: 'free entrance',
-      label: Drupal.t('Free Entrance'),
-    }),
-    new RefinementSelectFacet({
-      field: 'culture_and_or_activity_no',
-      identifier: 'culture_and_or_activity_no',
-      // label: 'Culture and acitivity card',
-      label: Drupal.t('Culture and Activity card'),
-    }),
-
-    // Days for hobbies
-
-    new RefinementSelectFacet({
-      field: 'monday',
-      identifier: 'monday',
-      label: 'MA',
-    }),
-    new RefinementSelectFacet({
-      field: 'tuesday',
-      identifier: 'tuesday',
-      label: 'TI',
-    }),
-    new RefinementSelectFacet({
-      field: 'wednesday',
-      identifier: 'wednesday',
-      label: 'KE',
-    }),
-    new RefinementSelectFacet({
-      field: 'thursday',
-      identifier: 'thursday',
-      label: 'TO',
-    }),
-    new RefinementSelectFacet({
-      field: 'friday',
-      identifier: 'friday',
-      label: 'PE',
-    }),
-    new RefinementSelectFacet({
-      field: 'saturday',
-      identifier: 'saturday',
-      label: 'LA',
-    }),
-    new RefinementSelectFacet({
-      field: 'sunday',
-      identifier: 'sunday',
-      label: 'SU',
-    }),
-  ],
-  sortOptions: [
-    {
-      id: 'multiple_sort',
-      label: 'Multiple sort',
-      field: [
-        {single_day: {order: 'desc', unmapped_type: "long"}},
-        {start_time: {order: 'asc', unmapped_type: "long"}},
-        // '_score',
-      ],
-      defaultOption: true,
-    },
-  ],
-}
-
-
 // Description of result item
 const Description = (props) => {
   const { text, date, days, hobbySubArea, hobbyLocationArea, eventArea, eventSubArea } = props;
@@ -371,9 +175,244 @@ const HitsList = ({ data }) => {
 )}
 
 const App = (props) => {
+
+  console.log('props123', props)
+
+  const [eventType, setEventType] = useState(props?.eventType);
+
+  const config = {
+    host: elasticServer,
+    connectionOptions: {
+      // apiKey: '<api-key>', // optional - depends how you wish to connect to elasticsearch.
+    },
+    // index: '',
+    hits: {
+      fields: [
+        'title',
+        'description',
+        'short_description',
+        'hobby_category',
+        'hobby_sub_category',
+        'area',
+        'area_sub_area',
+        'hobby_location_sub_area',
+        'hobby_location_area',
+        'is_hobby',
+        'image_ext',
+        'id',
+        'url',
+        'start_time',
+        'end_time',
+        'single_day',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ],
+    },
+    filters: [
+      new TermFilter({
+        identifier: 'is_hobby',
+        field: 'is_hobby',
+        label: 'Is hobby',
+      }),
+    ],
+    query: new MultiMatchQuery({
+      fields: [
+        "title^10",
+        "short_description",
+        // "area",
+        "description^2"
+      ],
+    }),
+    facets: [
+      new RefinementSelectFacet({
+        field: 'is_hobby',
+        identifier: 'is_hobby',
+        label: 'Event / hobby',
+        multipleSelect: false,
+      }),
+      new RefinementSelectFacet({
+        field: 'event_type',
+        identifier: 'event_type',
+        // label: 'Event type2',
+        label: Drupal.t('What'),
+        multipleSelect: true,
+        size: 100,
+      }),
+      new HierarchicalMenuFacet({
+        fields: ["hobby_category", "hobby_sub_category"],
+        identifier: 'hobby_category',
+        // label: 'Hobby category',
+        label: Drupal.t('What'),
+        size: 100,
+      }),
+      new HierarchicalMenuFacet({
+        fields: ["area", "area_sub_area"],
+        identifier: 'area',
+        // label: 'Event location',
+        label: Drupal.t('Where'),
+        size: 100,
+      }),
+      new HierarchicalMenuFacet({
+        fields: ["hobby_location_area", "hobby_location_sub_area"],
+        identifier: 'hobby_area',
+        // label: 'Hobby location',
+        label: Drupal.t('Where'),
+      }),
+      new DateRangeFacet({
+        identifier: 'event_date',
+        field: 'start_time',
+        // label: 'Event date'
+        label: Drupal.t('When'),
+      }),
+      new RefinementSelectFacet({
+        field: 'timeframe',
+        identifier: 'timeframe_of_day',
+        // label: 'Day',
+        label: Drupal.t('Timeframe of the day'),
+        multipleSelect: true,
+        size: 50,
+      }),
+      new RefinementSelectFacet({
+        field: 'hobby_audience',
+        identifier: 'hobby_audience',
+        // label: 'Hobby audience',
+        label: Drupal.t('For whom'),
+        multipleSelect: true,
+        size: 100,
+      }),
+      new RefinementSelectFacet({
+        field: 'target_audience',
+        identifier: 'target_audience',
+        // label: 'Event audience',
+        label: Drupal.t('For whom'),
+        multipleSelect: true,
+        size: 100
+      }),
+      new RefinementSelectFacet({
+        field: 'registration',
+        identifier: 'registration',
+        // label: 'registration',
+        label: Drupal.t('Registration required'),
+      }),
+      new RefinementSelectFacet({
+        field: 'accessible',
+        identifier: 'accessible',
+        // label: 'accessible',
+        label: Drupal.t('Accessible'),
+      }),
+      new RefinementSelectFacet({
+        field: 'child_care',
+        identifier: 'child_care',
+        // label: 'Child care',
+        label: Drupal.t('Child Care'),
+      }),
+      new RefinementSelectFacet({
+        field: 'free_enterance',
+        identifier: 'free_enterance',
+        // label: 'free entrance',
+        label: Drupal.t('Free Entrance'),
+      }),
+      new RefinementSelectFacet({
+        field: 'culture_and_or_activity_no',
+        identifier: 'culture_and_or_activity_no',
+        // label: 'Culture and acitivity card',
+        label: Drupal.t('Culture and Activity card'),
+      }),
+  
+      // Days for hobbies
+  
+      new RefinementSelectFacet({
+        field: 'monday',
+        identifier: 'monday',
+        label: 'MA',
+      }),
+      new RefinementSelectFacet({
+        field: 'tuesday',
+        identifier: 'tuesday',
+        label: 'TI',
+      }),
+      new RefinementSelectFacet({
+        field: 'wednesday',
+        identifier: 'wednesday',
+        label: 'KE',
+      }),
+      new RefinementSelectFacet({
+        field: 'thursday',
+        identifier: 'thursday',
+        label: 'TO',
+      }),
+      new RefinementSelectFacet({
+        field: 'friday',
+        identifier: 'friday',
+        label: 'PE',
+      }),
+      new RefinementSelectFacet({
+        field: 'saturday',
+        identifier: 'saturday',
+        label: 'LA',
+      }),
+      new RefinementSelectFacet({
+        field: 'sunday',
+        identifier: 'sunday',
+        label: 'SU',
+      }),
+    ],
+    sortOptions: [
+      {
+        id: 'multiple_sort',
+        label: 'Multiple sort',
+        field: [
+          {single_day: {order: 'desc', unmapped_type: "long"}},
+          {start_time: {order: 'asc', unmapped_type: "long"}},
+          // '_score',
+        ],
+        defaultOption: true,
+      },
+    ],
+    // To set event / hobby filter. Pretyt messy at this moment, but had problems using spread operator / lodash merge. Should be refactored.
+    postProcessRequest: (body) => {
+      let bodyNormalized = body
+      console.log('post_filter', bodyNormalized?.post_filter?.bool?.must[0]?.bool?.must)
+      if(!bodyNormalized?.post_filter?.bool?.must[0]?.bool?.must) {
+        console.log('this runs')
+        bodyNormalized.post_filter = {
+          ...body.post_filter,
+          "bool": {
+              "must": [
+                  {
+                      "bool": {
+                          "must": [
+                              {
+                                  "term": {
+                                      "is_hobby": (eventType == 'hobbies') ? true : false
+                                  }
+                              },
+                          ]
+                      }
+                  }
+              ]
+          }
+        }
+      } else {
+        bodyNormalized.post_filter.bool.must[0].bool.must.push({
+          "term": {
+            "is_hobby": (eventType == 'hobbies') ? true : false
+          }
+        })
+      }
+  
+      return {...bodyNormalized};
+    },
+  }
+  
+
   // const Facets = FacetsList([]);
   const api = useSearchkit();
-  const [eventType, setEventType] = useState(props?.eventType);
   const variables = useSearchkitVariables();
   const {results, loading} = useSearchkitSDK(config, variables);
 

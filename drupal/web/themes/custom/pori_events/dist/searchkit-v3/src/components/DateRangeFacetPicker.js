@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { EuiTitle, EuiDatePickerRange, EuiDatePicker } from '@elastic/eui'
 import { useSearchkit } from '@searchkit/client'
+import moment from "moment";
+import "moment/locale/fi"; // without this line it didn't work
+moment.locale("es");
 
 export const DateRangeFacetPicker = ({ facet, loading }) => {
   if (!facet) {
@@ -27,8 +30,10 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
       }
       api.addFilter({
         identifier: facet.identifier,
-        dateMin: startDate.valueOf(),
-        dateMax: endDate.valueOf(),
+        // dateMin: startDate.valueOf(),
+        // dateMax: endDate.valueOf(),
+        dateMin: startDate.toISOString(),
+        dateMax: endDate.toISOString()
       })
       api.search()
     }
@@ -52,6 +57,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             placeholder="alkaa"
             isInvalid={startDate > endDate}
             aria-label="Start date"
+            locale="fi-FI"
           />
         }
         endDateControl={
@@ -66,6 +72,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             isInvalid={startDate > endDate}
             aria-label="End date"
             placeholder="loppuu"
+            locale="fi-FI"
           />
         }
       />
