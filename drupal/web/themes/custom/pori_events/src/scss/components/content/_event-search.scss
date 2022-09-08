@@ -88,12 +88,25 @@
 
 #kada-event-search {
 
+    // .accordion__panel {
+    //     padding: 0;
+    // }
+
     *:focus {
         outline: 2px solid black !important;
     }
 
     .euiPageSideBar {
         min-width: 350px !important;
+
+        .euiFacetButton {
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 17px 13px 17px 20px;
+            border-bottom: 1px solid #eee;
+            color: $black;
+        }
+
     }
 
     .euiFieldSearch {
@@ -150,6 +163,29 @@
 
         > div {
             margin: 0 !important;
+        }
+
+        .euiCard__content {
+            .euiTitle {
+                text-transform: uppercase;
+                font-weight: 600;
+                line-height: 1.1111;
+                padding-bottom: 1rem !important;
+            }
+            .event-date {
+                display: block;
+                font-size: 14px;
+                padding-bottom: 1rem !important;
+            }
+            .event-area {
+                display: block;
+                font-size: 14px;
+                padding-bottom: 1rem !important;
+            }
+            .event-description {
+                font-size: 14px;
+                line-height: 1.556;
+            }
         }
     }
 

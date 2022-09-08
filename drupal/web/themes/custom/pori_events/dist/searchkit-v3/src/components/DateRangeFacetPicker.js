@@ -15,28 +15,34 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
   // const [startDate, setStartDate] = useState(moment())
   // const [endDate, setEndDate] = useState(moment().add(6, 'days'))
 
+  // const [startDate, setStartDate] = useState()
+  // const [endDate, setEndDate] = useState()
 
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+  const [startDate, setStartDate] = useState(moment().startOf('day'))
+  const [endDate, setEndDate] = useState(moment().startOf('day').add(6, 'days'))
 
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
-
+  // console.log('time-startDate', startDate)
+  console.log('time-selectedOptions', 'selectedOption', selectedOption, startDate, endDate)
   useEffect(() => {
-    if (startDate && endDate) {
+    // if (startDate && endDate) {
       // console.log('startDate1', startDate.unix())
       if (selectedOption) {
+        // console.log('selectedOption', selectedOption, startDate, endDate)
         api.removeFilter(selectedOption)
       }
       api.addFilter({
         identifier: facet.identifier,
         // dateMin: startDate.valueOf(),
         // dateMax: endDate.valueOf(),
+        // dateMin: startDate.toISOString(),
+        // dateMax: endDate.toISOString()
         dateMin: startDate.toISOString(),
-        dateMax: endDate.toISOString()
+        dateMax: endDate.toISOString(),
       })
       api.search()
-    }
+    // }
   }, [startDate, endDate])
 
   return (

@@ -73,19 +73,20 @@ const Description = (props) => {
   const { text, date, days, hobbySubArea, hobbyLocationArea, eventArea, eventSubArea } = props;
   return <>
     {/* <EuiIcon type="calendar" /> */}
-    <span> {date}</span>
-    <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>
+    <span className="event-date"> {date}</span>
+    {days && <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>}
 
-    {hobbySubArea.length !== 0 && (
-      <strong> {hobbySubArea},</strong>
-    )}
-    <strong> {hobbyLocationArea}</strong>
+    <div className="event-area">
+      {hobbySubArea.length !== 0 && (
+        <strong> {hobbySubArea},</strong>
+      )}
+      <strong> {hobbyLocationArea}</strong>
 
-    {eventSubArea.length !== 0 && (
-      <strong> {eventSubArea},</strong>
-    )} <strong>{eventArea}</strong>
-
-    <p>{text}</p>
+      {eventSubArea.length !== 0 && (
+        <strong> {eventSubArea},</strong>
+      )} <strong>{eventArea}</strong>
+    </div>
+    <p className="event-description">{text}</p>
   </>
 }
 
@@ -148,7 +149,7 @@ const HitListItem = (hit) => {
         {hit.fields.title}
         </EuiLink>
         </>}
-        description={
+        >
           <Description
           key={hit.fields.id}
           text={hit.fields.short_description}
@@ -158,8 +159,8 @@ const HitListItem = (hit) => {
           hobbyLocationArea={hit.fields.hobby_location_area}
           eventArea={hit.fields.area}
           eventSubArea={hit.fields.area_sub_area}
-          />}
-      />
+          />
+      </EuiCard>
     </EuiFlexItem>
 }
 
@@ -369,7 +370,7 @@ const App = (props) => {
         field: [
           {single_day: {order: 'desc', unmapped_type: "long"}},
           {start_time: {order: 'asc', unmapped_type: "long"}},
-          // '_score',
+          '_score',
         ],
         defaultOption: true,
       },

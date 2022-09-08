@@ -8,6 +8,8 @@
 }
 
 .site-slogan {
+  display: flex;
+  align-items: center;
   font-family: $heading-font-family;
   font-size: .85rem;
   letter-spacing: -0.5px;

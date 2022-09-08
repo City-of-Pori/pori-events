@@ -7,8 +7,8 @@
 // ########## General ########## //
 body {
   @include font-size-responsive($base-font-size-rem);
-  font-family: $text-font-family;
-  line-height: $base-line-height;
+  font-family: $text-font-family !important;
+  line-height: $base-line-height !important;
 }
 
 a {
