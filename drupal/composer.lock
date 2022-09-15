@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80d6cf805dfddaa338725cf4fddb9ccf",
+    "content-hash": "5a901d7f8a618fecde946ed29bf64567",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2898,7 +2898,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_source_jsonpath.git",
-                "reference": "5ebce8ba"
+                "reference": "5ebce8ba0b739c95b3ee4809150a9d3973fce479"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
