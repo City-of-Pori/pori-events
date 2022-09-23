@@ -62,6 +62,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+const merge = require('lodash.merge');
 
 // let elasticServer = "https://elasticsearch-tapahtumat.lndo.site";
 
@@ -378,35 +379,27 @@ const App = (props) => {
     // To set event / hobby filter. Pretyt messy at this moment, but had problems using spread operator / lodash merge. Should be refactored.
     postProcessRequest: (body) => {
       let bodyNormalized = body
-      console.log('post_filter', bodyNormalized?.post_filter?.bool?.must[0]?.bool?.must)
-      if(!bodyNormalized?.post_filter?.bool?.must[0]?.bool?.must) {
-        console.log('this runs')
-        bodyNormalized.post_filter = {
-          ...body.post_filter,
-          "bool": {
-              "must": [
-                  {
-                      "bool": {
-                          "must": [
-                              {
-                                  "term": {
-                                      "is_hobby": (eventType == 'hobbies') ? true : false
-                                  }
-                              },
-                          ]
-                      }
-                  }
-              ]
+      const adjustment = {
+        post_filter: {
+        "bool": {
+                "should": [
+                    {
+                        "bool": {
+                            "must": [
+                                {
+                                    "term": {
+                                        "is_hobby": (eventType == 'hobbies') ? true : false
+                                    }
+                                },
+                            ]
+                        }
+                    }
+                ]
+            }
           }
         }
-      } else {
-        bodyNormalized.post_filter.bool.must[0].bool.must.push({
-          "term": {
-            "is_hobby": (eventType == 'hobbies') ? true : false
-          }
-        })
-      }
-  
+
+      const merged = _.merge(bodyNormalized, adjustment);
       return {...bodyNormalized};
     },
   }
@@ -420,7 +413,7 @@ const App = (props) => {
   useEffect(() => {
     if(eventType) {
       setEventType(eventType.toLowerCase())
-      handleTypeChange(eventType)
+      // handleTypeChange(eventType)
     }
   }, [])
 
