@@ -1,5 +1,6 @@
 .branding__container {
   display: flex;
+  align-items: center;
   padding: .5rem 0;
 
   @media screen and (min-width: $tablet-portrait-narrow) {
@@ -8,8 +9,6 @@
 }
 
 .site-slogan {
-  display: flex;
-  align-items: center;
   font-family: $heading-font-family;
   font-size: .85rem;
   letter-spacing: -0.5px;
