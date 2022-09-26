@@ -467,11 +467,13 @@ const App = (props) => {
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                  <BoolFacet facet={results?.facets[9]} loading={loading} name="Registration" />
-                  <BoolFacet facet={results?.facets[10]} loading={loading} name="Accecssible" />
-                  <BoolFacet facet={results?.facets[11]} loading={loading} name="Child Care" />
-                  <BoolFacet facet={results?.facets[12]} loading={loading} name="Free Entrance" />
-                  <BoolFacet facet={results?.facets[13]} loading={loading} name="Culture and Activity card" />
+                  <div className="refine-search">
+                    <BoolFacet facet={results?.facets[9]} loading={loading} name={Drupal.t("Registration required")} />
+                    <BoolFacet facet={results?.facets[10]} loading={loading} name={Drupal.t("Accessible")} />
+                    <BoolFacet facet={results?.facets[11]} loading={loading} name={Drupal.t("Child Care")} />
+                    <BoolFacet facet={results?.facets[12]} loading={loading} name={Drupal.t("Free Entrance")} />
+                    <BoolFacet facet={results?.facets[13]} loading={loading} name={Drupal.t("Culture and Activity card")} />
+                  </div>
                 </AccordionItemPanel>
             </AccordionItem>
         </Accordion>
