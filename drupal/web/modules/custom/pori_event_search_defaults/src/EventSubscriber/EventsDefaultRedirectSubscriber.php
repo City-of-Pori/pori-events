@@ -20,7 +20,7 @@ class EventsDefaultRedirectSubscriber implements EventSubscriberInterface {
    *   ResponseEvent.
    */
   public function dateRangeRedirect(RequestEvent $event) {
-
+    return
     $url = Url::fromRoute('<current>')->getInternalPath();
 
     /* @var $path_matcher \Drupal\Core\Path\PathMatcher */
@@ -36,6 +36,8 @@ class EventsDefaultRedirectSubscriber implements EventSubscriberInterface {
       // \Drupal\events2elastic\Plugin\Normalizer\NodeNormalizer does..
       $start = 'event_date_from=' . date('U000', $today);
       $end = 'event_date_to=' . date('U000', strtotime('+6 day', $today));
+      // $start = 'filters[0][identifier]=event_date&filters[0][dateMin]=' . date('Y-m-d', $today);
+      // $end = 'filters[0][dateMax]=' . date('Y-m-d', strtotime('+6 day', $today));
 
       // Rewrite to empty url if homepage.
       $url = ($path_matcher->isFrontpage()) ? '' : $url;

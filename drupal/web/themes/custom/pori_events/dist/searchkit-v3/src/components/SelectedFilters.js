@@ -45,7 +45,9 @@ const DateRangeFilter = ({ filter, loading }) => {
 
 const ValueFilter = ({ filter, loading }) => {
   const ref = useRef()
-
+  const dayFilters = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+  const isDayFilter = dayFilters.includes(filter.identifier)
+  console.log('valueFilter', filter, isDayFilter)
   return (
     <EuiFlexItem grow={false}>
       <EuiButton
@@ -57,9 +59,9 @@ const ValueFilter = ({ filter, loading }) => {
         }}
       >
         <FilterLink ref={ref} filter={filter}>
-          <>
-            {filter.label}: {filter.value} ✕
-          </>
+            {isDayFilter ?
+            <>{filter.label} ✕</>
+            : <>{filter.label}: {filter.value} ✕</>}
         </FilterLink>
       </EuiButton>
     </EuiFlexItem>

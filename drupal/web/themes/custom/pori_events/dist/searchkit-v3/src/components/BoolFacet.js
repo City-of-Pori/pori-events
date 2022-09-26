@@ -66,11 +66,11 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
           // quantity={entry.count}
           isSelected={api.isFilterSelected({
             identifier: facet.identifier,
-            value: true
+            value: "true"
           })}
           isLoading={loading}
           onClick={() => {
-            api.toggleFilter({identifier: facet.identifier, value: true});
+            api.toggleFilter({identifier: facet.identifier, value: "true"});
             api.search();
           }}
           // className={api.isFilterSelected({
