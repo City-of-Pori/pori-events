@@ -61,7 +61,7 @@
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
         "drupal/fontawesome": "^2.23",
-        "drupal/twig_tweak": "^3.1",
+        "drupal/twig_tweak": "^3.2",
         "drupal/google_analytics": "^3.1",
         "kenwheeler/slick": "^1.8",
         "dinbror/blazy": "^1.8",
