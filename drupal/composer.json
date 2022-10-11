@@ -42,7 +42,7 @@
     "require": {
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11.1",
+        "drush/drush": "^11.2",
         "webflo/drupal-finder": "^1.0.0",
         "drupal/warden": "^3.0@RC",
         "drupal/simplei": "^1.1",
@@ -83,7 +83,7 @@
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.2",
         "drupal/twig_xdebug": "^1.0",
-        "drupal/devel": "^4.1"
+        "drupal/devel": "^5.0"
     },
     "conflict": {
         "drupal/drupal": "*"
