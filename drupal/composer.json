@@ -49,7 +49,7 @@
         "wunderio/drupal-ping": "^2.3",
         "drupal/address": "^1.10",
         "drupal/elasticsearch_helper": "7.x-dev",
-        "drupal/admin_toolbar": "^3.1",
+        "drupal/admin_toolbar": "^3.2",
         "drupal/coffee": "^1.0",
         "ccampbell/chromephp": "^4.1",
         "drupal/migrate_plus": "^6.0",
