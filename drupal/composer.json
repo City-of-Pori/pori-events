@@ -42,14 +42,14 @@
     "require": {
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11.1",
+        "drush/drush": "^11.2",
         "webflo/drupal-finder": "^1.0.0",
         "drupal/warden": "^3.0@RC",
         "drupal/simplei": "^1.1",
         "wunderio/drupal-ping": "^2.3",
         "drupal/address": "^1.10",
         "drupal/elasticsearch_helper": "7.x-dev",
-        "drupal/admin_toolbar": "^3.1",
+        "drupal/admin_toolbar": "^3.2",
         "drupal/coffee": "^1.0",
         "ccampbell/chromephp": "^4.1",
         "drupal/migrate_plus": "^6.0",
@@ -61,7 +61,7 @@
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
         "drupal/fontawesome": "^2.23",
-        "drupal/twig_tweak": "^3.1",
+        "drupal/twig_tweak": "^3.2",
         "drupal/google_analytics": "^3.1",
         "kenwheeler/slick": "^1.8",
         "dinbror/blazy": "^1.8",
@@ -71,8 +71,8 @@
         "drupal/empty_page": "^3",
         "drupal/simple_gmap": "^3.0",
         "drupal/pathauto": "^1.10",
-        "drupal/core-recommended": "^9.2",
-        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-recommended": "^9.4",
+        "drupal/core-composer-scaffold": "^9.4",
         "drupal/blazy": "^2.13",
         "elasticsearch/elasticsearch": "^7.11",
         "drupal/ctools": "^4.0",
@@ -83,7 +83,7 @@
         "drupal/config_devel": "^1.2",
         "drupal/stage_file_proxy": "^1.2",
         "drupal/twig_xdebug": "^1.0",
-        "drupal/devel": "^4.1"
+        "drupal/devel": "^5.0"
     },
     "conflict": {
         "drupal/drupal": "*"
