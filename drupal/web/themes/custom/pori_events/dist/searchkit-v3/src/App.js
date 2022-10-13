@@ -408,8 +408,10 @@ const App = (props) => {
   // const Facets = FacetsList([]);
   const api = useSearchkit();
   const variables = useSearchkitVariables();
-  const {results, loading} = useSearchkitSDK(config, variables);
+  let variablesCustomized = variables
+  variablesCustomized.page.size = 12;
 
+  const {results, loading} = useSearchkitSDK(config, variablesCustomized);
   useEffect(() => {
     if(eventType) {
       setEventType(eventType.toLowerCase())
