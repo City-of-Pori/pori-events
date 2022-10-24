@@ -224,9 +224,9 @@ const App = (props) => {
     ],
     query: new MultiMatchQuery({
       fields: [
-        "title^10",
+        "title.autocomplete^10",
         "short_description",
-        // "area",
+        // "area^5",
         "description^2"
       ],
     }),

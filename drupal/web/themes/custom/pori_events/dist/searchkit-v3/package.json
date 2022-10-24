@@ -31,7 +31,7 @@
     "start": "react-scripts start",
     "startcraco": "craco start",
     "build": "react-scripts build",
-    "buildcraco": "craco build",
+    "buildcraco": "DEBUG_MODE=true craco build",
     "test": "react-scripts test --env=jsdom",
     "testcraco": "craco test --env=jsdom",
     "eject": "react-scripts eject",
