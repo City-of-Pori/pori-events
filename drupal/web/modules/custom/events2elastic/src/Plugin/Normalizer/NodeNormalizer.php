@@ -97,9 +97,8 @@ class NodeNormalizer extends ContentEntityNormalizer {
 
       // This should make status unpublished.
       if (!empty($object->field_super_event->value) && $object->field_super_event->value == TRUE) {
-        $data['status'] = FALSE;
+        $data['status'] = 0;
       }
-
 
       // Date fields
       if (!empty($object->field_start_time->value)) {
