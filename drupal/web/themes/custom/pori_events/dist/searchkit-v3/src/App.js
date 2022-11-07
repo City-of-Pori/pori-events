@@ -382,15 +382,15 @@ const App = (props) => {
       const adjustment = {
         post_filter: {
         "bool": {
-                "should": [
+                "must": [
                     {
                         "bool": {
                             "must": [
-                                {
-                                    "term": {
-                                        "is_hobby": (eventType == 'hobbies') ? true : false
-                                    }
-                                },
+                                // {
+                                //     "term": {
+                                //         "is_hobby": (eventType == 'hobbies') ? true : false
+                                //     }
+                                // },
                             ]
                         }
                     }
@@ -400,6 +400,15 @@ const App = (props) => {
         }
 
       const merged = _.merge(bodyNormalized, adjustment);
+      // add new object object property to the merged last must array
+        console.log('bodyNormalized', bodyNormalized)
+        bodyNormalized.post_filter.bool.must[0].bool.must.push(
+                                          {
+                                    "term": {
+                                        "is_hobby": (eventType == 'hobbies') ? true : false
+                                    }
+                                },
+        )
       return {...bodyNormalized};
     },
   }
