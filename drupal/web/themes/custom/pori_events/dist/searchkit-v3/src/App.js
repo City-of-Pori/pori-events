@@ -379,36 +379,35 @@ const App = (props) => {
     // To set event / hobby filter. Pretyt messy at this moment, but had problems using spread operator / lodash merge. Should be refactored.
     postProcessRequest: (body) => {
       let bodyNormalized = body
+
       const adjustment = {
         post_filter: {
         "bool": {
                 "must": [
-                    {
-                        "bool": {
-                            "must": [
-                                // {
-                                //     "term": {
-                                //         "is_hobby": (eventType == 'hobbies') ? true : false
-                                //     }
-                                // },
-                            ]
-                        }
-                    }
+
                 ]
             }
           }
         }
 
-      const merged = _.merge(bodyNormalized, adjustment);
-      // add new object object property to the merged last must array
+        _.merge(bodyNormalized, adjustment);
+
         console.log('bodyNormalized', bodyNormalized)
-        bodyNormalized.post_filter.bool.must[0].bool.must.push(
-                                          {
-                                    "term": {
-                                        "is_hobby": (eventType == 'hobbies') ? true : false
-                                    }
-                                },
+
+        bodyNormalized.post_filter.bool.must.push(
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "is_hobby": (eventType == 'hobbies') ? true : false
+                  }
+                }
+              ]
+            }
+          }
         )
+
       return {...bodyNormalized};
     },
   }
