@@ -12,57 +12,31 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
   const api = useSearchkit()
   const moment = require('moment'); // Faced with some issues using import statement
 
-  // const [startDate, setStartDate] = useState(moment())
-  // const [endDate, setEndDate] = useState(moment().add(6, 'days'))
-
-  // const [startDate, setStartDate] = useState()
-  // const [endDate, setEndDate] = useState()
-
-  // const [startDate, setStartDate] = useState(moment().startOf('day'))
-  // const [endDate, setEndDate] = useState(moment().startOf('day').add(6, 'days'))
-
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
 
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
-  // console.log('time-startDate', startDate)
-  console.log('time-selectedOptions', 'selectedOption', selectedOption, startDate, endDate)
+  
   useEffect(() => {
     if (startDate && endDate) {
-      // console.log('startDate1', startDate.unix())
       if (selectedOption) {
-        // console.log('selectedOption', selectedOption, startDate, endDate)
         api.removeFilter(selectedOption)
       }
       api.addFilter({
         identifier: facet.identifier,
-        // dateMin: startDate.valueOf(),
-        // dateMax: endDate.valueOf(),
-        // dateMin: startDate.toISOString(),
-        // dateMax: endDate.toISOString()
         dateMin: startDate.toISOString(),
         dateMax: endDate.toISOString(),
       })
       api.search()
     }
-
-    console.log('startDate', startDate)
-    // moment DD.MM.YYYY format string
-    // console.log('startDate', startDate.format('DD.MM.YYYY'))
-    console.log('startDate2', (moment().startOf('day')).format('DD.MM.YYYY'))
-
   }, [startDate, endDate])
 
   useEffect(() => {
-    console.log('window.location.pathname', window.location)
     const rootPaths = ['/', '/harrastukset/', '/harrastukset']
     if (rootPaths.includes(window.location.pathname) && !window.location.search) {
-      console.log('runs date frontpage')
       setStartDate(moment().startOf('day'))
-      // setStartDate(moment().startOf('day').format('DD.MM.YYYY'))
       setEndDate(moment().startOf('day').add(6, 'days'))
-      // setEndDate(moment().startOf('day').add(6, 'days').format('DD.MM.YYYY'))
     }
   }, [window.location.pathname])
 
