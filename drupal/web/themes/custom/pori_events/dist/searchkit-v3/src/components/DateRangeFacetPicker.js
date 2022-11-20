@@ -46,7 +46,26 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
       })
       api.search()
     }
+
+    console.log('startDate', startDate)
+    // moment DD.MM.YYYY format string
+    // console.log('startDate', startDate.format('DD.MM.YYYY'))
+    console.log('startDate2', (moment().startOf('day')).format('DD.MM.YYYY'))
+
   }, [startDate, endDate])
+
+  useEffect(() => {
+    console.log('window.location.pathname', window.location)
+    const rootPaths = ['/', '/harrastukset/', '/harrastukset']
+    if (rootPaths.includes(window.location.pathname) && !window.location.search) {
+      console.log('runs date frontpage')
+      setStartDate(moment().startOf('day'))
+      // setStartDate(moment().startOf('day').format('DD.MM.YYYY'))
+      setEndDate(moment().startOf('day').add(6, 'days'))
+      // setEndDate(moment().startOf('day').add(6, 'days').format('DD.MM.YYYY'))
+    }
+  }, [window.location.pathname])
+
 
   return (
     <>
@@ -67,6 +86,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             isInvalid={startDate > endDate}
             aria-label="Start date"
             locale="fi-FI"
+            dateFormat={'DD.MM.YYYY'}
           />
         }
         endDateControl={
@@ -82,6 +102,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
             aria-label="End date"
             placeholder="loppuu"
             locale="fi-FI"
+            dateFormat={'DD.MM.YYYY'}
           />
         }
       />
