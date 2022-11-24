@@ -19,8 +19,8 @@ use Drupal\migrate\Row;
  */
 class Extra_offers_parse extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    // Return 1 if extra opiton is set.
-    $source_extra_options = $row->getSource()['extra_options'];
+    // Return 1 if extra option is set.
+    $source_extra_options = $row->getSource()['extra_options'] ?? [];
     $return_boolean = 0;
 
     // Is it super event?

@@ -55,7 +55,7 @@ services:
       - /app/.lando/adminer.sh
     portforward: true
   appserver:
-    type: php:7.4
+    type: php:8.0
     webroot: web
     build:
       - composer install
