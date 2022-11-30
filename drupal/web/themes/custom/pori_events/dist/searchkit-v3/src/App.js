@@ -178,8 +178,6 @@ const HitsList = ({ data }) => {
 
 const App = (props) => {
 
-  console.log('props123', props)
-
   const [eventType, setEventType] = useState(props?.eventType);
 
   const config = {
@@ -243,21 +241,21 @@ const App = (props) => {
         // label: 'Event type2',
         label: Drupal.t('What'),
         multipleSelect: true,
-        size: 100,
+        // size: 100,
       }),
       new HierarchicalMenuFacet({
         fields: ["hobby_category", "hobby_sub_category"],
         identifier: 'hobby_category',
         // label: 'Hobby category',
         label: Drupal.t('What'),
-        size: 100,
+        // size: 100,
       }),
       new HierarchicalMenuFacet({
         fields: ["area", "area_sub_area"],
         identifier: 'area',
         // label: 'Event location',
         label: Drupal.t('Where'),
-        size: 100,
+        // size: 100,
       }),
       new HierarchicalMenuFacet({
         fields: ["hobby_location_area", "hobby_location_sub_area"],
@@ -277,7 +275,7 @@ const App = (props) => {
         // label: 'Day',
         label: Drupal.t('Timeframe of the day'),
         multipleSelect: true,
-        size: 50,
+        // size: 50,
       }),
       new RefinementSelectFacet({
         field: 'hobby_audience',
@@ -285,7 +283,7 @@ const App = (props) => {
         // label: 'Hobby audience',
         label: Drupal.t('For whom'),
         multipleSelect: true,
-        size: 100,
+        // size: 100,
       }),
       new RefinementSelectFacet({
         field: 'target_audience',
@@ -293,7 +291,7 @@ const App = (props) => {
         // label: 'Event audience',
         label: Drupal.t('For whom'),
         multipleSelect: true,
-        size: 100
+        // size: 100
       }),
       new RefinementSelectFacet({
         field: 'registration',
@@ -364,6 +362,7 @@ const App = (props) => {
         label: 'SU',
       }),
     ],
+
     sortOptions: [
       {
         id: 'multiple_sort',
@@ -420,6 +419,9 @@ const App = (props) => {
   variablesCustomized.page.size = 12;
 
   const {results, loading} = useSearchkitSDK(config, variablesCustomized);
+
+  console.log('results-1', results)
+
   useEffect(() => {
     if(eventType) {
       setEventType(eventType.toLowerCase())
