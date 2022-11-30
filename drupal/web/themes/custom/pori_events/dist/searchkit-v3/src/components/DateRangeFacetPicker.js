@@ -25,8 +25,8 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
       }
       api.addFilter({
         identifier: facet.identifier,
-        dateMin: startDate.toISOString(),
-        dateMax: endDate.toISOString(),
+        dateMin: startDate.format('YYYY-MM-DD'),
+        dateMax: endDate.format('YYYY-MM-DD'),
       })
       api.search()
     }
