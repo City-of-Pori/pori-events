@@ -13,18 +13,18 @@ const EntriesList = ({ entries, loading, facet }) => {
   const api = useSearchkit()
   const ref = useRef([]);
 
-  useEffect(() => {
-    ref.current = ref.current.slice(0, facet?.entries.length);
- }, [facet?.entries]);
-
   if (!facet) {
     return null;
   }
 
+  useEffect(() => {
+    console.log('facet', facet)
+ }, [facet.entries]);
+
   const entriesElements = entries.map((entry, i) => {
     console.log('entries', entries)
     return (
-      <Fragment key={entry.label}>
+      <Fragment key={i}>
         <EuiFacetButton
           key={entry.label}
           style={{ height: '28px', marginTop: 0, marginBottom: 0 }}
