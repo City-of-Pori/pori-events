@@ -30,4 +30,3 @@ Full commands/tools overview is available by running `lando`. Custom tools:
 - `lando xdebug-off` - disables xdebug.
 
 [Old readme](README_old.md).
-
