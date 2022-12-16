@@ -8,9 +8,13 @@
 .page-footer__top {
   margin-top: 2rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (min-width: $tablet-portrait-narrow) {
     margin-top: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 

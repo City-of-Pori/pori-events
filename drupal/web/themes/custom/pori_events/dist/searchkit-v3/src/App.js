@@ -9,6 +9,7 @@ import {
 } from '@searchkit/sdk';
 import { useSearchkitVariables, useSearchkit, FilterLink, FilterLinkClickRef } from "@searchkit/client";
 import { useSearchkitSDK } from "@searchkit/sdk/lib/esm/react-hooks";
+import { AddEventHobbyBtn } from "./components/AddEventHobbyBtn";
 
 import {
   FacetsList,
@@ -438,8 +439,8 @@ const App = (props) => {
   return (
     <EuiPage>
       <EuiPageSideBar>
-        {(eventType === 'hobbies') && <a href="http://www.satakuntaevents.fi/" className="add-event hobby-text-red" style={{'position': 'initial', 'marginBottom': '12px'}}><span class="link-text">Lisää oma harrastuksesi</span></a>}
-        {(eventType === 'events') && <a href="http://www.satakuntaevents.fi/" className="add-event event-text-blue" style={{'position': 'initial', 'marginBottom': '12px'}}><span class="link-text">Lisää oma tapahtumasi</span></a>}
+        {(eventType === 'hobbies') && <AddEventHobbyBtn type="hobby" />}
+        {(eventType === 'events') && <AddEventHobbyBtn type="event" />}
         <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
