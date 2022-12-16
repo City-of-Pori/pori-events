@@ -160,7 +160,7 @@
     .event-list-wrapper {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
-        @media screen and (min-width: 599px) {
+        @media screen and (min-width: 1150px) {
             grid-template-columns: 1fr 1fr 1fr;
         }
         gap: 1em;
