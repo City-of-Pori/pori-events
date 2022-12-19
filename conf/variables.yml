@@ -25,7 +25,7 @@ partition_var_log: False
 partition_var_lib_mysql: False
 
 # PHP version to be used. Available options: php56u, php70u
-php_package: "php74remi"
+php_package: "php80remi"
 
 drush: {
   version: "8.*",
