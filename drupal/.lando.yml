@@ -59,8 +59,6 @@ services:
     webroot: web
     build:
       - composer install
-    run:
-      - /app/.lando/migrate.sh
     overrides:
       environment:
         WKV_SITE_ENV: lando
