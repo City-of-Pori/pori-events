@@ -112,9 +112,6 @@
         ]
     },
     "extra": {
-        "config": {
-            "sort-packages": true
-        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "./web"
@@ -160,6 +157,7 @@
     },
     "config": {
         "discard-changes": true,
+        "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
