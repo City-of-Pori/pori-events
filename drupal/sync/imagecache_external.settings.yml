@@ -2,10 +2,11 @@ _core:
   default_config_hash: pf41tN-PPhgH1h2NxglpZuVbsh8xKOnO2r5cqM3aeYs
 langcode: fi
 imagecache_directory: externals
+imagecache_subdirectories: false
 imagecache_default_extension: .jpg
 imagecache_external_hosts: ''
 imagecache_external_management: unmanaged
-imagecache_external_use_whitelist: 0
+imagecache_external_use_whitelist: false
 imagecache_fallback_image: 0
 imagecache_external_allowed_mimetypes:
   - image/jpg
@@ -20,4 +21,4 @@ imagecache_external_allowed_mimetypes:
   - application/octet-stream;charset=utf-8
   - image/webp
   - image/webp;charset=utf-8
-imagecache_subdirectories: false
+imagecache_external_cron_flush_frequency: 0
