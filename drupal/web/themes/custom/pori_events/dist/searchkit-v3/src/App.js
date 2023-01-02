@@ -94,19 +94,15 @@ const Description = (props) => {
 
 // Result item
 const HitListItem = (hit) => {
-  // image
-  // const source = extend({}, result._source, result.highlight);
-  const source = 'https://example.com/'
-  // If there's an url in the index, use it. Otherwise, fall back to Drupal
-  // node-id.
-  const url = source.url ? source.url : "/node/" + hit.fields.id;
-  let image_source = hit.fields.image_ext
-    ? hit.fields.image_ext
-    : "/themes/custom/pori_events/dist/images/event-default.jpg";
-    image_source = image_source.replace('mat.lndo.site', 'https://tapahtumat.pori.fi')
-    image_source = image_source.replace('at.lndo.site', 'https://tapahtumat.pori.fi')
+  const getImageUrl = () => {
+    const rawIndexedImagePath = hit.fields.image_ext;
+    const image_ext_string = rawIndexedImagePath?.substring(rawIndexedImagePath.indexOf('/sites'))
+    const image_url = image_ext_string ? image_ext_string : "/themes/custom/pori_events/dist/images/event-default.jpg";
+    console.log('image_url', image_url)
+    return image_url;
+  }
+
     const date_format = "dd.LL.yyyy";
-  
     const start_time_string = DateTime.fromISO(hit.fields.start_time).setLocale('fi')
     .toFormat(date_format);
     const end_time_string = DateTime.fromISO(hit.fields.end_time).setLocale('fi')
@@ -141,7 +137,7 @@ const HitListItem = (hit) => {
         image={
           <div>
             <img
-              src={image_source}
+              src={getImageUrl()}
               alt=""
             />
           </div>
