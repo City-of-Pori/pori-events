@@ -238,7 +238,7 @@ const App = (props) => {
         // label: 'Event type2',
         label: Drupal.t('What'),
         multipleSelect: true,
-        // size: 100,
+        size: 100,
       }),
       new HierarchicalMenuFacet({
         fields: ["hobby_category", "hobby_sub_category"],
@@ -272,7 +272,7 @@ const App = (props) => {
         // label: 'Day',
         label: Drupal.t('Timeframe of the day'),
         multipleSelect: true,
-        // size: 50,
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'hobby_audience',
@@ -280,7 +280,7 @@ const App = (props) => {
         // label: 'Hobby audience',
         label: Drupal.t('For whom'),
         multipleSelect: true,
-        // size: 100,
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'target_audience',
@@ -288,37 +288,42 @@ const App = (props) => {
         // label: 'Event audience',
         label: Drupal.t('For whom'),
         multipleSelect: true,
-        // size: 100
+        size: 100
       }),
       new RefinementSelectFacet({
         field: 'registration',
         identifier: 'registration',
         // label: 'registration',
         label: Drupal.t('Registration required'),
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'accessible',
         identifier: 'accessible',
         // label: 'accessible',
         label: Drupal.t('Accessible'),
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'child_care',
         identifier: 'child_care',
         // label: 'Child care',
         label: Drupal.t('Child Care'),
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'free_enterance',
         identifier: 'free_enterance',
         // label: 'free entrance',
         label: Drupal.t('Free Entrance'),
+        size: 100,
       }),
       new RefinementSelectFacet({
         field: 'culture_and_or_activity_no',
         identifier: 'culture_and_or_activity_no',
         // label: 'Culture and acitivity card',
         label: Drupal.t('Culture and Activity card'),
+        size: 100,
       }),
   
       // Days for hobbies
