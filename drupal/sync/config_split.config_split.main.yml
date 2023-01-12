@@ -1,0 +1,16 @@
+uuid: 402c7006-1e5b-4804-aa00-5059be141352
+langcode: fi
+status: true
+dependencies: {  }
+id: main
+label: Main
+description: ''
+weight: 0
+stackable: false
+storage: folder
+folder: ../sync-main
+module:
+  updates_log: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }
