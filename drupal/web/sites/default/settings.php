@@ -53,19 +53,27 @@ switch ($env) {
     $conf['simple_environment_indicator'] = '#560004 Production';
     $config['google_tag.container.tapahtumat.pori.fi']['environment_id'] = 'env-1';
     $config['google_tag.container.tapahtumat.pori.fi']['environment_token'] = 'gW_rBBg5Mg2OmD-o7G464g';
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
   case 'dev':
     $settings['simple_environment_indicator'] = '#004984 Development';
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
   case 'stage':
     $settings['simple_environment_indicator'] = '#e56716 Stage';
+    $config['config_split.config_split.main']['status'] = TRUE;
     break;
 
   case 'local':
     $settings['simple_environment_indicator'] = 'DarkGreen Local';
     $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
+    $config['config_split.config_split.main']['status'] = FALSE;
+    break;
+
+  default:
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
 }
