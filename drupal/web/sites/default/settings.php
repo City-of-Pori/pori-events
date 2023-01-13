@@ -106,25 +106,6 @@ $settings['update_free_access'] = FALSE;
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
-// Warden settings.
-// Shared secret between the site and Warden server.
-$config['warden.settings']['warden_token'] = getenv('WARDEN_TOKEN');
-// Location of your Warden server. No trailing slash.
-$config['warden.settings']['warden_server_host_path'] = 'https://warden.wunder.io';
-// Allow external callbacks to the site. When set to FALSE pressing refresh site
-// data in Warden will not work.
-$config['warden.settings']['warden_allow_requests'] = TRUE;
-// Basic HTTP authorization credentials.
-$config['warden.settings']['warden_http_username'] = 'warden';
-$config['warden.settings']['warden_http_password'] = 'wunder';
-// IP address of the Warden server. Only these IP addresses will be allowed to
-// make callback # requests.
-$config['warden.settings']['warden_public_allow_ips'] = '35.228.188.78,35.228.81.50';
-// Define module locations.
-$config['warden.settings']['warden_preg_match_custom'] = '{^modules\/custom\/*}';
-$config['warden.settings']['warden_preg_match_contrib'] = '{^modules\/contrib\/*}';
-$config['warden.settings']['warden_match_contrib'] = TRUE;
-
 /**
  * Environment specific override configuration, if available.
  */
