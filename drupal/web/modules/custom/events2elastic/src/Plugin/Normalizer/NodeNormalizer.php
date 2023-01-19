@@ -25,7 +25,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
     /** @var \Drupal\node\Entity\Node $object */
     $bundle = $object->bundle();
     // Get the object language.
