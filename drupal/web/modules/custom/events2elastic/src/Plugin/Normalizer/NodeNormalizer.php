@@ -155,7 +155,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
           ];
           $img_view = $object->get('field_image_ext_url')
             ->view($display_options);
-          $img_cached = $img_view[0]['#uri'];
+          $img_cached = $img_view[0]['#uri'] ?? NULL;
           $style = \Drupal::entityTypeManager()
             ->getStorage('image_style')
             ->load('list_image');
