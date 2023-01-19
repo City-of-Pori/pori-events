@@ -1,13 +1,11 @@
 langcode: fi
-scheme: http
 hosts:
   -
+    scheme: http
     host: localhost
     port: '9200'
-authentication:
-  method: ''
-  configuration: {  }
-ssl:
-  certificate: ''
-  skip_verification: false
+    authentication:
+      enabled: false
+      user: ''
+      password: ''
 defer_indexing: false
