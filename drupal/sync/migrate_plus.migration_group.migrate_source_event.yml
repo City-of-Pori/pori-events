@@ -8,7 +8,7 @@ dependencies:
     module:
       - migrate_source_example_json
 id: migrate_source_event
-label: 'Example migration from a JSON resource.'
+label: 'Migrate JSON'
 description: 'A few example migrations from a JSON resource.'
 source_type: 'JSON resource'
 module: null
