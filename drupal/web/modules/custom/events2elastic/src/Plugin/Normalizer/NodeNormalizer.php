@@ -160,7 +160,10 @@ class NodeNormalizer extends ContentEntityNormalizer {
             ->getStorage('image_style')
             ->load('list_image');
           $style_url = $style->buildUrl($img_cached);
-          $data['image_ext'] = substr($style_url, strpos($style_url, "http://default/") + 15);
+
+          $splitter = 'sites/default/files';
+          $url_parts = explode($splitter, $style_url);
+          $data['image_ext'] = (isset($url_parts[1])) ? $splitter . $url_parts[1] : $style_url;
         } catch (\Exception $exception) {
           watchdog_exception('events2elastic', $exception, 'Failed setting external image on event.');
         }
