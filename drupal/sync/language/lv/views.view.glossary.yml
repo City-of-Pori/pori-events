@@ -6,8 +6,6 @@ display:
       fields:
         title:
           label: Virsraksts
-        name:
-          label: Author
         changed:
           label: 'Viimeksi päivitetty'
       pager:

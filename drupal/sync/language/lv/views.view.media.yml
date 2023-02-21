@@ -7,13 +7,8 @@ display:
           action_title: Toiminto
         bundle:
           label: Veids
-        uid:
-          label: Author
         status:
           label: Statuss
-          settings:
-            format_custom_false: Unpublished
-            format_custom_true: Published
         changed:
           label: Päivitetty
         operations:
@@ -37,14 +32,6 @@ display:
         bundle:
           expose:
             label: Veids
-        status:
-          group_info:
-            label: 'Published status'
-            group_items:
-              1:
-                title: Published
-              2:
-                title: Unpublished
         langcode:
           expose:
             label: Valoda
