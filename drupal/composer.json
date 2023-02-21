@@ -69,7 +69,7 @@
         "drupal/monolog": "^2.0",
         "drupal/pathauto": "^1.10",
         "drupal/simple_gmap": "^3.0",
-        "drupal/simplei": "^1.1",
+        "drupal/simplei": "^2.1",
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
         "drupal/structured_data": "^1.0",
