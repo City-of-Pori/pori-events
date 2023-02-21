@@ -190,7 +190,7 @@ display:
       display_description: 'Lista uusista käyttäjistä'
       display_extenders: {  }
       block_description: 'Uudet käyttäjät'
-      block_category: Käyttäjä
+      block_category: User
     cache_metadata:
       max-age: -1
       contexts:
