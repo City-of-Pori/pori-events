@@ -1,0 +1,15 @@
+uuid: 09df0e55-04c2-4f9e-8827-b5acac1ae414
+langcode: en
+status: true
+dependencies: {  }
+id: node__event
+label: 'Content: Event'
+tags:
+  description: '[node:field_description]'
+  og_description: '[node:field_description]'
+  og_image_url: '[node:field_image_ext_url]'
+  og_url: '[node:url]'
+  twitter_cards_image: '[node:field_image_ext_url]'
+  twitter_cards_page_url: '[node:url]'
+  twitter_cards_title: '[node:title]'
+  twitter_cards_type: summary_large_image
