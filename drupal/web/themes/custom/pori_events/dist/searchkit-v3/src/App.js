@@ -97,7 +97,9 @@ const HitListItem = (hit) => {
   const getImageUrl = () => {
     const rawIndexedImagePath = hit.fields.image_ext;
     const image_ext_string = rawIndexedImagePath?.substring(rawIndexedImagePath.indexOf('/sites'))
-    const image_url = image_ext_string ? image_ext_string : "/themes/custom/pori_events/dist/images/event-default.jpg";
+    const root = window.location.origin;
+    const completeImagePath = root + '/' + image_ext_string;
+    const image_url = image_ext_string ? completeImagePath : "/themes/custom/pori_events/dist/images/event-default.jpg";
     return image_url;
   }
 
