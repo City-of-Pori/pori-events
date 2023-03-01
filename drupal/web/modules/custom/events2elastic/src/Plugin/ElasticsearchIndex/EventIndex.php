@@ -186,6 +186,7 @@ class EventIndex extends ElasticsearchIndexBase {
       ->addProperty('is_hobby', $boolean)
       ->addProperty('accessible', $boolean)
       ->addProperty('child_care', $boolean)
+      ->addProperty('super_event', $boolean)
       ->addProperty('culture_and_or_activity_no', $boolean)
       ->addProperty('hobby_category', $keyword)
       ->addProperty('hobby_sub_category', $keyword)

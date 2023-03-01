@@ -25,7 +25,7 @@ class NodeNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
     /** @var \Drupal\node\Entity\Node $object */
     $bundle = $object->bundle();
     // Get the object language.
@@ -91,9 +91,16 @@ class NodeNormalizer extends ContentEntityNormalizer {
       $data['is_hobby'] = $object->field_hobby_is_hobby->value == TRUE;
       $data['accessible'] = $object->field_accessible->value == TRUE;
       $data['child_care'] = $object->field_child_care->value == TRUE;
+      $data['super_event'] = $object->field_super_event->value == TRUE;
       $data['culture_and_or_activity_no'] = $object->field_culture_and_or_activity_no->value == TRUE;
       $data['registration'] = $object->field_pre_registration->value == TRUE;
 
+      // This should make status unpublished.
+      if (!empty($object->field_super_event->value) && $object->field_super_event->value == TRUE) {
+        // $data['status'] = FALSE;
+        // Or should this just unset data?
+        $data = [];
+      }
 
       // Date fields
       if (!empty($object->field_start_time->value)) {
@@ -148,12 +155,15 @@ class NodeNormalizer extends ContentEntityNormalizer {
           ];
           $img_view = $object->get('field_image_ext_url')
             ->view($display_options);
-          $img_cached = $img_view[0]['#uri'];
+          $img_cached = $img_view[0]['#uri'] ?? NULL;
           $style = \Drupal::entityTypeManager()
             ->getStorage('image_style')
             ->load('list_image');
           $style_url = $style->buildUrl($img_cached);
-          $data['image_ext'] = substr($style_url, strpos($style_url, "http://default/") + 15);
+
+          $splitter = 'sites/default/files';
+          $url_parts = explode($splitter, $style_url);
+          $data['image_ext'] = (isset($url_parts[1])) ? $splitter . $url_parts[1] : $style_url;
         } catch (\Exception $exception) {
           watchdog_exception('events2elastic', $exception, 'Failed setting external image on event.');
         }

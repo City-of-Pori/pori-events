@@ -19,10 +19,15 @@ use Drupal\migrate\Row;
  */
 class Extra_offers_parse extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    // Return 1 if extra opiton is set.
-    $source_extra_options = $row->getSource()['extra_options'];
+    // Return 1 if extra option is set.
+    $source_extra_options = $row->getSource()['extra_options'] ?? [];
     $return_boolean = 0;
-    
+
+    // Is it super event?
+    if ($destination_property == 'field_super_event' && !empty($row->getSource()['event_super_event'])) {
+      $return_boolean = 1;
+    }
+
     if(empty($source_extra_options)) {
       // If no extra options then return 0
       return $return_boolean;
@@ -44,6 +49,13 @@ class Extra_offers_parse extends ProcessPluginBase {
     else if ($destination_property == 'field_culture_and_or_activity_no') {
       foreach ($source_extra_options as $val) {
         if (isset($val['sport-benefit'])) {
+          $return_boolean = 1;
+        }
+      }
+    }
+    else if ($destination_property == 'field_super_event') {
+      foreach ($source_extra_options as $val) {
+        if (isset($val['super-event'])) {
           $return_boolean = 1;
         }
       }

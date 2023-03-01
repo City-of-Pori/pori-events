@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
     - field.field.node.event.field_exceptional_opening_hours
+    - field.field.node.event.field_external
     - field.field.node.event.field_free_enterance
     - field.field.node.event.field_hobby_area
     - field.field.node.event.field_hobby_audience
@@ -27,10 +28,12 @@ dependencies:
     - field.field.node.event.field_pre_registration_start_tim
     - field.field.node.event.field_price
     - field.field.node.event.field_provider_email
+    - field.field.node.event.field_provider_name
     - field.field.node.event.field_provider_phone
     - field.field.node.event.field_provider_www
     - field.field.node.event.field_short_description
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_super_event
     - field.field.node.event.field_target_audience
     - field.field.node.event.field_ticket_vendor
     - field.field.node.event.field_timeframe_of_day
@@ -73,6 +76,7 @@ hidden:
   field_end_time: true
   field_event_type: true
   field_exceptional_opening_hours: true
+  field_external: true
   field_free_enterance: true
   field_hobby_area: true
   field_hobby_audience: true
@@ -88,10 +92,12 @@ hidden:
   field_pre_registration_start_tim: true
   field_price: true
   field_provider_email: true
+  field_provider_name: true
   field_provider_phone: true
   field_provider_www: true
   field_short_description: true
   field_start_time: true
+  field_super_event: true
   field_target_audience: true
   field_ticket_vendor: true
   field_timeframe_of_day: true

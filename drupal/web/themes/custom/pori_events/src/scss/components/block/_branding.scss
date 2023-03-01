@@ -28,54 +28,59 @@
     }
   }
 }
+
 //Making custom branding acording to hobby or event
 
 .hobby-class-1 {
-  .dialog-off-canvas-main-canvas{
-    .layout-container{
-      .page-header{
-        .region-header{
-          #block-sitebranding{
-           .site-logo{
-            box-sizing: border-box;
-            background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
-            background-size: contain;
-            width: 362px;
-            height: 50px;
-            @media screen and (max-width: $desktop-narrow) {
-              background-position: 50% 50%;
-              width: 100%;
+  .dialog-off-canvas-main-canvas {
+    .layout-container {
+      .page-header {
+        .region-header {
+          #block-sitebranding {
+            .site-logo {
+              box-sizing: border-box;
+              background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
+              background-size: contain;
+              width: 362px;
+              height: 50px;
+              @media screen and (max-width: $desktop-narrow) {
+                background-position: 50% 50%;
+                width: 100%;
 
+              }
+
+              img {
+                visibility: hidden;
+              }
             }
-            img {
-              visibility: hidden;
-            }
-           }
           }
         }
       }
     }
   }
 }
-.hobby-header-container  {
+
+.hobby-header-container {
   display: flex;
   flex-direction: row;
   padding: 1.5rem;
 }
+
 .hobby-header-container {
-  a{
+  a {
     img {
       max-height: 150px;
       width: 450px;
     }
   }
 }
+
 .hobbies-logo {
   box-sizing: border-box;
   background: url(/themes/custom/pori_events/dist/images/harrastukset1.png) no-repeat;
   background-size: contain;
   width: 362px;
-  height:50px;
+  height: 50px;
   @media screen and (max-width: $desktop-narrow) {
     max-height: 3rem;
     background-position: 50% 50%;
