@@ -1,0 +1,38 @@
+diff --git a/node_modules/@elastic/eui/es/components/pagination/pagination.js b/node_modules/@elastic/eui/es/components/pagination/pagination.js
+index d80afba..55ad881 100644
+--- a/node_modules/@elastic/eui/es/components/pagination/pagination.js
++++ b/node_modules/@elastic/eui/es/components/pagination/pagination.js
+@@ -117,14 +117,14 @@ export var EuiPagination = function EuiPagination(_ref) {
+ 
+   var previousButton = /*#__PURE__*/React.createElement(EuiI18n, {
+     token: "euiPagination.previousPage",
+-    default: "Previous page, {page}",
++    default: `${Drupal.t('Previous page')}, {page}`,
+     values: {
+       page: activePage
+     }
+   }, function (previousPage) {
+     return /*#__PURE__*/React.createElement(EuiI18n, {
+       token: "euiPagination.disabledPreviousPage",
+-      default: "Previous page"
++      default: Drupal.t('Previous page')
+     }, function (disabledPreviousPage) {
+       return /*#__PURE__*/React.createElement(EuiButtonIcon, _extends({
+         onClick: function onClick(e) {
+@@ -213,14 +213,14 @@ export var EuiPagination = function EuiPagination(_ref) {
+ 
+   var nextButton = /*#__PURE__*/React.createElement(EuiI18n, {
+     token: "euiPagination.nextPage",
+-    default: "Next page, {page}",
++    default: `${Drupal.t('Next page')}, {page}`,
+     values: {
+       page: activePage + 2
+     }
+   }, function (nextPage) {
+     return /*#__PURE__*/React.createElement(EuiI18n, {
+       token: "euiPagination.disabledNextPage",
+-      default: "Next page"
++      default: Drupal.t('Next page')
+     }, function (disabledNextPage) {
+       return /*#__PURE__*/React.createElement(EuiButtonIcon, _extends({
+         onClick: function onClick(e) {
