@@ -22,28 +22,3 @@ function migrate_source_example_json_help($route_name, RouteMatchInterface $rout
     default:
   }
 }
-function migrate_source_example_migration_plugins_alter(array &$migrations){
-  $env = getenv('WKV_SITE_ENV');
-  // Altering base url of the event importers for the dev environments.
-  switch ($env) {
-    // case 'dev':
-    case 'local':
-    case 'lando':
-    // Replace base url if we are on dev environments. Stage left out to be prod compatible.
-    foreach ($migrations as $migrate_id => $migration) {
-      $changed = str_replace('https://satakuntaevents.fi', 'https://test.satakuntaevents.fi', $migration['source']['urls']);
-      $migrations[$migrate_id]['source']['urls'] = $changed;
-
-      // Also transform parent url to test for sub-areas
-      if (isset($migration['process']['parent'][0]['default_value']) && "migrate_source_event_area_subterms" == $migrate_id) {
-        $changedParent = str_replace('https://satakuntaevents.fi', 'https://test.satakuntaevents.fi', $migration['process']['parent'][0]['default_value']);
-        $migrations[$migrate_id]['process']['parent'][0]['default_value'] = $changedParent;
-      }
-    }
-      break;
-    default:
-    // Default is production or stage which should use prod settings so no changes.
-      break;
-
-  }
-}
