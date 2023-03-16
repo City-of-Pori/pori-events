@@ -54,6 +54,7 @@ services:
     run_as_root:
       - /app/.lando/adminer.sh
     portforward: true
+    scanner: false
   appserver:
     type: php:8.0
     webroot: web
@@ -131,4 +132,4 @@ eevents:
     - appserver: /app/.lando/index.sh
 
 # Lando version.
-version: v3.6.5
+version: v3.14.0
