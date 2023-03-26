@@ -2,16 +2,17 @@ module.exports = {
     webpack: {
       configure: {
         output: {
-          filename: 'static/js/app-bundle.js'
+          filename: 'static/js/app-bundle.js',
+          publicPath: "/themes/custom/pori_events/dist/searchkit-v3/build/"
         },
-        optimization: {
-          runtimeChunk: false,
-          splitChunks: {
-            chunks(chunk) {
-              return false
-            },
-          },
-        },
+        // optimization: {
+        //   runtimeChunk: false,
+        //   splitChunks: {
+        //     chunks(chunk) {
+        //       return false
+        //     },
+        //   },
+        // },
       },
     },
     plugins: [
