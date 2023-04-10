@@ -3,7 +3,7 @@ _core:
 langcode: fi
 applies_admin_routes: true
 include_invalid_paths: false
-excluded_paths: ''
+excluded_paths: tapahtumat
 replaced_titles: ''
 custom_paths: ''
 include_home_segment: true
@@ -37,7 +37,7 @@ capitalizator_forced_words_case_sensitivity: true
 capitalizator_forced_words_first_letter: false
 follow_redirects: true
 limit_segment_display: false
-segment_display_limit: 0
+segment_display_limit: '0'
 truncator_mode: false
 truncator_length: 100
 truncator_dots: true

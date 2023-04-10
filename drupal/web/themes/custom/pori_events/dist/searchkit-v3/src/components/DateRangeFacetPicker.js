@@ -33,7 +33,7 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
   }, [startDate, endDate])
 
   useEffect(() => {
-    const rootPaths = ['/', '/harrastukset/', '/harrastukset']
+    const rootPaths = ['/', '/fi', '/harrastukset/', '/fi/harrastukset']
     if (rootPaths.includes(window.location.pathname) && !window.location.search) {
       setStartDate(moment().startOf('day'))
       setEndDate(moment().startOf('day').add(6, 'days'))
