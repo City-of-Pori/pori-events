@@ -5,4 +5,20 @@
  * pori_events theme.
  */
 
- 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function pori_events_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+      $content_type = $node->bundle();
+      try {
+        $event_type = $node->get('field_hobby_is_hobby')->getString();
+        if($event_type) {
+          $suggestions[] = 'page__hobby';
+        }
+      } catch (\Throwable $th) {
+        //throw $th;
+      }
+    }
+  }
