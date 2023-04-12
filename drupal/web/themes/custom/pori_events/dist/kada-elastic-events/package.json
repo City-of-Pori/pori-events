@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
     "react-app-polyfill": "^1.0.4",
