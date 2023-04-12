@@ -21,3 +21,25 @@ secrets
 
 # Ignore python virtualenv created by provision.sh
 .virtualenv
+
+# Ignore scaffold files
+# Use post-install and post-update commands to run @drupal-scaffold
+/web/.csslintrc
+/web/.editorconfig
+/web/.eslintignore
+/web/.eslintrc
+/web/.eslintrc.json
+/web/.gitattributes
+/web/.htaccess
+/web/.ht.router.php
+/web/index.php
+/web/robots.txt
+/web/sites/default/default.settings.php
+/web/sites/default/default.services.yml
+/web/sites/development.services.yml
+/web/sites/example.sites.php
+/web/sites/example.settings.local.php
+/web/update.php
+/web/web.config
+/web/sites/*/settings.local.php
+/web/_ping.php
