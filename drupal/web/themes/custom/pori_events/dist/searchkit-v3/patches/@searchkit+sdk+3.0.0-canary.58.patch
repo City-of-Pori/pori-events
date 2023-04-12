@@ -1,14 +1,8 @@
 diff --git a/node_modules/@searchkit/sdk/lib/esm/transporters/FetchClientTransporter.js b/node_modules/@searchkit/sdk/lib/esm/transporters/FetchClientTransporter.js
-index bd8f79e..7145fac 100644
+index bd8f79e..24c6d6f 100644
 --- a/node_modules/@searchkit/sdk/lib/esm/transporters/FetchClientTransporter.js
 +++ b/node_modules/@searchkit/sdk/lib/esm/transporters/FetchClientTransporter.js
-@@ -1,4 +1,5 @@
- "use strict";
-+console.log('debug222')
- var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-     return new (P || (P = Promise))(function (resolve, reject) {
-@@ -27,7 +28,8 @@ class FetchClientTransporter {
+@@ -27,7 +27,8 @@ class FetchClientTransporter {
                  host = utils_1.getHostFromCloud(this.config.cloud);
              }
              const { index = this.config.index } = overrides;

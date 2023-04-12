@@ -17,12 +17,7 @@ const EntriesList = ({ entries, loading, facet }) => {
     return null;
   }
 
-  useEffect(() => {
-    console.log('facet', facet)
- }, [facet.entries]);
-
   const entriesElements = entries.map((entry, i) => {
-    console.log('entries', entries)
     return (
       <Fragment key={i}>
         <EuiFacetButton

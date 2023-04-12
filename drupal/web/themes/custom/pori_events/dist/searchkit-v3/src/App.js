@@ -394,8 +394,6 @@ const App = (props) => {
 
         _.merge(bodyNormalized, adjustment);
 
-        console.log('bodyNormalized', bodyNormalized)
-
         bodyNormalized.post_filter.bool.must.push(
           {
             "bool": {
@@ -422,8 +420,6 @@ const App = (props) => {
   variablesCustomized.page.size = 12;
 
   const {results, loading} = useSearchkitSDK(config, variablesCustomized);
-
-  console.log('results-1', results)
 
   useEffect(() => {
     if(eventType) {

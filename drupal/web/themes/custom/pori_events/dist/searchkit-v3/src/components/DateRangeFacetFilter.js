@@ -13,8 +13,6 @@ export default class DateRangeFacet {
     }
     getFilters(filters) {
 
-      console.log('filters123', filters);
-
         const q = {
             "bool": {
                 "must": [
