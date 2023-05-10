@@ -56,7 +56,6 @@ module:
   migrate_source_example_setup: 0
   migrate_source_jsonpath: 0
   migrate_tools: 0
-  monolog: 0
   mysql: 0
   node: 0
   options: 0

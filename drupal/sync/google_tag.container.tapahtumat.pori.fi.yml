@@ -49,3 +49,23 @@ conditions:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles: {  }
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles: {  }
+  http_status_code:
+    id: http_status_code
+    negate: false
+    status_codes: {  }
+  request_domain:
+    id: request_domain
+    negate: false
+    domains: ''
