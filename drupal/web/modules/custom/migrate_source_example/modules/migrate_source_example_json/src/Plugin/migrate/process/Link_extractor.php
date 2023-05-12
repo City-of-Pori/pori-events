@@ -24,8 +24,8 @@ class Link_extractor extends ProcessPluginBase {
     $ret = [];
     if (!empty($value)) {
       foreach ($value as $key => $link) {
-        $ret[$key]['uri'] = $link['link'];
-        $ret[$key]['title'] = $link['name'];
+        $ret[$key]['uri'] = $link['link'] ?? [];
+        $ret[$key]['title'] = $link['name'] ?? '';
       }
     }
     return $ret;

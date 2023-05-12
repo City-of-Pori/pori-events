@@ -29,5 +29,12 @@ Full commands/tools overview is available by running `lando`. Custom tools:
 - `lando xdebug-on` - enables xdebug,
 - `lando xdebug-off` - disables xdebug.
 
+### PHP 8.x Compatibility Check (dev only)
+
+Check **custom modules** folder + **themes** folder: `lando ssh -c "phpcs --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --extensions=php,inc,module,install --colors --report-full=report_80_custom.txt --runtime-set testVersion 8.0 -ps web/themes -ps web/modules/custom"`
+
+Check **contrib modules** folder: `lando ssh -c "phpcs --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --extensions=php,inc,module,install --colors --report-full=report_80_contrib.txt --runtime-set testVersion 8.0 -ps web/modules/contrib"`
+
+
 [Old readme](README_old.md).
 

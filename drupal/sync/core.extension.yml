@@ -16,6 +16,7 @@ module:
   comment: 0
   conditional_fields: 0
   config: 0
+  config_split: 0
   contact: 0
   context: 0
   contextual: 0
@@ -51,6 +52,7 @@ module:
   migrate_source_example_setup: 0
   migrate_source_jsonpath: 0
   migrate_tools: 0
+  monolog: 0
   mysql: 0
   node: 0
   options: 0
@@ -82,7 +84,6 @@ module:
   update: 0
   user: 0
   views_ui: 0
-  warden: 0
   menu_link_content: 1
   pathauto: 1
   content_translation: 10
