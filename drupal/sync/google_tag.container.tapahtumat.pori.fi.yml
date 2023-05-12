@@ -21,7 +21,7 @@ blacklist_classes: |-
   customScripts
   customPixels
 include_environment: true
-environment_id: env-3
+environment_id: env-1
 environment_token: 0Kfbj0gU27RrNJf7_u-rCw
 path_toggle: 'exclude listed'
 path_list: ''
