@@ -489,13 +489,13 @@ const App = (props) => {
     // };
 
     // Use React Router useSearchParams to translate to and from URL query params
-    // useEffect(() => {
-    //     if (api && searchParams) {
-    //         console.log('RouteToState2=>', searchParams, routeToState(searchParams))
-    //         api.setSearchState(routeToState(searchParams));
-    //         api.search();
-    //     }
-    // }, [searchParams, searchParams.has('event_type'), eventType]);
+    useEffect(() => {
+        if (api && searchParams) {
+            console.log('routeToState runs=>', searchParams, routeToState(searchParams))
+            api.setSearchState(routeToState(searchParams));
+            api.search();
+        }
+    }, [searchParams, searchParams.has('event_type'), eventType]);
     // useEffect(() => {
     //     // handle sorting separately in order to only update in case of changes
     //     // use mounted ref to ensure we don't fire this effect on initial value
@@ -542,6 +542,7 @@ const App = (props) => {
     // }, [operator]);
     useEffect(() => {
         if (variables?.page?.from) {
+            console.log('stateToRoute runs')
             setSearchParams(
                 stateToRoute({
                     ...variables,

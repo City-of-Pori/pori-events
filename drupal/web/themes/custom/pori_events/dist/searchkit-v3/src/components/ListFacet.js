@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import { useSearchkit, FilterLink } from "@searchkit/client";
+import { useSearchkit, FilterLink, useSearchkitVariables } from "@searchkit/client";
 import {
     Accordion,
     AccordionItem,
@@ -13,9 +13,13 @@ import {
     EuiFacetButton,
     EuiFacetGroup,
   } from '@elastic/eui';
+import { useSearchParams } from "react-router-dom";
+import { stateToRoute } from "./../common/searchRouting";
 
 export const ListFacet = ({ facet, loading, isAccordion }) => {
     const api = useSearchkit();
+    const variables = useSearchkitVariables();
+    const [_, setSearchParams] = useSearchParams();
     const ref = useRef([]);
   
     useEffect(() => {
@@ -23,18 +27,43 @@ export const ListFacet = ({ facet, loading, isAccordion }) => {
    }, [facet?.entries]);
   
     const entries = facet?.entries?.map((entry, i) => {
+      const filter = {
+        identifier: facet.identifier,
+        value: entry.label,
+    };
+    const isSelected = api.isFilterSelected(filter);
       return (
         <EuiFacetButton
           key={entry.label}
           style={{ height: "28px", marginTop: 0, marginBottom: 0 }}
           quantity={entry.count}
-          isSelected={api.isFilterSelected({
-            identifier: facet.identifier,
-            value: entry.label
-          })}
+          isSelected={isSelected}
           isLoading={loading}
           onClick={(e) => {
-            ref.current[i].onClick(e)
+            let { filters } = variables;
+            // ref.current[i].onClick(e)
+            if (isSelected) {
+              // remove on cilck
+              filters = filters.filter(
+                  (f) =>
+                      !(
+                          f.identifier === facet.identifier &&
+                          f.value === entry.label
+                      ),
+              );
+          } else {
+              // add on click
+              filters.push(filter);
+          }
+          setSearchParams(
+            stateToRoute({
+                ...variables,
+                filters,
+                page: {
+                    from: 0,
+                },
+            }),
+          );
           }}
         >
           <FilterLink
