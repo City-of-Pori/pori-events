@@ -12,32 +12,33 @@ export const useAdjustedSearchkitSDK = (
 
   const [searchParams, _] = useSearchParams();
 
-//   useEffect(() => {
-//     async function fetchData(variables) {
-//       setLoading(true)
-//       const request = Searchkit(config)
-//         .query(variables.query)
-//         .setFilters(variables.filters)
-//         .setSortBy(variables.sortBy)
+  // useEffect(() => {
+  //   async function fetchData(variables) {
+  //     setLoading(true)
+  //     const request = Searchkit(config)
+  //       .query(variables.query)
+  //       .setFilters(variables.filters)
+  //       .setSortBy(variables.sortBy)
 
-//       const response = await request.execute({
-//         facets: true,
-//         hits: {
-//           size: variables.page.size,
-//           from: variables.page.from
-//         }
-//       })
-//       setLoading(false)
-//       setResponse(response)
-//     }
+  //     const response = await request.execute({
+  //       facets: true,
+  //       hits: {
+  //         size: variables.page.size,
+  //         from: variables.page.from
+  //       }
+  //     })
+  //     setLoading(false)
+  //     setResponse(response)
+  //   }
 
-//     variables && fetchData(variables)
-//   }, [variables, searchParams])
+  //   variables && fetchData(variables)
+  // }, [variables, searchParams])
 
     //   other requests with filters applied, if/whenever they change
       useEffect(() => {
         async function fetchData(variables) {
             setLoading(true)
+            console.log('variables.filters', variables)
             const request = Searchkit(config)
               .query(variables.query)
               .setFilters(variables.filters)
@@ -50,6 +51,7 @@ export const useAdjustedSearchkitSDK = (
                 from: variables.page.from
               }
             })
+            console.log('response3', response)
             setLoading(false)
             setResponse(response)
           }

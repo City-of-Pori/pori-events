@@ -66,12 +66,7 @@ export const ListFacet = ({ facet, loading, isAccordion }) => {
           );
           }}
         >
-          <FilterLink
-            ref={el => ref.current[i] = el} 
-            filter={{ identifier: facet.identifier, value: entry.label }}
-          >
-            {entry.label}
-          </FilterLink>
+          {entry.label}
         </EuiFacetButton>
       );
     });

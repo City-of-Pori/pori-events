@@ -17,6 +17,7 @@ export function stateToRoute(searchState) {
         scope: searchState.scope,
         op: searchState.operator,
     };
+    console.log('routeState', routeState)
     searchState.filters.forEach((filter) => {
         // simplify filter representation
         // date filter is formatted differently

@@ -64,7 +64,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { routeToState, stateToRoute } from "./common/searchRouting";
+import { routeToState, stateToRoute, getSortByFromState } from "./common/searchRouting";
 import { useScope } from "./common/useScope";
 import { useAdjustedSearchkitSDK } from "./common/useAdjustedSearchkitSDK";
 const merge = require('lodash.merge');
@@ -262,7 +262,7 @@ const App = (props) => {
         fields: ["hobby_location_area", "hobby_location_sub_area"],
         identifier: 'hobby_area',
         // label: 'Hobby location',
-        label: Drupal.t('Where'),
+        label: Drupal.t('Where2'),
       }),
       new DateRangeFacet({
         identifier: 'event_date',
@@ -428,6 +428,7 @@ const App = (props) => {
 
   // const {results, loading} = useSearchkitSDK(config, variables);
   const {results, loading} = useAdjustedSearchkitSDK(config, variables);
+  console.log('results2', results)
 
 
 
@@ -459,18 +460,18 @@ const App = (props) => {
   // }, [])
 
   const sortStateMounted = useRef(false);
-    // const [sortState, setSortState] = useState(() => {
-    //     if (searchParams?.has("sort")) {
-    //         const [field, dir] = searchParams.get("sort").split("_");
-    //         const direction = dir === "asc" ? 1 : -1;
-    //         return { field, direction };
-    //     }
-    //     // default sort: short_display asc
-    //     return {
-    //         field: "entity",
-    //         direction: 1,
-    //     };
-    // });
+    const [sortState, setSortState] = useState(() => {
+        // if (searchParams?.has("sort")) {
+        //     const [field, dir] = searchParams.get("sort").split("_");
+        //     const direction = dir === "asc" ? 1 : -1;
+        //     return { field, direction };
+        // }
+        // default sort: short_display asc
+        return {
+            field: "entity",
+            direction: 1,
+        };
+    });
     /**
      * Curried event listener function to set the sort state to a given field.
      *
@@ -579,7 +580,7 @@ const App = (props) => {
         { (eventType === 'events') && <HierarchicalMenuFacetAccordion facet={results?.facets[3]} loading={loading} /> }
         { (eventType === 'hobbies') && <HierarchicalMenuFacetAccordion facet={results?.facets[4]} loading={loading} />}
         
-        {/* <Accordion key={'When'} preExpanded={['When']} allowMultipleExpanded allowZeroExpanded>
+        <Accordion key={'When'} preExpanded={['When']} allowMultipleExpanded allowZeroExpanded>
             <AccordionItem uuid={'When'}>
                 <AccordionItemHeading>
                     <AccordionItemButton>
@@ -596,7 +597,7 @@ const App = (props) => {
                   }
                 </AccordionItemPanel>
             </AccordionItem>
-        </Accordion> */}
+        </Accordion>
 
         {/* { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
         { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />}  */}

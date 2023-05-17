@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useEffect } from 'react'
 import { EuiFacetGroup, EuiTitle, EuiFacetButton, EuiAccordion } from '@elastic/eui'
-import { useSearchkit, FilterLink } from '@searchkit/client'
+import { useSearchkit, FilterLink, useSearchkitVariables } from '@searchkit/client'
 import {
   Accordion,
   AccordionItem,
@@ -8,9 +8,13 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+import { useSearchParams } from "react-router-dom";
+import { stateToRoute } from "./../common/searchRouting";
 
 const EntriesList = ({ entries, loading, facet }) => {
   const api = useSearchkit()
+  const variables = useSearchkitVariables();
+  const [_, setSearchParams] = useSearchParams();
   const ref = useRef([]);
 
   if (!facet) {
@@ -18,28 +22,54 @@ const EntriesList = ({ entries, loading, facet }) => {
   }
 
   const entriesElements = entries.map((entry, i) => {
+    const filter = {
+      identifier: facet.identifier,
+      value: entry.label,
+    };
+    console.log('filter3', filter)
+    const isSelected = api.isFilterSelected(filter);
     return (
       <Fragment key={i}>
         <EuiFacetButton
           key={entry.label}
           style={{ height: '28px', marginTop: 0, marginBottom: 0 }}
           quantity={entry.count}
-          isSelected={api.isFilterSelected({
-            identifier: facet.identifier,
-            value: entry.label,
-            level: entry.level
-          })}
+          isSelected={isSelected}
           isLoading={loading}
           onClick={(e) => {
-            ref.current[i].onClick(e)
+            let { filters } = variables;
+            console.log('filters2', filters)
+            // ref.current[i].onClick(e)
+            if (isSelected) {
+              // remove on cilck
+              filters = filters.filter(
+                  (f) =>
+                      !(
+                          f.identifier === facet.identifier &&
+                          f.value === entry.label
+                      ),
+              );
+          } else {
+              // add on click
+              filters.push(filter);
+          }
+          setSearchParams(
+            stateToRoute({
+                ...variables,
+                filters,
+                page: {
+                    from: 0,
+                },
+            }),
+          );
           }}
         >
-          <FilterLink
+          {/* <FilterLink
             ref={el => ref.current[i] = el} 
             filter={{ identifier: facet.identifier, value: entry.label, level: entry.level }}
-          >
+          > */}
             {entry.label}
-          </FilterLink>
+          {/* </FilterLink> */}
         </EuiFacetButton>
         <div style={{ marginLeft: '10px' }}>
           {entry.entries && <EntriesList entries={entry.entries} loading={loading} facet={facet} />}
