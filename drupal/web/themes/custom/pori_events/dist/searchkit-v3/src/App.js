@@ -569,8 +569,8 @@ const App = (props) => {
   return (
     <EuiPage>
       <EuiPageSideBar>
-        {/* {(eventType === 'hobbies') && <AddEventHobbyBtn type="hobby" />}
-        {(eventType === 'events') && <AddEventHobbyBtn type="event" />} */}
+        {(eventType === 'hobbies') && <AddEventHobbyBtn type="hobby" />}
+        {(eventType === 'events') && <AddEventHobbyBtn type="event" />}
         { console.log('resultsMain', results) }
         {/* <SearchBar loading={loading} /> */}
         <EuiHorizontalRule margin="m" />
@@ -599,11 +599,11 @@ const App = (props) => {
             </AccordionItem>
         </Accordion>
 
-        {/* { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
-        { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />}  */}
+        { (eventType === 'hobbies') && <ListFacet key={"3"} facet={results?.facets[7]} loading={loading} isAccordion />} 
+        { (eventType === 'events') && <ListFacet key={"4"} facet={results?.facets[8]} loading={loading} isAccordion />} 
         { (eventType === 'hobbies') && <>
 
-        {/* <Accordion key={'misc'} allowMultipleExpanded allowZeroExpanded>
+        <Accordion key={'misc'} allowMultipleExpanded allowZeroExpanded>
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
@@ -620,7 +620,7 @@ const App = (props) => {
                   </div>
                 </AccordionItemPanel>
             </AccordionItem>
-        </Accordion> */}
+        </Accordion>
         </>
         } 
       </EuiPageSideBar>

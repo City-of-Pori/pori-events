@@ -26,7 +26,7 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
     const entries = facet.entries.map((entry) => {
       const filter = {
         identifier: facet.identifier,
-        value: entry.label,
+        value: "true",
     };
     const isSelected = api.isFilterSelected(filter);
       if(entry.label === 0) return
@@ -50,7 +50,7 @@ export const BoolFacet = ({ facet, loading, name, style }) => {
                   (f) =>
                       !(
                           f.identifier === facet.identifier &&
-                          f.value === entry.label
+                          f.value === "true"
                       ),
               );
           } else {
