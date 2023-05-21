@@ -35,21 +35,21 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
         // dateMin: startDate,
         // dateMax: endDate,
     };
-      if (selectedOption) {
-        console.log('here2')
-        // api.removeFilter(selectedOption)
-        filters = filters.filter(
-          (f) =>
-              !(
-                  f.identifier === facet.identifier
-                  // &&
-                  // f.value === entry.label
-              ),
-        );
-      } else {
+      // if (selectedOption) {
+      //   console.log('here2')
+      //   // api.removeFilter(selectedOption)
+      //   filters = filters.filter(
+      //     (f) =>
+      //         !(
+      //             f.identifier === facet.identifier
+      //             // &&
+      //             // f.value === entry.label
+      //         ),
+      //   );
+      // } else {
         console.log('here3', filter, startDate, endDate)
         filters.push(filter);
-      }
+      // }
       console.log('here4', filter)
       setSearchParams(
         stateToRoute({
