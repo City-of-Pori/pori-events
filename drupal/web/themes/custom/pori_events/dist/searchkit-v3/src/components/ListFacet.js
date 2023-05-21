@@ -32,6 +32,8 @@ export const ListFacet = ({ facet, loading, isAccordion }) => {
         value: entry.label,
     };
     const isSelected = api.isFilterSelected(filter);
+    console.log('isSelected', isSelected, facet.identifier)
+    
       return (
         <EuiFacetButton
           key={entry.label}

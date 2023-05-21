@@ -12,7 +12,7 @@ export default class DateRangeFacet {
         return this.config.identifier;
     }
     getFilters(filters) {
-
+        console.log('dateRangeFilters', filters)
         const q = {
             "bool": {
                 "must": [

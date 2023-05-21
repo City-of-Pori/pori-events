@@ -83,12 +83,12 @@ const Description = (props) => {
     {days && <p> {days.map((day) => <EuiBadge color={'hollow'}>{day}</EuiBadge>)}</p>}
 
     <div className="event-area">
-      {hobbySubArea.length !== 0 && (
+      {hobbySubArea?.length !== 0 && (
         <strong> {hobbySubArea},</strong>
       )}
       <strong> {hobbyLocationArea}</strong>
 
-      {eventSubArea.length !== 0 && (
+      {eventSubArea?.length !== 0 && (
         <strong> {eventSubArea},</strong>
       )} <strong>{eventArea}</strong>
     </div>
@@ -572,7 +572,7 @@ const App = (props) => {
         {(eventType === 'hobbies') && <AddEventHobbyBtn type="hobby" />}
         {(eventType === 'events') && <AddEventHobbyBtn type="event" />}
         { console.log('resultsMain', results) }
-        {/* <SearchBar loading={loading} /> */}
+        <SearchBar loading={loading} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
         { (eventType === 'events') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} isAccordion />}

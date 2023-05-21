@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { EuiTitle, EuiDatePickerRange, EuiDatePicker } from '@elastic/eui'
-import { useSearchkit } from '@searchkit/client'
+import { useSearchkit, useSearchkitVariables } from '@searchkit/client'
+import { stateToRoute } from "./../common/searchRouting";
+import { useSearchParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/fi"; // without this line it didn't work
 moment.locale("es");
@@ -10,6 +12,8 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
     return null;
 }
   const api = useSearchkit()
+  const variables = useSearchkitVariables();
+  const [_, setSearchParams] = useSearchParams();
   const moment = require('moment'); // Faced with some issues using import statement
 
   const [startDate, setStartDate] = useState(null)
@@ -17,18 +21,51 @@ export const DateRangeFacetPicker = ({ facet, loading }) => {
 
   const selectedOptions = api.getFiltersByIdentifier(facet.identifier)
   const selectedOption = selectedOptions && selectedOptions[0]
+
+  let { filters } = variables;
+  // const selectedOption = api.isFilterSelected(filter);
   
   useEffect(() => {
     if (startDate && endDate) {
-      if (selectedOption) {
-        api.removeFilter(selectedOption)
-      }
-      api.addFilter({
+      console.log('here1')
+      const filter = {
         identifier: facet.identifier,
         dateMin: startDate.format('YYYY-MM-DD'),
         dateMax: endDate.format('YYYY-MM-DD'),
-      })
-      api.search()
+        // dateMin: startDate,
+        // dateMax: endDate,
+    };
+      if (selectedOption) {
+        console.log('here2')
+        // api.removeFilter(selectedOption)
+        filters = filters.filter(
+          (f) =>
+              !(
+                  f.identifier === facet.identifier
+                  // &&
+                  // f.value === entry.label
+              ),
+        );
+      } else {
+        console.log('here3', filter, startDate, endDate)
+        filters.push(filter);
+      }
+      console.log('here4', filter)
+      setSearchParams(
+        stateToRoute({
+            ...variables,
+            filters,
+            page: {
+                from: 0,
+            },
+        }),
+      );
+      // api.addFilter({
+      //   identifier: facet.identifier,
+      //   dateMin: startDate.format('YYYY-MM-DD'),
+      //   dateMax: endDate.format('YYYY-MM-DD'),
+      // })
+      // api.search()
     }
   }, [startDate, endDate])
 

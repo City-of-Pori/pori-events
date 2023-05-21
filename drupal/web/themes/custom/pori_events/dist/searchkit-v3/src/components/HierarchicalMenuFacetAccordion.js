@@ -25,9 +25,11 @@ const EntriesList = ({ entries, loading, facet }) => {
     const filter = {
       identifier: facet.identifier,
       value: entry.label,
+      level: entry.level
     };
     console.log('filter3', filter)
     const isSelected = api.isFilterSelected(filter);
+    // console.log('isSelected', isSelected)
     return (
       <Fragment key={i}>
         <EuiFacetButton
@@ -42,6 +44,7 @@ const EntriesList = ({ entries, loading, facet }) => {
             // ref.current[i].onClick(e)
             if (isSelected) {
               // remove on cilck
+              console.log('remove on cilck')
               filters = filters.filter(
                   (f) =>
                       !(
@@ -51,8 +54,10 @@ const EntriesList = ({ entries, loading, facet }) => {
               );
           } else {
               // add on click
+              console.log('filter8', filter)
               filters.push(filter);
           }
+          console.log('filter9', filter, filters)
           setSearchParams(
             stateToRoute({
                 ...variables,
