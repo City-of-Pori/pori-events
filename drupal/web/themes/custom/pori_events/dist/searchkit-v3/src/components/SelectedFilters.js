@@ -1,22 +1,43 @@
-import { FilterLink, useSearchkit, FilterLinkClickRef } from '@searchkit/client'
+import { FilterLink, useSearchkit, FilterLinkClickRef, useSearchkitVariables } from '@searchkit/client'
 import { EuiButton, EuiFlexGroup, EuiFlexItem } from '@elastic/eui'
 import React, { useRef } from 'react'
+import { useSearchParams } from "react-router-dom";
+import { stateToRoute } from "./../common/searchRouting";
 
 const NumericRangeFilter = ({ filter, loading }) => {
   const api = useSearchkit()
+  const variables = useSearchkitVariables()
+  const [_, setSearchParams] = useSearchParams();
 
   return (
     <EuiFlexItem grow={false}>
       <EuiButton
         onClick={() => {
-          api.removeFilter(filter)
-          api.search()
+          console.log('remove numeric range filter', filter, variables)
+          // api.removeFilter(filter)
+          // api.search()
+          let { filters } = variables;
+          filters = filters.filter(
+            (f) =>
+                !(
+                    f.identifier === filter.identifier
+                ),
+        );
+        setSearchParams(
+          stateToRoute({
+              ...variables,
+              filters,
+              page: {
+                  from: 0,
+              },
+          }),
+        );
         }}
-        // iconSide="right"
-        // iconType="cross"
+        iconSide="right"
+        iconType="cross"
         isLoading={loading}
       >
-        {filter.label}: {filter.min} - {filter.max} ✕
+        {filter.label}: {filter.min} - {filter.max}
       </EuiButton>
     </EuiFlexItem>
   )
@@ -24,20 +45,39 @@ const NumericRangeFilter = ({ filter, loading }) => {
 
 const DateRangeFilter = ({ filter, loading }) => {
   const api = useSearchkit()
+  const variables = useSearchkitVariables()
+  const [_, setSearchParams] = useSearchParams();
 
   return (
     <EuiFlexItem grow={false}>
       <EuiButton
         onClick={() => {
-          api.removeFilter(filter)
-          api.search()
+          console.log('remove date range filter', filter, variables)
+          // api.removeFilter(filter)
+          // api.search()
+          let { filters } = variables;
+          filters = filters.filter(
+            (f) =>
+                !(
+                    f.identifier === filter.identifier
+                ),
+        );
+        setSearchParams(
+          stateToRoute({
+              ...variables,
+              filters,
+              page: {
+                  from: 0,
+              },
+          }),
+        );
         }}
-        // iconSide="right"
-        // iconType="cross"
+        iconSide="right"
+        iconType="cross"
         isLoading={loading}
       >
         {filter.label}: {new Date(filter.dateMin).toLocaleDateString('fi-FI')} -{' '}
-        {new Date(filter.dateMax).toLocaleDateString('fi-FI')} ✕
+        {new Date(filter.dateMax).toLocaleDateString('fi-FI')}
       </EuiButton>
     </EuiFlexItem>
   )
@@ -45,24 +85,45 @@ const DateRangeFilter = ({ filter, loading }) => {
 
 const ValueFilter = ({ filter, loading }) => {
   const ref = useRef()
+  const api = useSearchkit()
+  const variables = useSearchkitVariables()
+  const [_, setSearchParams] = useSearchParams();
   const dayFilters = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
   const isDayFilter = dayFilters.includes(filter.identifier)
   console.log('valueFilter', filter, isDayFilter)
   return (
     <EuiFlexItem grow={false}>
       <EuiButton
-        // iconSide="right"
-        // iconType="cross"
+        iconSide="right"
+        iconType="cross"
         isLoading={loading}
-        onClick={(e) => {
-          ref.current.onClick(e)
+        onClick={() => {
+          console.log('remove date range filter', filter, variables)
+          // api.removeFilter(filter)
+          // api.search()
+          let { filters } = variables;
+          filters = filters.filter(
+            (f) =>
+                !(
+                    f.identifier === filter.identifier
+                ),
+        );
+        setSearchParams(
+          stateToRoute({
+              ...variables,
+              filters,
+              page: {
+                  from: 0,
+              },
+          }),
+        );
         }}
       >
-        <FilterLink ref={ref} filter={filter}>
+        {/* <FilterLink ref={ref} filter={filter}> */}
             {isDayFilter ?
-            <>{filter.label} ✕</>
-            : <>{filter.label}: {filter.value} ✕</>}
-        </FilterLink>
+            <>{filter.label}</>
+            : <>{filter.label}: {filter.value}</>}
+        {/* </FilterLink> */}
       </EuiButton>
     </EuiFlexItem>
   )

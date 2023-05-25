@@ -262,7 +262,7 @@ const App = (props) => {
         fields: ["hobby_location_area", "hobby_location_sub_area"],
         identifier: 'hobby_area',
         // label: 'Hobby location',
-        label: Drupal.t('Where2'),
+        label: Drupal.t('Where'),
       }),
       new DateRangeFacet({
         identifier: 'event_date',
@@ -382,37 +382,37 @@ const App = (props) => {
       },
     ],
     // To set event / hobby filter. Pretyt messy at this moment, but had problems using spread operator / lodash merge. Should be refactored.
-    // postProcessRequest: (body) => {
-    //   let bodyNormalized = body
+    postProcessRequest: (body) => {
+      let bodyNormalized = body
 
-    //   const adjustment = {
-    //     post_filter: {
-    //     "bool": {
-    //             "must": [
+      const adjustment = {
+        post_filter: {
+        "bool": {
+                "must": [
 
-    //             ]
-    //         }
-    //       }
-    //     }
+                ]
+            }
+          }
+        }
 
-    //     _.merge(bodyNormalized, adjustment);
+        _.merge(bodyNormalized, adjustment);
 
-    //     bodyNormalized.post_filter.bool.must.push(
-    //       {
-    //         "bool": {
-    //           "should": [
-    //             {
-    //               "term": {
-    //                 "is_hobby": (eventType == 'hobbies') ? true : false
-    //               }
-    //             }
-    //           ]
-    //         }
-    //       }
-    //     )
+        bodyNormalized.post_filter.bool.must.push(
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "is_hobby": (eventType == 'hobbies') ? true : false
+                  }
+                }
+              ]
+            }
+          }
+        )
 
-    //   return {...bodyNormalized};
-    // },
+      return {...bodyNormalized};
+    },
   }
   
 
@@ -422,7 +422,8 @@ const App = (props) => {
   // const [query, setQuery] = useState(() =>
   // searchParams.has("query") ? searchParams.get("query") : "");
   const api = useSearchkit();
-  const variables = useSearchkitVariables();
+  let variables = useSearchkitVariables();
+  variables.page.size = 12;
   // let variablesCustomized = variables
   // variablesCustomized.page.size = 12;
 

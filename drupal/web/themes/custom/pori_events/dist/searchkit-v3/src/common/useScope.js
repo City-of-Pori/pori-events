@@ -37,7 +37,7 @@ export const useScope = () => {
                     page = {
                         page: {
                             from: 0,
-                            size: 25,
+                            size: 12,
                         },
                     };
                 }
