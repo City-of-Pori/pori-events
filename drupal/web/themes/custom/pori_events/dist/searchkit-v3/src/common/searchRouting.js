@@ -12,7 +12,7 @@ export function stateToRoute(searchState) {
     const routeState = {
         query: searchState.query,
         sort: searchState.sortBy,
-        size: Number(searchState.page?.size) || 25,
+        size: Number(searchState.page?.size) || 12,
         from: Number(searchState.page?.from),
         scope: searchState.scope,
         op: searchState.operator,
