@@ -38,16 +38,16 @@ export const useAdjustedSearchkitSDK = (
       useEffect(() => {
         async function fetchData(variables) {
             setLoading(true)
-            console.log('variables.filters', variables)
             const request = Searchkit(config)
               .query(variables.query)
               .setFilters(variables.filters)
-              .setSortBy(variables.sortBy)
+              // .setSortBy(variables.sortBy)
       
             const response = await request.execute({
               facets: true,
               hits: {
-                size: variables.page.size,
+                // size: variables.page.size,
+                size: 12,
                 from: variables.page.from
               }
             })
