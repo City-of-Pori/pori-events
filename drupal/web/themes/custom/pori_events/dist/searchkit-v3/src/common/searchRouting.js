@@ -91,6 +91,7 @@ export function routeToState(route) {
         operator: route.get("op") || "",
         filters: [],
     };
+    console.log('searchState3', searchState)
     // get filters state back into format expected by Searchkit
     const identifierLevels = [];
     console.log('Array.from(route.entries())', Array.from(route.entries()))

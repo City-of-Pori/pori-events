@@ -14,7 +14,7 @@ import { AddEventHobbyBtn } from "./components/AddEventHobbyBtn";
 
 import {
   FacetsList,
-  SearchBar,
+  // SearchBar,
   // ResetSearchButton,
   // SelectedFilters,
   Pagination,
@@ -56,6 +56,7 @@ import DateRangeFacet from "./components/DateRangeFacetFilter";
 import { BoolFacet } from "./components/BoolFacet";
 import { ResetSearchButton } from "./components/ResetSearchButton";
 import { SelectedFilters } from "./components/SelectedFilters";
+import { SearchBar } from './components/SearchBar'
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
   Accordion,
@@ -567,13 +568,17 @@ const App = (props) => {
   //   api.search();
   // }
 
+  const handleSetQuery = (q) => {
+    setQuery(q)
+  }
+
   return (
     <EuiPage>
       <EuiPageSideBar>
         {(eventType === 'hobbies') && <AddEventHobbyBtn type="hobby" />}
         {(eventType === 'events') && <AddEventHobbyBtn type="event" />}
         { console.log('resultsMain', results) }
-        <SearchBar loading={loading} />
+        <SearchBar loading={loading} query={query} setQuery={handleSetQuery} />
         <EuiHorizontalRule margin="m" />
         {/* <Facets data={results} loading={loading} /> */}
         { (eventType === 'events') && <ListFacet key={"1"} facet={results?.facets[1]} loading={loading} isAccordion />}
