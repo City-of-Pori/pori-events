@@ -1,15 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 set -exu
 
-# This file sets up elasticsearch indexes.
-
-# Index elasticsearch.
-local=@tapahtumat.local
-
-drush "$local" cr
-drush "$local" eshd -y
-drush "$local" eshs event_index
-drush "$local" eshr event_index
-drush "$local" queue-run elasticsearch_helper_indexing
-drush "$local" cron
-drush "$local" cr
+# Re-index Elasticsearch.
+cd /app/web
+drush cr
+drush eshd -y
+drush eshs -y
+drush eshr -y
+drush queue-run elasticsearch_helper_indexing
+drush cron
+drush cr

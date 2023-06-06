@@ -53,19 +53,27 @@ switch ($env) {
     $conf['simple_environment_indicator'] = '#560004 Production';
     $config['google_tag.container.tapahtumat.pori.fi']['environment_id'] = 'env-1';
     $config['google_tag.container.tapahtumat.pori.fi']['environment_token'] = 'gW_rBBg5Mg2OmD-o7G464g';
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
   case 'dev':
     $settings['simple_environment_indicator'] = '#004984 Development';
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
   case 'stage':
     $settings['simple_environment_indicator'] = '#e56716 Stage';
+    $config['config_split.config_split.main']['status'] = TRUE;
     break;
 
   case 'local':
     $settings['simple_environment_indicator'] = 'DarkGreen Local';
     $conf['stage_file_proxy_origin'] = 'https://tapahtumat.pori.fi';
+    $config['config_split.config_split.main']['status'] = FALSE;
+    break;
+
+  default:
+    $config['config_split.config_split.main']['status'] = FALSE;
     break;
 
 }
@@ -97,25 +105,6 @@ $settings['update_free_access'] = FALSE;
  * Load services definition file.
  */
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-
-// Warden settings.
-// Shared secret between the site and Warden server.
-$config['warden.settings']['warden_token'] = getenv('WARDEN_TOKEN');
-// Location of your Warden server. No trailing slash.
-$config['warden.settings']['warden_server_host_path'] = 'https://warden.wunder.io';
-// Allow external callbacks to the site. When set to FALSE pressing refresh site
-// data in Warden will not work.
-$config['warden.settings']['warden_allow_requests'] = TRUE;
-// Basic HTTP authorization credentials.
-$config['warden.settings']['warden_http_username'] = 'warden';
-$config['warden.settings']['warden_http_password'] = 'wunder';
-// IP address of the Warden server. Only these IP addresses will be allowed to
-// make callback # requests.
-$config['warden.settings']['warden_public_allow_ips'] = '35.228.188.78,35.228.81.50';
-// Define module locations.
-$config['warden.settings']['warden_preg_match_custom'] = '{^modules\/custom\/*}';
-$config['warden.settings']['warden_preg_match_contrib'] = '{^modules\/contrib\/*}';
-$config['warden.settings']['warden_match_contrib'] = TRUE;
 
 /**
  * Environment specific override configuration, if available.

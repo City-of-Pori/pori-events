@@ -9,8 +9,6 @@ display:
           action_title: Toiminto
         subject:
           label: Aihe
-        name:
-          label: Author
         entity_id:
           label: Kirjoitus
         changed:
@@ -59,8 +57,6 @@ display:
           action_title: Toiminto
         subject:
           label: Aihe
-        name:
-          label: Author
         entity_id:
           label: Kirjoitus
         changed:

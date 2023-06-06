@@ -21,8 +21,8 @@ blacklist_classes: |-
   customScripts
   customPixels
 include_environment: true
-environment_id: env-3
-environment_token: 0Kfbj0gU27RrNJf7_u-rCw
+environment_id: env-1
+environment_token: gW_rBBg5Mg2OmD-o7G464g
 path_toggle: 'exclude listed'
 path_list: ''
 role_toggle: 'exclude listed'
@@ -49,3 +49,23 @@ conditions:
       own_page_true: '0'
       field_value: '0'
     user_fields: uid
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles: {  }
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles: {  }
+  http_status_code:
+    id: http_status_code
+    negate: false
+    status_codes: {  }
+  request_domain:
+    id: request_domain
+    negate: false
+    domains: ''
