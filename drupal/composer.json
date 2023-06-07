@@ -148,7 +148,8 @@
         },
         "patches": {
             "drupal/migrate_source_jsonpath": {
-                "https://www.drupal.org/project/migrate_source_jsonpath/issues/3277645: Incompatible migrate_plus Json methods after upgrate to migrate_plus ^6.0": "https://www.drupal.org/files/issues/2022-04-28/3277645-incompatible-migrateplus-json-2022-04-28-001.patch"
+                "https://www.drupal.org/project/migrate_source_jsonpath/issues/3277645: Incompatible migrate_plus Json methods after upgrate to migrate_plus ^6.0": "https://www.drupal.org/files/issues/2022-04-28/3277645-incompatible-migrateplus-json-2022-04-28-001.patch",
+                "https://www.drupal.org/project/migrate_source_jsonpath/issues/3126235: for empty return from source urls" : "https://www.drupal.org/files/issues/2020-09-25/migrate_source_jsonpath-3126235-2.patch"
             },
             "drupal/twig_tweak": {
                 "https://www.drupal.org/project/twig_tweak/issues/3137994: imageStyle should return original image path as a fallback": "https://www.drupal.org/files/issues/2021-10-15/3137994-8-imagestyle-fallback-path.patch"
