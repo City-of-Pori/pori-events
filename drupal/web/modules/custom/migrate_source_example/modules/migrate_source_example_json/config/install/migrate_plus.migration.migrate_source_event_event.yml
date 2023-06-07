@@ -12,7 +12,18 @@ source:
   plugin: migrate_source_example_url
   data_fetcher_plugin: http
   data_parser_plugin: jsonpath
-  urls: 'https://satakuntaevents.fi/api/v2/event/?page_size=999999&include=location,keywords,audience&start=today'
+  urls:
+    - 'https://satakuntaevents.fi/api/v2/event/?page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=2&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=3&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=4&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=5&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=6&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=7&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=8&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=9&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=10&page_size=300&include=location,keywords,audience&start=today'
+    - 'https://satakuntaevents.fi/api/v2/event/?page=11&page_size=300&include=location,keywords,audience&start=today'
   item_selector: $.data.*
   ids:
     event_id:
