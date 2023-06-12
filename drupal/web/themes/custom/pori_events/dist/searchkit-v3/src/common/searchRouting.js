@@ -116,6 +116,7 @@ export function routeToState(route) {
         .forEach(([identifier, val]) => {
             // map each value of each filter to objects
             if (Array.isArray(val)) {
+                console.log('val1', val)
                 val.forEach((value) => {
                     if (identifier.includes("_level")) {
                         identifierLevels.push({
@@ -130,10 +131,12 @@ export function routeToState(route) {
                     });
                 });
             } else {
+                console.log('val2', val, identifier)
                 if (identifier.includes("_level")) {
+                    console.log('val3', val, identifier)
                     identifierLevels.push({
                         identifier,
-                        level: val,
+                        level: Number(val),
                     });
                     return;
                 }
