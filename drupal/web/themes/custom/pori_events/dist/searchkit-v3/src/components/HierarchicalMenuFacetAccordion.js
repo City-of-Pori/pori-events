@@ -27,7 +27,7 @@ const EntriesList = ({ entries, loading, facet }) => {
       value: entry.label,
       level: entry.level
     };
-    console.log('filter3', filter)
+    console.log('filter3 and entry', filter, entry)
     const isSelected = api.isFilterSelected(filter);
     // console.log('isSelected', isSelected)
     return (
@@ -52,12 +52,13 @@ const EntriesList = ({ entries, loading, facet }) => {
                           f.value === entry.label
                       ),
               );
+              console.log('filters7', filters)
           } else {
               // add on click
               console.log('filter8', filter)
               filters.push(filter);
           }
-          console.log('filter9', filter, filters)
+          console.log('filters9', filters)
           setSearchParams(
             stateToRoute({
                 ...variables,

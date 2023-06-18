@@ -42,22 +42,28 @@ export function stateToRoute(searchState) {
             routeState.yearMin = filter.yearMin ? filter.yearMin : undefined;
         } else if (filter.identifier === "end_year") {
             routeState.yearMax = filter.yearMax ? filter.yearMax : undefined;
+        } else if (filter.level) {
+            if (filter.level) {
+                console.log('filter.level exsits', `${filter.identifier}_level`, filter.value, filter.level)
+                if (Object.hasOwn(routeState, filter.identifier)) {
+                    routeState[filter.identifier].push(filter.value);
+                    
+                    routeState[`${filter.identifier}_${filter.value}_level`] = filter.level;
+                    console.log('1st level case:', filter)
+                } else {
+                    routeState[filter.identifier] = [filter.value];
+                    routeState[`${filter.identifier}_${filter.value}_level`] = filter.level;
+                    console.log('2nd level case:', filter)
+                }
+            }
         } else if (filter.value) {
             if (Object.hasOwn(routeState, filter.identifier)) {
                 routeState[filter.identifier].push(filter.value);
             } else {
                 routeState[filter.identifier] = [filter.value];
-                // add filter.level if it exists
-                if (filter.level) {
-                    console.log('filter.level exsits')
-                    routeState[`${filter.identifier}_level`] = filter.level;
-                    // routeState[filter.identifier] = [filter.value];
-                } else {
-                    routeState[filter.identifier] = [filter.value];
-                }
             }
         }
-        console.log('routeState22', routeState)
+        console.log('stateToRoute22', routeState)
     });
     // transform into the object to pass to createURL (adapted from Searchkit docs)
     return Object.keys(routeState).reduce((sum, key) => {
@@ -68,6 +74,7 @@ export function stateToRoute(searchState) {
         ) {
             s[key] = routeState[key];
         }
+        console.log('stateToRoute-s', s)
         return s;
     }, {});
 }
@@ -119,6 +126,7 @@ export function routeToState(route) {
                 console.log('val1', val)
                 val.forEach((value) => {
                     if (identifier.includes("_level")) {
+                        console.log('level3', identifier, val)
                         identifierLevels.push({
                             identifier,
                             level: value,
@@ -133,7 +141,7 @@ export function routeToState(route) {
             } else {
                 console.log('val2', val, identifier)
                 if (identifier.includes("_level")) {
-                    console.log('val3', val, identifier)
+                    console.log('level4', val, identifier)
                     identifierLevels.push({
                         identifier,
                         level: Number(val),
@@ -186,10 +194,25 @@ export function routeToState(route) {
 
     // add filter levels for the filters based on the identifierLevels array
     identifierLevels.forEach((filter) => {
+        console.log('filterLevel', filter)
+        console.log('searchState.filters11', searchState.filters)
         const filterIndex = searchState.filters.findIndex(
-            (f) => f.identifier === filter.identifier.replace("_level", ""),
+            (f) => {
+                const filterLevelSplit = filter.identifier.split("_");
+                const filterIdentifier = filterLevelSplit[0];
+                const filterValue = filterLevelSplit[1];
+                const filterLevel = filterLevelSplit[2];
+                console.log('identifierLevels filter identifier22', filter.identifier, filterIdentifier, filterValue, filterLevel)
+                console.log('searchState filter33', f)
+                // return f.identifier === filter.identifier.replace("_level", "")
+                if(filterIdentifier == f.identifier && filterValue == f.value) {
+                    console.log('isTrue')
+                    return true;
+                }
+            },
         );
         if (filterIndex > -1) {
+            console.log('searchState.filters[filterIndex]', searchState.filters[filterIndex])
             searchState.filters[filterIndex].level = filter.level;
         }
     });
