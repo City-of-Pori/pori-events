@@ -29,7 +29,9 @@ const EntriesList = ({ entries, loading, facet }) => {
     };
     console.log('filter3 and entry', filter, entry)
     const isSelected = api.isFilterSelected(filter);
+    const appliedFilters = api.getFiltersByIdentifier(filter.identifier)
     // console.log('isSelected', isSelected)
+    console.log('appliedFilters', appliedFilters)
     return (
       <Fragment key={i}>
         <EuiFacetButton
@@ -40,8 +42,10 @@ const EntriesList = ({ entries, loading, facet }) => {
           isLoading={loading}
           onClick={(e) => {
             let { filters } = variables;
-            console.log('filters2', filters)
+            console.log('filters2', filters, filter, isSelected)
+
             // ref.current[i].onClick(e)
+
             if (isSelected) {
               // remove on cilck
               console.log('remove on cilck')
@@ -58,6 +62,32 @@ const EntriesList = ({ entries, loading, facet }) => {
               console.log('filter8', filter)
               filters.push(filter);
           }
+
+          filters = filters.filter(
+            (f) =>
+                !(
+                    f.identifier === facet.identifier &&
+                    f.level === entry.level
+                ),
+          );
+
+          // if filter is 1st level, remove all other 1st level filters
+          if (entry.level === 1) {
+            filters = filters.filter(
+              (f) =>
+                  !(
+                      f.identifier === facet.identifier &&
+                      f.level === 2
+                  ),
+            );
+          }
+
+          if (!isSelected) {
+            // add on click
+            console.log('filter6', filter)
+            filters.push(filter);
+          }
+
           console.log('filters9', filters)
           setSearchParams(
             stateToRoute({
